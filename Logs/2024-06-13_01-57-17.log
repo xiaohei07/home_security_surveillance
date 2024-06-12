@@ -1,0 +1,10 @@
+2024-06-13_01-57-17 - INFO in video_processor.py function __init__ : Successfully loaded configuration file H:\Code_Workspace_Files\python_Workspace\pycharmwork\Software_engineering_bighomework\Config\config.json
+
+2024-06-13_01-57-17 - INFO in video_processor.py function _load_video_sourse : Successfully loaded local video device
+
+2024-06-13_01-57-17 - INFO in video_processor.py function _load_video_sourse : Successfully loaded network video device
+
+2024-06-13_01-57-17 - INFO in video_processor.py function _load_video_sourse : Successfully loaded history video processor
+
+2024-06-13_01-57-19 - ERROR in video_processor.py function load_network_video_device : The video transmission transprotocol RSTP is not supported.
+NoneType: None
