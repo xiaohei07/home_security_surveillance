@@ -1,0 +1,21 @@
+2024-06-13_13-59-00 - ERROR in video_detect.py function detect : Video Detector Warning!!
+NoneType: None
+2024-06-13_14-21-40 - ERROR in video_detect.py function detect : Video Detector Warning!!
+NoneType: None
+2024-06-13_14-55-37 - ERROR in video_detect.py function detect : An error of type AssertionError occurred: Queue <multiprocessing.queues.Queue object at 0x000002A264471730> not closed
+Traceback (most recent call last):
+  File "H:\Code_Workspace_Files\python_Workspace\pycharmwork\Software_engineering_bighomework\home_security_surveillance\video_process\video_detect.py", line 504, in detect
+    frame_queue.join_thread()
+  File "D:\anaconda3\envs\python39\lib\multiprocessing\queues.py", line 152, in join_thread
+    assert self._closed, "Queue {0!r} not closed".format(self)
+AssertionError: Queue <multiprocessing.queues.Queue object at 0x000002A264471730> not closed
+2024-06-13_15-17-10 - ERROR in video_detect.py function detect : Video Detector Warning!!
+NoneType: None
+2024-06-13_15-17-10 - ERROR in video_detect.py function detect : Video Detector Warning!!
+NoneType: None
+2024-06-13_15-17-10 - ERROR in video_detect.py function detect : Video Detector Warning!!
+NoneType: None
+2024-06-13_15-17-10 - ERROR in video_detect.py function detect : Video Detector Warning!!
+NoneType: None
+2024-06-13_15-17-10 - ERROR in video_detect.py function detect : Video Detector Warning!!
+NoneType: None

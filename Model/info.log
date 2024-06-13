@@ -1,68 +1,408 @@
-2024-06-12_22-53-09 - INFO in video_detect.py function get_device : Device is GPU: 0
+2024-06-13_13-04-01 - INFO in video_detect.py function get_device : Device is GPU: 0
 
-2024-06-12_22-55-16 - INFO in video_detect.py function get_device : Device is GPU: 0
+2024-06-13_13-06-47 - INFO in video_detect.py function get_device : Device is GPU: 0
 
-2024-06-12_22-59-15 - INFO in video_detect.py function get_device : Device is GPU: 0
+2024-06-13_13-10-43 - INFO in video_detect.py function get_device : Device is GPU: 0
 
-2024-06-12_23-00-16 - INFO in video_detect.py function get_device : Device is GPU: 0
+2024-06-13_13-24-42 - INFO in video_detect.py function get_device : Device is GPU: 0
 
-2024-06-12_23-02-47 - INFO in video_detect.py function get_device : Device is GPU: 0
+2024-06-13_13-24-52 - INFO in video_detect.py function get_device : Device is GPU: 0
 
-2024-06-12_23-04-13 - INFO in video_detect.py function get_device : Device is GPU: 0
+2024-06-13_13-25-02 - INFO in video_detect.py function get_device : Device is GPU: 0
 
-2024-06-12_23-07-48 - INFO in video_detect.py function get_device : Device is GPU: 0
+2024-06-13_13-25-07 - INFO in video_detect.py function detect : Video Detector start detect
 
-2024-06-12_23-12-23 - INFO in video_detect.py function get_device : Device is GPU: 0
+2024-06-13_13-25-36 - INFO in video_detect.py function detect : Detect finish. Please cheack the H:\Code_Workspace_Files\python_Workspace\pycharmwork\Software_engineering_bighomework\Model\test
 
-2024-06-12_23-13-36 - INFO in video_detect.py function get_device : Device is GPU: 0
+2024-06-13_13-33-17 - INFO in video_detect.py function get_device : Device is GPU: 0
 
-2024-06-12_23-14-40 - INFO in video_detect.py function get_device : Device is GPU: 0
+2024-06-13_13-33-37 - INFO in video_detect.py function get_device : Device is GPU: 0
 
-2024-06-12_23-15-11 - INFO in video_detect.py function get_device : Device is GPU: 0
+2024-06-13_13-34-42 - INFO in video_detect.py function get_device : Device is GPU: 0
 
-2024-06-12_23-18-03 - INFO in video_detect.py function get_device : Device is GPU: 0
+2024-06-13_13-34-55 - INFO in video_detect.py function get_device : Device is GPU: 0
 
-2024-06-12_23-33-48 - INFO in video_detect.py function get_device : Device is GPU: 0
+2024-06-13_13-35-05 - INFO in video_detect.py function get_device : Device is GPU: 0
 
-2024-06-12_23-33-59 - INFO in video_detect.py function get_device : Device is GPU: 0
+2024-06-13_13-35-24 - INFO in video_detect.py function get_device : Device is GPU: 0
 
-2024-06-12_23-37-38 - INFO in video_detect.py function get_device : Device is GPU: 0
+2024-06-13_13-35-38 - INFO in video_detect.py function get_device : Device is GPU: 0
 
-2024-06-12_23-38-11 - INFO in video_detect.py function get_device : Device is GPU: 0
+2024-06-13_13-36-54 - INFO in video_detect.py function get_device : Device is GPU: 0
 
-2024-06-12_23-40-31 - INFO in video_detect.py function get_device : Device is GPU: 0
+2024-06-13_13-37-30 - INFO in video_detect.py function get_device : Device is GPU: 0
 
-2024-06-12_23-41-42 - INFO in video_detect.py function get_device : Device is GPU: 0
+2024-06-13_13-38-02 - INFO in video_detect.py function get_device : Device is GPU: 0
 
-2024-06-12_23-42-40 - INFO in video_detect.py function get_device : Device is GPU: 0
+2024-06-13_13-39-12 - INFO in video_detect.py function get_device : Device is GPU: 0
 
-2024-06-12_23-46-52 - INFO in video_detect.py function get_device : Device is GPU: 0
+2024-06-13_13-42-04 - INFO in video_detect.py function get_device : Device is GPU: 0
 
-2024-06-12_23-49-06 - INFO in video_detect.py function get_device : Device is GPU: 0
+2024-06-13_13-42-11 - INFO in video_detect.py function detect : Video Detector start detect
 
-2024-06-13_01-57-18 - INFO in video_detect.py function get_device : Device is GPU: 0
+2024-06-13_13-42-32 - INFO in video_detect.py function detect : Detect finish. Please cheack the H:\Code_Workspace_Files\python_Workspace\pycharmwork\Software_engineering_bighomework\Model\test
 
-2024-06-13_01-58-33 - INFO in video_detect.py function get_device : Device is GPU: 0
+2024-06-13_13-45-08 - INFO in video_detect.py function get_device : Device is GPU: 0
 
-2024-06-13_01-59-43 - INFO in video_detect.py function get_device : Device is GPU: 0
+2024-06-13_13-45-31 - INFO in video_detect.py function get_device : Device is GPU: 0
 
-2024-06-13_02-01-41 - INFO in video_detect.py function get_device : Device is GPU: 0
+2024-06-13_13-45-40 - INFO in video_detect.py function detect : Video Detector start detect
 
-2024-06-13_02-05-26 - INFO in video_detect.py function get_device : Device is GPU: 0
+2024-06-13_13-45-53 - INFO in video_detect.py function detect : Detect finish. Please cheack the H:\Code_Workspace_Files\python_Workspace\pycharmwork\Software_engineering_bighomework\Model\test
 
-2024-06-13_02-07-02 - INFO in video_detect.py function get_device : Device is GPU: 0
+2024-06-13_13-48-12 - INFO in video_detect.py function get_device : Device is GPU: 0
 
-2024-06-13_02-07-18 - INFO in video_detect.py function get_device : Device is GPU: 0
+2024-06-13_13-48-18 - INFO in video_detect.py function detect : Video Detector start detect
 
-2024-06-13_02-28-33 - INFO in video_detect.py function get_device : Device is GPU: 0
+2024-06-13_13-48-32 - INFO in video_detect.py function detect : Detect finish. Please cheack the H:\Code_Workspace_Files\python_Workspace\pycharmwork\Software_engineering_bighomework\Model\test
 
-2024-06-13_02-28-52 - INFO in video_detect.py function get_device : Device is GPU: 0
+2024-06-13_13-53-36 - INFO in video_detect.py function get_device : Device is GPU: 0
 
-2024-06-13_02-29-03 - INFO in video_detect.py function get_device : Device is GPU: 0
+2024-06-13_13-53-41 - INFO in video_detect.py function detect : Video Detector start detect
 
-2024-06-13_02-29-23 - INFO in video_detect.py function get_device : Device is GPU: 0
+2024-06-13_13-53-51 - INFO in video_detect.py function detect : Detect finish. Please cheack the H:\Code_Workspace_Files\python_Workspace\pycharmwork\Software_engineering_bighomework\Model\test
 
-2024-06-13_02-30-30 - INFO in video_detect.py function get_device : Device is GPU: 0
+2024-06-13_13-56-37 - INFO in video_detect.py function get_device : Device is GPU: 0
 
-2024-06-13_02-57-59 - INFO in video_detect.py function get_device : Device is GPU: 0
+2024-06-13_13-56-45 - INFO in video_detect.py function detect : Video Detector start detect
+
+2024-06-13_13-56-55 - INFO in video_detect.py function detect : Detect finish. Please cheack the H:\Code_Workspace_Files\python_Workspace\pycharmwork\Software_engineering_bighomework\Model\test
+
+2024-06-13_13-57-05 - INFO in video_detect.py function get_device : Device is GPU: 0
+
+2024-06-13_13-57-14 - INFO in video_detect.py function get_device : Device is GPU: 0
+
+2024-06-13_13-57-24 - INFO in video_detect.py function detect : Video Detector start detect
+
+2024-06-13_13-58-41 - INFO in video_detect.py function get_device : Device is GPU: 0
+
+2024-06-13_13-58-49 - INFO in video_detect.py function detect : Video Detector start detect
+
+2024-06-13_13-59-01 - INFO in video_detect.py function detect : Detect finish. Please cheack the H:\Code_Workspace_Files\python_Workspace\pycharmwork\Software_engineering_bighomework\Model\test
+
+2024-06-13_14-01-46 - INFO in video_detect.py function get_device : Device is GPU: 0
+
+2024-06-13_14-01-52 - INFO in video_detect.py function detect : Video Detector start detect
+
+2024-06-13_14-02-01 - INFO in video_detect.py function detect : Detect finish. Please cheack the H:\Code_Workspace_Files\python_Workspace\pycharmwork\Software_engineering_bighomework\Model\test
+
+2024-06-13_14-04-31 - INFO in video_detect.py function get_device : Device is GPU: 0
+
+2024-06-13_14-04-37 - INFO in video_detect.py function detect : Video Detector start detect
+
+2024-06-13_14-04-45 - INFO in video_detect.py function detect : Detect finish. Please cheack the H:\Code_Workspace_Files\python_Workspace\pycharmwork\Software_engineering_bighomework\Model\test
+
+2024-06-13_14-06-49 - INFO in video_detect.py function get_device : Device is GPU: 0
+
+2024-06-13_14-06-54 - INFO in video_detect.py function detect : Video Detector start detect
+
+2024-06-13_14-07-05 - INFO in video_detect.py function detect : Detect finish. Please cheack the H:\Code_Workspace_Files\python_Workspace\pycharmwork\Software_engineering_bighomework\Model\test
+
+2024-06-13_14-07-27 - INFO in video_detect.py function get_device : Device is GPU: 0
+
+2024-06-13_14-07-32 - INFO in video_detect.py function detect : Video Detector start detect
+
+2024-06-13_14-07-41 - INFO in video_detect.py function detect : Detect finish. Please cheack the H:\Code_Workspace_Files\python_Workspace\pycharmwork\Software_engineering_bighomework\Model\test
+
+2024-06-13_14-17-13 - INFO in video_detect.py function get_device : Device is GPU: 0
+
+2024-06-13_14-17-19 - INFO in video_detect.py function detect : Video Detector start detect
+
+2024-06-13_14-17-30 - INFO in video_detect.py function detect : Detect finish. Please cheack the H:\Code_Workspace_Files\python_Workspace\pycharmwork\Software_engineering_bighomework\Model\test
+
+2024-06-13_14-18-44 - INFO in video_detect.py function get_device : Device is GPU: 0
+
+2024-06-13_14-18-50 - INFO in video_detect.py function detect : Video Detector start detect
+
+2024-06-13_14-19-00 - INFO in video_detect.py function detect : Detect finish. Please cheack the H:\Code_Workspace_Files\python_Workspace\pycharmwork\Software_engineering_bighomework\Model\test
+
+2024-06-13_14-19-17 - INFO in video_detect.py function get_device : Device is GPU: 0
+
+2024-06-13_14-19-25 - INFO in video_detect.py function detect : Video Detector start detect
+
+2024-06-13_14-19-37 - INFO in video_detect.py function detect : Detect finish. Please cheack the H:\Code_Workspace_Files\python_Workspace\pycharmwork\Software_engineering_bighomework\Model\test
+
+2024-06-13_14-21-18 - INFO in video_detect.py function get_device : Device is GPU: 0
+
+2024-06-13_14-21-29 - INFO in video_detect.py function detect : Video Detector start detect
+
+2024-06-13_14-21-45 - INFO in video_detect.py function detect : Detect finish. Please cheack the H:\Code_Workspace_Files\python_Workspace\pycharmwork\Software_engineering_bighomework\Model\test
+
+2024-06-13_14-24-18 - INFO in video_detect.py function get_device : Device is GPU: 0
+
+2024-06-13_14-24-25 - INFO in video_detect.py function detect : Video Detector start detect
+
+2024-06-13_14-24-35 - INFO in video_detect.py function detect : Detect finish. Please cheack the H:\Code_Workspace_Files\python_Workspace\pycharmwork\Software_engineering_bighomework\Model\test
+
+2024-06-13_14-26-05 - INFO in video_detect.py function get_device : Device is GPU: 0
+
+2024-06-13_14-26-14 - INFO in video_detect.py function detect : Video Detector start detect
+
+2024-06-13_14-26-25 - INFO in video_detect.py function detect : Detect finish. Please cheack the H:\Code_Workspace_Files\python_Workspace\pycharmwork\Software_engineering_bighomework\Model\test
+
+2024-06-13_14-26-37 - INFO in video_detect.py function get_device : Device is GPU: 0
+
+2024-06-13_14-27-00 - INFO in video_detect.py function get_device : Device is GPU: 0
+
+2024-06-13_14-27-09 - INFO in video_detect.py function detect : Video Detector start detect
+
+2024-06-13_14-27-21 - INFO in video_detect.py function detect : Detect finish. Please cheack the H:\Code_Workspace_Files\python_Workspace\pycharmwork\Software_engineering_bighomework\Model\test
+
+2024-06-13_14-27-50 - INFO in video_detect.py function get_device : Device is GPU: 0
+
+2024-06-13_14-28-00 - INFO in video_detect.py function get_device : Device is GPU: 0
+
+2024-06-13_14-28-22 - INFO in video_detect.py function get_device : Device is GPU: 0
+
+2024-06-13_14-29-04 - INFO in video_detect.py function get_device : Device is GPU: 0
+
+2024-06-13_14-29-10 - INFO in video_detect.py function detect : Video Detector start detect
+
+2024-06-13_14-29-24 - INFO in video_detect.py function detect : Detect finish. Please cheack the H:\Code_Workspace_Files\python_Workspace\pycharmwork\Software_engineering_bighomework\Model\test
+
+2024-06-13_14-30-59 - INFO in video_detect.py function get_device : Device is GPU: 0
+
+2024-06-13_14-31-07 - INFO in video_detect.py function detect : Video Detector start detect
+
+2024-06-13_14-31-18 - INFO in video_detect.py function detect : Detect finish. Please cheack the H:\Code_Workspace_Files\python_Workspace\pycharmwork\Software_engineering_bighomework\Model\test
+
+2024-06-13_14-32-19 - INFO in video_detect.py function get_device : Device is GPU: 0
+
+2024-06-13_14-32-25 - INFO in video_detect.py function detect : Video Detector start detect
+
+2024-06-13_14-32-44 - INFO in video_detect.py function detect : Detect finish. Please cheack the H:\Code_Workspace_Files\python_Workspace\pycharmwork\Software_engineering_bighomework\Model\test
+
+2024-06-13_14-34-39 - INFO in video_detect.py function get_device : Device is GPU: 0
+
+2024-06-13_14-34-54 - INFO in video_detect.py function get_device : Device is GPU: 0
+
+2024-06-13_14-34-59 - INFO in video_detect.py function detect : Video Detector start detect
+
+2024-06-13_14-35-13 - INFO in video_detect.py function detect : Detect finish. Please cheack the H:\Code_Workspace_Files\python_Workspace\pycharmwork\Software_engineering_bighomework\Model\test
+
+2024-06-13_14-37-50 - INFO in video_detect.py function get_device : Device is GPU: 0
+
+2024-06-13_14-38-04 - INFO in video_detect.py function get_device : Device is GPU: 0
+
+2024-06-13_14-38-19 - INFO in video_detect.py function get_device : Device is GPU: 0
+
+2024-06-13_14-38-24 - INFO in video_detect.py function detect : Video Detector start detect
+
+2024-06-13_14-38-34 - INFO in video_detect.py function detect : Detect finish. Please cheack the H:\Code_Workspace_Files\python_Workspace\pycharmwork\Software_engineering_bighomework\Model\test
+
+2024-06-13_14-39-22 - INFO in video_detect.py function get_device : Device is GPU: 0
+
+2024-06-13_14-39-30 - INFO in video_detect.py function detect : Video Detector start detect
+
+2024-06-13_14-41-14 - INFO in video_detect.py function get_device : Device is GPU: 0
+
+2024-06-13_14-41-23 - INFO in video_detect.py function detect : Video Detector start detect
+
+2024-06-13_14-41-34 - INFO in video_detect.py function detect : Detect finish. Please cheack the H:\Code_Workspace_Files\python_Workspace\pycharmwork\Software_engineering_bighomework\Model\test
+
+2024-06-13_14-45-56 - INFO in video_detect.py function get_device : Device is GPU: 0
+
+2024-06-13_14-46-03 - INFO in video_detect.py function detect : Video Detector start detect
+
+2024-06-13_14-46-13 - INFO in video_detect.py function detect : Detect finish. Please cheack the H:\Code_Workspace_Files\python_Workspace\pycharmwork\Software_engineering_bighomework\Model\test
+
+2024-06-13_14-49-34 - INFO in video_detect.py function get_device : Device is GPU: 0
+
+2024-06-13_14-49-40 - INFO in video_detect.py function detect : Video Detector start detect
+
+2024-06-13_14-49-50 - INFO in video_detect.py function detect : Detect finish. Please cheack the H:\Code_Workspace_Files\python_Workspace\pycharmwork\Software_engineering_bighomework\Model\test
+
+2024-06-13_14-50-02 - INFO in video_detect.py function get_device : Device is GPU: 0
+
+2024-06-13_14-50-07 - INFO in video_detect.py function detect : Video Detector start detect
+
+2024-06-13_14-50-21 - INFO in video_detect.py function detect : Detect finish. Please cheack the H:\Code_Workspace_Files\python_Workspace\pycharmwork\Software_engineering_bighomework\Model\test
+
+2024-06-13_14-55-22 - INFO in video_detect.py function get_device : Device is GPU: 0
+
+2024-06-13_14-55-28 - INFO in video_detect.py function detect : Video Detector start detect
+
+2024-06-13_14-55-37 - INFO in video_detect.py function detect : Detect finish. Please cheack the H:\Code_Workspace_Files\python_Workspace\pycharmwork\Software_engineering_bighomework\Model\test
+
+2024-06-13_14-56-57 - INFO in video_detect.py function get_device : Device is GPU: 0
+
+2024-06-13_14-57-04 - INFO in video_detect.py function detect : Video Detector start detect
+
+2024-06-13_14-57-13 - INFO in video_detect.py function detect : Detect finish. Please cheack the H:\Code_Workspace_Files\python_Workspace\pycharmwork\Software_engineering_bighomework\Model\test
+
+2024-06-13_14-58-26 - INFO in video_detect.py function get_device : Device is GPU: 0
+
+2024-06-13_14-58-32 - INFO in video_detect.py function detect : Video Detector start detect
+
+2024-06-13_14-58-42 - INFO in video_detect.py function detect : Detect finish. Please cheack the H:\Code_Workspace_Files\python_Workspace\pycharmwork\Software_engineering_bighomework\Model\test
+
+2024-06-13_15-04-48 - INFO in video_detect.py function get_device : Device is GPU: 0
+
+2024-06-13_15-04-57 - INFO in video_detect.py function detect : Video Detector start detect
+
+2024-06-13_15-05-08 - INFO in video_detect.py function detect : Detect finish. Please cheack the H:\Code_Workspace_Files\python_Workspace\pycharmwork\Software_engineering_bighomework\Model\test
+
+2024-06-13_15-08-57 - INFO in video_detect.py function get_device : Device is GPU: 0
+
+2024-06-13_15-09-19 - INFO in video_detect.py function detect : Video Detector start detect
+
+2024-06-13_15-09-50 - INFO in video_detect.py function get_device : Device is GPU: 0
+
+2024-06-13_15-10-00 - INFO in video_detect.py function detect : Video Detector start detect
+
+2024-06-13_15-10-10 - INFO in video_detect.py function detect : Detect finish. Please cheack the H:\Code_Workspace_Files\python_Workspace\pycharmwork\Software_engineering_bighomework\Model\test
+
+2024-06-13_15-13-26 - INFO in video_detect.py function get_device : Device is GPU: 0
+
+2024-06-13_15-13-34 - INFO in video_detect.py function detect : Video Detector start detect
+
+2024-06-13_15-14-25 - INFO in video_detect.py function get_device : Device is GPU: 0
+
+2024-06-13_15-14-33 - INFO in video_detect.py function detect : Video Detector start detect
+
+2024-06-13_15-16-53 - INFO in video_detect.py function get_device : Device is GPU: 0
+
+2024-06-13_15-17-01 - INFO in video_detect.py function detect : Video Detector start detect
+
+2024-06-13_15-18-15 - INFO in video_detect.py function get_device : Device is GPU: 0
+
+2024-06-13_15-18-22 - INFO in video_detect.py function detect : Video Detector start detect
+
+2024-06-13_15-18-30 - INFO in video_detect.py function detect : Detect finish. Please cheack the H:\Code_Workspace_Files\python_Workspace\pycharmwork\Software_engineering_bighomework\Model\test
+
+2024-06-13_15-18-51 - INFO in video_detect.py function get_device : Device is GPU: 0
+
+2024-06-13_15-18-58 - INFO in video_detect.py function detect : Video Detector start detect
+
+2024-06-13_15-19-07 - INFO in video_detect.py function detect : Detect finish. Please cheack the H:\Code_Workspace_Files\python_Workspace\pycharmwork\Software_engineering_bighomework\Model\test
+
+2024-06-13_15-19-56 - INFO in video_detect.py function get_device : Device is GPU: 0
+
+2024-06-13_15-20-03 - INFO in video_detect.py function detect : Video Detector start detect
+
+2024-06-13_15-21-45 - INFO in video_detect.py function get_device : Device is GPU: 0
+
+2024-06-13_15-21-52 - INFO in video_detect.py function detect : Video Detector start detect
+
+2024-06-13_15-24-19 - INFO in video_detect.py function get_device : Device is GPU: 0
+
+2024-06-13_15-24-24 - INFO in video_detect.py function detect : Video Detector start detect
+
+2024-06-13_15-24-36 - INFO in video_detect.py function detect : Detect finish. Please cheack the H:\Code_Workspace_Files\python_Workspace\pycharmwork\Software_engineering_bighomework\Model\test
+
+2024-06-13_15-24-56 - INFO in video_detect.py function get_device : Device is GPU: 0
+
+2024-06-13_15-25-03 - INFO in video_detect.py function detect : Video Detector start detect
+
+2024-06-13_15-25-16 - INFO in video_detect.py function detect : Detect finish. Please cheack the H:\Code_Workspace_Files\python_Workspace\pycharmwork\Software_engineering_bighomework\Model\test
+
+2024-06-13_15-27-28 - INFO in video_detect.py function get_device : Device is GPU: 0
+
+2024-06-13_15-27-35 - INFO in video_detect.py function detect : Video Detector start detect
+
+2024-06-13_15-27-44 - INFO in video_detect.py function detect : Detect finish. Please cheack the H:\Code_Workspace_Files\python_Workspace\pycharmwork\Software_engineering_bighomework\Model\test
+
+2024-06-13_15-28-36 - INFO in video_detect.py function get_device : Device is GPU: 0
+
+2024-06-13_15-28-41 - INFO in video_detect.py function detect : Video Detector start detect
+
+2024-06-13_15-28-53 - INFO in video_detect.py function detect : Detect finish. Please cheack the H:\Code_Workspace_Files\python_Workspace\pycharmwork\Software_engineering_bighomework\Model\test
+
+2024-06-13_15-30-00 - INFO in video_detect.py function get_device : Device is GPU: 0
+
+2024-06-13_15-30-08 - INFO in video_detect.py function detect : Video Detector start detect
+
+2024-06-13_15-31-01 - INFO in video_detect.py function get_device : Device is GPU: 0
+
+2024-06-13_15-31-06 - INFO in video_detect.py function detect : Video Detector start detect
+
+2024-06-13_15-31-12 - INFO in video_detect.py function detect : Detect finish. Please cheack the H:\Code_Workspace_Files\python_Workspace\pycharmwork\Software_engineering_bighomework\Model\test
+
+2024-06-13_15-33-15 - INFO in video_detect.py function get_device : Device is GPU: 0
+
+2024-06-13_15-33-20 - INFO in video_detect.py function detect : Video Detector start detect
+
+2024-06-13_15-33-25 - INFO in video_detect.py function detect : Detect finish. Please cheack the H:\Code_Workspace_Files\python_Workspace\pycharmwork\Software_engineering_bighomework\Model\test
+
+2024-06-13_15-34-32 - INFO in video_detect.py function get_device : Device is GPU: 0
+
+2024-06-13_15-34-39 - INFO in video_detect.py function detect : Video Detector start detect
+
+2024-06-13_15-34-57 - INFO in video_detect.py function detect : Detect finish. Please cheack the H:\Code_Workspace_Files\python_Workspace\pycharmwork\Software_engineering_bighomework\Model\test
+
+2024-06-13_15-36-16 - INFO in video_detect.py function get_device : Device is GPU: 0
+
+2024-06-13_15-36-23 - INFO in video_detect.py function detect : Video Detector start detect
+
+2024-06-13_15-36-31 - INFO in video_detect.py function detect : Detect finish. Please cheack the H:\Code_Workspace_Files\python_Workspace\pycharmwork\Software_engineering_bighomework\Model\test
+
+2024-06-13_15-37-31 - INFO in video_detect.py function get_device : Device is GPU: 0
+
+2024-06-13_15-38-38 - INFO in video_detect.py function get_device : Device is GPU: 0
+
+2024-06-13_15-39-01 - INFO in video_detect.py function get_device : Device is GPU: 0
+
+2024-06-13_15-39-08 - INFO in video_detect.py function detect : Video Detector start detect
+
+2024-06-13_15-40-32 - INFO in video_detect.py function get_device : Device is GPU: 0
+
+2024-06-13_15-40-37 - INFO in video_detect.py function detect : Video Detector start detect
+
+2024-06-13_15-40-46 - INFO in video_detect.py function detect : Detect finish. Please cheack the H:\Code_Workspace_Files\python_Workspace\pycharmwork\Software_engineering_bighomework\Model\test
+
+2024-06-13_15-40-53 - INFO in video_detect.py function get_device : Device is GPU: 0
+
+2024-06-13_15-40-59 - INFO in video_detect.py function detect : Video Detector start detect
+
+2024-06-13_15-41-08 - INFO in video_detect.py function detect : Detect finish. Please cheack the H:\Code_Workspace_Files\python_Workspace\pycharmwork\Software_engineering_bighomework\Model\test
+
+2024-06-13_15-41-33 - INFO in video_detect.py function get_device : Device is GPU: 0
+
+2024-06-13_15-41-38 - INFO in video_detect.py function detect : Video Detector start detect
+
+2024-06-13_15-42-28 - INFO in video_detect.py function get_device : Device is GPU: 0
+
+2024-06-13_15-42-33 - INFO in video_detect.py function detect : Video Detector start detect
+
+2024-06-13_15-42-45 - INFO in video_detect.py function detect : Detect finish. Please cheack the H:\Code_Workspace_Files\python_Workspace\pycharmwork\Software_engineering_bighomework\Model\test
+
+2024-06-13_15-43-00 - INFO in video_detect.py function get_device : Device is GPU: 0
+
+2024-06-13_15-43-05 - INFO in video_detect.py function detect : Video Detector start detect
+
+2024-06-13_15-43-17 - INFO in video_detect.py function detect : Detect finish. Please cheack the H:\Code_Workspace_Files\python_Workspace\pycharmwork\Software_engineering_bighomework\Model\test
+
+2024-06-13_15-43-59 - INFO in video_detect.py function get_device : Device is GPU: 0
+
+2024-06-13_15-44-04 - INFO in video_detect.py function detect : Video Detector start detect
+
+2024-06-13_15-44-14 - INFO in video_detect.py function detect : Detect finish. Please cheack the H:\Code_Workspace_Files\python_Workspace\pycharmwork\Software_engineering_bighomework\Model\test
+
+2024-06-13_15-44-25 - INFO in video_detect.py function get_device : Device is GPU: 0
+
+2024-06-13_15-44-31 - INFO in video_detect.py function detect : Video Detector start detect
+
+2024-06-13_15-44-40 - INFO in video_detect.py function detect : Detect finish. Please cheack the H:\Code_Workspace_Files\python_Workspace\pycharmwork\Software_engineering_bighomework\Model\test
+
+2024-06-13_15-46-17 - INFO in video_detect.py function get_device : Device is GPU: 0
+
+2024-06-13_15-46-23 - INFO in video_detect.py function detect : Video Detector start detect
+
+2024-06-13_15-46-49 - INFO in video_detect.py function get_device : Device is GPU: 0
+
+2024-06-13_15-46-54 - INFO in video_detect.py function detect : Video Detector start detect
+
+2024-06-13_15-47-05 - INFO in video_detect.py function detect : Detect finish. Please cheack the H:\Code_Workspace_Files\python_Workspace\pycharmwork\Software_engineering_bighomework\Model\test
+
+2024-06-13_15-47-28 - INFO in video_detect.py function get_device : Device is GPU: 0
+
+2024-06-13_15-47-33 - INFO in video_detect.py function detect : Video Detector start detect
+
+2024-06-13_15-47-42 - INFO in video_detect.py function detect : Detect finish. Please cheack the H:\Code_Workspace_Files\python_Workspace\pycharmwork\Software_engineering_bighomework\Model\test
+
+2024-06-13_15-48-02 - INFO in video_detect.py function get_device : Device is GPU: 0
+
+2024-06-13_15-48-08 - INFO in video_detect.py function detect : Video Detector start detect
+
+2024-06-13_15-48-22 - INFO in video_detect.py function detect : Detect finish. Please cheack the H:\Code_Workspace_Files\python_Workspace\pycharmwork\Software_engineering_bighomework\Model\test
 

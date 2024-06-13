@@ -46,5 +46,21 @@
     "port" : "8081",
     "username" : "No-username",
     "password" : "No-password"
+  },
+  {
+    "url" : "rtsp://10.195.146.141:8554/live",
+    "index" : 7,
+    "ip" : "10.195.146.141",
+    "port" : "8554",
+    "username" : "No-username",
+    "password" : "No-password"
+  },
+  {
+    "url" : "http://10.195.146.141:8081",
+    "index" : 8,
+    "ip" : "10.195.146.141",
+    "port" : "8081",
+    "username" : "No-username",
+    "password" : "No-password"
   }
 ]

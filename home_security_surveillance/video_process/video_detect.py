@@ -6,6 +6,7 @@ Date: 2024-05-02
 Version: 1.0
 Description: 使用yolov8，对视频帧进行识别，判断监控是否出现了火灾/人/异常行为
 """
+import os.path
 
 # 引入常用库
 from home_security_surveillance.common import *
@@ -89,16 +90,16 @@ class Video_Detector(object):
 
         ###  新增部分
         # 根目录
-        self.root_dir = root_dir
+        if not os.path.isabs(root_dir):
+            self.root_dir = os.path.abspath(root_dir)
+        else:
+            self.root_dir = root_dir
         # model_mode_dict将相对路径改为绝对路径，路径根目录用root_dir
         self.model_mode_dict = {1: os.path.join(root_dir, "fire.pt"),
                                 2: os.path.join(root_dir, "people.pt"),
                                 3: os.path.join(root_dir, "down.pt")}
-
-        # 配置 error_logger 仅记录 ERROR 及以上级别的日志
-        self.error_logger = Log_Processor(self.root_dir, 'error.log', Log_Processor.ERROR)
-        # 配置 info_logger 记录所有级别的日志
-        self.info_logger = Log_Processor(self.root_dir, 'info.log', Log_Processor.INFO)
+        # 配置日志管理器
+        self._create_logger()
 
         # 配置训练和预测的json文件路径
         self._train_config = Video_Detector.load_config(os.path.join(root_dir, "train_config.json"))
@@ -171,6 +172,12 @@ class Video_Detector(object):
         else:
             self.save_dir = os.path.join(root_dir, save_dir)
         self.max_frame = max_frame
+
+    def _create_logger(self):
+        # 配置 error_logger 仅记录 ERROR 及以上级别的日志
+        self.error_logger = Log_Processor(self.root_dir, 'error.log', Log_Processor.ERROR)
+        # 配置 info_logger 记录所有级别的日志
+        self.info_logger = Log_Processor(self.root_dir, 'info.log', Log_Processor.INFO)
 
     ###  新增方法，重设训练参数
     def reset_training_parameters(self, batch: int = 16, epochs: int = 5, project: str = 'runs',
@@ -461,7 +468,8 @@ class Video_Detector(object):
         no_warning_frame = 0
         flag_wait = False
         start_wait_time = time.time()
-
+        self._create_logger()
+        self.info_logger.log_write("Video Detector start detect", Log_Processor.INFO)
         while True:
             try:
                 # 判断另一进程是否结束
@@ -472,21 +480,23 @@ class Video_Detector(object):
                         continue
                     else:
                         if time.time() - start_wait_time >= 5:
-                            self.error_logger.log_write(f"Timed out waiting for video frame" +
-                                                        f"Video Detector stop waiting " +
+                            self.error_logger.log_write(f"Timed out waiting for video frame." +
+                                                        f" Video Detector stop waiting " +
                                                         f"and exit the detect process",
                                                         Log_Processor.ERROR)
                             break
+                        else:
+                            continue
                 else:
                     flag_wait = False
                     start_wait_time = time.time()
+
                 # 对传进来的帧进行处理
                 frame = frame_queue.get()
                 # 传入结束标志，需要清空result_queue再关闭，并释放warning_video_out
                 if frame is None:
                     for i in range(result_queue.qsize()):
-                        result_queue.get()
-                    result_queue.close()
+                        print(result_queue.get())
                     self.info_logger.log_write(f"Detect finish. Please cheack the {save_dir}",
                                                Log_Processor.INFO)
                     if warning_video_out is not None:
@@ -703,15 +713,17 @@ if __name__ == '__main__':
     video_detector = Video_Detector()
 
     # 查看结果
-    # for i in video_detector.__dict__.items():
-    #     if i[0] != "model":
-    #         print(i)
+    for i in video_detector.__dict__.items():
+        if i[0] != "model":
+            print(i)
 
     # 调用类方法选择模型
     video_detector.select_default_model(1)
     # model.train()
-    source = "fire.mp4"
-    Results_list = video_detector.predict(pre_source=source)
-    # for i in Results_list:
+
+    source = os.path.abspath("../../Model/test/fire.mp4")
+    print(os.path.exists(source))
+    Results_list = video_detector.predict(pre_source=source, mode=1)
+    # for i in Results_list[1]:
     #     print(i)
-    # video_detector.detect()
+

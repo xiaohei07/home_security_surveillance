@@ -427,8 +427,92 @@ class Video_Processor(object):
                               Log_Processor.INFO)
         return 0
 
-    def _network_device_visibility(self):
-        pass
+    def _network_device_visibility(self, vis_frame_queue: multiprocessing.Queue,
+                                   vis_result_queue: multiprocessing.Queue,
+                                   video_sourse: Union[int, str],
+                                   real_width: int, real_height: int):
+        """
+        网络ip摄像头使用rtsp格式监控时会有大幅度的速度降低，此处使用新进程创建窗口
+        Parameters
+        ----------
+        vis_frame_queue : multiprocessing.Queue
+            接收视频帧队列
+        vis_result_queue: multiprocessing.Queue
+            返回视频帧处理结果队列
+        video_sourse : Union[int, str]
+            传入的ip或者url字符串，或者是已存储url的索引值
+        """
+        # 窗口名
+        Window_name = f"{video_sourse}"
+        # WINDOW_NORMAL控制窗口可以放缩，WINDOW_KEEPRATIO控制窗口缩放的过程中保持比率
+        # WINDOW_GUI_EXPANDED控制使用新版本功能增强的GUI窗口
+        cv.namedWindow(Window_name, flags=cv.WINDOW_NORMAL | cv.WINDOW_KEEPRATIO |
+                                          cv.WINDOW_GUI_EXPANDED)
+        # 大小设置为720p的大小
+        if real_width > real_height:
+            cv.resizeWindow(Window_name, 1280, 720)
+        elif real_width < real_height:
+            cv.resizeWindow(Window_name, 720, 1280)
+        else:
+            cv.resizeWindow(Window_name, 720, 720)
+
+        # 获得当前时间，记录是否等待
+        flag_wait = False
+        start_wait_time = time.time()
+        while True:
+            if not vis_frame_queue.empty():
+                # 获得每一帧进行处理
+                frame = vis_frame_queue.get()
+                if frame is not None:
+                    # 将当前帧在窗口中展示
+                    cv.imshow(Window_name, frame)
+                    # 按'q'和'ESC'键退出，释放视频捕捉对象，销毁窗口
+                    cv2key = cv.waitKey(1)
+
+                    if cv2key & 0xFF == ord('q') or cv2key & 0xFF == 27:
+                        for i in range(vis_frame_queue.qsize()):
+                            vis_frame_queue.get()
+                        cv.destroyWindow(Window_name)
+                        vis_result_queue.put(True)
+                        vis_result_queue.close()
+                        vis_result_queue.join_thread()
+                        return
+                    # # 如果s键按下，则进行图片保存
+                    # elif cv2key == ord('s'):
+                    #     # 记录当前时间
+                    #     now_time = datetime.datetime.now().strftime(Log_Processor.strftime_all)
+                    #     # 写入图片 并命名图片为 图片序号.png
+                    #     cv.imwrite(f"{now_time}.png", frame)
+                    # 点击"x"关闭之后退出
+                    if cv.getWindowProperty(Window_name, cv.WND_PROP_VISIBLE) < 1:
+                        for i in range(vis_frame_queue.qsize()):
+                            vis_frame_queue.get()
+                        vis_result_queue.put(True)
+                        vis_result_queue.close()
+                        vis_result_queue.join_thread()
+                        return
+                # 如果为None，说明读取结束
+                else:
+                    for i in range(vis_frame_queue.qsize()):
+                        vis_frame_queue.get()
+                    cv.destroyWindow(Window_name)
+                    return
+            else:
+                if not flag_wait:
+                    flag_wait = True
+                    start_wait_time = time.time()
+                    continue
+                else:
+                    if time.time() - start_wait_time >= 5:
+                        for i in range(vis_frame_queue.qsize()):
+                            vis_frame_queue.get()
+                        vis_result_queue.put(False)
+                        vis_result_queue.close()
+                        vis_result_queue.join_thread()
+                        return
+                    else:
+                        flag_wait = False
+                        start_wait_time = time.time()
 
     def load_network_video_device(self, video_sourse: Union[int, str] = 0,
                                   flag_visibility: bool = True,
@@ -557,7 +641,7 @@ class Video_Processor(object):
         # 如果结果是True，说明打开成功
         if video_stream_flag:
 
-            video_stream = cv.VideoCapture(video_sourse, apiPreference=cv.CAP_ANY)
+            video_stream = cv.VideoCapture(video_sourse, apiPreference=cv.CAP_FFMPEG)
             # 获得视频流参数，包括宽度、高度和帧率，转为整型
             real_width = int(video_stream.get(cv.CAP_PROP_FRAME_WIDTH))
             real_height = int(video_stream.get(cv.CAP_PROP_FRAME_HEIGHT))
@@ -565,8 +649,10 @@ class Video_Processor(object):
 
             # 如果超过了要求大小，限制其大小为720p
             # 竖屏限制
+            flag_resize = False
             if real_width > real_height:
                 if real_width > 1280 or real_height > 720:
+                    flag_resize = True
                     width, height = 1280, 720
                     video_stream.set(cv.CAP_PROP_FRAME_WIDTH, width)
                     video_stream.set(cv.CAP_PROP_FRAME_HEIGHT, height)
@@ -575,6 +661,7 @@ class Video_Processor(object):
             # 横屏限制
             else:
                 if real_width > 720 or real_height > 1280:
+                    flag_resize = True
                     width, height = 720, 1280
                     video_stream.set(cv.CAP_PROP_FRAME_WIDTH, width)
                     video_stream.set(cv.CAP_PROP_FRAME_HEIGHT, height)
@@ -585,6 +672,8 @@ class Video_Processor(object):
             if real_fps != 90000 and real_fps > 30:
                 fps = 30
                 video_stream.set(cv.CAP_PROP_FPS, fps)
+            elif real_fps == 90000:
+                fps = 30
             else:
                 fps = real_fps
 
@@ -627,21 +716,16 @@ class Video_Processor(object):
                 video_detect_process.start()
 
             # 如果需要可视化，创建视频窗口，设置相应参数
-            Window_name = ""
+            vis_frame_queue = None
+            vis_result_queue = None
+            video_visibility_process = None
             if flag_visibility:
-                # 窗口名
-                Window_name = f"{video_sourse}"
-                # WINDOW_NORMAL控制窗口可以放缩，WINDOW_KEEPRATIO控制窗口缩放的过程中保持比率
-                # WINDOW_GUI_EXPANDED控制使用新版本功能增强的GUI窗口
-                cv.namedWindow(Window_name, flags=cv.WINDOW_NORMAL | cv.WINDOW_KEEPRATIO |
-                                                  cv.WINDOW_GUI_EXPANDED)
-                # 大小设置为720p的大小
-                if real_width > real_height:
-                    cv.resizeWindow(Window_name, 1280, 720)
-                elif real_width < real_height:
-                    cv.resizeWindow(Window_name, 720, 1280)
-                else:
-                    cv.resizeWindow(Window_name, 720, 720)
+                vis_frame_queue = multiprocessing.Queue()
+                vis_result_queue = multiprocessing.Queue()
+                video_visibility_process = multiprocessing.Process(
+                    target=self._network_device_visibility,
+                    args=(vis_frame_queue, vis_result_queue, video_sourse, real_width, real_height))
+                video_visibility_process.start()
 
             # 如果需要保存视频，在指定目录处创建视频文件，用于写入视频帧
             video_out = None
@@ -679,8 +763,10 @@ class Video_Processor(object):
                         return -3
 
             # 循环部分，用于读取视频
+            # skip用于跳帧
+            skip = 0
             while True:
-                success, frame = video_stream.read()
+                success = video_stream.grab()
                 # 如果摄像头读取失败，日志记录，结束运行，释放视频捕捉对象，销毁窗口
                 if not success:
                     self.logger.log_write(f"Fail to read the video of the network video device " +
@@ -691,61 +777,53 @@ class Video_Processor(object):
                         video_out.release()
 
                     if flag_visibility:
-                        cv.destroyWindow(Window_name)
+                        vis_frame_queue.put(None)
                     video_stream.release()
 
                     # 由于没有终止视频帧None，手动传输结束识别进程
                     if flag_detect:
                         frame_queue.put(None)
-                        video_detect_process.join()
                     return -2
 
-                frame = cv.resize(frame, (width, height), interpolation=cv.INTER_LINEAR)
+                # 跳帧或者视频解码
+                skip += 1
+                if skip == 2:
+                    skip = 0
+                    continue
+                _, frame = video_stream.retrieve()
+                # 如果视频帧分辨率大于阈值，重整为阈值
+                if flag_resize:
+                    frame = cv.resize(frame, (width, height), interpolation=cv.INTER_LINEAR)
+
                 # 识别视频流的操作，放入帧并检查结果
                 if flag_detect:
                     frame_queue.put(frame)
                     if not result_queue.empty():
+                        pass
                         # 告警器处理部分
-                        print(type(result_queue.get()))
+                        # print(type(result_queue.get()))
+
+                # 可见窗口时的操作
+                if flag_visibility:
+                    # 放入视频帧
+                    vis_frame_queue.put(frame)
+                    # 如果非空，说明有结果返回，说明对方终止了运行，此处也需要终止
+                    if not vis_result_queue.empty():
+                        # 如果返回False，说明是超时
+                        if not vis_result_queue.get():
+                            self.logger.log_write("video visibility process timing out.", Log_Processor.ERROR)
+                        if flag_save:
+                            video_out.release()
+                        video_stream.release()
+                        # 由于没有终止视频帧None，手动传输结束识别进程
+                        if flag_detect:
+                            frame_queue.put(None)
+                        break
 
                 # 保存文件时的操作
                 if flag_save:
                     # 注意要重写图像大小，否则分辨率不一致时会报错
-                    write_frame = cv.resize(frame, (width, height), interpolation=cv.INTER_LINEAR)
-                    video_out.write(write_frame)
-
-                # 可见窗口时的操作
-                if flag_visibility:
-                    # 将当前帧在窗口中展示
-                    cv.imshow(Window_name, frame)
-                    # 按'q'和'ESC'键退出，释放视频捕捉对象，销毁窗口
-                    cv2key = cv.waitKey(1)
-                    if cv2key & 0xFF == ord('q') or cv2key & 0xFF == 27:
-                        cv.destroyWindow(Window_name)
-                        if flag_save:
-                            video_out.release()
-                        video_stream.release()
-                        # 由于没有终止视频帧None，手动传输结束识别进程
-                        if flag_detect:
-                            frame_queue.put(None)
-                            video_detect_process.join()
-                        break
-                    # # 如果s键按下，则进行图片保存
-                    # elif cv2key == ord('s'):
-                    #     # 记录当前时间
-                    #     now_time = datetime.datetime.now().strftime(Log_Processor.strftime_all)
-                    #     # 写入图片 并命名图片为 图片序号.png
-                    #     cv.imwrite(f"{now_time}.png", frame)
-                    # 点击"x"关闭之后退出
-                    if cv.getWindowProperty(Window_name, cv.WND_PROP_VISIBLE) < 1:
-                        if flag_save:
-                            video_out.release()
-                        video_stream.release()
-                        # 由于没有终止视频帧None，手动传输结束识别进程
-                        if flag_detect:
-                            frame_queue.put(None)
-                            video_detect_process.join()
-                        break
+                    video_out.write(frame)
 
         # 打开失败则输出错误错误到日志文件中
         else:
@@ -1038,5 +1116,9 @@ if __name__ == "__main__":
 
     # 测试识别内容
     # print(video_process.load_local_video_device(0, True, False, True, 0))
-    print(video_process.load_network_video_device("rtsp://192.168.98.239:8554/live",
-                                                  True, False, False, 1))
+    # print(video_process.load_network_video_device("rtsp://10.195.146.141:8554/live",
+    #                                               True, False, False, 1))
+    print(video_process.load_network_video_device("http://10.195.146.141:8081",
+                                                  True, False, True, 1))
+    # print(video_process.load_network_video_device("rtsp://10.195.146.141:8554/live",
+    #                                               True, True, True, 1))
