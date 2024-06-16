@@ -202,7 +202,7 @@ class Video_Processor(object):
         flag_detect : bool
             控制视频流是否需要进行监测，目标追踪，默认为True
         video_deetect_type : int
-            控制视频流是监测的类型，1为全部监测，2为只监测火焰，3为只监测人
+            控制视频流监测的类型，0为全部监测，1为只监测火焰，2为只监测人，3为检测异常情况
 
         Returns
         --------
@@ -535,7 +535,7 @@ class Video_Processor(object):
         flag_detect : bool
             控制视频流是否需要进行监测，目标追踪，默认为True
         video_deetect_type : int
-            控制视频流是监测的类型，1为全部监测，2为只监测火焰，3为只监测人
+            控制视频流监测的类型，0为全部监测，1为只监测火焰，2为只监测人，3为检测异常情况
         video_protocol_type : str
             读取视频流时网络视频设备使用的传输协议，默认为RSTP
 
@@ -860,7 +860,7 @@ class Video_Processor(object):
         flag_re_detect : bool
             控制历史视频是否需要进行监测，目标追踪，默认为True
         video_deetect_type : int
-            控制历史视频监测的类型，1为全部监测，2为只监测火焰，3为只监测人
+            控制历史视频监测的类型，0为全部监测，1为只监测火焰，2为只监测人，3为检测异常情况
 
         Returns
         --------
