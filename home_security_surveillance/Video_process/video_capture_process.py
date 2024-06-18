@@ -8,7 +8,7 @@ Description: 用于opencv在捕捉url信息减少超时时间的进程类
 """
 
 # 引入常用库
-from home_security_surveillance.common import *
+from home_security_surveillance.Common import *
 
 __all__ = ["Video_Capture_Process"]
 

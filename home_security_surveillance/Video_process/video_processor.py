@@ -8,15 +8,15 @@ Description: 处理视频流的核心类
 """
 
 # 引入常用库
-from home_security_surveillance.common import *
+from home_security_surveillance.Common import *
 # 引入PyCameraList.camera_device库的list_video_devices函数，用于列出所有可用的视频源
 from PyCameraList.camera_device import list_video_devices
 # 引入file_process包
 from home_security_surveillance.File_process import *
 # 引入video_capture_process库
-from video_capture_process import *
+from .video_capture_process import *
 # 引入video_detect库
-from video_detect import *
+from .video_detect import *
 # 引入Exception_process库
 from home_security_surveillance.Exception_process import *
 
@@ -30,6 +30,8 @@ class Video_Processor(object):
 
     Parameters
     ----------
+    root : VideoMonitorApp
+        tkinter图形化界面的主窗口，可用于创建其他子窗口
     url_capture_time_out : int
         opencv在捕捉网络摄像头url视频流时的超时时间设置，各协议统一，且应小于opencv已设置的时间
         此处最大为15s，默认值为10s，最大请尽量小于15s
@@ -38,18 +40,20 @@ class Video_Processor(object):
     ----------
     create_time : str
         创建该对象的时间，字符串类型，格式与log.py中Log_Processor的strftime_all相同
+    ui_root : VideoMonitorApp
+        tkinter图形化界面的主窗口，可用于创建其他子窗口
     url_capture_time_out : int
         opencv在捕捉网络摄像头url视频流时的超时时间设置，各协议统一，且应小于opencv已设置的时间
         此处最大为15s，默认值为10s，最大请尽量小于15s
     config_data : dict
         配置文件的字典格式，每个元素为一个键值对，键为配置文件的属性名，值为配置文件的属性值
-    logger : Log_Processor
-        日志处理器对象的一个实例，用于记录该类活动过程中的运行信息和错误信息
 
     local_video_device_list : List[ Tuple[ Union[int,str],str ] ]
         关于本地视频设备的一个列表，每个元素为一个元组，每个元组内有两个子元素
         每个元组的第一个元素是视频源的相关信息作为show_video_in_cv函数的输入，用于opencv库从视频源中获得视频流
         每个元组的第二个元素是视频源的相关说明
+    logger : Log_Processor
+        日志处理器对象的一个实例，用于记录该类活动过程中的运行信息和错误信息
     nvd_processor : Nvd_processor
         网络视频设备处理器对象的一个实例，用于处理网络应用设备的加载、访问和修改
     hs_processor : History_video_processor
@@ -74,12 +78,14 @@ class Video_Processor(object):
     # 可使用的最大分辨率
     _video_resolution = (1280, 720)
 
-    def __init__(self, url_capture_time_out: int = 10):
+    def __init__(self, root, url_capture_time_out: int = 10):
         """初始化Video_processor对象"""
 
         # 获得格式化的当前时间，作为该类的创建时间
         self.create_time = datetime.datetime.now().strftime(Log_Processor.strftime_all)
 
+        # 记录主窗口
+        self.ui_root = root
         # 记录超时时间
         self.url_capture_time_out = url_capture_time_out
 
@@ -122,7 +128,8 @@ class Video_Processor(object):
 
         # 加载异常警报处理器
         self.warning_processor = Warning_Processor(warning_dir=
-                                                   self.config_data["exception-monitoring-directory"])
+                                                   self.config_data["exception-monitoring-directory"],
+                                                   root=self.ui_root)
         # 输出加载成功信息
         self.logger.log_write(f"Successfully loaded warning processor"
                               f"the root dir is{self.config_data['exception-monitoring-directory']}",
@@ -235,8 +242,6 @@ class Video_Processor(object):
         一个是frame_queue，用于将捕捉的视频帧在处理后传给识别进程
         一个是result_queue，用于将识别进程识别到错误的获得的错误类型和置信度返回给该进程
         """
-
-
 
         # 检查本地设备是否为空
         if not self._load_flag[0]:
@@ -382,6 +387,7 @@ class Video_Processor(object):
             # 循环部分，用于读取视频
             # skip用于跳帧
             skip = 0
+            Warning_thread = None
             while True:
                 success = video_stream.grab()
                 # 如果摄像头读取失败，日志记录，结束运行，释放视频捕捉对象，销毁窗口
@@ -427,8 +433,9 @@ class Video_Processor(object):
                         warning_info = result_queue.get()
                         now_time = datetime.datetime.now().strftime(Log_Processor.strftime_all)
                         # 创建线程，并用报警器进行处理
-                        threading.Thread(target=self.warning_processor.warning_process,
-                                         args=(warning_info[0], now_time, warning_info[1]))
+                        Warning_thread = threading.Thread(target=self.warning_processor.warning_process,
+                                                          args=(warning_info[0], now_time, warning_info[1]))
+                        Warning_thread.start()
                         self.logger.log_write(f"{now_time} have exception", Log_Processor.WARNING)
 
                 # 可见窗口时的操作
@@ -1179,7 +1186,7 @@ if __name__ == "__main__":
     # print(Video_process.hs_processor.hv_dict)
 
     # 测试加载本地摄像头
-    print(video_process.load_local_video_device(0, True, False))
+    print(video_process.load_local_video_device(0, True, False, True, 2))
     # print(video_process.load_local_video_device(0, True, False))
     # print(video_process.load_local_video_device(0, True, True))
 

@@ -9,20 +9,22 @@ Description: 使用yolov8，对视频帧进行识别，判断监控是否出现�
 import os.path
 
 # 引入常用库
-from home_security_surveillance.common import *
+from home_security_surveillance.Common import *
 # 用日志处理器
 from home_security_surveillance.File_process.log import *
 # 用config模块获得默认目录位置
 from home_security_surveillance.File_process.config import config_defaluts, trans_config_abspath
+# 用Warning_Processor模块
+from home_security_surveillance.Exception_process import *
 # 用torch
 import torch
 # 用yolo类
 from ultralytics import YOLO
 # 用Results类
 from ultralytics.engine.results import Results
-
-# 用plt绘出csv结果图
+# 用csv类
 import csv
+# 用plt绘出csv结果图
 import matplotlib.pyplot as plt
 # 双端队列做缓冲
 from collections import deque
@@ -69,10 +71,20 @@ class Video_Detector(object):
     # 获取相关参数(可以让用户选择模式) 前端通过修改predict_config.json中的model_mode来改变模式
     # 配置文件的参数都可以和用户进行交互
 
-    # 类型说明
-    predict_class_type_num = [0, 1]
-    predict_class_type_color_dict = {0: (0, 0, 255), 1: (128, 128, 128),
+    # 将使用的mode和预测类别映射为错误码，mode=1对应第一个火焰/烟雾模型，0的预测类别是烟雾，对应错误码是1，
+    # 1的预测类别是火焰，对应错误码是2，mode=2对应第二个人像识别模型，0的预测类别是人，对应错误码是4
+    # mode=3对应第三个异常行为识别，0的预测类别是跌倒，对应错误码是8
+    mode_precdict_warning_mode = {1: {0: 1, 1: 2}, 2: {0: 4}, 3: {0: 8}}
+    # 将使用的mode和预测类别映射为对应的类型，将映射的错误码1248分别修改为0123
+    mode_precdict_class = {1: {0: 0, 1: 1}, 2: {0: 2}, 3: {0: 3}}
+    # 预测类型转为错误码的转换
+    warning_mode_list = [1, 2, 4, 8]
+
+    # 预测各类型的颜色，前一个为model对应的mode，后一个是预测所得的类型
+    # 此处对应的颜色
+    predict_class_type_color_dict = {1: {0: (0, 0, 255), 1: (128, 128, 128)},
                                      2: (0, 255, 0), 3: (255, 0, 0)}
+
 
     ### 新增参数root_dir，默认目录用下面的方法获得
     def __init__(self, root_dir: str = trans_config_abspath(config_defaluts["model-directory"]),
@@ -128,7 +140,7 @@ class Video_Detector(object):
             device = 0
             max_frame = 1800
             iou = 0.6
-            conf = 0.8
+            conf = 0.6
             show = "True"
             save_dir = "test"
             model_mode = 1
@@ -417,11 +429,12 @@ class Video_Detector(object):
             label = box.cls[0]
             # 绘制矩形边界框
             cv.rectangle(frame, (x1, y1), (x2, y2),
-                         self.predict_class_type_color_dict[int(label)], 2)
+                         self.predict_class_type_color_dict[1][int(label)], 2)
             # 在边界框上绘制标签和置信度
             label_text = f'{self.predict_model[1].names[int(label)]}: {confidence:.2f}'
             cv.putText(frame, label_text, (x1, y1 - 10), cv.FONT_HERSHEY_SIMPLEX, 0.5,
                        (255, 255, 255), 2)
+        # 其他同理
         for box in results2.boxes:
             x1, y1, x2, y2 = map(int, box.xyxy[0])
             confidence = box.conf[0]
@@ -459,23 +472,26 @@ class Video_Detector(object):
             save_dir = os.path.join(self.root_dir, save_dir)
         if max_frame is None:
             max_frame = self.max_frame
-
+        # 进程调用需要重新创建一些对象
+        self._create_logger()
+        self.info_logger.log_write("Video Detector start detect", Log_Processor.INFO)
         # 缓冲区，保存限定数量的视频帧
         save_frame_deque = deque(maxlen=max_frame)
         # 写入有问题部分及前后的视频流到文件的对象
         warning_video_out = None
-        # 错误视频帧标记和等待传入视频帧时间记录
-        warning_flag = False
-        # 最后一次识别到错误的视频帧之后的无无措视频帧数量
-        no_warning_frame = 0
+
         # 读取视频帧队列是否为空
         flag_wait = False
-        # 进程调用需要重新创建一些对象
-        self._create_logger()
-        self.info_logger.log_write("Video Detector start detect", Log_Processor.INFO)
+        # 错误视频帧标记和等待传入视频帧时间记录
+        warning_flag = False
+        # 已传输过的错误类型的记录
+        warning_type_record = 0
+        # 已传输过的错误类型的最大置信度的记录
+        warning_conf_record = [0, 0, 0, 0]
+        # 最后一次识别到错误的视频帧之后的无无措视频帧数量
+        no_warning_frame = 0
         # 运行的开始时间
         start_wait_time = time.time()
-
         # 主循环
         while True:
             try:
@@ -505,59 +521,69 @@ class Video_Detector(object):
                     flag_wait = False
                     start_wait_time = time.time()
 
-                # 对传进来的帧进行处理
-                for i in range(result_queue.qsize()):
-                    result_queue.get()
-                frame = frame_queue.get()
+                # 保存当前传入的全部帧
+                for _ in range(frame_queue.qsize()):
+                    save_frame_deque.append(frame_queue.get())
+                # 弹出最新帧，使其能够处理最新帧
+                frame = save_frame_deque.pop()
+
                 # 传入结束标志，需要清空result_queue再关闭，并释放warning_video_out
                 if frame is None:
-                    for i in range(result_queue.qsize()):
+                    for _ in range(result_queue.qsize()):
                         result_queue.get()
                     self.info_logger.log_write(f"Detect finish. Please cheack the {save_dir}",
                                                Log_Processor.INFO)
                     if warning_video_out is not None:
                         warning_video_out.release()
                     return
+
+                # 否则处理最新帧
                 else:
                     # 预测视频帧获得结果
                     predict_result = self.predict(pre_source=frame, mode=mode,
                                                   show=False, iou=iou, conf=conf)
-                    # 判断是否出现错误
-                    warning_frame = False
+                    # 记录错误码
+                    warning_mode = 0
+                    # 记录每类错误的最大置信度
+                    warning_conf = [0, 0, 0, 0]
                     # 全部识别模式和单个模型模式的出现错误的范围不同
                     if mode == 0:
-                        type_keys = self.predict_class_type_num
-                        if any(cls in predict_result[1][0].boxes.cls
-                               for cls in type_keys) \
-                                or any(cls in predict_result[2][0].boxes.cls
-                                       for cls in type_keys) \
-                                or any(cls in predict_result[3][0].boxes.cls
-                                       for cls in type_keys):
-                            warning_frame = True
+                        # 遍历三个模型的预测结果
+                        for i in range(1, 4):
+                            # 遍历预测图片的碰撞箱
+                            for box in predict_result[i][0].boxes:
+                                # 获得错误码和每个错误类型的最大置信度
+                                warning_mode |= self.mode_precdict_warning_mode[i][box.cls.item()]
+                                warning_conf[self.mode_precdict_class[i][box.cls.item()]] = \
+                                    max(warning_conf[self.mode_precdict_class[i][box.cls.item()]],
+                                        box.conf.item())
                     else:
-                        if any(cls in predict_result[mode][0].boxes.cls
-                               for cls in self.predict_class_type_num):
-                            warning_frame = True
+                        # 遍历使用模型的预测结果，获得错误码和错误类型的最大置信度
+                        for box in predict_result[mode][0].boxes:
+                            warning_mode |= self.mode_precdict_warning_mode[mode][box.cls.item()]
+                            warning_conf[self.mode_precdict_class[mode][box.cls.item()]] = \
+                                max(warning_conf[self.mode_precdict_class[mode][box.cls.item()]],
+                                    box.conf.item())
+
                     # 出现错误时
-                    if warning_frame:
+                    if warning_mode:
                         # 全部识别模式保存检测框内图像并需要重新绘制图像
                         if mode == 0:
-                            predict_result1 = predict_result[1][0]
-                            predict_result2 = predict_result[2][0]
-                            predict_result3 = predict_result[3][0]
-                            # predict_result1.save_crop(save_dir)
-                            # predict_result2.save_crop(save_dir)
-                            # predict_result3.save_crop(save_dir)
                             predict_frame = self.model_plot(predict_result[1][0].orig_img,
-                                                            predict_result1, predict_result2,
-                                                            predict_result3)
+                                                            predict_result[1][0], predict_result[2][0],
+                                                            predict_result[3][0])
                         # 单个模型识别模式保存检测框内图像并绘制图像
                         else:
-                            # predict_result[mode][0].save_crop(save_dir)
                             predict_frame = predict_result[mode][0].plot()
-                        # 放入图像
-                        result_queue.put(predict_frame)
+                        # 将预测帧结果放回缓冲队列
+                        save_frame_deque.append(predict_frame)
+                        # 如果不在警告标志范围内
                         if not warning_flag:
+                            # 发送警告信息，包括错误码和置信度的二元素列表
+                            result_queue.put([warning_mode, warning_conf])
+                            # 记录已发送的错误类型和最大置信度
+                            warning_type_record |= warning_mode
+                            warning_conf_record = warning_conf
                             warning_flag = True
                             # 利用VideoWriter保存有问题部分及前后的视频流，
                             # 文件路径为生成路径，帧率和分辨率统一为限制后的视频大小和帧率，彩色模式
@@ -567,30 +593,58 @@ class Video_Detector(object):
                             warning_video_out = cv.VideoWriter(warning_video_path, fourcc, 30,
                                                                (predict_frame.shape[1],
                                                                 predict_frame.shape[0]), True)
-                            # 视频率写入
-                            for save_frame in save_frame_deque:
-                                warning_video_out.write(save_frame)
+                            # 将缓冲区的全部视频帧写入
+                            while save_frame_deque:
+                                warning_video_out.write(save_frame_deque.popleft())
+                            # 日志记录
+                            self.error_logger.log_write("Video Detector Warning!!!\n"
+                                                        f"The warning code is {warning_mode}, "
+                                                        f"the warning conf is {warning_conf}",
+                                                        Log_Processor.ERROR)
+
+                        # 如果在警告标志范围内
                         else:
-                            warning_video_out.write(predict_frame)
+                            new_warning_code = 0
+                            # 比较新的错误的最大置信度等级是否比原最大置信度等级高
+                            for i in range(len(warning_conf_record)):
+                                # 如果是，此位置需要发送新的错误信息，并记录该最大置信度
+                                # 未发送过的错误类型在判断中也被保存了
+                                if Warning_Processor.get_level_description(warning_conf_record[i]) < \
+                                   Warning_Processor.get_level_description(warning_conf[i]):
+                                    new_warning_code |= self.warning_mode_list[i]
+                                    warning_conf_record[i] = warning_conf[i]
+                            # 如果有需要发送新的错误信息，则发送对应的警告信息
+                            if new_warning_code:
+                                result_queue.put([new_warning_code, warning_conf])
+                                warning_type_record |= new_warning_code
+
+                            # 将缓冲区的全部视频帧写入
+                            while save_frame_deque:
+                                warning_video_out.write(save_frame_deque.popleft())
+                        # 重新记录无问题视频帧数量
                         no_warning_frame = 0
-                        self.error_logger.log_write("Video Detector Warning!!", Log_Processor.ERROR)
-                    # 无错误时，保存原始视频帧
+
+                    # 无错误时
                     else:
-                        if mode == 0:
-                            predict_frame = predict_result[1][0].orig_img
-                        else:
-                            predict_frame = predict_result[mode][0].orig_img
-                        save_frame_deque.append(predict_frame)
+                        # 正常返回原视频帧
+                        save_frame_deque.append(frame)
                         # 检测前面出现问题时，当前是否经过了max_frame帧
                         if warning_flag:
-                            result_queue.put(predict_frame)
+                            # 先将缓冲区的全部视频帧写入
                             if warning_video_out is not None:
-                                warning_video_out.write(predict_frame)
+                                while save_frame_deque:
+                                    warning_video_out.write(save_frame_deque.popleft())
+                            # 如果经过了max_frame帧
                             no_warning_frame += 1
                             if no_warning_frame == max_frame:
+                                # 重置警告标志
                                 warning_flag = False
+                                # 释放写视频文件对象
                                 warning_video_out.release()
+                                # 重置无发送错误类型
+                                warning_type_record = 0
 
+            # 错误处理
             except Exception as e:
                 # catch all errors and export to the log
                 error_type = type(e).__name__
@@ -632,7 +686,6 @@ class Video_Detector(object):
         else:
             for i in predict_result[mode]:
                 pass
-
 
     ### 创建目录需要写入日志处理器，不再是静态方法
     def make_dir(self, file_path: str, caller_info: str = 'make_dir') -> None:
@@ -737,9 +790,10 @@ if __name__ == '__main__':
     video_detector.select_default_model(1)
     # model.train()
 
-    source = os.path.abspath("../../Model/test/fire.mp4")
-    print(os.path.exists(source))
+    source = os.path.abspath("../../Model/test/fire2.mp4")
+    # print(os.path.exists(source))
     Results_list = video_detector.predict(pre_source=source, mode=1)
-    # for i in Results_list[1]:
-    #     print(i)
+    for i in Results_list[1]:
+        print(i.boxes.cls.tolist())
+        print(i.boxes.conf.tolist())
 

@@ -7,13 +7,12 @@ Version: 1.0
 Description: 对历史视频记录文件的处理部分
 """
 
-__all__ = ["History_Video_Processor"]
-
 # 引用常用库
-from home_security_surveillance.common import *
+from home_security_surveillance.Common import *
 # 引入config模块获得默认目录位置
 from home_security_surveillance.File_process.config import config_defaluts, trans_config_abspath
 
+__all__ = ["History_Video_Processor"]
 
 class History_Video_Processor(object):
     """

@@ -6,11 +6,12 @@ Date: 2024-05-10
 Version: 1.0
 Description: config配置文件的处理部分
 """
-__all__ = ["config_file", "config_keys", "config_defaluts", "trans_config_abspath",
-           "write_config", "load_config"]
 
 # 引用常用库
-from home_security_surveillance.common import *
+from home_security_surveillance.Common import *
+
+__all__ = ["config_file", "config_keys", "config_defaluts", "trans_config_abspath",
+           "write_config", "load_config"]
 
 ## 变量部分 ##
 

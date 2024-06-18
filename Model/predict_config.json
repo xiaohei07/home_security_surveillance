@@ -1,7 +1,7 @@
 {
   "model_mode": 1,
   "iou": 0.6,
-  "conf": 0.8,
+  "conf": 0.4,
   "show": "True",
   "save_dir": "test",
   "max_frame": 1800
