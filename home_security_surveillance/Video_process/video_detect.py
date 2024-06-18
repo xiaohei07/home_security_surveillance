@@ -11,9 +11,9 @@ import os.path
 # 引入常用库
 from home_security_surveillance.common import *
 # 用日志处理器
-from home_security_surveillance.file_process.log import *
+from home_security_surveillance.File_process.log import *
 # 用config模块获得默认目录位置
-from home_security_surveillance.file_process.config import config_defaluts, trans_config_abspath
+from home_security_surveillance.File_process.config import config_defaluts, trans_config_abspath
 # 用torch
 import torch
 # 用yolo类
@@ -126,7 +126,7 @@ class Video_Detector(object):
             data = 'default.yaml'
             weight_pt = 'yolov8n.pt'
             device = 0
-            max_frame = 900
+            max_frame = 1800
             iou = 0.6
             conf = 0.8
             show = "True"
@@ -361,7 +361,7 @@ class Video_Detector(object):
             else:
                 if mode == 2:
                     result = self.predict_model[mode].predict(
-                        stream=True,
+                        stream=False,
                         show=show,
                         source=pre_source,
                         iou=iou,
@@ -390,11 +390,12 @@ class Video_Detector(object):
                 show: int = None,
                 iou: float = None,
                 conf: float = None) -> Optional[dict[int, list[Results]]]:
+
         result = {}
         if mode == 0:
             result[1] = self._one_model_predict(pre_source, 1, show, iou, conf)
             result[2] = self._one_model_predict(pre_source, 2, show, iou, conf)
-            result[3] = self._one_model_predict(pre_source, 2, show, iou, conf)
+            result[3] = self._one_model_predict(pre_source, 3, show, iou, conf)
         elif mode == 1:
             result[1] = self._one_model_predict(pre_source, 1, show, iou, conf)
         elif mode == 2:
@@ -405,9 +406,8 @@ class Video_Detector(object):
             return None
         return result
 
-    def three_model_plot(self, frame: np.ndarray,
-                        results1: Results, results2: Results, results3: Results):
-
+    def model_plot(self, frame: np.ndarray, results1: Results,
+                   results2: Results, results3: Results = None):
         # 在图像上绘制边界框
         for box in results1.boxes:
             # 获取边界框坐标
@@ -422,7 +422,6 @@ class Video_Detector(object):
             label_text = f'{self.predict_model[1].names[int(label)]}: {confidence:.2f}'
             cv.putText(frame, label_text, (x1, y1 - 10), cv.FONT_HERSHEY_SIMPLEX, 0.5,
                        (255, 255, 255), 2)
-
         for box in results2.boxes:
             x1, y1, x2, y2 = map(int, box.xyxy[0])
             confidence = box.conf[0]
@@ -432,16 +431,17 @@ class Video_Detector(object):
             label_text = f'{self.predict_model[2].names[int(label)]}: {confidence:.2f}'
             cv.putText(frame, label_text, (x1, y1 - 10), cv.FONT_HERSHEY_SIMPLEX, 0.5,
                        (255, 255, 255), 2)
-        for box in results3.boxes:
-            x1, y1, x2, y2 = map(int, box.xyxy[0])
-            confidence = box.conf[0]
-            label = box.cls[0]
-            cv.rectangle(frame, (x1, y1), (x2, y2),
-                         self.predict_class_type_color_dict[3], 2)
-            label_text = f'{self.predict_model[2].names[int(label)]}: {confidence:.2f}'
-            cv.putText(frame, label_text, (x1, y1 - 10), cv.FONT_HERSHEY_SIMPLEX, 0.5,
-                       (255, 255, 255), 2)
-            return frame
+        if results3 is not None:
+            for box in results3.boxes:
+                x1, y1, x2, y2 = map(int, box.xyxy[0])
+                confidence = box.conf[0]
+                label = box.cls[0]
+                cv.rectangle(frame, (x1, y1), (x2, y2),
+                             self.predict_class_type_color_dict[3], 2)
+                label_text = f'{self.predict_model[2].names[int(label)]}: {confidence:.2f}'
+                cv.putText(frame, label_text, (x1, y1 - 10), cv.FONT_HERSHEY_SIMPLEX, 0.5,
+                           (255, 255, 255), 2)
+        return frame
 
     def detect(self, frame_queue: multiprocessing.Queue,
                result_queue: multiprocessing.Queue,
@@ -460,43 +460,59 @@ class Video_Detector(object):
         if max_frame is None:
             max_frame = self.max_frame
 
-        # 缓冲区，保存限定长度的视频帧
+        # 缓冲区，保存限定数量的视频帧
         save_frame_deque = deque(maxlen=max_frame)
+        # 写入有问题部分及前后的视频流到文件的对象
         warning_video_out = None
         # 错误视频帧标记和等待传入视频帧时间记录
         warning_flag = False
+        # 最后一次识别到错误的视频帧之后的无无措视频帧数量
         no_warning_frame = 0
+        # 读取视频帧队列是否为空
         flag_wait = False
-        start_wait_time = time.time()
+        # 进程调用需要重新创建一些对象
         self._create_logger()
         self.info_logger.log_write("Video Detector start detect", Log_Processor.INFO)
+        # 运行的开始时间
+        start_wait_time = time.time()
+
+        # 主循环
         while True:
             try:
                 # 判断另一进程是否结束
                 if frame_queue.empty():
+                    # 未处于等待状态，说明之前处理了视频帧，从此处开始等待
                     if not flag_wait:
                         flag_wait = True
+                        # 记录开始等待时间
                         start_wait_time = time.time()
                         continue
+                    # 处理等待状态
                     else:
-                        if time.time() - start_wait_time >= 5:
+                        # 如果等待的时间超过了15s，结束运行
+                        if time.time() - start_wait_time >= 15:
                             self.error_logger.log_write(f"Timed out waiting for video frame." +
                                                         f" Video Detector stop waiting " +
                                                         f"and exit the detect process",
                                                         Log_Processor.ERROR)
                             break
+                        # 否则继续循环
                         else:
                             continue
+
+                # 如果不为空，重置等待状态，重计时
                 else:
                     flag_wait = False
                     start_wait_time = time.time()
 
                 # 对传进来的帧进行处理
+                for i in range(result_queue.qsize()):
+                    result_queue.get()
                 frame = frame_queue.get()
                 # 传入结束标志，需要清空result_queue再关闭，并释放warning_video_out
                 if frame is None:
                     for i in range(result_queue.qsize()):
-                        print(result_queue.get())
+                        result_queue.get()
                     self.info_logger.log_write(f"Detect finish. Please cheack the {save_dir}",
                                                Log_Processor.INFO)
                     if warning_video_out is not None:
@@ -532,9 +548,9 @@ class Video_Detector(object):
                             # predict_result1.save_crop(save_dir)
                             # predict_result2.save_crop(save_dir)
                             # predict_result3.save_crop(save_dir)
-                            predict_frame = self.three_model_plot(predict_result[1][0].orig_img,
-                                                                  predict_result1, predict_result2,
-                                                                  predict_result3)
+                            predict_frame = self.model_plot(predict_result[1][0].orig_img,
+                                                            predict_result1, predict_result2,
+                                                            predict_result3)
                         # 单个模型识别模式保存检测框内图像并绘制图像
                         else:
                             # predict_result[mode][0].save_crop(save_dir)

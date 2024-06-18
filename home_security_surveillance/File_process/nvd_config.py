@@ -10,13 +10,10 @@ __all__ = ["Nvd_Processor"]
 
 # 引入常用库
 from home_security_surveillance.common import *
-
 # 引入config模块获得默认文件位置
-from home_security_surveillance.file_process.config import config_defaluts, trans_config_abspath
-
+from home_security_surveillance.File_process.config import config_defaluts, trans_config_abspath
 # 引入urllib.parse库的urlparse函数用于解析从url中解析得到相关信息
 from urllib.parse import urlparse
-
 # 引入ipaddress库，检验ip是否合理
 from ipaddress import ip_address
 

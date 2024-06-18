@@ -11,9 +11,8 @@ __all__ = ["History_Video_Processor"]
 
 # 引用常用库
 from home_security_surveillance.common import *
-
 # 引入config模块获得默认目录位置
-from home_security_surveillance.file_process.config import config_defaluts, trans_config_abspath
+from home_security_surveillance.File_process.config import config_defaluts, trans_config_abspath
 
 
 class History_Video_Processor(object):
