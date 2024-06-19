@@ -6,7 +6,10 @@ Date: 2024-05-02
 Version: 1.0
 Description: 使用yolov8，对视频帧进行识别，判断监控是否出现了火灾/人/异常行为
 """
-import os.path
+import datetime
+from typing import Union
+
+from torch import device
 
 # 引入常用库
 from home_security_surveillance.Common import *
@@ -32,7 +35,7 @@ import IPython
 
 __all__ = ["Video_Detector"]
 
-### 训练和预测配置文件的默认路径
+# 训练和预测配置文件的默认路径
 defalut_train_config_path = os.path.normpath(
     os.path.join(os.path.dirname(os.path.dirname(
         os.path.dirname(__file__))), "./Model/train_config.json"))
@@ -41,35 +44,75 @@ defalut_predict_config_path = os.path.normpath(
     os.path.join(os.path.dirname(os.path.dirname(
         os.path.dirname(__file__))), "./Model/predict_config.json"))
 
-
 class Video_Detector(object):
     """
-    Represent application of the Yolov8 flame recognition model
-    
-    Attributes:
-        model_mode_dict(dict):有关模型的字典 1：火焰模型 2：人物模型 3：火焰和人物模型
+    Video_Detector(root_dir, use_defalut_parameter)
+    视频检测处理器，用于读取部分实时帧完成对应任务的识别功能，是自动检测和识别的核心模块
+    使用的底层架构为yolov8，火焰模型为自行利用数据集训练，人像识别和异常行为识别直接使用开源模型
 
-        batch(int)每次训练时输入的图片数量:The number of images entered in one training session
-        
-        epochs(int)训练迭代的次数:Number of rounds trained
-        
-        project(str)训练文件存放的目录:The directory where the training files are stored
-        
-        name(str)训练过程存放的文件:Name of the training run.
-                                Used for creating a subdirectory within the project folder,
-                                where training logs and outputs are stored.
-                                For example: './project/name'
-        
-        imgsz(int)输入图片的大小:Enter the size of the image
-        
-        data(str)有关数据集配置文件的路径:The path where the configuration file is located
-        the default path is in the 'ultralytics/cfg/datasets'
-        
-        weight_pt(str)预训练模型-文件名:The path of the pretrained model
+    Parameters
+    ----------
+    root_dir : str
+        视频检测处理器的根目录，默认值和_config_defaluts中的model-directory对应绝对路径相同
+    use_defalut_parameter : bool
+        是否使用默认的内置训练参数，否则需要加载配置文件的对应参数，True为使用内置参数，False为不使用
+
+    Attributes
+    ----------
+    root_dir : str
+        视频检测处理器的根目录，默认值和_config_defaluts中的model-directory对应绝对路径相同
+    info_logger & error_logger: Log_Processor
+        日志处理器对象的实例，分别用于记录该类活动过程中的运行和错误、报警信息，统一输入到根目录下的info.log和error.log中
+    _train_config & _predict_config: dict
+        train_config和predict_config配置文件中的各变量记录，在后续加载时使用，是内部成员，不对外开放接口
+    device : int
+        标识用户可用于的识别的设备，如果有独显GPU使用独显GPU，否则使用CPU
+    train_model : YOLO
+        被用于训练的预加载模型，仅在训练新模型时使用
+    predict_model: dict[int, YOLO]
+        模式-模型的数字-模型对象字典映射，通过映射可以将模式转变为yolov8要使用的模型对象，直接进行预测
+        此成员用于加速处理，保证多次调用预测函数或者修改模型内容时，均需要在初始化时加载一次模型即可
+
+    model_mode_dict:
+        模式-模型的数字-绝对路径字典映射，通过映射可以将模式转变为yolov8要使用的模型绝对路径
+        1为火焰模型，2为人物模型 3：火焰和人物模型
+    warning_mode_list : list[int]
+        类变量，预测类型和错误码的匹配关系，在检测时需要进行进程的通信，遇到错误需要向视频流处理器通知错误的出现
+        因此需要将各类型的错误统一映射为一个错误码，视频流处理器通过解码即可获知错误类型
+    mode_precdict_class : dict[int, dict[int, int]]
+        类变量，将使用的mode和预测类别映射为对应的类型，即将映射的错误码1248分别修改为0123
+    mode_precdict_warning_mode : dict[int, dict[int, int]]
+        类变量，将使用的模型mode和预测类别映射为错误码
+        mode=1对应第一个火焰/烟雾模型，0的预测类别是烟雾，对应错误码是1
+        1的预测类别是火焰，对应错误码是2，mode=2对应第二个人像识别模型，0的预测类别是人，对应错误码是4
+        mode=3对应第三个异常行为识别，0的预测类别是跌倒，对应错误码是8
+    predict_class_type_color_dict : dict[int, dict[int, int]]
+        类变量，每个错误类型在绘制错误碰撞箱时使用的颜色，只在使用全部模型模式下有效
+
+    ## 训练参数属性集合 ##
+    batch: int          每次训练时输入的图片数量，默认为16
+    epochs: int         训练迭代的次数，默认为5
+    project: str        训练文件存放的目录，默认在根目录下的train_file文件夹下
+    name: str           训练过程存放的文件，在project对应目录下创建子目录，存储训练的日志和输出结果
+    imgsz: int          输入图片的尺寸，默认要求640*640
+    data: str           有关数据集配置文件的路径，由于本项目目标主要是对火焰的识别，在yolov8下默认存放的是fire.yaml
+                        其默认路径为：ultralytics/cfg/datasets
+                        在该配置文件内按yolov8格式设置好训练集、验证集、测试集的图片路径，类别名等参数
+    weight_pt: str      预训练模型的文件名，可用于用户自行完成训练任务，当其不存在时yolov8会自动下载
+
+    ## 预测参数属性集合 ##
+    model_mode: int     当用户未指定使用模型时，进行预测默认使用的模式，默认为1，即火焰识别
+    iou: float          衡量预测边界框与真实边界框之间重叠程度，用于移除重叠较大的多余边界框，保留最优的检测结果，默认为0.5
+    conf: float         模型对识别设置的置信度阈值，低于该阈值的识别结果会被过滤，默认为0.3
+    show: bool          模型的预测结果是否可视化，在单独调用模型内部预测函数时可以用来展示结果，默认为True
+    save_dir: str       模型预测结果的保存目录，可在其中查看预测获得的识别信息视频和图片
+    max_frame: int      从视频流处理器处获得视频帧时，存储的双端队列最大缓冲视频帧数量
+                        考虑到大多数摄像头是30帧左右，默认存储1800帧，即保存一分钟左右的视频，可用于保存视频，获知异常出现的前因后果
+    Notes
+    -----
+    获取相关参数(可以让用户选择模式)，前端通过修改predict_config.json中的model_mode来改变模式
+    配置文件的参数都可以和用户进行交互
     """
-
-    # 获取相关参数(可以让用户选择模式) 前端通过修改predict_config.json中的model_mode来改变模式
-    # 配置文件的参数都可以和用户进行交互
 
     # 将使用的mode和预测类别映射为错误码，mode=1对应第一个火焰/烟雾模型，0的预测类别是烟雾，对应错误码是1，
     # 1的预测类别是火焰，对应错误码是2，mode=2对应第二个人像识别模型，0的预测类别是人，对应错误码是4
@@ -77,7 +120,7 @@ class Video_Detector(object):
     mode_precdict_warning_mode = {1: {0: 1, 1: 2}, 2: {0: 4}, 3: {0: 8}}
     # 将使用的mode和预测类别映射为对应的类型，将映射的错误码1248分别修改为0123
     mode_precdict_class = {1: {0: 0, 1: 1}, 2: {0: 2}, 3: {0: 3}}
-    # 预测类型转为错误码的转换
+    # 预测类型和错误码的匹配关系
     warning_mode_list = [1, 2, 4, 8]
 
     # 预测各类型的颜色，前一个为model对应的mode，后一个是预测所得的类型
@@ -85,22 +128,13 @@ class Video_Detector(object):
     predict_class_type_color_dict = {1: {0: (0, 0, 255), 1: (128, 128, 128)},
                                      2: (0, 255, 0), 3: (255, 0, 0)}
 
-
-    ### 新增参数root_dir，默认目录用下面的方法获得
     def __init__(self, root_dir: str = trans_config_abspath(config_defaluts["model-directory"]),
                  use_defalut_parameter=False) -> None:
+        """初始化模型"""
 
-        """
-        初始化模型
-        Initializes an instance of the yolov8_model class.
-        
-        Args:
-            root_dir(str): The root directory of Video_Detector class use
-        """
         # 未初始化但需要使用的属性
         self.result = None
 
-        ###  新增部分
         # 根目录
         if not os.path.isabs(root_dir):
             self.root_dir = os.path.abspath(root_dir)
@@ -132,18 +166,18 @@ class Video_Detector(object):
         else:
             batch = 16
             epochs = 5
-            project = 'runs'
+            project = 'train_file'
             name = 'detect'
             imgsz = 640
-            data = 'default.yaml'
+            data = 'fire.yaml'
             weight_pt = 'yolov8n.pt'
-            device = 0
-            max_frame = 1800
-            iou = 0.6
-            conf = 0.6
-            show = "True"
-            save_dir = "test"
             model_mode = 1
+            iou = 0.5
+            conf = 0.3
+            show = "True"
+            save_dir = "detect_result"
+            max_frame = 1800
+            device = 0
 
         # 赋值给类成员变量
         self.batch = batch
@@ -186,90 +220,88 @@ class Video_Detector(object):
         self.max_frame = max_frame
 
     def _create_logger(self):
+        """创建日志处理器对象的实例，分别记录ERROR和INFO信息"""
         # 配置 error_logger 仅记录 ERROR 及以上级别的日志
         self.error_logger = Log_Processor(self.root_dir, 'error.log', Log_Processor.ERROR)
         # 配置 info_logger 记录所有级别的日志
         self.info_logger = Log_Processor(self.root_dir, 'info.log', Log_Processor.INFO)
 
-    ###  新增方法，重设训练参数
-    def reset_training_parameters(self, batch: int = 16, epochs: int = 5, project: str = 'runs',
-                                  name: str = 'detect', imgsz: int = 640, data: str = 'default.yaml',
-                                  weight_pt: str = 'yolov8n.pt', device=0):
+    def reset_training_parameters(self, batch: int = None, epochs: int = None, project: str = None,
+                                  name: str = None, imgsz: int = None, data: str = None,
+                                  weight_pt: str = None, device: int = None):
         """
-        重新设置模型训练时使用的参数
-        Args:
-            batch(int):The number of images entered in one training session
-
-            epochs(int):Number of rounds trained
-
-            project(str):The directory where the training files are stored
-
-            name(str):Name of the training run.
-                      Used for creating a subdirectory within the project folder,
-                      where training logs and outputs are stored.
-                      For example: './project/name'
-
-            imgsz(int):Enter the size of the image
-
-            data(str):The path where the configuration file is located
-            the default path is in the 'ultralytics/cfg/datasets'
-
-            weight_pt(str):The path of the pretrained model
-
-            device(int): 可用设备的编号
+        重新设置模型训练时使用的参数，仅修改传入的参数，其他参数不变
+        Parameters
+        ----------
+        batch: int          每次训练时输入的图片数量，默认为16
+        epochs: int         训练迭代的次数，默认为5
+        project: str        训练文件存放的目录，默认在根目录下的train_file文件夹下
+        name: str           训练过程存放的文件，在project对应目录下创建子目录，存储训练的日志和输出结果
+        imgsz: int          输入图片的尺寸，默认要求640*640
+        data: str           有关数据集配置文件的路径，由于本项目目标主要是对火焰的识别，在yolov8下默认存放的是fire.yaml
+                            其默认路径为：ultralytics/cfg/datasets
+                            在该配置文件内按yolov8格式设置好训练集、验证集、测试集的图片路径，类别名等参数
+        weight_pt: str      预训练模型的文件名，可用于用户自行完成训练任务，当其不存在时yolov8会自动下载
+        device: int         可用设备的编号，此处主要用于设置CPU
         """
 
-        # 赋值给类成员变量
-        self.batch = batch
-        self.epochs = epochs
-        if os.path.isabs(project):
-            self.project = project
-        else:
-            self.project = os.path.join(self.root_dir, project)
-        if os.path.isabs(name):
-            self.name = name
-        else:
-            self.name = os.path.join(self.root_dir, name)
-        self.imgsz = imgsz
-        if os.path.isabs(project):
-            self.data = data
-        else:
-            self.data = os.path.join(self.project, data)
-        if os.path.isabs(weight_pt):
-            self.weight_pt = weight_pt
-        else:
-            self.weight_pt = os.path.join(self.root_dir, weight_pt)
-        self.train_model = YOLO(weight_pt)
-        self.device = device
+        # 赋值给实例变量
+        if batch:
+            self.batch = batch
+        if epochs:
+            self.epochs = epochs
+        if project:
+            if os.path.isabs(project):
+                self.project = project
+            else:
+                self.project = os.path.join(self.root_dir, project)
+        if name:
+            if os.path.isabs(name):
+                self.name = name
+            else:
+                self.name = os.path.join(self.root_dir, name)
+        if imgsz:
+            self.imgsz = imgsz
+        if data:
+            if os.path.isabs(data):
+                self.data = data
+            else:
+                self.data = os.path.join(self.project, data)
+        if weight_pt:
+            if os.path.isabs(weight_pt):
+                self.weight_pt = weight_pt
+            else:
+                self.weight_pt = os.path.join(self.root_dir, weight_pt)
+            self.train_model = YOLO(weight_pt)
+        # device可能是0
+        if device is not None:
+            self.device = device
 
-    ###  新增方法
     @staticmethod
     def load_config(path: str) -> dict:
         """
-        作用：
-            读取配置文件
-
-        参数：
-            path(str):传入json文件的相对路径
-
-        返回:
-            config_data(dict):有关参数的字典
+        读取配置文件
+        Parameters
+        ----------
+        path: str
+            传入json文件的相对路径
+        Returns
+        --------
+        config_data: dict
+            有关参数的字典
         """
         with open(path, 'r') as f:
             config_data = json.load(f)
         return config_data
 
-    ### 新增方法，修改了日志处理器部分
-    def get_device(self):
+    def get_device(self) -> Union[int, device]:
         """
-        作用：
-            判断gpu是否可用
-
-        参数：
-            无
-
-        返回：
-            如果gpu可用则返回gpu的设备并打印gpu信息，否则打印cpu信息
+        确定进行识别的设备，需要判断GPU是否可用，不可用则使用CPU
+        如果gpu可用则返回GPU的设备名并日志记录GPU信息，否则日志中记录CPU信息返回CPU字符串
+        Returns
+        --------
+        device: Union[int, device]
+            GPU的设备编号或者CPU字符串
         """
         if torch.cuda.is_available():
             self.info_logger.log_write(f"Device is GPU: {torch.cuda.current_device()}",
@@ -279,26 +311,20 @@ class Video_Detector(object):
         self.info_logger.log_write("Device is CPU", Log_Processor.INFO)
         return torch.device('cpu')
 
-    ### 修改默认模式的，修改后永久改变使用识别模型
-    def select_default_model(self, mode: int):
+    def set_default_model(self, mode: int):
         """
-        作用：
-            根据用户的选择去挑选不同的模型
-
-        参数：
-            eg:model_mode.keys():1 2 3
-               model_mode.values(): "fire.pt" "people.pt" "all.pt"
-        返回：
-            对应模型的相对路径
+        设置默认使用模型
+        Parameters
+        ----------
+        mode : int
+            0设置使用全部模型，1设置使用火焰模型，2设置使用人像识别模型，3设置异常行为识别模型
         """
         self.model_mode = mode
 
     def train(self) -> None:
         """
-        Start training the flame recognition model
-        
-        Returns:
-            a list of Results objects
+        火焰识别模型的训练
+        需要在类外设置好训练参数和配置文件，以及数据集
         """
         try:
             # begin train
@@ -310,7 +336,6 @@ class Video_Detector(object):
             # catch all errors and export to the log
             error_type = type(e).__name__
 
-            ### 修改日志处理器部分,也可以这样写，因为我写的这个部分是追踪不到堆栈的
             # self.error_logger.logger.error(你之前设置的部分)
             self.error_logger.logger.error(f"An error of type {error_type} occurred: {str(e)}",
                                             exc_info=True)
@@ -320,23 +345,30 @@ class Video_Detector(object):
                            show: int = None,
                            iou: float = None,
                            conf: float = None) -> Optional[list[Results]]:
-
         """
-        作用：
-            用训练好的模型进行预测
-        
-        参数:
-            source(Union[str, np.ndarray]):需要预测的数据源
-            Specifies the data source for inference.
-            Can be an image path, video file, directory, URL, or device ID for live feeds.
-            Supports a wide range of formats and sources, enabling flexible application across different types of input.
-            
-            iou(float):非最大抑制 （NMS） 的交集并集 （IoU） 阈值。值越低，通过消除重叠框来减少检测次数，这对于减少重复项很有用。
-            Intersection Over Union (IoU) threshold for Non-Maximum Suppression (NMS).
-            Lower values result in fewer detections by eliminating overlapping boxes, useful for reducing duplicates.
+        单个模型的预测函数，可以根据mode选择模型加载图片/视频进行预测，获得对应的返回结果
+        是内置的方法，不提供对外接口，是predict函数的子部分
 
-            conf(float):设置检测的最低置信度阈值。低于此阈值的置信度检测到的对象将被忽略。调整此值有助于减少误报。
+        Parameters
+        ----------
+        pre_source : Union[str, np.ndarray]
+            用于推理的的特定数据源，可以是矩阵，图片路径，URL，视频路径或者设备id
+            支持广泛的格式和来源，实现了跨不同类型输入的灵活应用。
+        mode : int
+            指定使用的识别模型，未指定(为None)时使用内部的默认模式对应的模型进行识别
+        show: bool
+            指定模型的预测结果是否可视化，未指定(为None)时使用默认值
+        iou: float
+            指定衡量预测边界框与真实边界框之间重叠程度，未指定(为None)时使用默认值
+        conf: float
+            指定模型对识别设置的置信度阈值，未指定(为None)时使用默认值
+
+        Returns
+        -------
+        result_list : Optional[list[Results]]
+            yolov8内置的结果对象序列，每个元素为一个Result对象，其中包括了识别结果的各项信息
         """
+        # 根据传入参数进行调整
         if mode == 0:
             return None
         elif mode is None and self.model_mode == 0:
@@ -350,8 +382,8 @@ class Video_Detector(object):
             iou = self.iou
         if conf is None:
             conf = self.conf
+        # 根据不同模式，进行不同模型的预测
         try:
-            # begin predict
             if isinstance(pre_source, str):
                 if mode == 2:
                     result = self.predict_model[mode].predict(
@@ -391,8 +423,7 @@ class Video_Detector(object):
             return list(result)
 
         except Exception as e:
-            # catch all errors and export to the log
-            ### 修改日志记录器的形式，和上面的修改不同，想不变的话可以这么写:
+            # 将捕获的错误存储到日志中
             error_type = type(e).__name__
             self.error_logger.logger.error("An error of type %s occurred: %s", error_type, str(e),
                                            exc_info=True)
@@ -402,7 +433,30 @@ class Video_Detector(object):
                 show: int = None,
                 iou: float = None,
                 conf: float = None) -> Optional[dict[int, list[Results]]]:
+        """
+        模型预测函数，可以根据mode选择模型加载图片/视频进行预测，获得对应的返回结果
+        允许mode为0，此时会调用所有模型进行识别，保存得到三个结果对象序列，使用字典将其与对应的模式进行映射
 
+        Parameters
+        ----------
+        pre_source : Union[str, np.ndarray]
+            用于推理的的特定数据源，可以是矩阵，图片路径，URL，视频路径或者设备id
+            支持广泛的格式和来源，实现了跨不同类型输入的灵活应用。
+        mode : int
+            指定使用的识别模型，未指定(为None)时使用内部的默认模式对应的模型进行识别
+        show: bool
+            指定模型的预测结果是否可视化，未指定(为None)时使用默认值
+        iou: float
+            指定衡量预测边界框与真实边界框之间重叠程度，未指定(为None)时使用默认值
+        conf: float
+            指定模型对识别设置的置信度阈值，未指定(为None)时使用默认值
+
+        Returns
+        -------
+        result_dict : Optional[dict[int, list[Results]]]
+            由模式-yolov8内置的结果对象序列组成你的字典，每个元素为一个模型-Result对象序列的键值对
+            通过访问对应模式对应的值，可以获得识别结果的各项信息
+        """
         result = {}
         if mode == 0:
             result[1] = self._one_model_predict(pre_source, 1, show, iou, conf)
@@ -418,32 +472,52 @@ class Video_Detector(object):
             return None
         return result
 
-    def model_plot(self, frame: np.ndarray, results1: Results,
-                   results2: Results, results3: Results = None):
+    def model_plot(self, frame: np.ndarray, results1: Results = None,
+                   results2: Results = None, results3: Results = None) -> np.ndarray:
+        """
+        识别碰撞箱绘制函数，使用全部模型检测时，需要根据各模型结果对原始图像进行各自的碰撞箱绘制
+        Parameters
+        ----------
+        frame : np.ndarray
+            传入的原始图像
+        results1 : Results
+            火焰识别模型的识别结果，如果为None，则不绘制
+        results2 : Results
+            人像识别模型的识别结果，如果为None，则不绘制
+        results3
+            异常行为识别模型的识别结果，如果为None，则不绘制
+        Returns
+        -------
+        frame : np.ndarray
+            绘制各碰撞箱后的结果图像
+        """
+
         # 在图像上绘制边界框
-        for box in results1.boxes:
-            # 获取边界框坐标
-            x1, y1, x2, y2 = map(int, box.xyxy[0])
-            # 获取置信度和标签
-            confidence = box.conf[0]
-            label = box.cls[0]
-            # 绘制矩形边界框
-            cv.rectangle(frame, (x1, y1), (x2, y2),
-                         self.predict_class_type_color_dict[1][int(label)], 2)
-            # 在边界框上绘制标签和置信度
-            label_text = f'{self.predict_model[1].names[int(label)]}: {confidence:.2f}'
-            cv.putText(frame, label_text, (x1, y1 - 10), cv.FONT_HERSHEY_SIMPLEX, 0.5,
-                       (255, 255, 255), 2)
+        if results1 is not None:
+            for box in results1.boxes:
+                # 获取边界框坐标
+                x1, y1, x2, y2 = map(int, box.xyxy[0])
+                # 获取置信度和标签
+                confidence = box.conf[0]
+                label = box.cls[0]
+                # 绘制矩形边界框
+                cv.rectangle(frame, (x1, y1), (x2, y2),
+                             self.predict_class_type_color_dict[1][int(label)], 2)
+                # 在边界框上绘制标签和置信度
+                label_text = f'{self.predict_model[1].names[int(label)]}: {confidence:.2f}'
+                cv.putText(frame, label_text, (x1, y1 - 10), cv.FONT_HERSHEY_SIMPLEX, 0.5,
+                           (255, 255, 255), 2)
         # 其他同理
-        for box in results2.boxes:
-            x1, y1, x2, y2 = map(int, box.xyxy[0])
-            confidence = box.conf[0]
-            label = box.cls[0]
-            cv.rectangle(frame, (x1, y1), (x2, y2),
-                         self.predict_class_type_color_dict[2], 2)
-            label_text = f'{self.predict_model[2].names[int(label)]}: {confidence:.2f}'
-            cv.putText(frame, label_text, (x1, y1 - 10), cv.FONT_HERSHEY_SIMPLEX, 0.5,
-                       (255, 255, 255), 2)
+        if results2 is not None:
+            for box in results2.boxes:
+                x1, y1, x2, y2 = map(int, box.xyxy[0])
+                confidence = box.conf[0]
+                label = box.cls[0]
+                cv.rectangle(frame, (x1, y1), (x2, y2),
+                             self.predict_class_type_color_dict[2], 2)
+                label_text = f'{self.predict_model[2].names[int(label)]}: {confidence:.2f}'
+                cv.putText(frame, label_text, (x1, y1 - 10), cv.FONT_HERSHEY_SIMPLEX, 0.5,
+                           (255, 255, 255), 2)
         if results3 is not None:
             for box in results3.boxes:
                 x1, y1, x2, y2 = map(int, box.xyxy[0])
@@ -451,7 +525,7 @@ class Video_Detector(object):
                 label = box.cls[0]
                 cv.rectangle(frame, (x1, y1), (x2, y2),
                              self.predict_class_type_color_dict[3], 2)
-                label_text = f'{self.predict_model[2].names[int(label)]}: {confidence:.2f}'
+                label_text = f'{self.predict_model[3].names[int(label)]}: {confidence:.2f}'
                 cv.putText(frame, label_text, (x1, y1 - 10), cv.FONT_HERSHEY_SIMPLEX, 0.5,
                            (255, 255, 255), 2)
         return frame
@@ -460,18 +534,54 @@ class Video_Detector(object):
                result_queue: multiprocessing.Queue,
                mode: int = None,
                save_dir: str = None, max_frame: int = None,
-               iou: float = None, conf: float = None) -> None:
+               iou: float = None, sensitivity: int = 0) -> None:
+        """
+        对摄像头捕捉视频帧的实时检测和处理函数，是视频检测器的核心处理函数
+        通过多进程的视频帧队列从视频流处理器对象处获得视频帧
+        并通过另一个队列将检测后的错误码和每个预测类型的对应置信度返回给视频流处理器对象，完成进程通信
+        Parameters
+        ----------
+        frame_queue : multiprocessing.Queue
+            视频流对象传入的视频帧队列，用于获得要处理的视频帧队列
+        result_queue : multiprocessing.Queue
+            返回给视频流对象的处理队列，用于返回错误码和置信度
+        mode : int
+            指定的模式，用户指定后由视频流处理器传给当前的检测器实例，以完成用户要求的检测功能
+        save_dir : str
+            指定的视频保存路径，目前不提供设置方式，需要在进一步优化后完成设置
+        max_frame : int
+            指定的最大缓冲区帧数，因为无法直接解析视频设备的帧率，故暂未用于实践
+        iou : float
+            指定衡量预测边界框与真实边界框之间重叠程度，未指定(为None)时使用默认值
+        sensitivity : int
+            指定对异常的敏感程度，0对应低敏感程度，设置置信度阈值为0.5，1对应高敏感程度，设置置信度阈值为0.3，默认为低敏感
+
+        Notes
+        -----
+        传入的视频帧使用具有限定大小的双端队列进行处理
+        每次从传入视频帧队列中获得全部视频帧按先入先出的顺序进行存储，随后从队列末尾取最实时的视频帧进行检测
+        这相对于对双端队列中未取出检测的视频帧进行了识别丢帧处理，但能够被保存
+        最终处理的视频帧比例由设备性能和进程被分配的资源决定
+        既能保存异常出现的前因后果，又可以保证处理的实时性
+        """
 
         # 设置mode和save_dir，max_frame
         # iou和conf在self.predict里设置
         if mode is None:
             mode = self.model_mode
         if save_dir is None:
-            save_dir = self.save_dir
+            save_now = datetime.datetime.now().strftime(Log_Processor.strftime_all)
+            save_dir = os.path.join(self.save_dir, save_now)
+            self.make_dir(save_dir)
         if not os.path.isabs(save_dir):
             save_dir = os.path.join(self.root_dir, save_dir)
+            self.make_dir(save_dir)
         if max_frame is None:
             max_frame = self.max_frame
+        if sensitivity == 0:
+            conf = 0.5
+        else:
+            conf = 0.3
         # 进程调用需要重新创建一些对象
         self._create_logger()
         self.info_logger.log_write("Video Detector start detect", Log_Processor.INFO)
@@ -552,18 +662,21 @@ class Video_Detector(object):
                         for i in range(1, 4):
                             # 遍历预测图片的碰撞箱
                             for box in predict_result[i][0].boxes:
+                                for box_error in set(box.cls.tolist()):
                                 # 获得错误码和每个错误类型的最大置信度
-                                warning_mode |= self.mode_precdict_warning_mode[i][box.cls.item()]
-                                warning_conf[self.mode_precdict_class[i][box.cls.item()]] = \
-                                    max(warning_conf[self.mode_precdict_class[i][box.cls.item()]],
-                                        box.conf.item())
+                                    warning_mode |= self.mode_precdict_warning_mode[i][box_error]
+                                    warning_conf[self.mode_precdict_class[i][box_error]] = \
+                                        max(warning_conf[self.mode_precdict_class[i][box_error]],
+                                            max(box.conf.tolist()))
                     else:
                         # 遍历使用模型的预测结果，获得错误码和错误类型的最大置信度
                         for box in predict_result[mode][0].boxes:
-                            warning_mode |= self.mode_precdict_warning_mode[mode][box.cls.item()]
-                            warning_conf[self.mode_precdict_class[mode][box.cls.item()]] = \
-                                max(warning_conf[self.mode_precdict_class[mode][box.cls.item()]],
-                                    box.conf.item())
+                            for box_error in set(box.cls.tolist()):
+                                # 获得错误码和每个错误类型的最大置信度
+                                warning_mode |= self.mode_precdict_warning_mode[mode][box_error]
+                                warning_conf[self.mode_precdict_class[mode][box_error]] = \
+                                    max(warning_conf[self.mode_precdict_class[mode][box_error]],
+                                        max(box.conf.tolist()))
 
                     # 出现错误时
                     if warning_mode:
@@ -609,8 +722,8 @@ class Video_Detector(object):
                             for i in range(len(warning_conf_record)):
                                 # 如果是，此位置需要发送新的错误信息，并记录该最大置信度
                                 # 未发送过的错误类型在判断中也被保存了
-                                if Warning_Processor.get_level_description(warning_conf_record[i]) < \
-                                   Warning_Processor.get_level_description(warning_conf[i]):
+                                if Warning_Processor.get_level_description(warning_conf_record[i], sensitivity) < \
+                                   Warning_Processor.get_level_description(warning_conf[i], sensitivity):
                                     new_warning_code |= self.warning_mode_list[i]
                                     warning_conf_record[i] = warning_conf[i]
                             # 如果有需要发送新的错误信息，则发送对应的警告信息
@@ -648,72 +761,194 @@ class Video_Detector(object):
             except Exception as e:
                 # catch all errors and export to the log
                 error_type = type(e).__name__
-                ### 修改日志记录器的形式
                 self.error_logger.logger.error("An error of type %s occurred: %s", error_type, str(e),
                                                exc_info=True)
                 break
 
-    def re_detect(self, video_file: str,
-               mode: int = None,
-               save_dir: str = None, max_frame: int = None,
-               iou: float = None, conf: float = None) -> None:
+    def re_detect(self, video_file: str, ui_event=None,
+                  mode: int = None,
+                  save_dir: str = None, max_frame: int = None,
+                  iou: float = None, sensitivity: int = 0) -> None:
+        """
+        对传入视频路径的视频的检测和处理函数，是视频检测器的另一个核心处理函数
+        被创建后作为独立的进程运行，不受视频处理器的创建进程影响，只受ui界面的停止命令影响
+        Parameters
+        ----------
+        video_file : str
+            要处理视频的指定绝对路径
+        ui_event : multiprocessing.Event
+            用于监听ui界面的停止信息的事件
+        mode : int
+            指定的模式，用户指定后由视频流处理器传给当前的检测器实例，以完成用户要求的检测功能
+        save_dir : str
+            指定的视频保存路径，目前不提供设置方式，需要在进一步优化后完成设置
+        max_frame : int
+            指定的最大缓冲区帧数，因为无法直接解析视频设备的帧率，故暂未用于实践
+        iou : float
+            指定衡量预测边界框与真实边界框之间重叠程度，未指定(为None)时使用默认值
+        sensitivity : int
+            指定对异常的敏感程度，0对应低敏感程度，设置置信度阈值为0.5，1对应高敏感程度，设置置信度阈值为0.3，默认为低敏感
+        """
+
         # 设置mode和save_dir，max_frame
         # iou和conf在self.predict里设置
         if mode is None:
             mode = self.model_mode
         if save_dir is None:
             save_dir = self.save_dir
-        if not os.path.isabs(save_dir):
+        elif not os.path.isabs(save_dir):
             save_dir = os.path.join(self.root_dir, save_dir)
         if max_frame is None:
             max_frame = self.max_frame
+        # 如果是低敏感度，置信度conf默认为0.5
+        if sensitivity == 0:
+            conf = 0.5
+        # 如果是高敏感度，置信度conf默认为0.3（更容易被监测到）
+        else:
+            conf = 0.3
 
+        # 进程调用需要重新创建一些对象
+        self._create_logger()
+        self.info_logger.log_write("Video Detector start re-detect", Log_Processor.INFO)
+
+        # 对整个视频流进行完整的预测处理
         predict_result = self.predict(pre_source=video_file, mode=mode,
                                       show=False, iou=iou, conf=conf)
+
+        # 预测完成后才能退出，如果要求退出则退出
+        if ui_event is not None:
+            if ui_event.is_set():
+                return
+
+        # 获得当前时间
+        now = datetime.datetime.now().strftime(Log_Processor.strftime_all)
+        # 根据save_dir和当前时间记录要使用的绝对路径
+        use_dir = os.path.join(save_dir, now)
+        # 创建目录来保存识别结果(包括了子路径video的创建)
+        self.make_dir(os.path.join(use_dir, "video"))
+
+        # 日志记录
+        self.info_logger.log_write("Finish re-detect. Start saving...\n"
+                                   f"The save dir is {use_dir}.", Log_Processor.INFO)
+
+        # 用队列存储处理结果帧，缓冲区限制大小
+        frame_queue = deque(maxlen=max_frame)
+        # 视频帧索引
+        frame_index = 0
+        # 错误标记
+        flag_error = False
+        warning_video_out = None
+        # 全部类型识别
         if mode == 0:
-            for i, j, k in zip(predict_result[1], predict_result[2], predict_result[3]):
-                pass
-                # type_keys = self.predict_class_type_num
-                # if any(cls in predict_result[1][0].boxes.cls
-                #        for cls in type_keys) \
-                #         or any(cls in predict_result[2][0].boxes.cls
-                #                for cls in type_keys) \
-                #         or any(cls in predict_result[3][0].boxes.cls
-                #                for cls in type_keys):
-                #     warning_frame = True
-                # self.three_model_plot()
+            # 遍历三个模型对每个视频帧的处理结果
+            for result in zip(predict_result[1], predict_result[2], predict_result[3]):
+                # 如果要求退出则退出
+                if ui_event is not None:
+                    if ui_event.is_set():
+                        return
+                # 如果这三个result中出现了任意一个检测类型
+                if result[0].boxes.cls.size() != 0 or \
+                   result[1].boxes.cls.size() != 0 or \
+                   result[2].boxes.cls.size() != 0:
+                    # 用model_plot绘制加入碰撞箱之后的原始视频帧
+                    frame = self.model_plot(result[0].orig_img, result[0], result[1], result[2])
+                    # 将问题帧用图片保存起来
+                    save_path = os.path.join(use_dir, f"frame_{frame_index}.jpg")
+                    cv.imwrite(save_path, frame)
+                    # 将问题帧加入队列
+                    frame_queue.append(frame)
+                    if not flag_error:
+                        flag_error = True
+                        # 创建视频写入流，利用VideoWriter保存有问题部分及前后的视频流，
+                        # 文件路径为生成路径，帧率和分辨率统一为限制后的视频大小和帧率，彩色模式
+                        fourcc = cv.VideoWriter.fourcc(*"DIVX")
+                        warning_video_path = os.path.join(use_dir, "video", "1_re-detect.avi")
+                        warning_video_out = cv.VideoWriter(warning_video_path, fourcc, 30,
+                                                           (frame.shape[1],
+                                                            frame.shape[0]), True)
+                        if warning_video_out.isOpened():
+                            self.info_logger.log_write("Start video save", Log_Processor.INFO)
 
+                    if warning_video_out is not None:
+                        # 将缓冲区的全部视频帧写入
+                        while frame_queue:
+                            warning_video_out.write(frame_queue.popleft())
+                # 否则只保存视频帧即可
+                else:
+                    frame_queue.append(result[0].orig_img)
+                frame_index += 1
+
+        # 如果只选择单个的模型
         else:
-            for i in predict_result[mode]:
-                pass
+            for result in predict_result[mode]:
+                # 如果要求退出则退出
+                if ui_event is not None:
+                    if ui_event.is_set():
+                        return
+                # results是一个Results对象
+                boxes = result.boxes
+                frame = result.plot()
+                frame_queue.append(frame)
+                # 如果监测到了类型，进行图片保存
+                if boxes.cls.size() != 0:
+                    result.save(filename=os.path.join(use_dir, f"frame_{frame_index}.jpg"))
+                    if not flag_error:
+                        flag_error = True
+                        # 创建视频写入流，利用VideoWriter保存有问题部分及前后的视频流，
+                        # 文件路径为生成路径，帧率和分辨率统一为限制后的视频大小和帧率，彩色模式
+                        fourcc = cv.VideoWriter.fourcc(*"DIVX")
+                        warning_video_path = os.path.join(use_dir, "video", "1_re-detect.avi")
+                        warning_video_out = cv.VideoWriter(warning_video_path, fourcc, 30,
+                                                           (frame.shape[1],
+                                                            frame.shape[0]), True)
 
-    ### 创建目录需要写入日志处理器，不再是静态方法
-    def make_dir(self, file_path: str, caller_info: str = 'make_dir') -> None:
-        """
-        作用：
-            创建一个空的目录
+                        if warning_video_out.isOpened():
+                            self.info_logger.log_write("Start video save", Log_Processor.INFO)
+                    if warning_video_out is not None:
+                        # 将缓冲区的全部视频帧写入
+                        while frame_queue:
+                            warning_video_out.write(frame_queue.popleft())
+                frame_index += 1
 
-        参数:file_path(str):目录或者文件夹的绝对路径
+        # 日志记录
+        self.info_logger.log_write("Save finish", Log_Processor.INFO)
+        if warning_video_out is not None:
+            warning_video_out.release()
+
+    def make_dir(self, dir_path: str):
         """
+        创建空目录函数，需要写入日志处理器，不是静态方法
+        此处不会检测上一级是否有目录，而是按照目录直接逐级创建
+        Parameters
+        ----------
+        dir_path : str
+            指定的要创建的目录的绝对路径
+        """
+        caller_info: str = 'make_dir'
         try:
-            # 获取目录路径
-            directory = os.path.dirname(file_path)
             # 如果目录不存在，则创建目录
-            if not os.path.exists(directory):
-                os.makedirs(directory)
-                ### 修改日志记录器的内容
-                self.info_logger.logger.info(f"[{caller_info}] Directory '{directory}' created successfully.")
+            if not os.path.exists(dir_path):
+                os.makedirs(dir_path)
+                self.info_logger.logger.info(f"[{caller_info}] Directory '{dir_path}' created successfully.")
             else:
-                print(f"Directory '{directory}' already exists.")
+                self.info_logger.logger.info(f"Directory '{dir_path}' already exists.")
         except Exception as e:
             # catch all errors and export to the log
             error_type = type(e).__name__
-            ### 修改日志记录器的形式
             self.error_logger.logger.error("An error of type %s occurred: %s", error_type, str(e),
                                            exc_info=True)
 
-    ### 删除目录需要写入日志处理器，不再是静态方法
-    def delete_file(self, directory: str):
+    def delete_dir(self, directory: str):
+        """
+        删除目录函数，需要写入日志处理器，不再是静态方法
+        被删除的目录下不允许有子目录
+        Parameters
+        ----------
+        directory : str
+            指定的要删除的目录的绝对路径
+        Returns
+        -------
+        """
         try:
             # 遍历目录中的所有文件
             for filename in os.listdir(directory):
@@ -721,19 +956,14 @@ class Video_Detector(object):
                 # 如果是文件则删除
                 if os.path.isfile(file_path):
                     os.remove(file_path)
-                    ### 修改日志记录器的形式
                     self.info_logger.logger.info(f"File '{file_path}' removed successfully.")
-            ### 修改日志记录器的形式
             self.info_logger.logger.info(f"All files in directory '{directory}' cleared successfully.")
         except Exception as e:
-            ### 修改日志记录器的形式
             self.error_logger.logger.error(f"Failed to clear files in directory '{directory}'. Error: {e}")
 
-    # 这个我不管了，自己改吧，注意你下面的内容
     def show_csv(self):
         """
-        Metrics that display training results
-        将训练完成后的各种评估参数画图画出来
+        对训练完成后的各种评估参数绘制图像
         """
         try:
             IPython.get_ipython().run_line_magic('matplotlib', 'inline')
@@ -773,27 +1003,22 @@ class Video_Detector(object):
 
 
 if __name__ == '__main__':
-    # device = Video_Detector.get_device()
-    # 初始化参数
-    # batch, epochs, project, name, imgsz, data, weight_pt = train_config.values()
-    # model_mode, iou, conf, show, save_dir, max_frame = predict_config.values()
-
     # 初始化类实例
     video_detector = Video_Detector()
 
-    # 查看结果
+    # 查看存储的变量是否和配置文件一致
     for i in video_detector.__dict__.items():
-        if i[0] != "model":
-            print(i)
+        print(i)
 
     # 调用类方法选择模型
-    video_detector.select_default_model(1)
-    # model.train()
+    video_detector.set_default_model(1)
 
-    source = os.path.abspath("../../Model/test/fire2.mp4")
-    # print(os.path.exists(source))
-    Results_list = video_detector.predict(pre_source=source, mode=1)
-    for i in Results_list[1]:
-        print(i.boxes.cls.tolist())
-        print(i.boxes.conf.tolist())
+    # 使用各个模型进行视频识别预测
+    source = os.path.abspath("../../Model/test/fire.mp4")
+    # Results_list = video_detector.predict(pre_source=source, mode=1)
+    # # 输出错误结果
+    # for i in Results_list[1]:
+    #     print(i.boxes.cls.tolist())
+    #     print(i.boxes.conf.tolist())
 
+    video_detector.re_detect(video_file=source, mode=1, sensitivity=0)

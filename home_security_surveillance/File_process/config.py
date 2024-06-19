@@ -67,7 +67,7 @@ def trans_config_abspath(relative_path: Union[Dict[str, str], List[str], str]
         raise TypeError("relative path should be of type str, list, or dict.")
 
     # 相对路径转换
-    # 从该代码文件的路径变为项目跟路径
+    # 从该代码文件的路径变为项目根路径
     root_path = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(_config_code_file))))
     if isinstance(rel_path, str):
         if not os.path.isabs(rel_path):

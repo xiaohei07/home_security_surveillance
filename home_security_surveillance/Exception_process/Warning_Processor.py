@@ -49,13 +49,9 @@ class Warning_Processor(object):
     ----------
     warning_dir : str
         警告日志文件存放的文件夹，默认值和_config_defaluts中exception-monitoring-directory的对应绝对路径相同
-    root : VideoMonitorApp
-        tkinter图形化界面的主窗口，可用于创建其他子窗口
 
     Attributes
     ----------
-    ui_root : VideoMonitorApp
-        tkinter图形化界面的主窗口，可用于创建其他子窗口
      _email_senter_config_keys : List[str]
         邮件发送者配置文件可用的键值，包括email、password、name、domain和tld，是类变量
     email_smtp_address_dict : Dict[str, str]
@@ -95,11 +91,10 @@ class Warning_Processor(object):
     warning_code_dict = {1: "Smoke", 2: "Fire", 4: "Stranger", 8: "Person-Falling"}
 
     def __init__(self,  warning_dir: str = trans_config_abspath(
-                                            config_defaluts["exception-monitoring-directory"]),
-                        root=None):
+                                            config_defaluts["exception-monitoring-directory"])):
+        """初始化函数"""
         # 存储相关信息
         self.warning_dir = warning_dir
-        self.ui_root = root
 
         # 加载日志处理器
         self.warning_logger = Log_Processor(warning_dir, "warning_processor.log", Log_Processor.INFO)
@@ -122,7 +117,7 @@ class Warning_Processor(object):
         pygame.mixer.init()
 
     # 根据错误码解析出现的错误并调用对应函数
-    def warning_process(self, warning_code: int, warning_time: str, level_list: List[float]):
+    def warning_process(self, warning_code: int, warning_time: str, level_list: List[float], sensitivity: int=0):
         """
         错误处理的核心函数
         Parameters
@@ -133,6 +128,8 @@ class Warning_Processor(object):
             警告时间文本，说明事故发生的时间
         level_list: List[float]
             置信度列表，每个元素为对应错误的置信度
+        sensitivity : int
+            置信度转换为危险等级时使用的不同敏感度，0为低敏感度，1为高敏感度
         """
 
         # 利用与操作解析错误码，如有对应错误，进行相应报警
@@ -140,18 +137,19 @@ class Warning_Processor(object):
         index = 0
         for key, value in self.warning_code_dict.items():
             if key & warning_code:
-                self.trigger_warning(value, warning_time, level_list[index])
+                self.trigger_warning(value, warning_time, level_list[index], sensitivity)
             index += 1
 
     @staticmethod
-    def get_level_description(level: float) -> int:
+    def get_level_description(level: float, sensitivity:int = 0) -> int:
         """
         根据置信度判断危险等级，返回置信度级别描述函数
         Parameters
         ----------
         level : float
             置信度，数值在 0 ~ 1 之间
-
+        sensitivity : int
+            置信度转换为危险等级时使用的不同敏感度，0为低敏感度，1为高敏感度
         Returns
         -------
         level_description : int
@@ -161,19 +159,30 @@ class Warning_Processor(object):
             0.9~0.95大概率识别出事故，并且判断较为准确，危险等级为3
             0.95~1 极度危险状态，危险等级为4
         """
-
-        if 0 < level < 0.8:
-            return 1
-        elif 0.8 <= level < 0.9:
-            return 2
-        elif 0.9 <= level < 0.95:
-            return 3
-        elif 0.95 <= level <= 1:
-            return 4
+        if sensitivity == 1:
+            if 0.3 <= level < 0.8:
+                return 1
+            elif 0.8 <= level < 0.9:
+                return 2
+            elif 0.9 <= level < 0.95:
+                return 3
+            elif 0.95 <= level <= 1:
+                return 4
+            else:
+                return 0
         else:
-            return 0
+            if 0.5 <= level < 0.8:
+                return 1
+            elif 0.8 <= level < 0.9:
+                return 2
+            elif 0.9 <= level < 0.95:
+                return 3
+            elif 0.95 <= level <= 1:
+                return 4
+            else:
+                return 0
 
-    def trigger_warning(self, warning_type: str, warning_time: str, level: float):
+    def trigger_warning(self, warning_type: str, warning_time: str, level: float, sensitivity:int):
         """
         触发警报的核心处理函数
         Parameters
@@ -185,9 +194,11 @@ class Warning_Processor(object):
         level: float
             置信度，根据数值的大小判断危险等级，给出不同提示（图标显示和提示音）
             当危险等级高于等于3级时，会向户主发送邮件，通知相关情况
+        sensitivity : int
+            置信度转换为危险等级时使用的不同敏感度，0为低敏感度，1为高敏感度
         """
         # 置信度转危险等级
-        level_description = self.get_level_description(level)
+        level_description = self.get_level_description(level, sensitivity)
         # 日志记录有警告
         log_message = f"{warning_type} at {warning_time} with risk level:({level_description})"
         self.warning_logger.log_write(log_message, Log_Processor.CRITICAL)
@@ -232,11 +243,7 @@ class Warning_Processor(object):
         level_description : int
             置信度危险等级
         """
-        if self.ui_root is None:
-            root = tk.Tk()
-
-        else:
-            root = tk.Toplevel()
+        root = tk.Tk()
         root.title("Warning")
 
         # 设置窗口大小和位置
@@ -294,6 +301,7 @@ class Warning_Processor(object):
         # OK 按钮
         ok_button = ttk.Button(root, text="OK", command=root.destroy)
         ok_button.pack(pady=10)
+        root.mainloop()
 
     def _write_email_senter_config(self, config_data: Dict[str, str] = {}):
         """
@@ -342,11 +350,10 @@ class Warning_Processor(object):
         """
 
         # 写入config_data
-        if config_data:
-            with open(self.email_receiver_file, 'w', encoding='utf-8') as file:
-                json.dump(config_data, file,
-                          skipkeys=False, check_circular=True, allow_nan=True, sort_keys=False,
-                          ensure_ascii=False, separators=(',', ' : '), indent=2)
+        with open(self.email_receiver_file, 'w', encoding='utf-8') as file:
+            json.dump(config_data, file,
+                skipkeys=False, check_circular=True, allow_nan=True, sort_keys=False,
+                ensure_ascii=False, separators=(',', ' : '), indent=2)
 
     def load_email_senter_config(self, email_senter: str, re_parse: bool = True) \
             -> Dict[str, str]:

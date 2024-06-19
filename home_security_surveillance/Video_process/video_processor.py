@@ -6,7 +6,6 @@ Date: 2024-05-13
 Version: 1.0
 Description: 处理视频流的核心类
 """
-
 # 引入常用库
 from home_security_surveillance.Common import *
 # 引入PyCameraList.camera_device库的list_video_devices函数，用于列出所有可用的视频源
@@ -14,34 +13,41 @@ from PyCameraList.camera_device import list_video_devices
 # 引入file_process包
 from home_security_surveillance.File_process import *
 # 引入video_capture_process库
-from .video_capture_process import *
+from home_security_surveillance.Video_process.video_capture_process import *
 # 引入video_detect库
-from .video_detect import *
+from home_security_surveillance.Video_process.video_detect import *
 # 引入Exception_process库
 from home_security_surveillance.Exception_process import *
+# 引入synchronize库的Event对象
+from multiprocessing import synchronize
 
 __all__ = ["Video_Processor"]
 
 class Video_Processor(object):
     """
-    Video_Processor(url_capture_time_out)
+    Video_Processor(url_capture_time_out, root)
 
     从视频源处获得视频流并进行处理的相关类，是家庭监控系统的核心处理部分
 
     Parameters
     ----------
-    root : VideoMonitorApp
-        tkinter图形化界面的主窗口，可用于创建其他子窗口
     url_capture_time_out : int
         opencv在捕捉网络摄像头url视频流时的超时时间设置，各协议统一，且应小于opencv已设置的时间
         此处最大为15s，默认值为10s，最大请尽量小于15s
+    event: synchronize.Event
+        ui界面创建对象时传递的事件，在该类传递事件内标记设置为False时结束任务退出进程，默认为None
+    return_value : multiprocessing.Value
+        ui界面创建对象时传递的共享内存变量，默认为None
 
     Attributes
     ----------
+    ui_event: synchronize.Event
+        ui界面创建对象时传递的事件，在该类传递事件内标记设置为False时结束任务退出进程，默认为None
+    ui_value : multiprocessing.Value
+        ui界面创建对象时传递的共享内存变量，默认为None
+
     create_time : str
         创建该对象的时间，字符串类型，格式与log.py中Log_Processor的strftime_all相同
-    ui_root : VideoMonitorApp
-        tkinter图形化界面的主窗口，可用于创建其他子窗口
     url_capture_time_out : int
         opencv在捕捉网络摄像头url视频流时的超时时间设置，各协议统一，且应小于opencv已设置的时间
         此处最大为15s，默认值为10s，最大请尽量小于15s
@@ -78,17 +84,18 @@ class Video_Processor(object):
     # 可使用的最大分辨率
     _video_resolution = (1280, 720)
 
-    def __init__(self, root, url_capture_time_out: int = 10):
+    def __init__(self, url_capture_time_out: int = 10,
+                 event: synchronize.Event = None, return_value: multiprocessing.Value = None):
         """初始化Video_processor对象"""
 
         # 获得格式化的当前时间，作为该类的创建时间
         self.create_time = datetime.datetime.now().strftime(Log_Processor.strftime_all)
 
-        # 记录主窗口
-        self.ui_root = root
         # 记录超时时间
         self.url_capture_time_out = url_capture_time_out
-
+        # 记录共享变量和事件
+        self.ui_event = event
+        self.ui_value = return_value
         # 加载json格式的配置文件
         try:
             self.config_data, invalid_config_data = load_config(relative=False)
@@ -128,10 +135,9 @@ class Video_Processor(object):
 
         # 加载异常警报处理器
         self.warning_processor = Warning_Processor(warning_dir=
-                                                   self.config_data["exception-monitoring-directory"],
-                                                   root=self.ui_root)
+                                                   self.config_data["exception-monitoring-directory"])
         # 输出加载成功信息
-        self.logger.log_write(f"Successfully loaded warning processor"
+        self.logger.log_write(f"Successfully loaded warning processor "
                               f"the root dir is{self.config_data['exception-monitoring-directory']}",
                               Log_Processor.INFO)
 
@@ -203,11 +209,37 @@ class Video_Processor(object):
             self.logger.log_write(f"Successfully loaded history video processor",
                                   Log_Processor.INFO)
 
+    def update_local_video_sourse(self) -> bool:
+        """
+        更新本地视频设备
+        Returns
+        -------
+        flag : bool
+            是否完成了更新，如更新返回True，否则为False
+        """
+        temp = list_video_devices()
+        # 判断加载后本地视频设备是否为空
+        # 如果为空且之前不为空
+        if temp != self.local_video_device_list:
+            self.logger.log_write(f"The loaded local video device has changed, now the"
+                                  f"local video device:\n"
+                                  f"{self.local_video_device_list}", Log_Processor.INFO)
+            # 更新变量和flag
+            if temp and not self.local_video_device_list:
+                self._load_flag[0] = True
+            elif not temp and self.local_video_device_list:
+                self._load_flag[0] = False
+            self.local_video_device_list = temp
+            return True
+
+        return False
+
     def load_local_video_device(self, video_sourse: int = 0,
                                 flag_visibility: bool = True,
                                 flag_save: bool = True,
                                 flag_detect: bool = True,
-                                video_deetect_type: int = 1
+                                video_detect_type: int = 1,
+                                video_detect_sensitivity: int = 0
                                 ) -> int:
         """
         从本地视频设备利用opencv库加载视频流，根据传入的本地视频设备号来捕捉视频信息
@@ -222,9 +254,10 @@ class Video_Processor(object):
             控制opencv在读取视频六时是否保存，True时保存视频，False时不保存
         flag_detect : bool
             控制视频流是否需要进行监测，目标追踪，默认为True
-        video_deetect_type : int
+        video_detect_type : int
             控制视频流监测的类型，0为全部监测，1为只监测火焰，2为只监测人，3为检测异常情况
-
+        video_detect_sensitivity : int
+            控制视频流在监测时的敏感度，0为低敏感度，1为高敏感度
         Returns
         --------
         res : int
@@ -247,6 +280,7 @@ class Video_Processor(object):
         if not self._load_flag[0]:
             self.logger.log_write("Can't load local video device, the local video device is no exist.",
                                   Log_Processor.ERROR)
+            self.ui_value.value = 1
             return 1
 
         # 检查传入索引号是否超过了列表大小
@@ -254,6 +288,7 @@ class Video_Processor(object):
             self.logger.log_write(f"The {video_sourse} is out of " +
                                   f"the length {len(self.local_video_device_list):} " +
                                   f"of local video device list.", Log_Processor.ERROR)
+            self.ui_value.value = 2
             return 2
 
         # 根据视频源创建一个VideoCapture对象，用于从视频源中读取帧
@@ -261,7 +296,8 @@ class Video_Processor(object):
 
         # 判断是否打开，成功则进行下一步的处理
         if video_stream.isOpened():
-
+            # 更新共享变量以说明进程启动成功
+            self.ui_value.value = -9
             # 获得视频流参数，包括宽度、高度和帧率，转为整型
             real_width = int(video_stream.get(cv.CAP_PROP_FRAME_WIDTH))
             real_height = int(video_stream.get(cv.CAP_PROP_FRAME_HEIGHT))
@@ -328,7 +364,8 @@ class Video_Processor(object):
                 # 创建进程，传入参数并运行
                 video_detect_process = multiprocessing.Process(
                     target=self.video_detector.detect,
-                    args=(frame_queue, result_queue, video_deetect_type))
+                    args=(frame_queue, result_queue, video_detect_type),
+                    kwargs={"sensitivity": video_detect_sensitivity})
                 video_detect_process.start()
                 self.logger.log_write("Start running video detect process",
                                       Log_Processor.INFO)
@@ -361,11 +398,13 @@ class Video_Processor(object):
                 except FileExistsError as e:
                     self.logger.log_write(f"Fail to create save video dir: " + e.strerror,
                                           Log_Processor.ERROR)
+                    self.ui_value.value = -3
                     return -3
                 # 如果路径有错误
                 except OSError as e:
                     self.logger.log_write(f"Fail to create save video dir: " + e.strerror,
                                           Log_Processor.ERROR)
+                    self.ui_value.value = -3
                     return -3
                 # 无错误则输入视频流至文件中
                 else:
@@ -382,6 +421,7 @@ class Video_Processor(object):
                         self.hs_processor.delete_new_video_file(save_path)
                         self.logger.log_write(f"Fail to create save video file: {save_path}",
                                               Log_Processor.ERROR)
+                        self.ui_value.value = -3
                         return -3
 
             # 循环部分，用于读取视频
@@ -389,6 +429,18 @@ class Video_Processor(object):
             skip = 0
             Warning_thread = None
             while True:
+                # 如果ui界面触发了关闭事件，退出进程
+                if self.ui_event.is_set():
+                    if flag_save:
+                        video_out.release()
+                    if flag_visibility:
+                        cv.destroyWindow(Window_name)
+                    video_stream.release()
+                    # 由于没有终止视频帧None，手动传输结束识别进程
+                    if flag_detect:
+                        frame_queue.put(None)
+                    break
+
                 success = video_stream.grab()
                 # 如果摄像头读取失败，日志记录，结束运行，释放视频捕捉对象，销毁窗口
                 if not success:
@@ -404,6 +456,7 @@ class Video_Processor(object):
                     # 由于没有终止视频帧None，手动传输结束识别进程
                     if flag_detect:
                         frame_queue.put(None)
+                    self.ui_value.value = -2
                     return -2
 
                 # 跳帧或者视频解码
@@ -434,7 +487,8 @@ class Video_Processor(object):
                         now_time = datetime.datetime.now().strftime(Log_Processor.strftime_all)
                         # 创建线程，并用报警器进行处理
                         Warning_thread = threading.Thread(target=self.warning_processor.warning_process,
-                                                          args=(warning_info[0], now_time, warning_info[1]))
+                                                          args=(warning_info[0], now_time, warning_info[1],
+                                                                video_detect_sensitivity))
                         Warning_thread.start()
                         self.logger.log_write(f"{now_time} have exception", Log_Processor.WARNING)
 
@@ -480,12 +534,14 @@ class Video_Processor(object):
             self.logger.log_write(f"Fail to load the local video device " +
                                   f"{self.local_video_device_list[video_sourse][1]}",
                                   Log_Processor.ERROR)
+            self.ui_value.value = -1
             return -1
 
         # 正常退出
         self.logger.log_write(f"Stop using the local video device " +
                               f"{self.local_video_device_list[video_sourse][1]}",
                               Log_Processor.INFO)
+        self.ui_value.value = 0
         return 0
 
     @staticmethod
@@ -591,7 +647,8 @@ class Video_Processor(object):
                                   flag_visibility: bool = True,
                                   flag_save: bool = True,
                                   flag_detect: bool = True,
-                                  video_deetect_type: int = 1,
+                                  video_detect_type: int = 1,
+                                  video_detect_sensitivity: int = 0,
                                   video_protocol_type: str = "RTSP",
                                   ) -> int:
         """
@@ -607,8 +664,10 @@ class Video_Processor(object):
             控制opencv在读取视频流时是否保存，True时保存视频，False时不保存
         flag_detect : bool
             控制视频流是否需要进行监测，目标追踪，默认为True
-        video_deetect_type : int
+        video_detect_type : int
             控制视频流监测的类型，0为全部监测，1为只监测火焰，2为只监测人，3为检测异常情况
+        video_detect_sensitivity : int
+            控制视频流在监测时的敏感度，0为低敏感度，1为高敏感度
         video_protocol_type : str
             读取视频流时网络视频设备使用的传输协议，默认为RSTP
 
@@ -631,6 +690,7 @@ class Video_Processor(object):
                 self.logger.log_write("Can't load the saved network video device, "
                                       "the saved network video device is no exist.",
                                       Log_Processor.ERROR)
+                self.ui_value.value = 1
                 return 1
 
         # 验证协议可用性
@@ -640,6 +700,7 @@ class Video_Processor(object):
             self.logger.log_write(f"The video transmission transprotocol " +
                                   f"{video_protocol_type} is not supported.",
                                   Log_Processor.ERROR)
+            self.ui_value.value = 2
             return 2
 
         # 根据传入信息获得网络视频设备的url地址，用于opencv的读取
@@ -700,6 +761,7 @@ class Video_Processor(object):
             self.logger.log_write(f"Fail to load the network video device, the url "
                                   f"{video_sourse} caputure is timing out.",
                                   Log_Processor.ERROR)
+            self.ui_value.value = 3
             return 3
         # 否则进程运行完成，获得队列结果
         # 非空时获得结果
@@ -709,12 +771,15 @@ class Video_Processor(object):
             self.logger.log_write(f"Fail to load the network video device, the url "
                                   f"{video_sourse} caputure is timing out.",
                                   Log_Processor.ERROR)
+            self.ui_value.value = 3
             return 3
 
         # 如果结果是True，说明打开成功
         if video_stream_flag:
 
             video_stream = cv.VideoCapture(video_sourse, apiPreference=cv.CAP_FFMPEG)
+            # 更新共享变量以说明进程启动成功
+            self.ui_value.value = -9
             # 获得视频流参数，包括宽度、高度和帧率，转为整型
             real_width = int(video_stream.get(cv.CAP_PROP_FRAME_WIDTH))
             real_height = int(video_stream.get(cv.CAP_PROP_FRAME_HEIGHT))
@@ -782,7 +847,8 @@ class Video_Processor(object):
                 # 创建进程，传入参数并运行
                 video_detect_process = multiprocessing.Process(
                     target=self.video_detector.detect,
-                    args=(frame_queue, result_queue, video_deetect_type))
+                    args=(frame_queue, result_queue, video_detect_type),
+                    kwargs={"sensitivity": video_detect_sensitivity})
                 video_detect_process.start()
                 self.logger.log_write("Start running video detect process",
                                       Log_Processor.INFO)
@@ -811,11 +877,13 @@ class Video_Processor(object):
                 except FileExistsError as e:
                     self.logger.log_write(f"Fail to create save video dir: " + e.strerror,
                                           Log_Processor.ERROR)
+                    self.ui_value.value = -3
                     return -3
                 # 如果路径有错误
                 except OSError as e:
                     self.logger.log_write(f"Fail to create save video dir: " + e.strerror,
                                           Log_Processor.ERROR)
+                    self.ui_value.value = -3
                     return -3
 
                 # 无错误则输入视频流至文件中
@@ -833,12 +901,25 @@ class Video_Processor(object):
                         self.hs_processor.delete_new_video_file(save_path)
                         self.logger.log_write(f"Fail to create save video file: {save_path}",
                                               Log_Processor.ERROR)
+                        self.ui_value.value = -3
                         return -3
 
             # 循环部分，用于读取视频
             # skip用于跳帧
             skip = 0
             while True:
+                # 如果ui界面触发了关闭事件，退出进程
+                if self.ui_event.is_set():
+                    if flag_save:
+                        video_out.release()
+                    if flag_visibility:
+                        vis_frame_queue.put(None)
+                    video_stream.release()
+                    # 由于没有终止视频帧None，手动传输结束识别进程
+                    if flag_detect:
+                        frame_queue.put(None)
+                    break
+
                 success = video_stream.grab()
                 # 如果摄像头读取失败，日志记录，结束运行，释放视频捕捉对象，销毁窗口
                 if not success:
@@ -856,6 +937,7 @@ class Video_Processor(object):
                     # 由于没有终止视频帧None，手动传输结束识别进程
                     if flag_detect:
                         frame_queue.put(None)
+                    self.ui_value.value = -2
                     return -2
 
                 # 跳帧或者视频解码
@@ -886,7 +968,7 @@ class Video_Processor(object):
                         now_time = datetime.datetime.now().strftime(Log_Processor.strftime_all)
                         # 创建线程，并用报警器进行处理
                         threading.Thread(target=self.warning_processor.warning_process,
-                                         args=(warning_info[0], now_time, warning_info[1]))
+                                         args=(warning_info[0], now_time, warning_info[1], video_detect_sensitivity))
                         self.logger.log_write(f"{now_time} have exception", Log_Processor.WARNING)
 
                 # 可见窗口时的操作
@@ -918,19 +1000,22 @@ class Video_Processor(object):
                                   f" Please check the url or the config file of config "
                                   f"{os.path.basename(self.config_data['IP-video-device-file'])}",
                                   Log_Processor.ERROR)
+            self.ui_value.value = -1
             return -1
 
         # 正常退出
         self.logger.log_write(f"Stop using the network video device " +
                               f"{video_sourse}",
                               Log_Processor.INFO)
+        self.ui_value.value = 0
         return 0
 
     def load_history_video(self, video_strat_save_date: str,
                            video_index: int = 1,
                            flag_visibility: bool = True,
                            flag_re_detect: bool = True,
-                           video_deetect_type: int = 1) -> int:
+                           video_detect_sensitivity: int = 0,
+                           video_detect_type: int = 1) -> int:
         """
         从历史视频保存文件夹中利用opencv库加载视频流，根据传入的视频录制日期和索引号来捕捉视频信息
 
@@ -945,7 +1030,9 @@ class Video_Processor(object):
             控制opencv在读取视频流时是否展示，True时展示视频，False时不展示，可用于后台处理视频
         flag_re_detect : bool
             控制历史视频是否需要进行监测，目标追踪，默认为True
-        video_deetect_type : int
+        video_detect_sensitivity : int
+            控制视频流在监测时的敏感度，0为低敏感度，1为高敏感度
+        video_detect_type : int
             控制历史视频监测的类型，0为全部监测，1为只监测火焰，2为只监测人，3为检测异常情况
 
         Returns
@@ -964,6 +1051,7 @@ class Video_Processor(object):
         if not self._load_flag[2]:
             self.logger.log_write("Can't load history video, the history video directory is empty.",
                                   Log_Processor.ERROR)
+            self.ui_value.value = 1
             return 1
 
         # 获得历史视频文件及基本信息
@@ -972,11 +1060,13 @@ class Video_Processor(object):
         if video_info == 2:
             self.logger.log_write(f"The {video_strat_save_date} date does not have " +
                                   f"any saved historical video files.", Log_Processor.ERROR)
+            self.ui_value.value = 2
             return 2
         # 如果索引不存在，返回3，进行日志记录
         elif video_info == 3:
             self.logger.log_write(f"The {video_strat_save_date} date does not have " +
                                   f"the video file index {video_index}.", Log_Processor.ERROR)
+            self.ui_value.value = 3
             return 3
 
         # 否则说明视频文件存在
@@ -985,6 +1075,8 @@ class Video_Processor(object):
 
         # 判断是否打开，成功则进行下一步的处理
         if video_stream.isOpened():
+            # 更新共享变量以说明进程启动成功
+            self.ui_value.value = -9
 
             # 获得视频流参数，包括宽度、高度和帧率，转为整型
             real_width = int(video_stream.get(cv.CAP_PROP_FRAME_WIDTH))
@@ -992,25 +1084,20 @@ class Video_Processor(object):
             real_fps = int(video_stream.get(cv.CAP_PROP_FPS))
 
             # 如果超过了要求大小，限制其大小为720p
-            # 竖屏限制
+            # 横屏限制
             if real_width > real_height:
-                if real_width > 1280 or real_height > 720:
-                    width, height = 1280, 720
+                if real_width > self._video_resolution[0] or real_height > self._video_resolution[1]:
+                    width, height = self._video_resolution[0], self._video_resolution[1]
                     video_stream.set(cv.CAP_PROP_FRAME_WIDTH, width)
                     video_stream.set(cv.CAP_PROP_FRAME_HEIGHT, height)
                 else:
                     width, height = real_width, real_height
-            # 横屏限制
+            # 竖屏限制
             else:
-                if real_width > 720 or real_height > 1280:
-                    if real_fps != 90000:
-                        width, height = 720, 1280
-                        video_stream.set(cv.CAP_PROP_FRAME_WIDTH, width)
-                        video_stream.set(cv.CAP_PROP_FRAME_HEIGHT, height)
-                    else:
-                        width, height = 720, 1280
-                        video_stream.set(cv.CAP_PROP_FRAME_WIDTH, width)
-                        video_stream.set(cv.CAP_PROP_FRAME_HEIGHT, height)
+                if real_width > self._video_resolution[1] or real_height > self._video_resolution[0]:
+                    width, height = self._video_resolution[1], self._video_resolution[0]
+                    video_stream.set(cv.CAP_PROP_FRAME_WIDTH, width)
+                    video_stream.set(cv.CAP_PROP_FRAME_HEIGHT, height)
                 else:
                     width, height = real_width, real_height
             # 帧率限制
@@ -1060,12 +1147,18 @@ class Video_Processor(object):
                                   f"the setting video height is {height} " +
                                   f"and the setting video fps is {fps} ",
                                   Log_Processor.INFO)
+
             video_detect_process = None
             if flag_re_detect:
-                video_detect_process = multiprocessing.Process(target=self.video_detector.re_detect,
-                                                               args=(video_file, video_deetect_type,
-                                                                     os.path.dirname(video_file)))
+                video_detect_process = multiprocessing.Process(
+                    target=self.video_detector.re_detect,
+                    args=(video_file, self.ui_event, video_detect_type),
+                    kwargs={"sensitivity": video_detect_sensitivity})
                 video_detect_process.start()
+                # 确保进程不是守护进程
+                video_detect_process.daemon = False
+                self.logger.log_write("Start running video detect process",
+                                      Log_Processor.INFO)
 
             # 如果需要可视化，创建视频窗口，设置相应参数
             Window_name = ""
@@ -1088,6 +1181,16 @@ class Video_Processor(object):
             # 视频已读帧数记录，用于判断视频是否读取完毕
             frame_count = 0
             while True:
+                # 如果ui界面触发了关闭事件，退出进程
+                if self.ui_event.is_set():
+                    if flag_visibility:
+                        cv.destroyWindow(Window_name)
+                    video_stream.release()
+                    # 由于没有终止视频帧，直接关闭进程
+                    if flag_re_detect:
+                        video_detect_process.terminate()
+                    break
+
                 success, frame = video_stream.read()
                 # 如果视频读取失败，判断是是否读取完毕
                 if not success:
@@ -1109,7 +1212,9 @@ class Video_Processor(object):
                         if flag_visibility:
                             cv.destroyWindow(Window_name)
                         video_stream.release()
-                        video_detect_process.join()
+                        if flag_re_detect:
+                            video_detect_process.terminate()
+                        self.ui_value.value = -2
                         return -2
 
                 # 成功时读取帧数+1
@@ -1146,6 +1251,7 @@ class Video_Processor(object):
             self.logger.log_write(f"Fail to load the history video file " +
                                   f"{video_file}.",
                                   Log_Processor.ERROR)
+            self.ui_value.value = -1
             return -1
 
         # 正常退出
@@ -1153,23 +1259,8 @@ class Video_Processor(object):
         self.logger.log_write(f"Stop reading the history video file " +
                               f"{video_file}",
                               Log_Processor.INFO)
+        self.ui_value.value = 0
         return 0
-
-    def video_process(self, function_type: int = 0, show_video: bool = False,
-                      video_sourse: Union[str, int] = 0, video_type: int = 0) -> bool:
-        """
-        Parameters
-        ----------
-        function_type : int
-        show_video : bool
-        video_sourse : Union[str, int]
-        video_type : int
-
-        Returns
-        -------
-
-        """
-        pass
 
 # 模块测试部分
 if __name__ == "__main__":

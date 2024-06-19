@@ -18,9 +18,6 @@ from ipaddress import ip_address
 
 __all__ = ["Nvd_Processor"]
 
-# 当前代码文件路径
-_nvd_config_code_file = __file__
-
 class Nvd_Processor(object):
     """
     Nvd_Processor(nvd_config_file, re_parse)
