@@ -1,0 +1,1150 @@
+
+<!DOCTYPE html>
+
+
+<html lang="zh-CN" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>home_security_surveillance.File_process package &#8212; home_security_surveillance 1.5 文档</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=362ab14a" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=a8cb9c0f"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/translations.js?v=beaddf03"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'home_security_surveillance.File_process';</script>
+    <link rel="index" title="索引" href="genindex.html" />
+    <link rel="search" title="搜索" href="search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="zh-CN"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">home_security_surveillance 1.5 文档</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="搜索" aria-label="搜索" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">搜索</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="搜索" aria-label="搜索" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">搜索</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="home_security_surveillance.Common.html">home_security_surveillance.Common package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="home_security_surveillance.Exception_process.html">home_security_surveillance.Exception_process package</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">home_security_surveillance.File_process package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="home_security_surveillance.Ui.html">home_security_surveillance.Ui package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="home_security_surveillance.Video_process.html">home_security_surveillance.Video_process package</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page">home_securit...</li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="home-security-surveillance-file-process-package">
+<h1>home_security_surveillance.File_process package<a class="headerlink" href="#home-security-surveillance-file-process-package" title="Link to this heading">#</a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading">#</a></h2>
+</section>
+<section id="module-home_security_surveillance.File_process.config">
+<span id="home-security-surveillance-file-process-config-module"></span><h2>home_security_surveillance.File_process.config module<a class="headerlink" href="#module-home_security_surveillance.File_process.config" title="Link to this heading">#</a></h2>
+<p>File Name: config.py
+Author: 07xiaohei
+Date: 2024-05-10
+Version: 1.5
+Description: config配置文件的处理部分</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="home_security_surveillance.File_process.config.load_config">
+<span class="sig-prename descclassname"><span class="pre">home_security_surveillance.File_process.config.</span></span><span class="sig-name descname"><span class="pre">load_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">relative</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">dict</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">dict</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/home_security_surveillance/File_process/config.html#load_config"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#home_security_surveillance.File_process.config.load_config" title="Link to this definition">#</a></dt>
+<dd><p>加载配置文件函数</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>relative</strong> (<em>bool</em>) – 控制返回时字典型配置文件的文件路径是相对的还是绝对的，默认为绝对</p>
+</dd>
+<dt class="field-even">返回<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>config_data</strong> (<em>dict</em>) – 返回从json格式文件中加载的字典型配置文件,如无可用的键值自动用默认键值对补充</p></li>
+<li><p><strong>invalid_config_data</strong> (<em>dict</em>) – 返回json格式文件中的无效键值对,无内容时为{}</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="home_security_surveillance.File_process.config.trans_config_abspath">
+<span class="sig-prename descclassname"><span class="pre">home_security_surveillance.File_process.config.</span></span><span class="sig-name descname"><span class="pre">trans_config_abspath</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">relative_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span></span></span><a class="reference internal" href="_modules/home_security_surveillance/File_process/config.html#trans_config_abspath"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#home_security_surveillance.File_process.config.trans_config_abspath" title="Link to this definition">#</a></dt>
+<dd><p>由于配置文件中的路径默认只有名称，需要转化为绝对路径
+如果是绝对路径不做修改
+将默认配置文件的相对路径转化为绝对路径</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>relative_path</strong> (<em>Union</em><em>[</em><em>Dict</em><em>[</em><em>str</em><em>,</em><em>str</em><em>]</em><em>, </em><em>List</em><em>[</em><em>str</em><em>]</em><em>, </em><em>str</em><em>]</em>) – 传入的相对路径，可以是单个的，也可以是一个字典或者列表</p>
+</dd>
+<dt class="field-even">返回<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>abs_path</strong> – 将相应的相对路径转化为绝对路径的结果</p>
+</dd>
+<dt class="field-odd">返回类型<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Union[Dict[str, str], List[str], str]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="home_security_surveillance.File_process.config.write_config">
+<span class="sig-prename descclassname"><span class="pre">home_security_surveillance.File_process.config.</span></span><span class="sig-name descname"><span class="pre">write_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">json_key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">json_value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/home_security_surveillance/File_process/config.html#write_config"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#home_security_surveillance.File_process.config.write_config" title="Link to this definition">#</a></dt>
+<dd><p>将单个键值对的配置信息写入配置文件函数
+可用于添加或修改，但仅限于已有的部分</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>json_key</strong> (<em>str</em>) – 要写入配置文件的单个键</p></li>
+<li><p><strong>json_value</strong> (<em>str</em>) – 要写入配置文件的单个值</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-home_security_surveillance.File_process.history_video">
+<span id="home-security-surveillance-file-process-history-video-module"></span><h2>home_security_surveillance.File_process.history_video module<a class="headerlink" href="#module-home_security_surveillance.File_process.history_video" title="Link to this heading">#</a></h2>
+<p>File Name: history_video.py
+Author: 07xiaohei
+Date: 2024-05-12
+Version: 1.5
+Description: 对历史视频记录文件的处理部分</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="home_security_surveillance.File_process.history_video.History_Video_Processor">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">home_security_surveillance.File_process.history_video.</span></span><span class="sig-name descname"><span class="pre">History_Video_Processor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">hv_dir</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/home_security_surveillance/File_process/history_video.html#History_Video_Processor"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#home_security_surveillance.File_process.history_video.History_Video_Processor" title="Link to this definition">#</a></dt>
+<dd><p>基类：<code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>历史视频处理器对象，用于处理历史视频目录内的目录和文件，以及对应的数据结构</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>hv_dir</strong> (<em>str</em>) – 历史视频文件的根目录，默认值和_config_defaluts中的history-video-directory对应绝对路径相同</p></li>
+<li><p><strong>video_suffix</strong> (<em>str</em>) – 保存历史视频文件时的默认后缀，默认为”avi”</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="home_security_surveillance.File_process.history_video.History_Video_Processor.hv_root_dir">
+<span class="sig-name descname"><span class="pre">hv_root_dir</span></span><a class="headerlink" href="#home_security_surveillance.File_process.history_video.History_Video_Processor.hv_root_dir" title="Link to this definition">#</a></dt>
+<dd><p>历史视频文件的根目录，和hv_dir相同</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="home_security_surveillance.File_process.history_video.History_Video_Processor.hv_dict">
+<span class="sig-name descname"><span class="pre">hv_dict</span></span><a class="headerlink" href="#home_security_surveillance.File_process.history_video.History_Video_Processor.hv_dict" title="Link to this definition">#</a></dt>
+<dd><p>历史视频文件索引字典，第一级是年月日格式的字符串，
+第二级是一个字典，key为视频文件的索引，value为一个元组，第一个元素是视频文件绝对路径，第二个元素是视频开始时间
+年月日格式是格式化后的，索引是整型</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Dict[str, Dict[int, Tuple[str, str]]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="home_security_surveillance.File_process.history_video.History_Video_Processor.video_suffix">
+<span class="sig-name descname"><span class="pre">video_suffix</span></span><a class="headerlink" href="#home_security_surveillance.File_process.history_video.History_Video_Processor.video_suffix" title="Link to this definition">#</a></dt>
+<dd><p>保存历史视频文件时的默认后缀，保存是统一的</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<p class="rubric">备注</p>
+<p>历史视频目录的结构和命名格式为:
+第一级目录，命名格式为：年-月
+|   第二级目录，命名格式为：日
+|   |  不同的历史视频文件：命名格式为”视频索引值”+”_”+_strftime_date格式的开始时间.{video_suffix}”
+数据结构的存储和实际目录有所区别(前者为了便于处理，后者为了便于外部寻找)</p>
+<p class="rubric">示例</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="home_security_surveillance.File_process.history_video.History_Video_Processor.date_build">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">date_build</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">year_month_str</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">day_str</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">split</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'-'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/home_security_surveillance/File_process/history_video.html#History_Video_Processor.date_build"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#home_security_surveillance.File_process.history_video.History_Video_Processor.date_build" title="Link to this definition">#</a></dt>
+<dd><p>根据年月和日拼接得到日期</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>year_month_str</strong> (<em>str</em>) – 年-月或其他分割格式的年份月份信息</p></li>
+<li><p><strong>day_str</strong> (<em>str</em>) – 日期信息</p></li>
+<li><p><strong>split</strong> (<em>str</em>) – 年份月份字符串的分割符,默认为”-”</p></li>
+</ul>
+</dd>
+<dt class="field-even">返回<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>date_str</strong> – 年-月-日或其他分割格式的日期信息</p>
+</dd>
+<dt class="field-odd">返回类型<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="home_security_surveillance.File_process.history_video.History_Video_Processor.date_split">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">date_split</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">date_str</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">split</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'-'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/home_security_surveillance/File_process/history_video.html#History_Video_Processor.date_split"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#home_security_surveillance.File_process.history_video.History_Video_Processor.date_split" title="Link to this definition">#</a></dt>
+<dd><p>将日期格式字符串转为年月字符串和日字符串</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>date_str</strong> (<em>str</em>) – 年-月-日或其他分割格式的日期信息</p></li>
+<li><p><strong>split</strong> (<em>str</em>) – 年份月份字符串的分割符,默认为”-”</p></li>
+</ul>
+</dd>
+<dt class="field-even">返回<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>year_month_str</strong> (<em>str</em>) – 年-月或其他分割格式的年份月份信息</p></li>
+<li><p><strong>day_str</strong> (<em>str</em>) – 日期信息</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="home_security_surveillance.File_process.history_video.History_Video_Processor.delete_new_video_file">
+<span class="sig-name descname"><span class="pre">delete_new_video_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">del_video_file</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/home_security_surveillance/File_process/history_video.html#History_Video_Processor.delete_new_video_file"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#home_security_surveillance.File_process.history_video.History_Video_Processor.delete_new_video_file" title="Link to this definition">#</a></dt>
+<dd><p>外部创建视频文件失败后，在历史视频处理器中的删除函数</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>del_video_file</strong> (<em>str</em>) – 根据当前文件夹情况和开始时间生成的最终文件路径，传入该参数说明创建文件失败</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="home_security_surveillance.File_process.history_video.History_Video_Processor.format_date">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">format_date</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">date_tuple</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/home_security_surveillance/File_process/history_video.html#History_Video_Processor.format_date"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#home_security_surveillance.File_process.history_video.History_Video_Processor.format_date" title="Link to this definition">#</a></dt>
+<dd><p>类的静态方法，用于将年月日的三元素元组转为年-月-日格式的日期</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>date_tuple</strong> (<em>Tuple</em><em>[</em><em>int</em><em>, </em><em>int</em><em>, </em><em>int</em><em>]</em>) – 年月日的三元素元组</p>
+</dd>
+<dt class="field-even">返回<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>date_str</strong> – 年-月-日格式的日期</p>
+</dd>
+<dt class="field-odd">返回类型<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="home_security_surveillance.File_process.history_video.History_Video_Processor.format_time">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">format_time</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time_tuple</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/home_security_surveillance/File_process/history_video.html#History_Video_Processor.format_time"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#home_security_surveillance.File_process.history_video.History_Video_Processor.format_time" title="Link to this definition">#</a></dt>
+<dd><p>类的静态方法，用于将时分秒的三元素元组转为时-分-秒格式的时间</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>time_tuple</strong> (<em>Tuple</em><em>[</em><em>int</em><em>, </em><em>int</em><em>, </em><em>int</em><em>]</em>) – 时分秒的三元素元组</p>
+</dd>
+<dt class="field-even">返回<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>time_str</strong> – 时分秒格式的时间</p>
+</dd>
+<dt class="field-odd">返回类型<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="home_security_surveillance.File_process.history_video.History_Video_Processor.generate_video_file">
+<span class="sig-name descname"><span class="pre">generate_video_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">start_time</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/home_security_surveillance/File_process/history_video.html#History_Video_Processor.generate_video_file"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#home_security_surveillance.File_process.history_video.History_Video_Processor.generate_video_file" title="Link to this definition">#</a></dt>
+<dd><p>根据传入的开始时间生成历史视频文件路径</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>start_time</strong> (<em>str</em>) – 视频开始保存的时间，格式与Log_processor.strftime_all相同</p>
+</dd>
+<dt class="field-even">返回<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>new_video_file</strong> – 根据当前文件夹情况和开始时间生成的新文件路径(未创建文件)，用于保存视频文件</p>
+</dd>
+<dt class="field-odd">返回类型<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="home_security_surveillance.File_process.history_video.History_Video_Processor.get_date_video_file">
+<span class="sig-name descname"><span class="pre">get_date_video_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">video_strat_save_date</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/home_security_surveillance/File_process/history_video.html#History_Video_Processor.get_date_video_file"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#home_security_surveillance.File_process.history_video.History_Video_Processor.get_date_video_file" title="Link to this definition">#</a></dt>
+<dd><p>通过hv_dict获得对应日期的视频文件字典和视频文件信息字典函数</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>video_strat_save_date</strong> (<em>str</em>) – 保存的视频的对应日期，格式为年-月-日，跨日的视频以开始保存的日期为准</p>
+</dd>
+<dt class="field-even">返回<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>video_file_list</strong> (<em>Dict[int, str]</em>) – 视频日期存在时，返回其每个视频的索引，字符串路径组成的键值对的，否则，返回空字典</p></li>
+<li><p><strong>video_information_list</strong> (<em>Union[Dict[int, str], int]</em>) – 视频文件存在时，返回每个视频文件的对应信息字符串列表，格式为:年-月-日_索引_时-分-秒，包括了时间信息和索引信息
+如果日期不存在，返回2，如果无视频文件，返回3</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="home_security_surveillance.File_process.history_video.History_Video_Processor.get_video_file">
+<span class="sig-name descname"><span class="pre">get_video_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">video_strat_save_date</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">video_index</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/home_security_surveillance/File_process/history_video.html#History_Video_Processor.get_video_file"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#home_security_surveillance.File_process.history_video.History_Video_Processor.get_video_file" title="Link to this definition">#</a></dt>
+<dd><p>通过hv_dict获得对应日期和索引的视频文件函数</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>video_strat_save_date</strong> (<em>str</em>) – 要加载的历史视频的保存日期，跨日的视频以开始保存的日期为准，用于opencv库从视频源处获得视频流
+注意日期的格式为{年}分隔符{月}分隔符{日}，年一定是长为4的字符串</p></li>
+<li><p><strong>video_index</strong> (<em>int</em>) – 要加载的历史视频在保存日期的索引，用于区别单个日期保存的多个视频</p></li>
+</ul>
+</dd>
+<dt class="field-even">返回<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>video_save_file</strong> (<em>str</em>) – 视频文件存在时，返回其保存的字符串路径，否则，返回空字符串</p></li>
+<li><p><strong>video_information</strong> (<em>Union[str, int]</em>) – 视频文件存在时，返回视频文件的对应信息字符串，格式为:年-月-日_索引_时-分-秒，包括了时间信息和索引信息
+如果日期不存在，返回2，如果索引不存在，返回3</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="home_security_surveillance.File_process.history_video.History_Video_Processor.parse_date">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">parse_date</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">date_str</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">split</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'-'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/home_security_surveillance/File_process/history_video.html#History_Video_Processor.parse_date"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#home_security_surveillance.File_process.history_video.History_Video_Processor.parse_date" title="Link to this definition">#</a></dt>
+<dd><p>类的静态方法，用于将年-月-日或其他分割格式的日期转为年月日的三元素元组</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>date_str</strong> (<em>str</em>) – 传入的日期字符串，包含年月日信息</p></li>
+<li><p><strong>split</strong> (<em>str</em>) – 传入的日期分隔符，默认为”-”</p></li>
+</ul>
+</dd>
+<dt class="field-even">返回<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>date_tuple</strong> – 返回年月日的三元素元组，默认类型为int</p>
+</dd>
+<dt class="field-odd">返回类型<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Tuple[int, int, int]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="home_security_surveillance.File_process.history_video.History_Video_Processor.parse_history_video_name">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">parse_history_video_name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name_str</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/home_security_surveillance/File_process/history_video.html#History_Video_Processor.parse_history_video_name"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#home_security_surveillance.File_process.history_video.History_Video_Processor.parse_history_video_name" title="Link to this definition">#</a></dt>
+<dd><p>类的静态方法，用于解析视频文件名为合适的数据结构</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>name_str</strong> (<em>视频文件名的字符串</em>)</p>
+</dd>
+<dt class="field-even">返回<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>index, start_time_str</strong> – 存储了包含视频索引和开始时间的字符串</p>
+</dd>
+<dt class="field-odd">返回类型<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Tuple[int, str]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="home_security_surveillance.File_process.history_video.History_Video_Processor.parse_time">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">parse_time</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time_str</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">split</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'-'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/home_security_surveillance/File_process/history_video.html#History_Video_Processor.parse_time"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#home_security_surveillance.File_process.history_video.History_Video_Processor.parse_time" title="Link to this definition">#</a></dt>
+<dd><p>类的静态方法，用于将时-分-秒或其他分割格式的时间转为时分秒的三元素元组</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>time_str</strong> (<em>str</em>) – 传入的时间字符串，包含时分秒信息</p></li>
+<li><p><strong>split</strong> (<em>str</em>) – 传入的时间分隔符，默认为”-”</p></li>
+</ul>
+</dd>
+<dt class="field-even">返回<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>time_tuple</strong> – 返回时分秒的三元素元组，默认类型为int</p>
+</dd>
+<dt class="field-odd">返回类型<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Tuple[int, int, int]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-home_security_surveillance.File_process.log">
+<span id="home-security-surveillance-file-process-log-module"></span><h2>home_security_surveillance.File_process.log module<a class="headerlink" href="#module-home_security_surveillance.File_process.log" title="Link to this heading">#</a></h2>
+<p>File Name: log.py
+Author: 07xiaohei
+Date: 2024-05-10
+Version: 1.5
+Description: nvd文件的处理，nvd是网络视频设备(network_video_device)的简写，一般为网络摄像头</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="home_security_surveillance.File_process.log.Log_Processor">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">home_security_surveillance.File_process.log.</span></span><span class="sig-name descname"><span class="pre">Log_Processor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">log_dir</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">log_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">level</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/home_security_surveillance/File_process/log.html#Log_Processor"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#home_security_surveillance.File_process.log.Log_Processor" title="Link to this definition">#</a></dt>
+<dd><p>基类：<code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>日志处理器对象，用于创建日志文件并进行读写</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>log_dir</strong> (<em>str</em>) – 日志的根目录</p></li>
+<li><p><strong>log_name</strong> (<em>str</em>) – 日志的文件名</p></li>
+<li><p><strong>level</strong> (<em>int</em>) – 数字形式的日志优先级，默认为INFO级别</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="home_security_surveillance.File_process.log.Log_Processor.strftime_all">
+<span class="sig-name descname"><span class="pre">strftime_all</span></span><a class="headerlink" href="#home_security_surveillance.File_process.log.Log_Processor.strftime_all" title="Link to this definition">#</a></dt>
+<dd><p>日志文件记录时间的格式，是类变量</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="home_security_surveillance.File_process.log.Log_Processor.strftime_date">
+<span class="sig-name descname"><span class="pre">strftime_date</span></span><a class="headerlink" href="#home_security_surveillance.File_process.log.Log_Processor.strftime_date" title="Link to this definition">#</a></dt>
+<dd><p>日志文件记录日期的格式，是类变量</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="home_security_surveillance.File_process.log.Log_Processor.strftime_time">
+<span class="sig-name descname"><span class="pre">strftime_time</span></span><a class="headerlink" href="#home_security_surveillance.File_process.log.Log_Processor.strftime_time" title="Link to this definition">#</a></dt>
+<dd><p>日志文件记录时分秒的格式，是类变量</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">CRITICAL</span> <span class="pre">=</span> <span class="pre">logging.CRITICAL</span></span></dt>
+<dd><p>日志文件输出的消息级别，致命错误</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">ERROR</span> <span class="pre">=</span> <span class="pre">logging.ERROR</span></span></dt>
+<dd><p>日志文件输出的消息级别，一般错误</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">WARNING</span> <span class="pre">=</span> <span class="pre">logging.WARNING</span></span></dt>
+<dd><p>日志文件输出的消息级别，警告</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">INFO</span> <span class="pre">=</span> <span class="pre">logging.INFO</span></span></dt>
+<dd><p>日志文件输出的消息级别，日常事务</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">DEBUG</span> <span class="pre">=</span> <span class="pre">logging.DEBUG</span></span></dt>
+<dd><p>日志文件输出的消息级别，调试过程</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="home_security_surveillance.File_process.log.Log_Processor.logger">
+<span class="sig-name descname"><span class="pre">logger</span></span><a class="headerlink" href="#home_security_surveillance.File_process.log.Log_Processor.logger" title="Link to this definition">#</a></dt>
+<dd><p>日志记录器对象的一个实例，用于记录活动过程中的运行信息和错误信息</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Logger</p>
+</dd>
+</dl>
+</dd></dl>
+
+<p class="rubric">备注</p>
+<p>对要使用的Logger的包装</p>
+<p class="rubric">示例</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="home_security_surveillance.File_process.log.Log_Processor.CRITICAL">
+<span class="sig-name descname"><span class="pre">CRITICAL</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">50</span></em><a class="headerlink" href="#home_security_surveillance.File_process.log.Log_Processor.CRITICAL" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="home_security_surveillance.File_process.log.Log_Processor.CustomFormatter">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">CustomFormatter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fmt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">datefmt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">style</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'%'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">validate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/home_security_surveillance/File_process/log.html#Log_Processor.CustomFormatter"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#home_security_surveillance.File_process.log.Log_Processor.CustomFormatter" title="Link to this definition">#</a></dt>
+<dd><p>基类：<code class="xref py py-class docutils literal notranslate"><span class="pre">Formatter</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="home_security_surveillance.File_process.log.Log_Processor.CustomFormatter.format">
+<span class="sig-name descname"><span class="pre">format</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">record</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/home_security_surveillance/File_process/log.html#Log_Processor.CustomFormatter.format"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#home_security_surveillance.File_process.log.Log_Processor.CustomFormatter.format" title="Link to this definition">#</a></dt>
+<dd><p>Format the specified record as text.</p>
+<p>The record’s attribute dictionary is used as the operand to a
+string formatting operation which yields the returned string.
+Before formatting the dictionary, a couple of preparatory steps
+are carried out. The message attribute of the record is computed
+using LogRecord.getMessage(). If the formatting string uses the
+time (as determined by a call to usesTime(), formatTime() is
+called to format the event time. If there is exception information,
+it is formatted using formatException() and appended to the message.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="home_security_surveillance.File_process.log.Log_Processor.DEBUG">
+<span class="sig-name descname"><span class="pre">DEBUG</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">10</span></em><a class="headerlink" href="#home_security_surveillance.File_process.log.Log_Processor.DEBUG" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="home_security_surveillance.File_process.log.Log_Processor.ERROR">
+<span class="sig-name descname"><span class="pre">ERROR</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">40</span></em><a class="headerlink" href="#home_security_surveillance.File_process.log.Log_Processor.ERROR" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="home_security_surveillance.File_process.log.Log_Processor.INFO">
+<span class="sig-name descname"><span class="pre">INFO</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">20</span></em><a class="headerlink" href="#home_security_surveillance.File_process.log.Log_Processor.INFO" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="home_security_surveillance.File_process.log.Log_Processor.WARNING">
+<span class="sig-name descname"><span class="pre">WARNING</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">30</span></em><a class="headerlink" href="#home_security_surveillance.File_process.log.Log_Processor.WARNING" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="home_security_surveillance.File_process.log.Log_Processor.log_write">
+<span class="sig-name descname"><span class="pre">log_write</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">content</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Exception</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">level</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/home_security_surveillance/File_process/log.html#Log_Processor.log_write"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#home_security_surveillance.File_process.log.Log_Processor.log_write" title="Link to this definition">#</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>content</strong> (<em>Union</em><em>[</em><em>str</em><em>, </em><em>Exception</em><em>]</em>) – 写入日志的信息，可以是错误类型，也可以是字符串</p></li>
+<li><p><strong>level</strong> (<em>int</em>) – 写入日志的级别，包括CRITICAL、ERROR、WARNING、INFO、DEBUG五个级别</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id0">
+<span class="sig-name descname"><span class="pre">strftime_all</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'%Y-%m-%d_%H-%M-%S'</span></em><a class="headerlink" href="#id0" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id1">
+<span class="sig-name descname"><span class="pre">strftime_date</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'%Y-%m-%d'</span></em><a class="headerlink" href="#id1" title="Link to this definition">#</a></dt>
+<dd><p>noindex:</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id2">
+<span class="sig-name descname"><span class="pre">strftime_time</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'%H-%M-%S'</span></em><a class="headerlink" href="#id2" title="Link to this definition">#</a></dt>
+<dd><p>noindex:</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-home_security_surveillance.File_process.nvd_config">
+<span id="home-security-surveillance-file-process-nvd-config-module"></span><h2>home_security_surveillance.File_process.nvd_config module<a class="headerlink" href="#module-home_security_surveillance.File_process.nvd_config" title="Link to this heading">#</a></h2>
+<p>File Name: nvd_config.py
+Author: 07xiaohei
+Date: 2024-05-10
+Version: 1.5
+Description: nvd文件的处理，nvd是网络视频设备(network_video_device)的简写，一般为网络摄像头</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="home_security_surveillance.File_process.nvd_config.Nvd_Processor">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">home_security_surveillance.File_process.nvd_config.</span></span><span class="sig-name descname"><span class="pre">Nvd_Processor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nvd_config_file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">re_parse</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/home_security_surveillance/File_process/nvd_config.html#Nvd_Processor"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#home_security_surveillance.File_process.nvd_config.Nvd_Processor" title="Link to this definition">#</a></dt>
+<dd><p>基类：<code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>网络视频设备处理器对象，用于处理网络应用设备的json文件和数据结构</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>nvd_config_file</strong> (<em>str</em>) – 要加载的网络摄像头配置文件的路径，默认值和_config_defaluts中的IP-video-device-file对应绝对路径相同</p></li>
+<li><p><strong>re_parse</strong> (<em>bool</em>) – 是否重新解析url的内容，默认为True</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="home_security_surveillance.File_process.nvd_config.Nvd_Processor._nvd_config_keys">
+<span class="sig-name descname"><span class="pre">_nvd_config_keys</span></span><a class="headerlink" href="#home_security_surveillance.File_process.nvd_config.Nvd_Processor._nvd_config_keys" title="Link to this definition">#</a></dt>
+<dd><p>nvd配置文件可用的键值，包括url、index、ip、port、username和passname，是类变量</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>List[str, …]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="home_security_surveillance.File_process.nvd_config.Nvd_Processor._nvd_config_defaluts">
+<span class="sig-name descname"><span class="pre">_nvd_config_defaluts</span></span><a class="headerlink" href="#home_security_surveillance.File_process.nvd_config.Nvd_Processor._nvd_config_defaluts" title="Link to this definition">#</a></dt>
+<dd><p>nvd配置文件的默认键值对，是类变量</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Dict[str, str]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="home_security_surveillance.File_process.nvd_config.Nvd_Processor.nvd_config_data">
+<span class="sig-name descname"><span class="pre">nvd_config_data</span></span><a class="headerlink" href="#home_security_surveillance.File_process.nvd_config.Nvd_Processor.nvd_config_data" title="Link to this definition">#</a></dt>
+<dd><p>网络摄像头配置文件中解析所得数据，包含了网络视频设备(IP摄像头)的url、ip等信息
+是一个json列表，每个元素对应一个存储网络摄像头相关信息的字典对象</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>List[Dict[str, str]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="home_security_surveillance.File_process.nvd_config.Nvd_Processor.video_trans_protocol_dict">
+<span class="sig-name descname"><span class="pre">video_trans_protocol_dict</span></span><a class="headerlink" href="#home_security_surveillance.File_process.nvd_config.Nvd_Processor.video_trans_protocol_dict" title="Link to this definition">#</a></dt>
+<dd><p>网络摄像头传输视频使用的协议，是类变量
+包括大部分网络摄像头使用的传输协议，key为索引，value为对应的协议字符串</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Dict[int, str]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<p class="rubric">备注</p>
+<p class="rubric">示例</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="home_security_surveillance.File_process.nvd_config.Nvd_Processor.add_nvd_config">
+<span class="sig-name descname"><span class="pre">add_nvd_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nvd_url</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/home_security_surveillance/File_process/nvd_config.html#Nvd_Processor.add_nvd_config"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#home_security_surveillance.File_process.nvd_config.Nvd_Processor.add_nvd_config" title="Link to this definition">#</a></dt>
+<dd><p>添加网络设备ip
+:param nvd_url: 网络视频设备的url地址
+:type nvd_url: str</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="home_security_surveillance.File_process.nvd_config.Nvd_Processor.change_nvd_config">
+<span class="sig-name descname"><span class="pre">change_nvd_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nvd_config_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">[]</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/home_security_surveillance/File_process/nvd_config.html#Nvd_Processor.change_nvd_config"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#home_security_surveillance.File_process.nvd_config.Nvd_Processor.change_nvd_config" title="Link to this definition">#</a></dt>
+<dd><p>修改网络视频设备的配置文件内容，和写入函数的参数相同</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="home_security_surveillance.File_process.nvd_config.Nvd_Processor.delete_nvd_config">
+<span class="sig-name descname"><span class="pre">delete_nvd_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">del_information</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/home_security_surveillance/File_process/nvd_config.html#Nvd_Processor.delete_nvd_config"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#home_security_surveillance.File_process.nvd_config.Nvd_Processor.delete_nvd_config" title="Link to this definition">#</a></dt>
+<dd><p>删除某个不使用的网络视频设备
+:param del_information: 要删除设备的url或者索引
+:type del_information: Union[str, int]</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="home_security_surveillance.File_process.nvd_config.Nvd_Processor.from_ip_find_url">
+<span class="sig-name descname"><span class="pre">from_ip_find_url</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ip</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/home_security_surveillance/File_process/nvd_config.html#Nvd_Processor.from_ip_find_url"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#home_security_surveillance.File_process.nvd_config.Nvd_Processor.from_ip_find_url" title="Link to this definition">#</a></dt>
+<dd><p>查找是否有此ip地址，并返回url
+:param ip: 传入的ip地址
+:type ip: str</p>
+<dl class="field-list simple">
+<dt class="field-odd">返回<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>url</strong> – 返回ip对应的url，如果不存在该ip，返回空字符串</p>
+</dd>
+<dt class="field-even">返回类型<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="home_security_surveillance.File_process.nvd_config.Nvd_Processor.load_nvd_config">
+<span class="sig-name descname"><span class="pre">load_nvd_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nvd_config_file</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">re_parse</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/home_security_surveillance/File_process/nvd_config.html#Nvd_Processor.load_nvd_config"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#home_security_surveillance.File_process.nvd_config.Nvd_Processor.load_nvd_config" title="Link to this definition">#</a></dt>
+<dd><p>加载nvd配置文件为对应的数据结构
+:param nvd_config_file: 要加载的网络摄像头配置文件的路径
+:type nvd_config_file: str
+:param re_parse: 是否重新解析url的内容，默认为True
+:type re_parse: bool</p>
+<dl class="field-list simple">
+<dt class="field-odd">返回<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>nvd_config_data</strong> – 网络摄像头配置文件中解析所得数据，是一个json列表，每个元素对应一个存储网络摄像头相关信息的字典对象</p>
+</dd>
+<dt class="field-even">返回类型<span class="colon">:</span></dt>
+<dd class="field-even"><p>List[Dict[str, str]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="home_security_surveillance.File_process.nvd_config.Nvd_Processor.vaild_ip">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">vaild_ip</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ip</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="reference internal" href="_modules/home_security_surveillance/File_process/nvd_config.html#Nvd_Processor.vaild_ip"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#home_security_surveillance.File_process.nvd_config.Nvd_Processor.vaild_ip" title="Link to this definition">#</a></dt>
+<dd><p>判断是否是ip，并检验ip是否合理
+:param ip: 输入的ip地址
+:type ip: str</p>
+<dl class="field-list simple">
+<dt class="field-odd">返回<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>type</strong> – 传入字符串是否是ip，0表示不是ip，1表示是ipv4,2表示是ipv6</p>
+</dd>
+<dt class="field-even">返回类型<span class="colon">:</span></dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="home_security_surveillance.File_process.nvd_config.Nvd_Processor.vaild_protocol">
+<span class="sig-name descname"><span class="pre">vaild_protocol</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">video_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="reference internal" href="_modules/home_security_surveillance/File_process/nvd_config.html#Nvd_Processor.vaild_protocol"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#home_security_surveillance.File_process.nvd_config.Nvd_Processor.vaild_protocol" title="Link to this definition">#</a></dt>
+<dd><p># 验证要使用的协议是否可用，并返回对应的索引
+:param video_type: 摄像头使用协议的字符串
+:type video_type: str</p>
+<dl class="field-list simple">
+<dt class="field-odd">返回类型<span class="colon">:</span></dt>
+<dd class="field-odd"><p>video_trans_protocol_dict中对应协议的索引</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id3">
+<span class="sig-name descname"><span class="pre">video_trans_protocol_dict</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{1:</span> <span class="pre">'http://',</span> <span class="pre">2:</span> <span class="pre">'https://',</span> <span class="pre">3:</span> <span class="pre">'rtsp://',</span> <span class="pre">4:</span> <span class="pre">'rtmp://'}</span></em><a class="headerlink" href="#id3" title="Link to this definition">#</a></dt>
+<dd><p>noindex:</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-home_security_surveillance.File_process">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-home_security_surveillance.File_process" title="Link to this heading">#</a></h2>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#submodules">Submodules</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-home_security_surveillance.File_process.config">home_security_surveillance.File_process.config module</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#home_security_surveillance.File_process.config.load_config"><code class="docutils literal notranslate"><span class="pre">load_config()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#home_security_surveillance.File_process.config.trans_config_abspath"><code class="docutils literal notranslate"><span class="pre">trans_config_abspath()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#home_security_surveillance.File_process.config.write_config"><code class="docutils literal notranslate"><span class="pre">write_config()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-home_security_surveillance.File_process.history_video">home_security_surveillance.File_process.history_video module</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#home_security_surveillance.File_process.history_video.History_Video_Processor"><code class="docutils literal notranslate"><span class="pre">History_Video_Processor</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#home_security_surveillance.File_process.history_video.History_Video_Processor.hv_root_dir"><code class="docutils literal notranslate"><span class="pre">History_Video_Processor.hv_root_dir</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#home_security_surveillance.File_process.history_video.History_Video_Processor.hv_dict"><code class="docutils literal notranslate"><span class="pre">History_Video_Processor.hv_dict</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#home_security_surveillance.File_process.history_video.History_Video_Processor.video_suffix"><code class="docutils literal notranslate"><span class="pre">History_Video_Processor.video_suffix</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#home_security_surveillance.File_process.history_video.History_Video_Processor.date_build"><code class="docutils literal notranslate"><span class="pre">History_Video_Processor.date_build()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#home_security_surveillance.File_process.history_video.History_Video_Processor.date_split"><code class="docutils literal notranslate"><span class="pre">History_Video_Processor.date_split()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#home_security_surveillance.File_process.history_video.History_Video_Processor.delete_new_video_file"><code class="docutils literal notranslate"><span class="pre">History_Video_Processor.delete_new_video_file()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#home_security_surveillance.File_process.history_video.History_Video_Processor.format_date"><code class="docutils literal notranslate"><span class="pre">History_Video_Processor.format_date()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#home_security_surveillance.File_process.history_video.History_Video_Processor.format_time"><code class="docutils literal notranslate"><span class="pre">History_Video_Processor.format_time()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#home_security_surveillance.File_process.history_video.History_Video_Processor.generate_video_file"><code class="docutils literal notranslate"><span class="pre">History_Video_Processor.generate_video_file()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#home_security_surveillance.File_process.history_video.History_Video_Processor.get_date_video_file"><code class="docutils literal notranslate"><span class="pre">History_Video_Processor.get_date_video_file()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#home_security_surveillance.File_process.history_video.History_Video_Processor.get_video_file"><code class="docutils literal notranslate"><span class="pre">History_Video_Processor.get_video_file()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#home_security_surveillance.File_process.history_video.History_Video_Processor.parse_date"><code class="docutils literal notranslate"><span class="pre">History_Video_Processor.parse_date()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#home_security_surveillance.File_process.history_video.History_Video_Processor.parse_history_video_name"><code class="docutils literal notranslate"><span class="pre">History_Video_Processor.parse_history_video_name()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#home_security_surveillance.File_process.history_video.History_Video_Processor.parse_time"><code class="docutils literal notranslate"><span class="pre">History_Video_Processor.parse_time()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-home_security_surveillance.File_process.log">home_security_surveillance.File_process.log module</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#home_security_surveillance.File_process.log.Log_Processor"><code class="docutils literal notranslate"><span class="pre">Log_Processor</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#home_security_surveillance.File_process.log.Log_Processor.strftime_all"><code class="docutils literal notranslate"><span class="pre">Log_Processor.strftime_all</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#home_security_surveillance.File_process.log.Log_Processor.strftime_date"><code class="docutils literal notranslate"><span class="pre">Log_Processor.strftime_date</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#home_security_surveillance.File_process.log.Log_Processor.strftime_time"><code class="docutils literal notranslate"><span class="pre">Log_Processor.strftime_time</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#home_security_surveillance.File_process.log.Log_Processor.logger"><code class="docutils literal notranslate"><span class="pre">Log_Processor.logger</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#home_security_surveillance.File_process.log.Log_Processor.CRITICAL"><code class="docutils literal notranslate"><span class="pre">Log_Processor.CRITICAL</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#home_security_surveillance.File_process.log.Log_Processor.CustomFormatter"><code class="docutils literal notranslate"><span class="pre">Log_Processor.CustomFormatter</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#home_security_surveillance.File_process.log.Log_Processor.CustomFormatter.format"><code class="docutils literal notranslate"><span class="pre">Log_Processor.CustomFormatter.format()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#home_security_surveillance.File_process.log.Log_Processor.DEBUG"><code class="docutils literal notranslate"><span class="pre">Log_Processor.DEBUG</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#home_security_surveillance.File_process.log.Log_Processor.ERROR"><code class="docutils literal notranslate"><span class="pre">Log_Processor.ERROR</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#home_security_surveillance.File_process.log.Log_Processor.INFO"><code class="docutils literal notranslate"><span class="pre">Log_Processor.INFO</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#home_security_surveillance.File_process.log.Log_Processor.WARNING"><code class="docutils literal notranslate"><span class="pre">Log_Processor.WARNING</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#home_security_surveillance.File_process.log.Log_Processor.log_write"><code class="docutils literal notranslate"><span class="pre">Log_Processor.log_write()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id0"><code class="docutils literal notranslate"><span class="pre">Log_Processor.strftime_all</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"><code class="docutils literal notranslate"><span class="pre">Log_Processor.strftime_date</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2"><code class="docutils literal notranslate"><span class="pre">Log_Processor.strftime_time</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-home_security_surveillance.File_process.nvd_config">home_security_surveillance.File_process.nvd_config module</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#home_security_surveillance.File_process.nvd_config.Nvd_Processor"><code class="docutils literal notranslate"><span class="pre">Nvd_Processor</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#home_security_surveillance.File_process.nvd_config.Nvd_Processor._nvd_config_keys"><code class="docutils literal notranslate"><span class="pre">Nvd_Processor._nvd_config_keys</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#home_security_surveillance.File_process.nvd_config.Nvd_Processor._nvd_config_defaluts"><code class="docutils literal notranslate"><span class="pre">Nvd_Processor._nvd_config_defaluts</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#home_security_surveillance.File_process.nvd_config.Nvd_Processor.nvd_config_data"><code class="docutils literal notranslate"><span class="pre">Nvd_Processor.nvd_config_data</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#home_security_surveillance.File_process.nvd_config.Nvd_Processor.video_trans_protocol_dict"><code class="docutils literal notranslate"><span class="pre">Nvd_Processor.video_trans_protocol_dict</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#home_security_surveillance.File_process.nvd_config.Nvd_Processor.add_nvd_config"><code class="docutils literal notranslate"><span class="pre">Nvd_Processor.add_nvd_config()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#home_security_surveillance.File_process.nvd_config.Nvd_Processor.change_nvd_config"><code class="docutils literal notranslate"><span class="pre">Nvd_Processor.change_nvd_config()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#home_security_surveillance.File_process.nvd_config.Nvd_Processor.delete_nvd_config"><code class="docutils literal notranslate"><span class="pre">Nvd_Processor.delete_nvd_config()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#home_security_surveillance.File_process.nvd_config.Nvd_Processor.from_ip_find_url"><code class="docutils literal notranslate"><span class="pre">Nvd_Processor.from_ip_find_url()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#home_security_surveillance.File_process.nvd_config.Nvd_Processor.load_nvd_config"><code class="docutils literal notranslate"><span class="pre">Nvd_Processor.load_nvd_config()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#home_security_surveillance.File_process.nvd_config.Nvd_Processor.vaild_ip"><code class="docutils literal notranslate"><span class="pre">Nvd_Processor.vaild_ip()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#home_security_surveillance.File_process.nvd_config.Nvd_Processor.vaild_protocol"><code class="docutils literal notranslate"><span class="pre">Nvd_Processor.vaild_protocol()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id3"><code class="docutils literal notranslate"><span class="pre">Nvd_Processor.video_trans_protocol_dict</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-home_security_surveillance.File_process">Module contents</a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  <div class="tocsection sourcelink">
+    <a href="_sources/home_security_surveillance.File_process.rst.txt">
+      <i class="fa-solid fa-file-lines"></i> 显示源代码
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2024, 07xiaohei、youyou、Chai.h、Captain.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    由 <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.3.7创建。
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.15.4.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

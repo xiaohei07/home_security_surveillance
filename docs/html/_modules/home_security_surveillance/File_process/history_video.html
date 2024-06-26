@@ -1,0 +1,915 @@
+
+<!DOCTYPE html>
+
+
+<html lang="zh-CN" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>home_security_surveillance.File_process.history_video &#8212; home_security_surveillance 1.5 文档</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=362ab14a" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../../_static/documentation_options.js?v=a8cb9c0f"></script>
+    <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/translations.js?v=beaddf03"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/home_security_surveillance/File_process/history_video';</script>
+    <link rel="index" title="索引" href="../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="zh-CN"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">home_security_surveillance 1.5 文档</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="搜索" aria-label="搜索" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">搜索</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="搜索" aria-label="搜索" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">搜索</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../../index.html" class="nav-link">模块代码</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page">home_securit...</li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>home_security_surveillance.File_process.history_video 源代码</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">File Name: history_video.py</span>
+<span class="sd">Author: 07xiaohei</span>
+<span class="sd">Date: 2024-05-12</span>
+<span class="sd">Version: 1.5</span>
+<span class="sd">Description: 对历史视频记录文件的处理部分</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="c1"># 引用常用库</span>
+<span class="kn">from</span> <span class="nn">home_security_surveillance.Common</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="c1"># 引入config模块获得默认目录位置</span>
+<span class="kn">from</span> <span class="nn">home_security_surveillance.File_process.config</span> <span class="kn">import</span> <span class="n">config_defaluts</span><span class="p">,</span> <span class="n">trans_config_abspath</span>
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;History_Video_Processor&quot;</span><span class="p">]</span>
+
+<div class="viewcode-block" id="History_Video_Processor">
+<a class="viewcode-back" href="../../../home_security_surveillance.File_process.html#home_security_surveillance.File_process.history_video.History_Video_Processor">[文档]</a>
+<span class="k">class</span> <span class="nc">History_Video_Processor</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    History_Video_Processor(hv_dir)</span>
+<span class="sd">    历史视频处理器对象，用于处理历史视频目录内的目录和文件，以及对应的数据结构</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    hv_dir : str</span>
+<span class="sd">        历史视频文件的根目录，默认值和_config_defaluts中的history-video-directory对应绝对路径相同</span>
+<span class="sd">    video_suffix : str</span>
+<span class="sd">        保存历史视频文件时的默认后缀，默认为&quot;avi&quot;</span>
+
+<span class="sd">    Attributes</span>
+<span class="sd">    ----------</span>
+<span class="sd">    hv_root_dir : str</span>
+<span class="sd">        历史视频文件的根目录，和hv_dir相同</span>
+<span class="sd">    hv_dict : Dict[str, Dict[int, Tuple[str, str]]]</span>
+<span class="sd">        历史视频文件索引字典，第一级是年月日格式的字符串，</span>
+<span class="sd">        第二级是一个字典，key为视频文件的索引，value为一个元组，第一个元素是视频文件绝对路径，第二个元素是视频开始时间</span>
+<span class="sd">        年月日格式是格式化后的，索引是整型</span>
+<span class="sd">    video_suffix : str</span>
+<span class="sd">        保存历史视频文件时的默认后缀，保存是统一的</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    历史视频目录的结构和命名格式为:</span>
+<span class="sd">    第一级目录，命名格式为：年-月</span>
+<span class="sd">    |   第二级目录，命名格式为：日</span>
+<span class="sd">    |   |  不同的历史视频文件：命名格式为&quot;视频索引值&quot;+&quot;_&quot;+_strftime_date格式的开始时间.{video_suffix}&quot;</span>
+<span class="sd">    数据结构的存储和实际目录有所区别(前者为了便于处理，后者为了便于外部寻找)</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">hv_dir</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">trans_config_abspath</span><span class="p">(</span><span class="n">config_defaluts</span><span class="p">[</span><span class="s2">&quot;history-video-directory&quot;</span><span class="p">]),</span>
+                 <span class="n">video_suffix</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;avi&quot;</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;初始化历史视频处理器对象&quot;&quot;&quot;</span>
+
+        <span class="c1"># 保存根目录和视频后缀</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">hv_root_dir</span> <span class="o">=</span> <span class="n">hv_dir</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">video_suffix</span> <span class="o">=</span> <span class="n">video_suffix</span>
+        <span class="c1"># 存储根目录下的视频文件信息，此处说明了格式</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">hv_dict</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]]]</span> <span class="o">=</span> <span class="p">{}</span>
+
+        <span class="c1"># 读取历史视频目录，对应年-月</span>
+        <span class="k">for</span> <span class="n">first_level_dir</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">hv_dir</span><span class="p">):</span>
+            <span class="n">first_level_dir_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">hv_dir</span><span class="p">,</span> <span class="n">first_level_dir</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">first_level_dir_path</span><span class="p">):</span>
+
+                <span class="c1"># 读取历史视频子目录，对应日</span>
+                <span class="k">for</span> <span class="n">sencond_level_dir</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">first_level_dir_path</span><span class="p">):</span>
+                    <span class="n">second_level_dir_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">first_level_dir_path</span><span class="p">,</span> <span class="n">sencond_level_dir</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">second_level_dir_path</span><span class="p">):</span>
+
+                        <span class="c1"># 组合得到日期</span>
+                        <span class="n">date_str</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">date_build</span><span class="p">(</span><span class="n">first_level_dir</span><span class="p">,</span> <span class="n">sencond_level_dir</span><span class="p">)</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">hv_dict</span><span class="p">[</span><span class="n">date_str</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+
+                        <span class="c1"># 保存对应日期的视频文件信息字典，元素以索引为键，值为视频文件绝对路径和开始时间字符串组成的元组</span>
+                        <span class="k">for</span> <span class="n">third_level_file</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">second_level_dir_path</span><span class="p">):</span>
+                            <span class="n">video_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">second_level_dir_path</span><span class="p">,</span> <span class="n">third_level_file</span><span class="p">)</span>
+                            <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">video_path</span><span class="p">):</span>
+                                <span class="n">index</span><span class="p">,</span> <span class="n">time_str</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">parse_history_video_name</span><span class="p">(</span><span class="n">third_level_file</span><span class="p">)</span>
+                                <span class="bp">self</span><span class="o">.</span><span class="n">hv_dict</span><span class="p">[</span><span class="n">date_str</span><span class="p">][</span><span class="n">index</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">video_path</span><span class="p">,</span> <span class="n">time_str</span><span class="p">)</span>
+
+        <span class="c1"># 无视频文件时删除空字典对应的元素，防止出现错误</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">hv_dict</span> <span class="o">=</span> <span class="p">{</span><span class="n">key</span><span class="p">:</span> <span class="n">value</span> <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">hv_dict</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="n">value</span><span class="p">}</span>
+
+<div class="viewcode-block" id="History_Video_Processor.parse_date">
+<a class="viewcode-back" href="../../../home_security_surveillance.File_process.html#home_security_surveillance.File_process.history_video.History_Video_Processor.parse_date">[文档]</a>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">parse_date</span><span class="p">(</span><span class="n">date_str</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">split</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;-&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        类的静态方法，用于将年-月-日或其他分割格式的日期转为年月日的三元素元组</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        date_str : str</span>
+<span class="sd">            传入的日期字符串，包含年月日信息</span>
+<span class="sd">        split : str</span>
+<span class="sd">            传入的日期分隔符，默认为&quot;-&quot;</span>
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        date_tuple : Tuple[int, int, int]</span>
+<span class="sd">            返回年月日的三元素元组，默认类型为int</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c1"># 使用指定的分割符号分割字符串</span>
+        <span class="n">date_list</span> <span class="o">=</span> <span class="n">date_str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">split</span><span class="p">)</span>
+        <span class="c1"># 将分割后的结果转换为整数，并构建日期元组</span>
+        <span class="n">date_tuple</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="n">date_list</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">date_tuple</span>  <span class="c1"># type: ignore</span></div>
+
+
+<div class="viewcode-block" id="History_Video_Processor.format_date">
+<a class="viewcode-back" href="../../../home_security_surveillance.File_process.html#home_security_surveillance.File_process.history_video.History_Video_Processor.format_date">[文档]</a>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">format_date</span><span class="p">(</span><span class="n">date_tuple</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        类的静态方法，用于将年月日的三元素元组转为年-月-日格式的日期</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        date_tuple : Tuple[int, int, int]</span>
+<span class="sd">            年月日的三元素元组</span>
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        date_str : str</span>
+<span class="sd">            年-月-日格式的日期</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c1"># 将元组解构为年、月、日</span>
+        <span class="n">year</span><span class="p">,</span> <span class="n">month</span><span class="p">,</span> <span class="n">day</span> <span class="o">=</span> <span class="n">date_tuple</span>
+        <span class="c1"># 使用字符串格式化将日期转换为字符串</span>
+        <span class="n">date_str</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">year</span><span class="si">}</span><span class="s2">-</span><span class="si">{</span><span class="n">month</span><span class="si">:</span><span class="s2">02d</span><span class="si">}</span><span class="s2">-</span><span class="si">{</span><span class="n">day</span><span class="si">:</span><span class="s2">02d</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="k">return</span> <span class="n">date_str</span></div>
+
+
+<div class="viewcode-block" id="History_Video_Processor.date_build">
+<a class="viewcode-back" href="../../../home_security_surveillance.File_process.html#home_security_surveillance.File_process.history_video.History_Video_Processor.date_build">[文档]</a>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">date_build</span><span class="p">(</span><span class="n">year_month_str</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">day_str</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">split</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;-&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        根据年月和日拼接得到日期</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        year_month_str : str</span>
+<span class="sd">            年-月或其他分割格式的年份月份信息</span>
+<span class="sd">        day_str : str</span>
+<span class="sd">            日期信息</span>
+<span class="sd">        split : str</span>
+<span class="sd">            年份月份字符串的分割符,默认为&quot;-&quot;</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        date_str : str</span>
+<span class="sd">            年-月-日或其他分割格式的日期信息</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c1"># 拼接日期并返回结果</span>
+        <span class="n">date_str</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">year_month_str</span><span class="si">}{</span><span class="n">split</span><span class="si">}{</span><span class="nb">int</span><span class="p">(</span><span class="n">day_str</span><span class="p">)</span><span class="si">:</span><span class="s2">02d</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="c1"># 格式化拼接日期并返回结果</span>
+        <span class="n">date_tuple</span> <span class="o">=</span> <span class="n">History_Video_Processor</span><span class="o">.</span><span class="n">parse_date</span><span class="p">(</span><span class="n">date_str</span><span class="p">,</span> <span class="n">split</span><span class="p">)</span>
+        <span class="n">date_str</span> <span class="o">=</span> <span class="n">History_Video_Processor</span><span class="o">.</span><span class="n">format_date</span><span class="p">(</span><span class="n">date_tuple</span><span class="p">)</span>  <span class="c1"># type: ignore</span>
+        <span class="k">return</span> <span class="n">date_str</span></div>
+
+
+<div class="viewcode-block" id="History_Video_Processor.date_split">
+<a class="viewcode-back" href="../../../home_security_surveillance.File_process.html#home_security_surveillance.File_process.history_video.History_Video_Processor.date_split">[文档]</a>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">date_split</span><span class="p">(</span><span class="n">date_str</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">split</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;-&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        将日期格式字符串转为年月字符串和日字符串</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        date_str : str</span>
+<span class="sd">            年-月-日或其他分割格式的日期信息</span>
+<span class="sd">        split : str</span>
+<span class="sd">            年份月份字符串的分割符,默认为&quot;-&quot;</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        year_month_str : str</span>
+<span class="sd">            年-月或其他分割格式的年份月份信息</span>
+<span class="sd">        day_str : str</span>
+<span class="sd">            日期信息</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c1"># 格式化日期字符串</span>
+        <span class="n">date_str</span> <span class="o">=</span> <span class="n">History_Video_Processor</span><span class="o">.</span><span class="n">format_date</span><span class="p">(</span>
+            <span class="n">History_Video_Processor</span><span class="o">.</span><span class="n">parse_date</span><span class="p">(</span><span class="n">date_str</span><span class="p">,</span> <span class="n">split</span><span class="p">))</span>  <span class="c1"># type: ignore</span>
+
+        <span class="c1"># 将格式化后日期字符串分割为年、月和日</span>
+        <span class="n">year_str</span><span class="p">,</span> <span class="n">month_str</span><span class="p">,</span> <span class="n">day_str</span> <span class="o">=</span> <span class="n">date_str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">split</span><span class="p">)</span>
+
+        <span class="c1"># 返回年月字符串和日字符串</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">year_str</span><span class="si">}</span><span class="s2">-</span><span class="si">{</span><span class="n">month_str</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">day_str</span></div>
+
+
+<div class="viewcode-block" id="History_Video_Processor.parse_time">
+<a class="viewcode-back" href="../../../home_security_surveillance.File_process.html#home_security_surveillance.File_process.history_video.History_Video_Processor.parse_time">[文档]</a>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">parse_time</span><span class="p">(</span><span class="n">time_str</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">split</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;-&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        类的静态方法，用于将时-分-秒或其他分割格式的时间转为时分秒的三元素元组</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        time_str : str</span>
+<span class="sd">            传入的时间字符串，包含时分秒信息</span>
+<span class="sd">        split : str</span>
+<span class="sd">            传入的时间分隔符，默认为&quot;-&quot;</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        time_tuple : Tuple[int, int, int]</span>
+<span class="sd">            返回时分秒的三元素元组，默认类型为int</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c1"># 直接使用日期格式的解析即可</span>
+        <span class="k">return</span> <span class="n">History_Video_Processor</span><span class="o">.</span><span class="n">parse_date</span><span class="p">(</span><span class="n">time_str</span><span class="p">,</span> <span class="n">split</span><span class="p">)</span>  <span class="c1"># type: ignore</span></div>
+
+
+<div class="viewcode-block" id="History_Video_Processor.format_time">
+<a class="viewcode-back" href="../../../home_security_surveillance.File_process.html#home_security_surveillance.File_process.history_video.History_Video_Processor.format_time">[文档]</a>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">format_time</span><span class="p">(</span><span class="n">time_tuple</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        类的静态方法，用于将时分秒的三元素元组转为时-分-秒格式的时间</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        time_tuple : Tuple[int, int, int]</span>
+<span class="sd">            时分秒的三元素元组</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        time_str : str</span>
+<span class="sd">            时分秒格式的时间</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c1"># 将元组解构为时、分、秒</span>
+        <span class="n">hour</span><span class="p">,</span> <span class="n">minute</span><span class="p">,</span> <span class="n">second</span> <span class="o">=</span> <span class="n">time_tuple</span>
+        <span class="c1"># 使用字符串格式化将日期转换为字符串</span>
+        <span class="n">time_str</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">hour</span><span class="si">:</span><span class="s2">02d</span><span class="si">}</span><span class="s2">-</span><span class="si">{</span><span class="n">minute</span><span class="si">:</span><span class="s2">02d</span><span class="si">}</span><span class="s2">-</span><span class="si">{</span><span class="n">second</span><span class="si">:</span><span class="s2">02d</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="k">return</span> <span class="n">time_str</span></div>
+
+
+<div class="viewcode-block" id="History_Video_Processor.parse_history_video_name">
+<a class="viewcode-back" href="../../../home_security_surveillance.File_process.html#home_security_surveillance.File_process.history_video.History_Video_Processor.parse_history_video_name">[文档]</a>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">parse_history_video_name</span><span class="p">(</span><span class="n">name_str</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">str</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        类的静态方法，用于解析视频文件名为合适的数据结构</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        name_str : 视频文件名的字符串</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        index, start_time_str : Tuple[int, str]</span>
+<span class="sd">            存储了包含视频索引和开始时间的字符串</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">index</span><span class="p">,</span> <span class="n">start_time_str</span> <span class="o">=</span> <span class="n">name_str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;_&quot;</span><span class="p">)</span>
+        <span class="n">index</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">index</span><span class="p">)</span>
+        <span class="n">start_time_str</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">start_time_str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">index</span><span class="p">,</span> <span class="n">start_time_str</span></div>
+
+
+    <span class="k">def</span> <span class="nf">_generate_new_index</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">date_str</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        根据传入日期生成一个新的视频索引，如本日之前已有保存的视频，则需要生成最新保存视频索引+1的新索引</span>
+<span class="sd">        该日期无保存视频时从1开始生成</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        date_str : str</span>
+<span class="sd">            已格式化的传入的日期信息，与hv_dict格式内容相同</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        new_index : int</span>
+<span class="sd">            传入日期的最新视频索引</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">new_index</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="c1"># 如果加载时该日无保存视频，索引为1</span>
+        <span class="k">if</span> <span class="n">date_str</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">hv_dict</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">new_index</span>
+        <span class="c1"># 否则索引为最新值</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">new_index</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">hv_dict</span><span class="p">[</span><span class="n">date_str</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span> <span class="o">+</span> <span class="mi">1</span>
+            <span class="k">return</span> <span class="n">new_index</span>
+
+<div class="viewcode-block" id="History_Video_Processor.generate_video_file">
+<a class="viewcode-back" href="../../../home_security_surveillance.File_process.html#home_security_surveillance.File_process.history_video.History_Video_Processor.generate_video_file">[文档]</a>
+    <span class="k">def</span> <span class="nf">generate_video_file</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">start_time</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        根据传入的开始时间生成历史视频文件路径</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        start_time : str</span>
+<span class="sd">            视频开始保存的时间，格式与Log_processor.strftime_all相同</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        new_video_file : str</span>
+<span class="sd">            根据当前文件夹情况和开始时间生成的新文件路径(未创建文件)，用于保存视频文件</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c1"># 分割得到日期字符串和时间字符串</span>
+        <span class="n">date_str</span><span class="p">,</span> <span class="n">time_str</span> <span class="o">=</span> <span class="n">start_time</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;_&quot;</span><span class="p">)</span>
+        <span class="c1"># 格式化日期和时间字符串</span>
+        <span class="n">date_str</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">format_date</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">parse_date</span><span class="p">(</span><span class="n">date_str</span><span class="p">))</span>  <span class="c1"># type: ignore</span>
+        <span class="n">time_str</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">format_time</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">parse_time</span><span class="p">(</span><span class="n">time_str</span><span class="p">))</span>  <span class="c1"># type: ignore</span>
+
+        <span class="c1"># 根据日期获得新的索引</span>
+        <span class="n">new_index</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_generate_new_index</span><span class="p">(</span><span class="n">date_str</span><span class="p">)</span>
+        <span class="c1"># 分割日期字符串</span>
+        <span class="n">year_month_str</span><span class="p">,</span> <span class="n">day_str</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">date_split</span><span class="p">(</span><span class="n">date_str</span><span class="p">)</span>
+
+        <span class="c1"># 根据年月字符串和日字符串创建目录/定位到已有目录</span>
+        <span class="n">video_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">hv_root_dir</span><span class="p">,</span> <span class="n">year_month_str</span><span class="p">,</span> <span class="n">day_str</span><span class="p">)</span>
+        <span class="c1"># new_index为1，说明该日期未存储过视频</span>
+        <span class="k">if</span> <span class="n">new_index</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="c1"># 创建视频文件目录，错误信息在调用该函数的地方处理</span>
+            <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">video_dir</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+        <span class="c1"># 设置视频文件名</span>
+        <span class="n">new_video_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">video_dir</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">new_index</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="n">time_str</span><span class="si">}</span><span class="s2">.</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">video_suffix</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="c1"># 创建目录无问题/路径无错误，更新hv_dict</span>
+        <span class="c1"># 如果该日期非空</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">hv_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">date_str</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">hv_dict</span><span class="p">[</span><span class="n">date_str</span><span class="p">][</span><span class="n">new_index</span><span class="p">]</span> <span class="o">=</span> <span class="n">time_str</span>
+        <span class="c1"># 为空，创建字典，保存新索引为键，新文件绝对路径和开始时间字符串组成的元组为值</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">hv_dict</span><span class="p">[</span><span class="n">date_str</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">hv_dict</span><span class="p">[</span><span class="n">date_str</span><span class="p">][</span><span class="n">new_index</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">new_video_file</span><span class="p">,</span> <span class="n">time_str</span><span class="p">)</span>
+
+        <span class="c1"># 返回生成的文件路径</span>
+        <span class="k">return</span> <span class="n">new_video_file</span></div>
+
+
+<div class="viewcode-block" id="History_Video_Processor.delete_new_video_file">
+<a class="viewcode-back" href="../../../home_security_surveillance.File_process.html#home_security_surveillance.File_process.history_video.History_Video_Processor.delete_new_video_file">[文档]</a>
+    <span class="k">def</span> <span class="nf">delete_new_video_file</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">del_video_file</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        外部创建视频文件失败后，在历史视频处理器中的删除函数</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        del_video_file : str</span>
+<span class="sd">            根据当前文件夹情况和开始时间生成的最终文件路径，传入该参数说明创建文件失败</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c1"># 提取文件路径中的年月、日信息</span>
+        <span class="n">video_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">del_video_file</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">year_moth_dir</span><span class="p">,</span> <span class="n">day_str</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">video_dir</span><span class="p">)</span>
+        <span class="n">year_month_str</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">year_moth_dir</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="c1"># 提取文件名中的索引信息</span>
+        <span class="n">index</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">del_video_file</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;_&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span>
+
+        <span class="c1"># 根据年月和日拼接得到日期</span>
+        <span class="n">date_str</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">date_build</span><span class="p">(</span><span class="n">year_month_str</span><span class="p">,</span> <span class="n">day_str</span><span class="p">)</span>
+
+        <span class="c1"># 利用日期和索引信息删除指定元素</span>
+        <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">hv_dict</span><span class="p">[</span><span class="n">date_str</span><span class="p">][</span><span class="n">index</span><span class="p">]</span>
+
+        <span class="c1"># 如果日期已空，删除日期键值对</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">hv_dict</span><span class="p">[</span><span class="n">date_str</span><span class="p">]:</span>
+            <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">hv_dict</span><span class="p">[</span><span class="n">date_str</span><span class="p">]</span></div>
+
+
+    <span class="k">def</span> <span class="nf">_vaild_video_file</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">video_strat_save_date</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">video_index</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        通过hv_dict验证视频文件视频存在函数</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        video_strat_save_date : str</span>
+<span class="sd">            要加载的历史视频的保存日期，跨日的视频以开始保存的日期为准，用于opencv库从视频源处获得视频流</span>
+<span class="sd">            注意日期的格式为{年}分隔符{月}分隔符{日}，年一定是长为4的字符串</span>
+<span class="sd">        video_index : int</span>
+<span class="sd">            要加载的历史视频在保存日期的索引，用于区别单个日期保存的多个视频</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        video_exist : int</span>
+<span class="sd">            视频文件是否存在，1代表存在，2代表该日期无视频文件，3代表该索引不存在</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c1"># 解析传入日期，再格式化日期为统一的格式，分隔符默认为第五个字符，即年份之后的第一个字符</span>
+        <span class="n">video_strat_save_date</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">format_date</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">parse_date</span><span class="p">(</span><span class="n">video_strat_save_date</span><span class="p">,</span> <span class="n">video_strat_save_date</span><span class="p">[</span><span class="mi">4</span><span class="p">]))</span>  <span class="c1"># type: ignore</span>
+
+        <span class="c1"># 获得该日期的所有视频</span>
+        <span class="n">date_dict</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">hv_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">video_strat_save_date</span><span class="p">)</span>
+        <span class="c1"># 检查日期，如果日期不存在，返回对应结果</span>
+        <span class="k">if</span> <span class="n">date_dict</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="mi">2</span>
+        <span class="c1"># 否则检查传入索引号是否存在，如果索引号不存在，返回对应结果</span>
+        <span class="k">elif</span> <span class="n">date_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">video_index</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="mi">3</span>
+        <span class="c1"># 否则存在</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="mi">1</span>
+
+<div class="viewcode-block" id="History_Video_Processor.get_video_file">
+<a class="viewcode-back" href="../../../home_security_surveillance.File_process.html#home_security_surveillance.File_process.history_video.History_Video_Processor.get_video_file">[文档]</a>
+    <span class="k">def</span> <span class="nf">get_video_file</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">video_strat_save_date</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">video_index</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> \
+            <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">int</span><span class="p">]]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        通过hv_dict获得对应日期和索引的视频文件函数</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        video_strat_save_date : str</span>
+<span class="sd">            要加载的历史视频的保存日期，跨日的视频以开始保存的日期为准，用于opencv库从视频源处获得视频流</span>
+<span class="sd">            注意日期的格式为{年}分隔符{月}分隔符{日}，年一定是长为4的字符串</span>
+<span class="sd">        video_index : int</span>
+<span class="sd">            要加载的历史视频在保存日期的索引，用于区别单个日期保存的多个视频</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        video_save_file : str</span>
+<span class="sd">            视频文件存在时，返回其保存的字符串路径，否则，返回空字符串</span>
+<span class="sd">        video_information : Union[str, int]</span>
+<span class="sd">            视频文件存在时，返回视频文件的对应信息字符串，格式为:年-月-日_索引_时-分-秒，包括了时间信息和索引信息</span>
+<span class="sd">            如果日期不存在，返回2，如果索引不存在，返回3</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c1"># 通过hv_dict验证是否视频文件是否存在</span>
+        <span class="n">video_exist</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_vaild_video_file</span><span class="p">(</span><span class="n">video_strat_save_date</span><span class="p">,</span> <span class="n">video_index</span><span class="p">)</span>
+
+        <span class="c1"># 不存在则返回错误值</span>
+        <span class="k">if</span> <span class="n">video_exist</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">video_exist</span>
+
+        <span class="c1"># 存在将参数转换为路径</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># 解析传入日期，再格式化日期为统一的格式，分隔符默认为第五个字符，即年份之后的第一个字符</span>
+            <span class="n">video_strat_save_date</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">format_date</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">parse_date</span><span class="p">(</span><span class="n">video_strat_save_date</span><span class="p">,</span> <span class="n">video_strat_save_date</span><span class="p">[</span><span class="mi">4</span><span class="p">]))</span>  <span class="c1"># type: ignore</span>
+
+            <span class="c1"># 获得保存的视频文件绝对路径</span>
+            <span class="n">video_save_file</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">hv_dict</span><span class="p">[</span><span class="n">video_strat_save_date</span><span class="p">][</span><span class="n">video_index</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+            <span class="c1"># 生成文件信息，包括视频保存开始时间</span>
+            <span class="n">video_information</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">video_strat_save_date</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="n">video_index</span><span class="si">}</span><span class="s2">_&quot;</span> \
+                                <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">hv_dict</span><span class="p">[</span><span class="n">video_strat_save_date</span><span class="p">][</span><span class="n">video_index</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="c1"># 返回路径和信息</span>
+            <span class="k">return</span> <span class="n">video_save_file</span><span class="p">,</span> <span class="n">video_information</span></div>
+
+
+<div class="viewcode-block" id="History_Video_Processor.get_date_video_file">
+<a class="viewcode-back" href="../../../home_security_surveillance.File_process.html#home_security_surveillance.File_process.history_video.History_Video_Processor.get_date_video_file">[文档]</a>
+    <span class="k">def</span> <span class="nf">get_date_video_file</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">video_strat_save_date</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> \
+            <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">str</span><span class="p">],</span> <span class="n">Union</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">str</span><span class="p">],</span> <span class="nb">int</span><span class="p">]]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        通过hv_dict获得对应日期的视频文件字典和视频文件信息字典函数</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        video_strat_save_date : str</span>
+<span class="sd">            保存的视频的对应日期，格式为年-月-日，跨日的视频以开始保存的日期为准</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        video_file_list : Dict[int, str]</span>
+<span class="sd">            视频日期存在时，返回其每个视频的索引，字符串路径组成的键值对的，否则，返回空字典</span>
+<span class="sd">        video_information_list : Union[Dict[int, str], int]</span>
+<span class="sd">            视频文件存在时，返回每个视频文件的对应信息字符串列表，格式为:年-月-日_索引_时-分-秒，包括了时间信息和索引信息</span>
+<span class="sd">            如果日期不存在，返回2，如果无视频文件，返回3</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># 解析传入日期，再格式化日期为统一的格式，分隔符默认为第五个字符，即年份之后的第一个字符</span>
+        <span class="n">video_strat_save_date</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">format_date</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">parse_date</span><span class="p">(</span><span class="n">video_strat_save_date</span><span class="p">,</span> <span class="n">video_strat_save_date</span><span class="p">[</span><span class="mi">4</span><span class="p">]))</span>  <span class="c1"># type: ignore</span>
+
+        <span class="c1"># 获得该日期的所有视频</span>
+        <span class="n">date_dict</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">hv_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">video_strat_save_date</span><span class="p">)</span>
+
+        <span class="c1"># 如果不存在，返回空字典和错误类型2</span>
+        <span class="k">if</span> <span class="n">date_dict</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">{},</span> <span class="mi">2</span>
+        <span class="c1"># 如果是空字典，返回空字典和错误类型3</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">date_dict</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">{},</span> <span class="mi">3</span>
+
+        <span class="c1"># 否则保存获得对应日期的视频文件字典和视频文件信息字典</span>
+
+        <span class="c1"># 保存索引+文件路径和索引+文件信息结果的字典</span>
+        <span class="n">video_file_dict</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="n">video_information_dict</span> <span class="o">=</span> <span class="p">{}</span>
+
+        <span class="c1"># 遍历，保存每个存在索引的对应的路径和文件信息</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">date_dict</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+            <span class="n">video_save_file</span><span class="p">,</span> <span class="n">video_information</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_video_file</span><span class="p">(</span><span class="n">video_strat_save_date</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+            <span class="n">video_file_dict</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">video_save_file</span>
+            <span class="n">video_information_dict</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">video_information</span>
+        <span class="c1"># 返回结果</span>
+        <span class="k">return</span> <span class="n">video_file_dict</span><span class="p">,</span> <span class="n">video_information_dict</span></div>
+</div>
+
+
+<span class="c1"># 模块测试部分</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">hs_processor</span> <span class="o">=</span> <span class="n">History_Video_Processor</span><span class="p">()</span>
+    <span class="c1"># 解析目录结果</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">hs_processor</span><span class="o">.</span><span class="n">hv_dict</span><span class="p">)</span>
+
+    <span class="c1"># 时间转化,parse_time用于将字符串转为元组</span>
+    <span class="c1"># hs_processor.hv_dict[&quot;2021-10-01&quot;]获得的是字典</span>
+    <span class="c1"># 可以根据视频索引访问字典以获得对应的开始时间</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">hs_processor</span><span class="o">.</span><span class="n">parse_time</span><span class="p">(</span>
+        <span class="n">hs_processor</span><span class="o">.</span><span class="n">hv_dict</span><span class="p">[</span><span class="s2">&quot;2021-10-01&quot;</span><span class="p">][</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">]))</span>
+
+    <span class="c1"># 格式化日期和时间</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">hs_processor</span><span class="o">.</span><span class="n">format_date</span><span class="p">((</span><span class="mi">2024</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">12</span><span class="p">)))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">hs_processor</span><span class="o">.</span><span class="n">format_date</span><span class="p">((</span><span class="mi">20</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">30</span><span class="p">)))</span>
+
+    <span class="c1"># 分割日期为年月和日</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">hs_processor</span><span class="o">.</span><span class="n">date_split</span><span class="p">(</span><span class="s2">&quot;2024-5-12&quot;</span><span class="p">))</span>
+
+    <span class="c1"># 根据当前时间生成新的视频文件路径</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="n">hs_processor</span><span class="o">.</span><span class="n">generate_video_file</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%Y-%m-</span><span class="si">%d</span><span class="s2">_%H-%M-%S&quot;</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">hs_processor</span><span class="o">.</span><span class="n">hv_dict</span><span class="p">)</span>
+
+    <span class="c1"># 删除生成的视频文件路径</span>
+    <span class="n">hs_processor</span><span class="o">.</span><span class="n">delete_new_video_file</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">hs_processor</span><span class="o">.</span><span class="n">hv_dict</span><span class="p">)</span>
+
+    <span class="c1"># 根据传入日期和索引获得视频文件路径，并验证</span>
+    <span class="n">video_file</span><span class="p">,</span> <span class="n">video_info</span> <span class="o">=</span> <span class="n">hs_processor</span><span class="o">.</span><span class="n">get_video_file</span><span class="p">(</span><span class="s2">&quot;2024-06-11&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="n">cv</span><span class="o">.</span><span class="n">VideoCapture</span><span class="p">(</span><span class="n">video_file</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">isOpened</span><span class="p">())</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">video_info</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">hs_processor</span><span class="o">.</span><span class="n">get_video_file</span><span class="p">(</span><span class="s2">&quot;2024-06-12&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">hs_processor</span><span class="o">.</span><span class="n">get_video_file</span><span class="p">(</span><span class="s2">&quot;2024-06-11&quot;</span><span class="p">,</span> <span class="mi">100</span><span class="p">))</span>
+
+    <span class="c1"># 获得传入日期的全部视频文件</span>
+    <span class="n">video_file_list</span><span class="p">,</span> <span class="n">video_information_list</span> <span class="o">=</span> <span class="n">hs_processor</span><span class="o">.</span><span class="n">get_date_video_file</span><span class="p">(</span><span class="s2">&quot;2024-06-11&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">video_file_list</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">video_information_list</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">hs_processor</span><span class="o">.</span><span class="n">get_date_video_file</span><span class="p">(</span><span class="s2">&quot;2024-06-12&quot;</span><span class="p">))</span>
+    
+</pre></div>
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2024, 07xiaohei、youyou、Chai.h、Captain.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    由 <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.3.7创建。
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.15.4.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>
