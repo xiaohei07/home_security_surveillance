@@ -6,22 +6,18 @@ Date: 2024-05-10
 Version: 1.5
 Description: config配置文件的处理部分
 """
-
+import home_security_surveillance.frozen_dir
 # 引用常用库
 from home_security_surveillance.Common import *
-
+from home_security_surveillance.frozen_dir import project_dir
 __all__ = ["config_file", "config_keys", "config_defaluts", "trans_config_abspath",
            "write_config", "load_config"]
 
 ## 变量部分 ##
 
-# 当前代码文件路径
-_config_code_file = __file__
-
 # 配置文件的默认路径
 config_file = os.path.normpath(
-    os.path.join(os.path.dirname(os.path.dirname(
-        os.path.dirname(__file__))), "./Config/config.json"))
+    os.path.join(project_dir, "./Config/config.json"))
 
 # config文件可用的键值
 config_keys = \
@@ -68,7 +64,7 @@ def trans_config_abspath(relative_path: Union[Dict[str, str], List[str], str]
 
     # 相对路径转换
     # 从该代码文件的路径变为项目根路径
-    root_path = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(_config_code_file))))
+    root_path = project_dir
     if isinstance(rel_path, str):
         if not os.path.isabs(rel_path):
             return os.path.normpath(os.path.join(root_path, rel_path))

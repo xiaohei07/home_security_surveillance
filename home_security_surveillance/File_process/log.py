@@ -4,7 +4,7 @@ File Name: log.py
 Author: 07xiaohei
 Date: 2024-05-10
 Version: 1.5
-Description: nvd文件的处理，nvd是网络视频设备(network_video_device)的简写，一般为网络摄像头
+Description: 创建log文件
 """
 
 # 导入常用库

@@ -15,6 +15,7 @@ from home_security_surveillance.File_process.log import *
 from home_security_surveillance.File_process.config import config_defaluts, trans_config_abspath
 # 用Warning_Processor模块
 from home_security_surveillance.Exception_process import *
+from home_security_surveillance.frozen_dir import project_dir
 # 用torch
 import torch
 # 用yolo类
@@ -33,12 +34,10 @@ __all__ = ["Video_Detector"]
 
 # 训练和预测配置文件的默认路径
 defalut_train_config_path = os.path.normpath(
-    os.path.join(os.path.dirname(os.path.dirname(
-        os.path.dirname(__file__))), "./Model/train_config.json"))
+    os.path.join(project_dir, "./Model/train_config.json"))
 
 defalut_predict_config_path = os.path.normpath(
-    os.path.join(os.path.dirname(os.path.dirname(
-        os.path.dirname(__file__))), "./Model/predict_config.json"))
+    os.path.join(project_dir, "./Model/predict_config.json"))
 
 class Video_Detector(object):
     """

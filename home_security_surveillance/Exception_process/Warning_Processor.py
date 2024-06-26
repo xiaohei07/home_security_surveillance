@@ -30,9 +30,6 @@ from email.utils import parseaddr, formataddr
 
 __all__ = ["Warning_Processor"]
 
-# 当前代码文件路径
-_exception_config_code_file = __file__
-
 class Warning_Processor(object):
     """
     Warning_Processor(warning_dir, user_email)
