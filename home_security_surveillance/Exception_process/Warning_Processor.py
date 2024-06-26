@@ -3,7 +3,7 @@
 File Name: Warning_Processor.py
 Author: Chai.h
 Date: 2024-05-22
-Version: 1.0
+Version: 1.5
 Description: 发出异常警报的相关处理
 """
 
@@ -120,6 +120,7 @@ class Warning_Processor(object):
     def warning_process(self, warning_code: int, warning_time: str, level_list: List[float], sensitivity: int=0):
         """
         错误处理的核心函数
+
         Parameters
         ----------
         warning_code : int
@@ -144,6 +145,7 @@ class Warning_Processor(object):
     def get_level_description(level: float, sensitivity:int = 0) -> int:
         """
         根据置信度判断危险等级，返回置信度级别描述函数
+
         Parameters
         ----------
         level : float
@@ -159,6 +161,7 @@ class Warning_Processor(object):
             0.9~0.95大概率识别出事故，并且判断较为准确，危险等级为3
             0.95~1 极度危险状态，危险等级为4
         """
+
         if sensitivity == 1:
             if 0.3 <= level < 0.8:
                 return 1
@@ -182,9 +185,10 @@ class Warning_Processor(object):
             else:
                 return 0
 
-    def trigger_warning(self, warning_type: str, warning_time: str, level: float, sensitivity:int):
+    def trigger_warning(self, warning_type: str, warning_time: str, level: float, sensitivity: int):
         """
         触发警报的核心处理函数
+
         Parameters
         ----------
         warning_type: str
@@ -196,6 +200,7 @@ class Warning_Processor(object):
             当危险等级高于等于3级时，会向户主发送邮件，通知相关情况
         sensitivity : int
             置信度转换为危险等级时使用的不同敏感度，0为低敏感度，1为高敏感度
+
         """
         # 置信度转危险等级
         level_description = self.get_level_description(level, sensitivity)
@@ -217,6 +222,7 @@ class Warning_Processor(object):
     def _play_audio(self, level_description: int):
         """
         音乐播放函数
+
         Parameters
         ----------
         level_description : int
@@ -234,6 +240,7 @@ class Warning_Processor(object):
     def show_custom_warning_dialog(self, warning_type: str, warning_time: str, level_description: int):
         """
         桌面跳出警报窗口函数
+
         Parameters
         ----------
         warning_type : str
@@ -243,6 +250,7 @@ class Warning_Processor(object):
         level_description : int
             置信度危险等级
         """
+
         root = tk.Tk()
         root.title("Warning")
 
@@ -306,6 +314,7 @@ class Warning_Processor(object):
     def _write_email_senter_config(self, config_data: Dict[str, str] = {}):
         """
         将传入的邮件发送者的数据写入配置文件，视为内部函数，不提供外部接口
+
         Parameters
         ----------
         config_data : Dict[str, str]
@@ -343,6 +352,7 @@ class Warning_Processor(object):
     def _write_email_receiver_config(self, config_data: List[str] = []):
         """
         将传入的邮件接收者的数据写入配置文件，视为内部函数，不提供外部接口
+
         Parameters
         ----------
         config_data : List[str]
@@ -359,17 +369,20 @@ class Warning_Processor(object):
             -> Dict[str, str]:
         """
         加载邮件发送者配置文件为对应的数据结构
+
         Parameters
         ----------
         email_senter : str
             要加载的邮件发送者配置文件的路径
         re_parse : bool
             是否重新解析email的内容，默认为True
+
         Returns
         -------
         email_senter_data : Dict[str, str]
             邮件发送者文件中json列表的第一个字典的解析所得数据，每个元素对应一个存储邮件发送者相关信息的字符串
         """
+
         # 打开文件进行加载，加载的错误在调用处进行处理
         with open(email_senter, 'r', encoding='utf-8') as file:
             # 加载邮件发送者配置文件内容
@@ -581,6 +594,7 @@ class Warning_Processor(object):
     def send_email_notification(self, warning_type: str, warning_time: str, level_description: int):
         """
         发送邮件通知用户发生了相应的紧急事故函数
+
         Parameters
         ----------
         warning_type : str

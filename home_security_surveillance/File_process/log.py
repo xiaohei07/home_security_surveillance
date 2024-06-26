@@ -3,7 +3,7 @@
 File Name: log.py
 Author: 07xiaohei
 Date: 2024-05-10
-Version: 1.0
+Version: 1.5
 Description: nvd文件的处理，nvd是网络视频设备(network_video_device)的简写，一般为网络摄像头
 """
 
@@ -60,9 +60,12 @@ class Log_Processor(object):
     --------
     """
 
+    #: :noindex:
     # 日志文件记录时间的格式，分别是全部的时间格式，日期的时间格式，时分秒的时间格式
     strftime_all = "%Y-%m-%d_%H-%M-%S"
+    #: :noindex:
     strftime_date = "%Y-%m-%d"
+    #: :noindex:
     strftime_time = "%H-%M-%S"
 
     # 日志文件消息级别

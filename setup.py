@@ -27,7 +27,8 @@ setup(
         "opencv_python>=4.6.0",
         "PyCameraList==1.0.0",
         "pygame>=2.4.0",
-        "psutil>=5.8.0"
+        "psutil>=5.8.0",
+        "setuptools>=60.0.0"
     ],  # 安装依赖
     entry_points={
         'console_scripts': [

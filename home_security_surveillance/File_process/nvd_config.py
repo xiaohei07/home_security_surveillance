@@ -3,7 +3,7 @@
 File Name: nvd_config.py
 Author: 07xiaohei
 Date: 2024-05-10
-Version: 1.0
+Version: 1.5
 Description: nvd文件的处理，nvd是网络视频设备(network_video_device)的简写，一般为网络摄像头
 """
 
@@ -67,6 +67,7 @@ class Nvd_Processor(object):
 
     # 网络摄像头传输视频使用的协议
     # 1为http、2为https、3为rtsp、4为rtmp
+    #: :noindex:
     video_trans_protocol_dict = {1: "http://", 2: "https://", 3: "rtsp://", 4: "rtmp://"}
 
     def __init__(self, nvd_config_file: str = trans_config_abspath(config_defaluts["IP-video-device-file"]),

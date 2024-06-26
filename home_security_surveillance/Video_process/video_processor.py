@@ -3,7 +3,7 @@
 File Name: video_processor.py
 Author: 07xiaohei
 Date: 2024-05-13
-Version: 1.0
+Version: 1.5
 Description: 处理视频流的核心类
 """
 # 引入常用库

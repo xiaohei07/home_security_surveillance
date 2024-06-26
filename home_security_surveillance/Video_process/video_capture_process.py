@@ -3,7 +3,7 @@
 File Name: video_capture_process.py
 Author: 07xiaohei
 Date: 2024-05-15
-Version: 1.0
+Version: 1.1
 Description: 用于opencv在捕捉url信息减少超时时间的进程类
 """
 

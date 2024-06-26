@@ -3,13 +3,9 @@
 File Name: video_detect.py
 Author: youyou
 Date: 2024-05-02
-Version: 1.0
+Version: 1.5
 Description: 使用yolov8，对视频帧进行识别，判断监控是否出现了火灾/人/异常行为
 """
-import datetime
-from typing import Union
-
-from torch import device
 
 # 引入常用库
 from home_security_surveillance.Common import *
@@ -73,8 +69,9 @@ class Video_Detector(object):
         模式-模型的数字-模型对象字典映射，通过映射可以将模式转变为yolov8要使用的模型对象，直接进行预测
         此成员用于加速处理，保证多次调用预测函数或者修改模型内容时，均需要在初始化时加载一次模型即可
 
-    model_mode_dict:
+    model_mode_dict : dict[int, str]
         模式-模型的数字-绝对路径字典映射，通过映射可以将模式转变为yolov8要使用的模型绝对路径
+        其将相对路径和根路径改为绝对路径，路径根目录用root_dir
         1为火焰模型，2为人物模型 3：火焰和人物模型
     warning_mode_list : list[int]
         类变量，预测类型和错误码的匹配关系，在检测时需要进行进程的通信，遇到错误需要向视频流处理器通知错误的出现
@@ -88,6 +85,7 @@ class Video_Detector(object):
         mode=3对应第三个异常行为识别，0的预测类别是跌倒，对应错误码是8
     predict_class_type_color_dict : dict[int, dict[int, int]]
         类变量，每个错误类型在绘制错误碰撞箱时使用的颜色，只在使用全部模型模式下有效
+        第一个键值model对应的mode，第二个键值是预测所得的类型，值为它们的对应颜色
 
     ## 训练参数属性集合 ##
     batch: int          每次训练时输入的图片数量，默认为16
@@ -114,17 +112,13 @@ class Video_Detector(object):
     配置文件的参数都可以和用户进行交互
     """
 
-    # 将使用的mode和预测类别映射为错误码，mode=1对应第一个火焰/烟雾模型，0的预测类别是烟雾，对应错误码是1，
-    # 1的预测类别是火焰，对应错误码是2，mode=2对应第二个人像识别模型，0的预测类别是人，对应错误码是4
-    # mode=3对应第三个异常行为识别，0的预测类别是跌倒，对应错误码是8
+    #: :noindex:
     mode_precdict_warning_mode = {1: {0: 1, 1: 2}, 2: {0: 4}, 3: {0: 8}}
-    # 将使用的mode和预测类别映射为对应的类型，将映射的错误码1248分别修改为0123
+    #: :noindex:
     mode_precdict_class = {1: {0: 0, 1: 1}, 2: {0: 2}, 3: {0: 3}}
-    # 预测类型和错误码的匹配关系
+    #: :noindex:
     warning_mode_list = [1, 2, 4, 8]
-
-    # 预测各类型的颜色，前一个为model对应的mode，后一个是预测所得的类型
-    # 此处对应的颜色
+    #: :noindex:
     predict_class_type_color_dict = {1: {0: (0, 0, 255), 1: (128, 128, 128)},
                                      2: (0, 255, 0), 3: (255, 0, 0)}
 
@@ -140,7 +134,7 @@ class Video_Detector(object):
             self.root_dir = os.path.abspath(root_dir)
         else:
             self.root_dir = root_dir
-        # model_mode_dict将相对路径改为绝对路径，路径根目录用root_dir
+        #: :noindex:
         self.model_mode_dict = {1: os.path.join(root_dir, "fire.pt"),
                                 2: os.path.join(root_dir, "people.pt"),
                                 3: os.path.join(root_dir, "down.pt")}
@@ -231,18 +225,27 @@ class Video_Detector(object):
                                   weight_pt: str = None, device: int = None):
         """
         重新设置模型训练时使用的参数，仅修改传入的参数，其他参数不变
+
         Parameters
         ----------
-        batch: int          每次训练时输入的图片数量，默认为16
-        epochs: int         训练迭代的次数，默认为5
-        project: str        训练文件存放的目录，默认在根目录下的train_file文件夹下
-        name: str           训练过程存放的文件，在project对应目录下创建子目录，存储训练的日志和输出结果
-        imgsz: int          输入图片的尺寸，默认要求640*640
-        data: str           有关数据集配置文件的路径，由于本项目目标主要是对火焰的识别，在yolov8下默认存放的是fire.yaml
-                            其默认路径为：ultralytics/cfg/datasets
-                            在该配置文件内按yolov8格式设置好训练集、验证集、测试集的图片路径，类别名等参数
-        weight_pt: str      预训练模型的文件名，可用于用户自行完成训练任务，当其不存在时yolov8会自动下载
-        device: int         可用设备的编号，此处主要用于设置CPU
+        batch: int
+            每次训练时输入的图片数量，默认为16
+        epochs: int
+            训练迭代的次数，默认为5
+        project: str
+            训练文件存放的目录，默认在根目录下的train_file文件夹下
+        name: str
+            训练过程存放的文件，在project对应目录下创建子目录，存储训练的日志和输出结果
+        imgsz: int
+            输入图片的尺寸，默认要求640*640
+        data: str
+            有关数据集配置文件的路径，由于本项目目标主要是对火焰的识别，在yolov8下默认存放的是fire.yaml
+            其默认路径为：ultralytics/cfg/datasets
+            在该配置文件内按yolov8格式设置好训练集、验证集、测试集的图片路径，类别名等参数
+        weight_pt: str
+            预训练模型的文件名，可用于用户自行完成训练任务，当其不存在时yolov8会自动下载
+        device: int
+            可用设备的编号，此处主要用于设置CPU
         """
 
         # 赋值给实例变量
@@ -294,13 +297,13 @@ class Video_Detector(object):
             config_data = json.load(f)
         return config_data
 
-    def get_device(self) -> Union[int, device]:
+    def get_device(self) -> Union[int, torch.device]:
         """
         确定进行识别的设备，需要判断GPU是否可用，不可用则使用CPU
         如果gpu可用则返回GPU的设备名并日志记录GPU信息，否则日志中记录CPU信息返回CPU字符串
         Returns
         --------
-        device: Union[int, device]
+        device: Union[int, torch.device]
             GPU的设备编号或者CPU字符串
         """
         if torch.cuda.is_available():

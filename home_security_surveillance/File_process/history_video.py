@@ -3,7 +3,7 @@
 File Name: history_video.py
 Author: 07xiaohei
 Date: 2024-05-12
-Version: 1.0
+Version: 1.5
 Description: 对历史视频记录文件的处理部分
 """
 
@@ -36,6 +36,7 @@ class History_Video_Processor(object):
         年月日格式是格式化后的，索引是整型
     video_suffix : str
         保存历史视频文件时的默认后缀，保存是统一的
+
     Notes
     -----
     历史视频目录的结构和命名格式为:
@@ -43,6 +44,7 @@ class History_Video_Processor(object):
     |   第二级目录，命名格式为：日
     |   |  不同的历史视频文件：命名格式为"视频索引值"+"_"+_strftime_date格式的开始时间.{video_suffix}"
     数据结构的存储和实际目录有所区别(前者为了便于处理，后者为了便于外部寻找)
+
     Examples
     --------
     """
@@ -50,6 +52,7 @@ class History_Video_Processor(object):
     def __init__(self, hv_dir: str = trans_config_abspath(config_defaluts["history-video-directory"]),
                  video_suffix: str = "avi"):
         """初始化历史视频处理器对象"""
+
         # 保存根目录和视频后缀
         self.hv_root_dir = hv_dir
         self.video_suffix = video_suffix
@@ -84,6 +87,7 @@ class History_Video_Processor(object):
     def parse_date(date_str: str, split: str = "-") -> Tuple[int, int, int]:
         """
         类的静态方法，用于将年-月-日或其他分割格式的日期转为年月日的三元素元组
+
         Parameters
         ----------
         date_str : str
@@ -116,6 +120,7 @@ class History_Video_Processor(object):
         date_str : str
             年-月-日格式的日期
         """
+
         # 将元组解构为年、月、日
         year, month, day = date_tuple
         # 使用字符串格式化将日期转换为字符串
@@ -126,6 +131,7 @@ class History_Video_Processor(object):
     def date_build(year_month_str: str, day_str: str, split: str = "-") -> str:
         """
         根据年月和日拼接得到日期
+
         Parameters
         ----------
         year_month_str : str
@@ -134,11 +140,13 @@ class History_Video_Processor(object):
             日期信息
         split : str
             年份月份字符串的分割符,默认为"-"
+
         Returns
         -------
         date_str : str
             年-月-日或其他分割格式的日期信息
         """
+
         # 拼接日期并返回结果
         date_str = f"{year_month_str}{split}{int(day_str):02d}"
         # 格式化拼接日期并返回结果
@@ -150,12 +158,14 @@ class History_Video_Processor(object):
     def date_split(date_str: str, split: str = "-") -> Tuple[str, str]:
         """
         将日期格式字符串转为年月字符串和日字符串
+
         Parameters
         ----------
         date_str : str
             年-月-日或其他分割格式的日期信息
         split : str
             年份月份字符串的分割符,默认为"-"
+
         Returns
         -------
         year_month_str : str
@@ -163,6 +173,7 @@ class History_Video_Processor(object):
         day_str : str
             日期信息
         """
+
         # 格式化日期字符串
         date_str = History_Video_Processor.format_date(
             History_Video_Processor.parse_date(date_str, split))  # type: ignore
@@ -177,17 +188,20 @@ class History_Video_Processor(object):
     def parse_time(time_str: str, split: str = "-") -> Tuple[int, int, int]:
         """
         类的静态方法，用于将时-分-秒或其他分割格式的时间转为时分秒的三元素元组
+
         Parameters
         ----------
         time_str : str
             传入的时间字符串，包含时分秒信息
         split : str
             传入的时间分隔符，默认为"-"
+
         Returns
         -------
         time_tuple : Tuple[int, int, int]
             返回时分秒的三元素元组，默认类型为int
         """
+
         # 直接使用日期格式的解析即可
         return History_Video_Processor.parse_date(time_str, split)  # type: ignore
 
@@ -200,11 +214,13 @@ class History_Video_Processor(object):
         ----------
         time_tuple : Tuple[int, int, int]
             时分秒的三元素元组
+
         Returns
         -------
         time_str : str
             时分秒格式的时间
         """
+
         # 将元组解构为时、分、秒
         hour, minute, second = time_tuple
         # 使用字符串格式化将日期转换为字符串
@@ -215,6 +231,7 @@ class History_Video_Processor(object):
     def parse_history_video_name(name_str: str) -> Tuple[int, str]:
         """
         类的静态方法，用于解析视频文件名为合适的数据结构
+
         Parameters
         ----------
         name_str : 视频文件名的字符串
@@ -233,15 +250,18 @@ class History_Video_Processor(object):
         """
         根据传入日期生成一个新的视频索引，如本日之前已有保存的视频，则需要生成最新保存视频索引+1的新索引
         该日期无保存视频时从1开始生成
+
         Parameters
         ----------
         date_str : str
             已格式化的传入的日期信息，与hv_dict格式内容相同
+
         Returns
         -------
         new_index : int
             传入日期的最新视频索引
         """
+
         new_index = 1
         # 如果加载时该日无保存视频，索引为1
         if date_str not in self.hv_dict:
@@ -254,15 +274,18 @@ class History_Video_Processor(object):
     def generate_video_file(self, start_time: str) -> str:
         """
         根据传入的开始时间生成历史视频文件路径
+
         Parameters
         ----------
         start_time : str
             视频开始保存的时间，格式与Log_processor.strftime_all相同
+
         Returns
         -------
         new_video_file : str
             根据当前文件夹情况和开始时间生成的新文件路径(未创建文件)，用于保存视频文件
         """
+
         # 分割得到日期字符串和时间字符串
         date_str, time_str = start_time.split("_")
         # 格式化日期和时间字符串
@@ -299,11 +322,13 @@ class History_Video_Processor(object):
     def delete_new_video_file(self, del_video_file: str):
         """
         外部创建视频文件失败后，在历史视频处理器中的删除函数
+
         Parameters
         ----------
         del_video_file : str
             根据当前文件夹情况和开始时间生成的最终文件路径，传入该参数说明创建文件失败
         """
+
         # 提取文件路径中的年月、日信息
         video_dir = os.path.split(del_video_file)[0]
         year_moth_dir, day_str = os.path.split(video_dir)
@@ -324,6 +349,7 @@ class History_Video_Processor(object):
     def _vaild_video_file(self, video_strat_save_date: str, video_index: int) -> int:
         """
         通过hv_dict验证视频文件视频存在函数
+
         Parameters
         ----------
         video_strat_save_date : str
@@ -358,6 +384,7 @@ class History_Video_Processor(object):
             -> Tuple[str, Union[str, int]]:
         """
         通过hv_dict获得对应日期和索引的视频文件函数
+
         Parameters
         ----------
         video_strat_save_date : str
@@ -400,10 +427,12 @@ class History_Video_Processor(object):
             -> Tuple[Dict[int, str], Union[Dict[int, str], int]]:
         """
         通过hv_dict获得对应日期的视频文件字典和视频文件信息字典函数
+
         Parameters
         ----------
         video_strat_save_date : str
             保存的视频的对应日期，格式为年-月-日，跨日的视频以开始保存的日期为准
+
         Returns
         -------
         video_file_list : Dict[int, str]

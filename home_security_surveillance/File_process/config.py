@@ -3,7 +3,7 @@
 File Name: config.py
 Author: 07xiaohei
 Date: 2024-05-10
-Version: 1.0
+Version: 1.5
 Description: config配置文件的处理部分
 """
 

@@ -2,8 +2,8 @@
 """
 File Name: ui.py
 Author: Captain
-Date: 2024-06-16
-Version: 1.0
+Date: 2024-06-06
+Version: 1.5
 Description: 提供简洁的图形化界面
 """
 
