@@ -79,8 +79,8 @@ class Video_Detector(object):
         类变量，将使用的mode和预测类别映射为对应的类型，即将映射的错误码1248分别修改为0123
     mode_precdict_warning_mode : dict[int, dict[int, int]]
         类变量，将使用的模型mode和预测类别映射为错误码
-        mode=1对应第一个火焰/烟雾模型，0的预测类别是烟雾，对应错误码是1
-        1的预测类别是火焰，对应错误码是2，mode=2对应第二个人像识别模型，0的预测类别是人，对应错误码是4
+        mode=1对应第一个火焰/烟雾模型，1的预测类别是烟雾，对应错误码是1
+        0的预测类别是火焰，对应错误码是2，mode=2对应第二个人像识别模型，0的预测类别是人，对应错误码是4
         mode=3对应第三个异常行为识别，0的预测类别是跌倒，对应错误码是8
     predict_class_type_color_dict : dict[int, dict[int, int]]
         类变量，每个错误类型在绘制错误碰撞箱时使用的颜色，只在使用全部模型模式下有效
@@ -100,7 +100,7 @@ class Video_Detector(object):
     ## 预测参数属性集合 ##
     model_mode: int     当用户未指定使用模型时，进行预测默认使用的模式，默认为1，即火焰识别
     iou: float          衡量预测边界框与真实边界框之间重叠程度，用于移除重叠较大的多余边界框，保留最优的检测结果，默认为0.6
-    conf: float         模型对识别设置的置信度阈值，低于该阈值的识别结果会被过滤，默认为0.4
+    conf: float         模型对识别设置的置信度阈值，低于该阈值的识别结果会被过滤，默认为0.5
     show: bool          模型的预测结果是否可视化，在单独调用模型内部预测函数时可以用来展示结果，默认为True
     save_dir: str       模型预测结果的保存目录，可在其中查看预测获得的识别信息视频和图片
     max_frame: int      从视频流处理器处获得视频帧时，存储的双端队列最大缓冲视频帧数量
@@ -112,9 +112,9 @@ class Video_Detector(object):
     """
 
     #: :noindex:
-    mode_precdict_warning_mode = {1: {0: 1, 1: 2}, 2: {0: 4}, 3: {0: 8}}
+    mode_precdict_warning_mode = {1: {0: 2, 1: 1}, 2: {0: 4}, 3: {0: 8}}
     #: :noindex:
-    mode_precdict_class = {1: {0: 0, 1: 1}, 2: {0: 2}, 3: {0: 3}}
+    mode_precdict_class = {1: {0: 1, 1: 0}, 2: {0: 2}, 3: {0: 3}}
     #: :noindex:
     warning_mode_list = [1, 2, 4, 8]
     #: :noindex:
@@ -166,7 +166,7 @@ class Video_Detector(object):
             weight_pt = 'yolov8n.pt'
             model_mode = 1
             iou = 0.6
-            conf = 0.4
+            conf = 0.5
             show = "True"
             save_dir = "detect_result"
             max_frame = 1800
@@ -556,7 +556,7 @@ class Video_Detector(object):
         iou : float
             指定衡量预测边界框与真实边界框之间重叠程度，未指定(为None)时使用默认值
         sensitivity : int
-            指定对异常的敏感程度，0对应低敏感程度，设置置信度阈值为0.6，1对应高敏感程度，设置置信度阈值为0.4，默认为低敏感
+            指定对异常的敏感程度，0对应低敏感程度，设置置信度阈值为0.6，1对应高敏感程度，设置置信度阈值为0.5，默认为低敏感
 
         Notes
         -----
@@ -583,7 +583,7 @@ class Video_Detector(object):
         if sensitivity == 0:
             conf = 0.6
         else:
-            conf = 0.4
+            conf = 0.5
         # 进程调用需要重新创建一些对象
         self._create_logger()
         self.info_logger.log_write("Video Detector start detect", Log_Processor.INFO)
@@ -732,6 +732,11 @@ class Video_Detector(object):
                             if new_warning_code:
                                 result_queue.put([new_warning_code, warning_conf])
                                 warning_type_record |= new_warning_code
+                                # 日志记录
+                                self.error_logger.log_write("Video Detector Warning!!!\n"
+                                                            f"The warning code is {warning_mode}, "
+                                                            f"the warning conf is {warning_conf}",
+                                                            Log_Processor.ERROR)
 
                             # 将缓冲区的全部视频帧写入
                             while save_frame_deque:
@@ -789,7 +794,7 @@ class Video_Detector(object):
         iou : float
             指定衡量预测边界框与真实边界框之间重叠程度，未指定(为None)时使用默认值
         sensitivity : int
-            指定对异常的敏感程度，0对应低敏感程度，设置置信度阈值为0.6，1对应高敏感程度，设置置信度阈值为0.4，默认为低敏感
+            指定对异常的敏感程度，0对应低敏感程度，设置置信度阈值为0.6，1对应高敏感程度，设置置信度阈值为0.5，默认为低敏感
         """
 
         # 设置mode和save_dir，max_frame
@@ -805,9 +810,9 @@ class Video_Detector(object):
         # 如果是低敏感度，置信度conf默认为0.6
         if sensitivity == 0:
             conf = 0.6
-        # 如果是高敏感度，置信度conf默认为0.4（更容易被监测到）
+        # 如果是高敏感度，置信度conf默认为0.5（更容易被监测到）
         else:
-            conf = 0.4
+            conf = 0.5
 
         # 进程调用需要重新创建一些对象
         self._create_logger()
@@ -1017,10 +1022,10 @@ if __name__ == '__main__':
 
     # 使用各个模型进行视频识别预测
     source = os.path.abspath("../../Model/test/fire.mp4")
-    # Results_list = video_detector.predict(pre_source=source, mode=1)
-    # # 输出错误结果
-    # for i in Results_list[1]:
-    #     print(i.boxes.cls.tolist())
-    #     print(i.boxes.conf.tolist())
+    Results_list = video_detector.predict(pre_source=source, mode=1)
+    # 输出错误结果
+    for i in Results_list[1]:
+        print(i.boxes.cls.tolist())
+        print(i.boxes.conf.tolist())
 
     video_detector.re_detect(video_file=source, mode=1, sensitivity=0)

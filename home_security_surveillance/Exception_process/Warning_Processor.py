@@ -109,7 +109,6 @@ class Warning_Processor(object):
         self.email_receiver_data = self.load_email_receiver_config(self.email_receiver_file)
         self.warning_logger.log_write(f"Successfully loaded email receiver file "
                                       f"{os.path.abspath(self.email_senter_file)}", Log_Processor.INFO)
-
         # 初始化混音器模块
         pygame.mixer.init()
 
@@ -153,31 +152,39 @@ class Warning_Processor(object):
         -------
         level_description : int
             对置信度危险等级的描述，返回一个整型数，是根据置信度的大判断的危险等级：
-            0~0.8表示危险性不大，危险等级为1
-            0.8~0.9中等危险，又可能会发生事故，危险等级为2
-            0.9~0.95大概率识别出事故，并且判断较为准确，危险等级为3
-            0.95~1 极度危险状态，危险等级为4
+            如果是高敏感度：
+                0.5以下认为置信度不够，默认无危险
+                0.5~0.6表示危险性不大，危险等级为1
+                0.6~0.7中等危险，又可能会发生事故，危险等级为2
+                0.7~0.8大概率识别出事故，并且判断较为准确，危险等级为3
+                0.8~1 极度危险状态，危险等级为4
+            如果是低敏感度：
+                0.6以下认为误识别的风险高于识别风险，默认无危险
+                0.6~0.7表示危险性不大，危险等级为1
+                0.7~0.8中等危险，又可能会发生事故，危险等级为2
+                0.8~0.9大概率识别出事故，并且判断较为准确，危险等级为3
+                0.9~1 极度危险状态，危险等级为4
         """
 
         if sensitivity == 1:
-            if 0.4 <= level < 0.8:
+            if 0.5 <= level < 0.6:
                 return 1
-            elif 0.8 <= level < 0.9:
+            elif 0.6 <= level < 0.7:
                 return 2
-            elif 0.9 <= level < 0.95:
+            elif 0.7 <= level < 0.8:
                 return 3
-            elif 0.95 <= level <= 1:
+            elif 0.8 <= level <= 1:
                 return 4
             else:
                 return 0
         else:
-            if 0.6 <= level < 0.8:
+            if 0.6 <= level < 0.7:
                 return 1
-            elif 0.8 <= level < 0.9:
+            elif 0.7 <= level < 0.8:
                 return 2
-            elif 0.9 <= level < 0.95:
+            elif 0.8 <= level < 0.9:
                 return 3
-            elif 0.95 <= level <= 1:
+            elif 0.9 <= level <= 1:
                 return 4
             else:
                 return 0
@@ -205,16 +212,17 @@ class Warning_Processor(object):
         log_message = f"{warning_type} at {warning_time} with risk level:({level_description})"
         self.warning_logger.log_write(log_message, Log_Processor.CRITICAL)
 
-        # 危险等级超过3就发送邮件
-        if level_description >= 3:
-            self.send_email_notification(warning_type, warning_time, level_description)
-            log_message += " Start to sent Message!"
-            self.warning_logger.log_write(log_message, Log_Processor.INFO)
-
         # 警告播放
         self._play_audio(level_description)
         # 桌面跳出警报窗口
         self.show_custom_warning_dialog(warning_type, warning_time, level_description)
+
+        # 危险等级超过3，或是火焰的危险等级2就发送邮件
+        if level_description >= 3 or (warning_type == "Fire" and level_description == 2):
+            if self.email_senter_data and self.email_receiver_data:
+                self.send_email_notification(warning_type, warning_time, level_description)
+                log_message += " Start to sent Message!"
+                self.warning_logger.log_write(log_message, Log_Processor.INFO)
 
     def _play_audio(self, level_description: int):
         """
@@ -247,7 +255,6 @@ class Warning_Processor(object):
         level_description : int
             置信度危险等级
         """
-
         root = tk.Tk()
         root.title("Warning")
 
