@@ -490,8 +490,8 @@ Description: 使用yolov8，对视频帧进行识别，判断监控是否出现�
 <dt class="sig sig-object py" id="home_security_surveillance.Video_process.video_detect.Video_Detector.mode_precdict_warning_mode">
 <span class="sig-name descname"><span class="pre">mode_precdict_warning_mode</span></span><a class="headerlink" href="#home_security_surveillance.Video_process.video_detect.Video_Detector.mode_precdict_warning_mode" title="Link to this definition">#</a></dt>
 <dd><p>类变量，将使用的模型mode和预测类别映射为错误码
-mode=1对应第一个火焰/烟雾模型，0的预测类别是烟雾，对应错误码是1
-1的预测类别是火焰，对应错误码是2，mode=2对应第二个人像识别模型，0的预测类别是人，对应错误码是4
+mode=1对应第一个火焰/烟雾模型，1的预测类别是烟雾，对应错误码是1
+0的预测类别是火焰，对应错误码是2，mode=2对应第二个人像识别模型，0的预测类别是人，对应错误码是4
 mode=3对应第三个异常行为识别，0的预测类别是跌倒，对应错误码是8</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type<span class="colon">:</span></dt>
@@ -619,7 +619,7 @@ mode=3对应第三个异常行为识别，0的预测类别是跌倒，对应错�
 <span class="sig-name descname"><span class="pre">conf</span></span><a class="headerlink" href="#home_security_surveillance.Video_process.video_detect.Video_Detector.conf" title="Link to this definition">#</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>float         模型对识别设置的置信度阈值，低于该阈值的识别结果会被过滤，默认为0.4</p>
+<dd class="field-odd"><p>float         模型对识别设置的置信度阈值，低于该阈值的识别结果会被过滤，默认为0.5</p>
 </dd>
 </dl>
 </dd></dl>
@@ -685,7 +685,7 @@ mode=3对应第三个异常行为识别，0的预测类别是跌倒，对应错�
 :type max_frame: int
 :param iou: 指定衡量预测边界框与真实边界框之间重叠程度，未指定(为None)时使用默认值
 :type iou: float
-:param sensitivity: 指定对异常的敏感程度，0对应低敏感程度，设置置信度阈值为0.6，1对应高敏感程度，设置置信度阈值为0.4，默认为低敏感
+:param sensitivity: 指定对异常的敏感程度，0对应低敏感程度，设置置信度阈值为0.6，1对应高敏感程度，设置置信度阈值为0.5，默认为低敏感
 :type sensitivity: int</p>
 <p class="rubric">备注</p>
 <p>传入的视频帧使用具有限定大小的双端队列进行处理
@@ -731,13 +731,13 @@ mode=3对应第三个异常行为识别，0的预测类别是跌倒，对应错�
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="id0">
-<span class="sig-name descname"><span class="pre">mode_precdict_class</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{1:</span> <span class="pre">{0:</span> <span class="pre">0,</span> <span class="pre">1:</span> <span class="pre">1},</span> <span class="pre">2:</span> <span class="pre">{0:</span> <span class="pre">2},</span> <span class="pre">3:</span> <span class="pre">{0:</span> <span class="pre">3}}</span></em><a class="headerlink" href="#id0" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">mode_precdict_class</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{1:</span> <span class="pre">{0:</span> <span class="pre">1,</span> <span class="pre">1:</span> <span class="pre">0},</span> <span class="pre">2:</span> <span class="pre">{0:</span> <span class="pre">2},</span> <span class="pre">3:</span> <span class="pre">{0:</span> <span class="pre">3}}</span></em><a class="headerlink" href="#id0" title="Link to this definition">#</a></dt>
 <dd><p>noindex:</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="id1">
-<span class="sig-name descname"><span class="pre">mode_precdict_warning_mode</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{1:</span> <span class="pre">{0:</span> <span class="pre">1,</span> <span class="pre">1:</span> <span class="pre">2},</span> <span class="pre">2:</span> <span class="pre">{0:</span> <span class="pre">4},</span> <span class="pre">3:</span> <span class="pre">{0:</span> <span class="pre">8}}</span></em><a class="headerlink" href="#id1" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">mode_precdict_warning_mode</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{1:</span> <span class="pre">{0:</span> <span class="pre">2,</span> <span class="pre">1:</span> <span class="pre">1},</span> <span class="pre">2:</span> <span class="pre">{0:</span> <span class="pre">4},</span> <span class="pre">3:</span> <span class="pre">{0:</span> <span class="pre">8}}</span></em><a class="headerlink" href="#id1" title="Link to this definition">#</a></dt>
 <dd><p>noindex:</p>
 </dd></dl>
 
@@ -817,7 +817,7 @@ mode=3对应第三个异常行为识别，0的预测类别是跌倒，对应错�
 :type max_frame: int
 :param iou: 指定衡量预测边界框与真实边界框之间重叠程度，未指定(为None)时使用默认值
 :type iou: float
-:param sensitivity: 指定对异常的敏感程度，0对应低敏感程度，设置置信度阈值为0.6，1对应高敏感程度，设置置信度阈值为0.4，默认为低敏感
+:param sensitivity: 指定对异常的敏感程度，0对应低敏感程度，设置置信度阈值为0.6，1对应高敏感程度，设置置信度阈值为0.5，默认为低敏感
 :type sensitivity: int</p>
 </dd></dl>
 

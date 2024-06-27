@@ -404,7 +404,6 @@ document.write(`
         <span class="bp">self</span><span class="o">.</span><span class="n">email_receiver_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">load_email_receiver_config</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">email_receiver_file</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">warning_logger</span><span class="o">.</span><span class="n">log_write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Successfully loaded email receiver file &quot;</span>
                                       <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">email_senter_file</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">Log_Processor</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span>
-
         <span class="c1"># 初始化混音器模块</span>
         <span class="n">pygame</span><span class="o">.</span><span class="n">mixer</span><span class="o">.</span><span class="n">init</span><span class="p">()</span>
 
@@ -453,31 +452,39 @@ document.write(`
 <span class="sd">        -------</span>
 <span class="sd">        level_description : int</span>
 <span class="sd">            对置信度危险等级的描述，返回一个整型数，是根据置信度的大判断的危险等级：</span>
-<span class="sd">            0~0.8表示危险性不大，危险等级为1</span>
-<span class="sd">            0.8~0.9中等危险，又可能会发生事故，危险等级为2</span>
-<span class="sd">            0.9~0.95大概率识别出事故，并且判断较为准确，危险等级为3</span>
-<span class="sd">            0.95~1 极度危险状态，危险等级为4</span>
+<span class="sd">            如果是高敏感度：</span>
+<span class="sd">                0.5以下认为置信度不够，默认无危险</span>
+<span class="sd">                0.5~0.6表示危险性不大，危险等级为1</span>
+<span class="sd">                0.6~0.7中等危险，又可能会发生事故，危险等级为2</span>
+<span class="sd">                0.7~0.8大概率识别出事故，并且判断较为准确，危险等级为3</span>
+<span class="sd">                0.8~1 极度危险状态，危险等级为4</span>
+<span class="sd">            如果是低敏感度：</span>
+<span class="sd">                0.6以下认为误识别的风险高于识别风险，默认无危险</span>
+<span class="sd">                0.6~0.7表示危险性不大，危险等级为1</span>
+<span class="sd">                0.7~0.8中等危险，又可能会发生事故，危险等级为2</span>
+<span class="sd">                0.8~0.9大概率识别出事故，并且判断较为准确，危险等级为3</span>
+<span class="sd">                0.9~1 极度危险状态，危险等级为4</span>
 <span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="k">if</span> <span class="n">sensitivity</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-            <span class="k">if</span> <span class="mf">0.4</span> <span class="o">&lt;=</span> <span class="n">level</span> <span class="o">&lt;</span> <span class="mf">0.8</span><span class="p">:</span>
+            <span class="k">if</span> <span class="mf">0.5</span> <span class="o">&lt;=</span> <span class="n">level</span> <span class="o">&lt;</span> <span class="mf">0.6</span><span class="p">:</span>
                 <span class="k">return</span> <span class="mi">1</span>
-            <span class="k">elif</span> <span class="mf">0.8</span> <span class="o">&lt;=</span> <span class="n">level</span> <span class="o">&lt;</span> <span class="mf">0.9</span><span class="p">:</span>
+            <span class="k">elif</span> <span class="mf">0.6</span> <span class="o">&lt;=</span> <span class="n">level</span> <span class="o">&lt;</span> <span class="mf">0.7</span><span class="p">:</span>
                 <span class="k">return</span> <span class="mi">2</span>
-            <span class="k">elif</span> <span class="mf">0.9</span> <span class="o">&lt;=</span> <span class="n">level</span> <span class="o">&lt;</span> <span class="mf">0.95</span><span class="p">:</span>
+            <span class="k">elif</span> <span class="mf">0.7</span> <span class="o">&lt;=</span> <span class="n">level</span> <span class="o">&lt;</span> <span class="mf">0.8</span><span class="p">:</span>
                 <span class="k">return</span> <span class="mi">3</span>
-            <span class="k">elif</span> <span class="mf">0.95</span> <span class="o">&lt;=</span> <span class="n">level</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">elif</span> <span class="mf">0.8</span> <span class="o">&lt;=</span> <span class="n">level</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">:</span>
                 <span class="k">return</span> <span class="mi">4</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="k">return</span> <span class="mi">0</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="k">if</span> <span class="mf">0.6</span> <span class="o">&lt;=</span> <span class="n">level</span> <span class="o">&lt;</span> <span class="mf">0.8</span><span class="p">:</span>
+            <span class="k">if</span> <span class="mf">0.6</span> <span class="o">&lt;=</span> <span class="n">level</span> <span class="o">&lt;</span> <span class="mf">0.7</span><span class="p">:</span>
                 <span class="k">return</span> <span class="mi">1</span>
-            <span class="k">elif</span> <span class="mf">0.8</span> <span class="o">&lt;=</span> <span class="n">level</span> <span class="o">&lt;</span> <span class="mf">0.9</span><span class="p">:</span>
+            <span class="k">elif</span> <span class="mf">0.7</span> <span class="o">&lt;=</span> <span class="n">level</span> <span class="o">&lt;</span> <span class="mf">0.8</span><span class="p">:</span>
                 <span class="k">return</span> <span class="mi">2</span>
-            <span class="k">elif</span> <span class="mf">0.9</span> <span class="o">&lt;=</span> <span class="n">level</span> <span class="o">&lt;</span> <span class="mf">0.95</span><span class="p">:</span>
+            <span class="k">elif</span> <span class="mf">0.8</span> <span class="o">&lt;=</span> <span class="n">level</span> <span class="o">&lt;</span> <span class="mf">0.9</span><span class="p">:</span>
                 <span class="k">return</span> <span class="mi">3</span>
-            <span class="k">elif</span> <span class="mf">0.95</span> <span class="o">&lt;=</span> <span class="n">level</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">elif</span> <span class="mf">0.9</span> <span class="o">&lt;=</span> <span class="n">level</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">:</span>
                 <span class="k">return</span> <span class="mi">4</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="k">return</span> <span class="mi">0</span></div>
@@ -508,16 +515,17 @@ document.write(`
         <span class="n">log_message</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">warning_type</span><span class="si">}</span><span class="s2"> at </span><span class="si">{</span><span class="n">warning_time</span><span class="si">}</span><span class="s2"> with risk level:(</span><span class="si">{</span><span class="n">level_description</span><span class="si">}</span><span class="s2">)&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">warning_logger</span><span class="o">.</span><span class="n">log_write</span><span class="p">(</span><span class="n">log_message</span><span class="p">,</span> <span class="n">Log_Processor</span><span class="o">.</span><span class="n">CRITICAL</span><span class="p">)</span>
 
-        <span class="c1"># 危险等级超过3就发送邮件</span>
-        <span class="k">if</span> <span class="n">level_description</span> <span class="o">&gt;=</span> <span class="mi">3</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">send_email_notification</span><span class="p">(</span><span class="n">warning_type</span><span class="p">,</span> <span class="n">warning_time</span><span class="p">,</span> <span class="n">level_description</span><span class="p">)</span>
-            <span class="n">log_message</span> <span class="o">+=</span> <span class="s2">&quot; Start to sent Message!&quot;</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">warning_logger</span><span class="o">.</span><span class="n">log_write</span><span class="p">(</span><span class="n">log_message</span><span class="p">,</span> <span class="n">Log_Processor</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span>
-
         <span class="c1"># 警告播放</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_play_audio</span><span class="p">(</span><span class="n">level_description</span><span class="p">)</span>
         <span class="c1"># 桌面跳出警报窗口</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">show_custom_warning_dialog</span><span class="p">(</span><span class="n">warning_type</span><span class="p">,</span> <span class="n">warning_time</span><span class="p">,</span> <span class="n">level_description</span><span class="p">)</span></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">show_custom_warning_dialog</span><span class="p">(</span><span class="n">warning_type</span><span class="p">,</span> <span class="n">warning_time</span><span class="p">,</span> <span class="n">level_description</span><span class="p">)</span>
+
+        <span class="c1"># 危险等级超过3，或是火焰的危险等级2就发送邮件</span>
+        <span class="k">if</span> <span class="n">level_description</span> <span class="o">&gt;=</span> <span class="mi">3</span> <span class="ow">or</span> <span class="p">(</span><span class="n">warning_type</span> <span class="o">==</span> <span class="s2">&quot;Fire&quot;</span> <span class="ow">and</span> <span class="n">level_description</span> <span class="o">==</span> <span class="mi">2</span><span class="p">):</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">email_senter_data</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">email_receiver_data</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">send_email_notification</span><span class="p">(</span><span class="n">warning_type</span><span class="p">,</span> <span class="n">warning_time</span><span class="p">,</span> <span class="n">level_description</span><span class="p">)</span>
+                <span class="n">log_message</span> <span class="o">+=</span> <span class="s2">&quot; Start to sent Message!&quot;</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">warning_logger</span><span class="o">.</span><span class="n">log_write</span><span class="p">(</span><span class="n">log_message</span><span class="p">,</span> <span class="n">Log_Processor</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span></div>
 
 
     <span class="k">def</span> <span class="nf">_play_audio</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">level_description</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
@@ -553,7 +561,6 @@ document.write(`
 <span class="sd">        level_description : int</span>
 <span class="sd">            置信度危险等级</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-
         <span class="n">root</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Tk</span><span class="p">()</span>
         <span class="n">root</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Warning&quot;</span><span class="p">)</span>
 

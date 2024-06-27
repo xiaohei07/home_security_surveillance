@@ -127,8 +127,8 @@ train_config和predict_config配置文件中的各变量记录，在后续加载
 #### mode_precdict_warning_mode
 
 类变量，将使用的模型mode和预测类别映射为错误码
-mode=1对应第一个火焰/烟雾模型，0的预测类别是烟雾，对应错误码是1
-1的预测类别是火焰，对应错误码是2，mode=2对应第二个人像识别模型，0的预测类别是人，对应错误码是4
+mode=1对应第一个火焰/烟雾模型，1的预测类别是烟雾，对应错误码是1
+0的预测类别是火焰，对应错误码是2，mode=2对应第二个人像识别模型，0的预测类别是人，对应错误码是4
 mode=3对应第三个异常行为识别，0的预测类别是跌倒，对应错误码是8
 
 * **Type:**
@@ -197,7 +197,7 @@ mode=3对应第三个异常行为识别，0的预测类别是跌倒，对应错�
 #### conf
 
 * **Type:**
-  float         模型对识别设置的置信度阈值，低于该阈值的识别结果会被过滤，默认为0.4
+  float         模型对识别设置的置信度阈值，低于该阈值的识别结果会被过滤，默认为0.5
 
 #### show
 
@@ -245,7 +245,7 @@ mode=3对应第三个异常行为识别，0的预测类别是跌倒，对应错�
 :type max_frame: int
 :param iou: 指定衡量预测边界框与真实边界框之间重叠程度，未指定(为None)时使用默认值
 :type iou: float
-:param sensitivity: 指定对异常的敏感程度，0对应低敏感程度，设置置信度阈值为0.6，1对应高敏感程度，设置置信度阈值为0.4，默认为低敏感
+:param sensitivity: 指定对异常的敏感程度，0对应低敏感程度，设置置信度阈值为0.6，1对应高敏感程度，设置置信度阈值为0.5，默认为低敏感
 :type sensitivity: int
 
 ### 备注
@@ -281,11 +281,11 @@ mode=3对应第三个异常行为识别，0的预测类别是跌倒，对应错�
 :param dir_path: 指定的要创建的目录的绝对路径
 :type dir_path: str
 
-#### mode_precdict_class *= {1: {0: 0, 1: 1}, 2: {0: 2}, 3: {0: 3}}*
+#### mode_precdict_class *= {1: {0: 1, 1: 0}, 2: {0: 2}, 3: {0: 3}}*
 
 noindex:
 
-#### mode_precdict_warning_mode *= {1: {0: 1, 1: 2}, 2: {0: 4}, 3: {0: 8}}*
+#### mode_precdict_warning_mode *= {1: {0: 2, 1: 1}, 2: {0: 4}, 3: {0: 8}}*
 
 noindex:
 
@@ -347,7 +347,7 @@ noindex:
 :type max_frame: int
 :param iou: 指定衡量预测边界框与真实边界框之间重叠程度，未指定(为None)时使用默认值
 :type iou: float
-:param sensitivity: 指定对异常的敏感程度，0对应低敏感程度，设置置信度阈值为0.6，1对应高敏感程度，设置置信度阈值为0.4，默认为低敏感
+:param sensitivity: 指定对异常的敏感程度，0对应低敏感程度，设置置信度阈值为0.6，1对应高敏感程度，设置置信度阈值为0.5，默认为低敏感
 :type sensitivity: int
 
 #### reset_training_parameters(batch: int | None = None, epochs: int | None = None, project: str | None = None, name: str | None = None, imgsz: int | None = None, data: str | None = None, weight_pt: str | None = None, device: int | None = None)
