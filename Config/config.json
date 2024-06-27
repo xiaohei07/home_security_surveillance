@@ -1,0 +1,7 @@
+{
+  "history-video-directory" : "History_video",
+  "IP-video-device-file" : "Config/IP_video_device.json",
+  "model-directory" : "Model",
+  "log-directory" : "Logs",
+  "exception-monitoring-directory" : "Exception_monitoring"
+}

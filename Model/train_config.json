@@ -1,0 +1,9 @@
+{
+  "batch":16,
+  "epochs":5,
+  "project":"train_file",
+  "name":"detect",
+  "imgsz":640,
+  "data-fire":"fire.yaml",
+  "weight_pt":"yolov8n.pt"
+}

@@ -1,0 +1,1688 @@
+
+<!DOCTYPE html>
+
+
+<html lang="zh-CN" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>home_security_surveillance.Video_process.video_processor &#8212; home_security_surveillance 1.5 文档</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=362ab14a" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../../_static/documentation_options.js?v=a8cb9c0f"></script>
+    <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/translations.js?v=beaddf03"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/home_security_surveillance/Video_process/video_processor';</script>
+    <link rel="index" title="索引" href="../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="zh-CN"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">home_security_surveillance 1.5 文档</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="搜索" aria-label="搜索" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">搜索</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="搜索" aria-label="搜索" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">搜索</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../../index.html" class="nav-link">模块代码</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page">home_securit...</li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>home_security_surveillance.Video_process.video_processor 源代码</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">File Name: video_processor.py</span>
+<span class="sd">Author: 07xiaohei</span>
+<span class="sd">Date: 2024-05-13</span>
+<span class="sd">Version: 1.5</span>
+<span class="sd">Description: 处理视频流的核心类</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="c1"># 引入常用库</span>
+<span class="kn">from</span> <span class="nn">home_security_surveillance.Common</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="c1"># 引入PyCameraList.camera_device库的list_video_devices函数，用于列出所有可用的视频源</span>
+<span class="kn">from</span> <span class="nn">PyCameraList.camera_device</span> <span class="kn">import</span> <span class="n">list_video_devices</span>
+<span class="c1"># 引入file_process包</span>
+<span class="kn">from</span> <span class="nn">home_security_surveillance.File_process</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="c1"># 引入video_capture_process库</span>
+<span class="kn">from</span> <span class="nn">home_security_surveillance.Video_process.video_capture_process</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="c1"># 引入video_detect库</span>
+<span class="kn">from</span> <span class="nn">home_security_surveillance.Video_process.video_detect</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="c1"># 引入Exception_process库</span>
+<span class="kn">from</span> <span class="nn">home_security_surveillance.Exception_process</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="c1"># 引入synchronize库的Event对象</span>
+<span class="kn">from</span> <span class="nn">multiprocessing</span> <span class="kn">import</span> <span class="n">synchronize</span>
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Video_Processor&quot;</span><span class="p">]</span>
+
+<div class="viewcode-block" id="Video_Processor">
+<a class="viewcode-back" href="../../../home_security_surveillance.Video_process.html#home_security_surveillance.Video_process.video_processor.Video_Processor">[文档]</a>
+<span class="k">class</span> <span class="nc">Video_Processor</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Video_Processor(url_capture_time_out, root)</span>
+
+<span class="sd">    从视频源处获得视频流并进行处理的相关类，是家庭监控系统的核心处理部分</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    url_capture_time_out : int</span>
+<span class="sd">        opencv在捕捉网络摄像头url视频流时的超时时间设置，各协议统一，且应小于opencv已设置的时间</span>
+<span class="sd">        此处最大为15s，默认值为10s，最大请尽量小于15s</span>
+<span class="sd">    event: synchronize.Event</span>
+<span class="sd">        ui界面创建对象时传递的事件，在该类传递事件内标记设置为False时结束任务退出进程，默认为None</span>
+<span class="sd">    return_value : multiprocessing.Value</span>
+<span class="sd">        ui界面创建对象时传递的共享内存变量，默认为None</span>
+
+<span class="sd">    Attributes</span>
+<span class="sd">    ----------</span>
+<span class="sd">    ui_event: synchronize.Event</span>
+<span class="sd">        ui界面创建对象时传递的事件，在该类传递事件内标记设置为False时结束任务退出进程，默认为None</span>
+<span class="sd">    ui_value : multiprocessing.Value</span>
+<span class="sd">        ui界面创建对象时传递的共享内存变量，默认为None</span>
+
+<span class="sd">    create_time : str</span>
+<span class="sd">        创建该对象的时间，字符串类型，格式与log.py中Log_Processor的strftime_all相同</span>
+<span class="sd">    url_capture_time_out : int</span>
+<span class="sd">        opencv在捕捉网络摄像头url视频流时的超时时间设置，各协议统一，且应小于opencv已设置的时间</span>
+<span class="sd">        此处最大为15s，默认值为10s，最大请尽量小于15s</span>
+<span class="sd">    config_data : dict</span>
+<span class="sd">        配置文件的字典格式，每个元素为一个键值对，键为配置文件的属性名，值为配置文件的属性值</span>
+
+<span class="sd">    local_video_device_list : List[ Tuple[ Union[int,str],str ] ]</span>
+<span class="sd">        关于本地视频设备的一个列表，每个元素为一个元组，每个元组内有两个子元素</span>
+<span class="sd">        每个元组的第一个元素是视频源的相关信息作为show_video_in_cv函数的输入，用于opencv库从视频源中获得视频流</span>
+<span class="sd">        每个元组的第二个元素是视频源的相关说明</span>
+<span class="sd">    logger : Log_Processor</span>
+<span class="sd">        日志处理器对象的一个实例，用于记录该类活动过程中的运行信息和错误信息</span>
+<span class="sd">    nvd_processor : Nvd_processor</span>
+<span class="sd">        网络视频设备处理器对象的一个实例，用于处理网络应用设备的加载、访问和修改</span>
+<span class="sd">    hs_processor : History_video_processor</span>
+<span class="sd">        历史视频处理器对象的一个实例，用于处理对历史视频的加载、访问和识别</span>
+<span class="sd">    video_detector : Video_Detector</span>
+<span class="sd">        视频检测处理器对象的一个实例，使用基于yolov8的识别模型对视频流进行监测</span>
+<span class="sd">    warning_processor : Warning_processor</span>
+<span class="sd">        异常警报处理器对象的一个实例，使用smtplib库发送邮件，pygame库播放音频，tkinter库弹出警告窗口</span>
+
+<span class="sd">    _load_flag : List[bool, bool, bool]</span>
+<span class="sd">        标记上述的本地视频设备、网络视频设备和历史视频处理器的加载是否成功且不为空，便于后续处理时确定是否可用</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    视频流的来源包括本地视频设备(如USB摄像头)，网络视频设备（如ip摄像头）和历史监控视频三种</span>
+<span class="sd">    传入video_type=1对应本地监视器设备，video_type=2对应网络视频设备，video_type=3对应历史监控视频</span>
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># 统一使用的视频格式</span>
+    <span class="n">_video_suffix</span> <span class="o">=</span> <span class="s2">&quot;avi&quot;</span>
+    <span class="c1"># 可使用的最大分辨率</span>
+    <span class="n">_video_resolution</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1280</span><span class="p">,</span> <span class="mi">720</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">url_capture_time_out</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span>
+                 <span class="n">event</span><span class="p">:</span> <span class="n">synchronize</span><span class="o">.</span><span class="n">Event</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">return_value</span><span class="p">:</span> <span class="n">multiprocessing</span><span class="o">.</span><span class="n">Value</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;初始化Video_processor对象&quot;&quot;&quot;</span>
+
+        <span class="c1"># 获得格式化的当前时间，作为该类的创建时间</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">create_time</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="n">Log_Processor</span><span class="o">.</span><span class="n">strftime_all</span><span class="p">)</span>
+
+        <span class="c1"># 记录超时时间</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">url_capture_time_out</span> <span class="o">=</span> <span class="n">url_capture_time_out</span>
+        <span class="c1"># 记录共享变量和事件</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ui_event</span> <span class="o">=</span> <span class="n">event</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ui_value</span> <span class="o">=</span> <span class="n">return_value</span>
+        <span class="c1"># 加载json格式的配置文件</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">config_data</span><span class="p">,</span> <span class="n">invalid_config_data</span> <span class="o">=</span> <span class="n">load_config</span><span class="p">(</span><span class="n">relative</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+        <span class="c1"># 如果解析失败，对错误信息的处理</span>
+        <span class="k">except</span> <span class="n">json</span><span class="o">.</span><span class="n">JSONDecodeError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="c1"># 创建默认的日志处理器对象输出错误</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_create_logger</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">log_write</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="n">Log_Processor</span><span class="o">.</span><span class="n">ERROR</span><span class="p">)</span>
+            <span class="c1">### 后续的处理（前端部分），这里要输出配置文件解析失败的错误信息</span>
+            <span class="c1">### 也就是Config下面根源的那个config.json文件解析失败信息，只有这个解析正确才能保研后续的全部加载是一定成功的</span>
+            <span class="k">pass</span>
+
+        <span class="c1"># 解释成功后的处理</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># 创建日志文件,输出信息</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_create_logger</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">config_data</span><span class="p">[</span><span class="s2">&quot;log-directory&quot;</span><span class="p">],</span> <span class="n">Log_Processor</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span>
+            <span class="c1"># 如果有无效键值对，输出处理信息</span>
+            <span class="k">if</span> <span class="n">invalid_config_data</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">log_write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Have deleted invaild item(s) in &quot;</span> <span class="o">+</span>
+                                      <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">config_file</span><span class="p">)</span><span class="si">}</span><span class="s2">: &quot;</span> <span class="o">+</span>
+                                      <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">invalid_config_data</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">Log_Processor</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span>
+            <span class="c1"># 输出加载成功信息</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">log_write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Successfully loaded configuration file &quot;</span>
+                                  <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">config_file</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">Log_Processor</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span>
+
+        <span class="c1"># 加载视频设备的相关信息</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">load_video_sourse</span><span class="p">()</span>
+
+        <span class="c1"># 加载视频监测处理器</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">video_detector</span> <span class="o">=</span> <span class="n">Video_Detector</span><span class="p">(</span><span class="n">root_dir</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">config_data</span><span class="p">[</span><span class="s2">&quot;model-directory&quot;</span><span class="p">],</span>
+                                             <span class="n">use_defalut_parameter</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="c1"># 输出加载成功信息</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">log_write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Successfully loaded video detector &quot;</span>
+                              <span class="sa">f</span><span class="s2">&quot;the root dir is</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">config_data</span><span class="p">[</span><span class="s1">&#39;model-directory&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+                              <span class="n">Log_Processor</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span>
+
+        <span class="c1"># 加载异常警报处理器</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">warning_processor</span> <span class="o">=</span> <span class="n">Warning_Processor</span><span class="p">(</span><span class="n">warning_dir</span><span class="o">=</span>
+                                                   <span class="bp">self</span><span class="o">.</span><span class="n">config_data</span><span class="p">[</span><span class="s2">&quot;exception-monitoring-directory&quot;</span><span class="p">])</span>
+        <span class="c1"># 输出加载成功信息</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">log_write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Successfully loaded warning processor &quot;</span>
+                              <span class="sa">f</span><span class="s2">&quot;the root dir is</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">config_data</span><span class="p">[</span><span class="s1">&#39;exception-monitoring-directory&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+                              <span class="n">Log_Processor</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_create_logger</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">log_dir</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">config_defaluts</span><span class="p">[</span><span class="s2">&quot;log-directory&quot;</span><span class="p">],</span>
+                       <span class="n">level</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">Log_Processor</span><span class="o">.</span><span class="n">INFO</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        创建日志处理器对象函数</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        log_dir : str</span>
+<span class="sd">            日志的根目录，默认为log.py中定义的config_defaults变量的log-directory键值</span>
+<span class="sd">        level : int</span>
+<span class="sd">            数字形式的日志优先级，默认为INFO级别</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        logger : Log_Processor</span>
+<span class="sd">            返回一个日志处理器对象</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c1"># 创建的日志处理器的处理文件名为该类的创建时间</span>
+        <span class="k">return</span> <span class="n">Log_Processor</span><span class="p">(</span><span class="n">log_dir</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_time</span> <span class="o">+</span> <span class="s2">&quot;.log&quot;</span><span class="p">,</span> <span class="n">level</span><span class="p">)</span>
+
+<div class="viewcode-block" id="Video_Processor.load_video_sourse">
+<a class="viewcode-back" href="../../../home_security_surveillance.Video_process.html#home_security_surveillance.Video_process.video_processor.Video_Processor.load_video_sourse">[文档]</a>
+    <span class="k">def</span> <span class="nf">load_video_sourse</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;加载视频资源函数&quot;&quot;&quot;</span>
+
+        <span class="c1"># 标记加载成功性</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_load_flag</span> <span class="o">=</span> <span class="p">[</span><span class="kc">True</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">True</span><span class="p">]</span>
+
+        <span class="c1"># 获得所有本地可用视频设备的列表并进行日志记录</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">local_video_device_list</span> <span class="o">=</span> <span class="n">list_video_devices</span><span class="p">()</span>
+        <span class="c1"># 判断加载后本地视频设备是否为空</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">local_video_device_list</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">log_write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The loaded local video device is empty.&quot;</span><span class="p">,</span> <span class="n">Log_Processor</span><span class="o">.</span><span class="n">WARNING</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_load_flag</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">log_write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Successfully loaded local video device:</span><span class="se">\n</span><span class="s2">&quot;</span>
+                                  <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">local_video_device_list</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+                                  <span class="n">Log_Processor</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span>
+
+        <span class="c1"># 获得网络视频设备配置文件的所有url结果，每个url的信息对应列表的元素，类型为dict，并进行日志记录</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">nvd_processor</span> <span class="o">=</span> <span class="n">Nvd_Processor</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">config_data</span><span class="p">[</span><span class="s2">&quot;IP-video-device-file&quot;</span><span class="p">],</span> <span class="n">re_parse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="k">except</span> <span class="n">json</span><span class="o">.</span><span class="n">decoder</span><span class="o">.</span><span class="n">JSONDecodeError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="c1"># 加载出错时抛出错误，需要修改错误信息，将文件名信息加入其中</span>
+            <span class="n">new_e_msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Error decoding JSON in file&quot;</span> <span class="o">+</span> \
+                        <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">config_data</span><span class="p">[</span><span class="s1">&#39;IP-video-device-file&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">e</span><span class="o">.</span><span class="n">msg</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">log_write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">new_e_msg</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">Log_Processor</span><span class="o">.</span><span class="n">ERROR</span><span class="p">)</span>
+
+        <span class="c1"># 判断加载后网络视频设备是否为空</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">nvd_processor</span><span class="o">.</span><span class="n">nvd_config_data</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">log_write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The loaded saved network video device is empty&quot;</span><span class="p">,</span>
+                                  <span class="n">Log_Processor</span><span class="o">.</span><span class="n">WARNING</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_load_flag</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">log_write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Successfully loaded network video device&quot;</span><span class="p">,</span>
+                                  <span class="n">Log_Processor</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span>
+
+        <span class="c1"># 加载所有历史保存视频视频处理器对象</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">hs_processor</span> <span class="o">=</span> <span class="n">History_Video_Processor</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">config_data</span><span class="p">[</span><span class="s2">&quot;history-video-directory&quot;</span><span class="p">],</span>
+                                                    <span class="bp">self</span><span class="o">.</span><span class="n">_video_suffix</span><span class="p">)</span>
+        <span class="c1"># 判断历史保存视频是否为空</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">hs_processor</span><span class="o">.</span><span class="n">hv_dict</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">log_write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The loaded history video directory is empty&quot;</span><span class="p">,</span>
+                                  <span class="n">Log_Processor</span><span class="o">.</span><span class="n">WARNING</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_load_flag</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">log_write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Successfully loaded history video processor&quot;</span><span class="p">,</span>
+                                  <span class="n">Log_Processor</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Video_Processor.update_local_video_sourse">
+<a class="viewcode-back" href="../../../home_security_surveillance.Video_process.html#home_security_surveillance.Video_process.video_processor.Video_Processor.update_local_video_sourse">[文档]</a>
+    <span class="k">def</span> <span class="nf">update_local_video_sourse</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        更新本地视频设备</span>
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        flag : bool</span>
+<span class="sd">            是否完成了更新，如更新返回True，否则为False</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">temp</span> <span class="o">=</span> <span class="n">list_video_devices</span><span class="p">()</span>
+        <span class="c1"># 判断加载后本地视频设备是否为空</span>
+        <span class="c1"># 如果为空且之前不为空</span>
+        <span class="k">if</span> <span class="n">temp</span> <span class="o">!=</span> <span class="bp">self</span><span class="o">.</span><span class="n">local_video_device_list</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">log_write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The loaded local video device has changed, now the&quot;</span>
+                                  <span class="sa">f</span><span class="s2">&quot;local video device:</span><span class="se">\n</span><span class="s2">&quot;</span>
+                                  <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">local_video_device_list</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">Log_Processor</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span>
+            <span class="c1"># 更新变量和flag</span>
+            <span class="k">if</span> <span class="n">temp</span> <span class="ow">and</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">local_video_device_list</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_load_flag</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="k">elif</span> <span class="ow">not</span> <span class="n">temp</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">local_video_device_list</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_load_flag</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">local_video_device_list</span> <span class="o">=</span> <span class="n">temp</span>
+            <span class="k">return</span> <span class="kc">True</span>
+
+        <span class="k">return</span> <span class="kc">False</span></div>
+
+
+<div class="viewcode-block" id="Video_Processor.load_local_video_device">
+<a class="viewcode-back" href="../../../home_security_surveillance.Video_process.html#home_security_surveillance.Video_process.video_processor.Video_Processor.load_local_video_device">[文档]</a>
+    <span class="k">def</span> <span class="nf">load_local_video_device</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">video_sourse</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+                                <span class="n">flag_visibility</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+                                <span class="n">flag_save</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+                                <span class="n">flag_detect</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+                                <span class="n">video_detect_type</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+                                <span class="n">video_detect_sensitivity</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span>
+                                <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        从本地视频设备利用opencv库加载视频流，根据传入的本地视频设备号来捕捉视频信息</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        video_sourse : int</span>
+<span class="sd">            要捕获的本地视频设备的索引号，用于opencv库从视频源处获得视频流</span>
+<span class="sd">        flag_visibility : bool</span>
+<span class="sd">            控制opencv在读取视频流时是否展示，True时展示视频，False时不展示，可用于后台处理视频</span>
+<span class="sd">        flag_save : bool</span>
+<span class="sd">            控制opencv在读取视频六时是否保存，True时保存视频，False时不保存</span>
+<span class="sd">        flag_detect : bool</span>
+<span class="sd">            控制视频流是否需要进行监测，目标追踪，默认为True</span>
+<span class="sd">        video_detect_type : int</span>
+<span class="sd">            控制视频流监测的类型，0为全部监测，1为只监测火焰，2为只监测人，3为检测异常情况</span>
+<span class="sd">        video_detect_sensitivity : int</span>
+<span class="sd">            控制视频流在监测时的敏感度，0为低敏感度，1为高敏感度</span>
+<span class="sd">        Returns</span>
+<span class="sd">        --------</span>
+<span class="sd">        res : int</span>
+<span class="sd">            返回一个整型，每个值对应一个错误类型或者正确类型</span>
+<span class="sd">            0则说明读取、展示和保存成功</span>
+<span class="sd">            -1则说明打开摄像头失败</span>
+<span class="sd">            -2则说明读取摄像头下一帧失败或者摄像头意外关闭</span>
+<span class="sd">            -3则说明指定保存视频文件时，创建目录或打开视频文件失败</span>
+<span class="sd">            1说明本地视频设备为空</span>
+<span class="sd">            2说明传入索引号超过了本地视频设备列表大小</span>
+
+<span class="sd">        Notes</span>
+<span class="sd">        -----</span>
+<span class="sd">        为了加速模型识别处理速度，创建一个进程单独执行识别功能，与该进程的通信使用两个多进程队列multiprocessing.Queue</span>
+<span class="sd">        一个是frame_queue，用于将捕捉的视频帧在处理后传给识别进程</span>
+<span class="sd">        一个是result_queue，用于将识别进程识别到错误的获得的错误类型和置信度返回给该进程</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c1"># 检查本地设备是否为空</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_load_flag</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">log_write</span><span class="p">(</span><span class="s2">&quot;Can&#39;t load local video device, the local video device is no exist.&quot;</span><span class="p">,</span>
+                                  <span class="n">Log_Processor</span><span class="o">.</span><span class="n">ERROR</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">ui_value</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="mi">1</span>
+            <span class="k">return</span> <span class="mi">1</span>
+
+        <span class="c1"># 检查传入索引号是否超过了列表大小</span>
+        <span class="k">if</span> <span class="n">video_sourse</span> <span class="o">&gt;=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">local_video_device_list</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">log_write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The </span><span class="si">{</span><span class="n">video_sourse</span><span class="si">}</span><span class="s2"> is out of &quot;</span> <span class="o">+</span>
+                                  <span class="sa">f</span><span class="s2">&quot;the length </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">local_video_device_list</span><span class="p">)</span><span class="si">:}</span><span class="s2"> &quot;</span> <span class="o">+</span>
+                                  <span class="sa">f</span><span class="s2">&quot;of local video device list.&quot;</span><span class="p">,</span> <span class="n">Log_Processor</span><span class="o">.</span><span class="n">ERROR</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">ui_value</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="mi">2</span>
+            <span class="k">return</span> <span class="mi">2</span>
+
+        <span class="c1"># 根据视频源创建一个VideoCapture对象，用于从视频源中读取帧</span>
+        <span class="n">video_stream</span> <span class="o">=</span> <span class="n">cv</span><span class="o">.</span><span class="n">VideoCapture</span><span class="p">(</span><span class="n">video_sourse</span><span class="p">,</span> <span class="n">apiPreference</span><span class="o">=</span><span class="n">cv</span><span class="o">.</span><span class="n">CAP_ANY</span><span class="p">)</span>
+
+        <span class="c1"># 判断是否打开，成功则进行下一步的处理</span>
+        <span class="k">if</span> <span class="n">video_stream</span><span class="o">.</span><span class="n">isOpened</span><span class="p">():</span>
+            <span class="c1"># 更新共享变量以说明进程启动成功</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">ui_value</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="o">-</span><span class="mi">9</span>
+            <span class="c1"># 获得视频流参数，包括宽度、高度和帧率，转为整型</span>
+            <span class="n">real_width</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">video_stream</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">cv</span><span class="o">.</span><span class="n">CAP_PROP_FRAME_WIDTH</span><span class="p">))</span>
+            <span class="n">real_height</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">video_stream</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">cv</span><span class="o">.</span><span class="n">CAP_PROP_FRAME_HEIGHT</span><span class="p">))</span>
+            <span class="n">real_fps</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">video_stream</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">cv</span><span class="o">.</span><span class="n">CAP_PROP_FPS</span><span class="p">))</span>
+
+            <span class="c1"># 如果超过了要求大小，限制其大小为720p</span>
+            <span class="c1"># 需要注意的是，此处的限制只能对能够修改对应效果的摄像头进行处理，否则是无效的</span>
+            <span class="n">flag_resize</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="c1"># 横屏限制</span>
+            <span class="k">if</span> <span class="n">real_width</span> <span class="o">&gt;</span> <span class="n">real_height</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">real_width</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">_video_resolution</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">or</span> <span class="n">real_height</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">_video_resolution</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span>
+                    <span class="n">video_stream</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">cv</span><span class="o">.</span><span class="n">CAP_PROP_FRAME_WIDTH</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_video_resolution</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+                    <span class="n">video_stream</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">cv</span><span class="o">.</span><span class="n">CAP_PROP_FRAME_HEIGHT</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_video_resolution</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+                    <span class="n">width</span> <span class="o">=</span> <span class="n">video_stream</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">cv</span><span class="o">.</span><span class="n">CAP_PROP_FRAME_WIDTH</span><span class="p">)</span>
+                    <span class="n">height</span> <span class="o">=</span> <span class="n">video_stream</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">cv</span><span class="o">.</span><span class="n">CAP_PROP_FRAME_HEIGHT</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">width</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="n">real_width</span><span class="p">,</span> <span class="n">real_height</span>
+                <span class="k">if</span> <span class="n">width</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">_video_resolution</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">or</span> <span class="n">height</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">_video_resolution</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span>
+                    <span class="n">flag_resize</span> <span class="o">=</span> <span class="mi">1</span>
+            <span class="c1"># 竖屏限制</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">real_width</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">_video_resolution</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="ow">or</span> <span class="n">real_height</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">_video_resolution</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
+                    <span class="n">video_stream</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">cv</span><span class="o">.</span><span class="n">CAP_PROP_FRAME_WIDTH</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_video_resolution</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+                    <span class="n">video_stream</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">cv</span><span class="o">.</span><span class="n">CAP_PROP_FRAME_HEIGHT</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_video_resolution</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+                    <span class="n">width</span> <span class="o">=</span> <span class="n">video_stream</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">cv</span><span class="o">.</span><span class="n">CAP_PROP_FRAME_WIDTH</span><span class="p">)</span>
+                    <span class="n">height</span> <span class="o">=</span> <span class="n">video_stream</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">cv</span><span class="o">.</span><span class="n">CAP_PROP_FRAME_HEIGHT</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">width</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="n">real_width</span><span class="p">,</span> <span class="n">real_height</span>
+                <span class="k">if</span> <span class="n">width</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">_video_resolution</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="ow">or</span> <span class="n">height</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">_video_resolution</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
+                    <span class="n">flag_resize</span> <span class="o">=</span> <span class="mi">2</span>
+            <span class="c1"># 帧率限制</span>
+            <span class="c1"># fps为90000表示时钟频率，不做处理</span>
+            <span class="k">if</span> <span class="n">real_fps</span> <span class="o">!=</span> <span class="mi">90000</span> <span class="ow">and</span> <span class="n">real_fps</span> <span class="o">&gt;</span> <span class="mi">30</span><span class="p">:</span>
+                <span class="n">video_stream</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">cv</span><span class="o">.</span><span class="n">CAP_PROP_FPS</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span>
+                <span class="n">fps</span> <span class="o">=</span> <span class="n">video_stream</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">cv</span><span class="o">.</span><span class="n">CAP_PROP_FPS</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">real_fps</span> <span class="o">==</span> <span class="mi">90000</span><span class="p">:</span>
+                <span class="n">fps</span> <span class="o">=</span> <span class="mi">30</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">fps</span> <span class="o">=</span> <span class="n">real_fps</span>
+            <span class="c1">## 亮度、对比度、饱和度、色调和曝光调整</span>
+            <span class="c1"># video_stream.set(cv.CAP_PROP_BRIGHTNESS, 1)</span>
+            <span class="c1"># video_stream.set(cv.CAP_PROP_CONTRAST, 40)</span>
+            <span class="c1"># video_stream.set(cv.CAP_PROP_SATURATION, 50)</span>
+            <span class="c1"># video_stream.set(cv.CAP_PROP_HUE, 50)</span>
+            <span class="c1"># video_stream.set(cv.CAP_PROP_EXPOSURE, 50)</span>
+
+            <span class="c1"># 日志输出</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">log_write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Load the local video device &quot;</span> <span class="o">+</span>
+                                  <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">local_video_device_list</span><span class="p">[</span><span class="n">video_sourse</span><span class="p">]</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span>
+                                  <span class="sa">f</span><span class="s2">&quot;The video raal width is </span><span class="si">{</span><span class="n">real_width</span><span class="si">}</span><span class="s2">, &quot;</span> <span class="o">+</span>
+                                  <span class="sa">f</span><span class="s2">&quot;the video raal height is </span><span class="si">{</span><span class="n">real_height</span><span class="si">}</span><span class="s2">, &quot;</span> <span class="o">+</span>
+                                  <span class="sa">f</span><span class="s2">&quot;and the raal fps is </span><span class="si">{</span><span class="n">real_fps</span><span class="si">}</span><span class="s2">.</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span>
+                                  <span class="sa">f</span><span class="s2">&quot;The setting video width is </span><span class="si">{</span><span class="n">width</span><span class="si">}</span><span class="s2"> &quot;</span> <span class="o">+</span>
+                                  <span class="sa">f</span><span class="s2">&quot;athe setting video width is </span><span class="si">{</span><span class="n">height</span><span class="si">}</span><span class="s2"> &quot;</span> <span class="o">+</span>
+                                  <span class="sa">f</span><span class="s2">&quot;The setting video width is </span><span class="si">{</span><span class="n">fps</span><span class="si">}</span><span class="s2"> &quot;</span><span class="p">,</span>
+                                  <span class="n">Log_Processor</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span>
+
+            <span class="c1"># 如果需要识别视频，创建保存帧的读取队列和结果队列</span>
+            <span class="n">frame_queue</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="n">result_queue</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="k">if</span> <span class="n">flag_detect</span><span class="p">:</span>
+                <span class="n">frame_queue</span> <span class="o">=</span> <span class="n">multiprocessing</span><span class="o">.</span><span class="n">Queue</span><span class="p">()</span>
+                <span class="n">result_queue</span> <span class="o">=</span> <span class="n">multiprocessing</span><span class="o">.</span><span class="n">Queue</span><span class="p">()</span>
+                <span class="c1"># 创建进程，传入参数并运行</span>
+                <span class="n">video_detect_process</span> <span class="o">=</span> <span class="n">multiprocessing</span><span class="o">.</span><span class="n">Process</span><span class="p">(</span>
+                    <span class="n">target</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">video_detector</span><span class="o">.</span><span class="n">detect</span><span class="p">,</span>
+                    <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">frame_queue</span><span class="p">,</span> <span class="n">result_queue</span><span class="p">,</span> <span class="n">video_detect_type</span><span class="p">),</span>
+                    <span class="n">kwargs</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;sensitivity&quot;</span><span class="p">:</span> <span class="n">video_detect_sensitivity</span><span class="p">})</span>
+                <span class="n">video_detect_process</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">log_write</span><span class="p">(</span><span class="s2">&quot;Start running video detect process&quot;</span><span class="p">,</span>
+                                      <span class="n">Log_Processor</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span>
+
+            <span class="c1"># 如果需要可视化，创建视频窗口，设置相应参数</span>
+            <span class="n">Window_name</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+            <span class="k">if</span> <span class="n">flag_visibility</span><span class="p">:</span>
+                <span class="c1"># 窗口名</span>
+                <span class="n">Window_name</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">local_video_device_list</span><span class="p">[</span><span class="n">video_sourse</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span>
+                <span class="c1"># WINDOW_NORMAL控制窗口可以放缩，WINDOW_KEEPRATIO控制窗口缩放的过程中保持比率</span>
+                <span class="c1"># WINDOW_GUI_EXPANDED控制使用新版本功能增强的GUI窗口</span>
+                <span class="n">cv</span><span class="o">.</span><span class="n">namedWindow</span><span class="p">(</span><span class="n">Window_name</span><span class="p">,</span> <span class="n">flags</span><span class="o">=</span><span class="n">cv</span><span class="o">.</span><span class="n">WINDOW_NORMAL</span> <span class="o">|</span> <span class="n">cv</span><span class="o">.</span><span class="n">WINDOW_KEEPRATIO</span> <span class="o">|</span>
+                                                  <span class="n">cv</span><span class="o">.</span><span class="n">WINDOW_GUI_EXPANDED</span><span class="p">)</span>
+                <span class="c1"># 大小设置为720p的大小</span>
+                <span class="k">if</span> <span class="n">real_width</span> <span class="o">&gt;</span> <span class="n">real_height</span><span class="p">:</span>
+                    <span class="n">cv</span><span class="o">.</span><span class="n">resizeWindow</span><span class="p">(</span><span class="n">Window_name</span><span class="p">,</span> <span class="mi">1280</span><span class="p">,</span> <span class="mi">720</span><span class="p">)</span>
+                <span class="k">elif</span> <span class="n">real_width</span> <span class="o">&lt;</span> <span class="n">real_height</span><span class="p">:</span>
+                    <span class="n">cv</span><span class="o">.</span><span class="n">resizeWindow</span><span class="p">(</span><span class="n">Window_name</span><span class="p">,</span> <span class="mi">720</span><span class="p">,</span> <span class="mi">1280</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">cv</span><span class="o">.</span><span class="n">resizeWindow</span><span class="p">(</span><span class="n">Window_name</span><span class="p">,</span> <span class="mi">720</span><span class="p">,</span> <span class="mi">720</span><span class="p">)</span>
+
+            <span class="c1"># 如果需要保存视频，在指定目录处创建视频文件，用于写入视频帧</span>
+            <span class="n">video_out</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="k">if</span> <span class="n">flag_save</span><span class="p">:</span>
+                <span class="c1"># 根据当前时间生成文件路径并更新历史视频处理器中的hv_dict(在函数中完成)</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="n">save_path</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">hs_processor</span><span class="o">.</span><span class="n">generate_video_file</span><span class="p">(</span>
+                        <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="n">Log_Processor</span><span class="o">.</span><span class="n">strftime_all</span><span class="p">))</span>
+                <span class="c1"># 如果目录已存在且再次创建</span>
+                <span class="k">except</span> <span class="ne">FileExistsError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">log_write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Fail to create save video dir: &quot;</span> <span class="o">+</span> <span class="n">e</span><span class="o">.</span><span class="n">strerror</span><span class="p">,</span>
+                                          <span class="n">Log_Processor</span><span class="o">.</span><span class="n">ERROR</span><span class="p">)</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">ui_value</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="o">-</span><span class="mi">3</span>
+                    <span class="k">return</span> <span class="o">-</span><span class="mi">3</span>
+                <span class="c1"># 如果路径有错误</span>
+                <span class="k">except</span> <span class="ne">OSError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">log_write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Fail to create save video dir: &quot;</span> <span class="o">+</span> <span class="n">e</span><span class="o">.</span><span class="n">strerror</span><span class="p">,</span>
+                                          <span class="n">Log_Processor</span><span class="o">.</span><span class="n">ERROR</span><span class="p">)</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">ui_value</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="o">-</span><span class="mi">3</span>
+                    <span class="k">return</span> <span class="o">-</span><span class="mi">3</span>
+                <span class="c1"># 无错误则输入视频流至文件中</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="c1"># 声明编码保存方式</span>
+                    <span class="n">fourcc</span> <span class="o">=</span> <span class="n">cv</span><span class="o">.</span><span class="n">VideoWriter</span><span class="o">.</span><span class="n">fourcc</span><span class="p">(</span><span class="o">*</span><span class="s2">&quot;DIVX&quot;</span><span class="p">)</span>
+                    <span class="c1"># 利用VideoWriter保存视频，文件路径为生成路径，帧率和分辨率统一为限制后的视频大小和帧率，彩色模式</span>
+                    <span class="n">video_out</span> <span class="o">=</span> <span class="n">cv</span><span class="o">.</span><span class="n">VideoWriter</span><span class="p">(</span><span class="n">save_path</span><span class="p">,</span> <span class="n">fourcc</span><span class="p">,</span> <span class="n">fps</span><span class="p">,</span> <span class="p">(</span><span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">),</span> <span class="kc">True</span><span class="p">)</span>
+                    <span class="c1"># 如果打开成功，日志记录</span>
+                    <span class="k">if</span> <span class="n">video_out</span><span class="o">.</span><span class="n">isOpened</span><span class="p">():</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">log_write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Create save video file: </span><span class="si">{</span><span class="n">save_path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+                                              <span class="n">Log_Processor</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span>
+                    <span class="c1"># 如果打开失败，删除历史视频处理器中的hv_dict信息</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">hs_processor</span><span class="o">.</span><span class="n">delete_new_video_file</span><span class="p">(</span><span class="n">save_path</span><span class="p">)</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">log_write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Fail to create save video file: </span><span class="si">{</span><span class="n">save_path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+                                              <span class="n">Log_Processor</span><span class="o">.</span><span class="n">ERROR</span><span class="p">)</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">ui_value</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="o">-</span><span class="mi">3</span>
+                        <span class="k">return</span> <span class="o">-</span><span class="mi">3</span>
+
+            <span class="c1"># 循环部分，用于读取视频</span>
+            <span class="c1"># skip用于跳帧</span>
+            <span class="n">skip</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="n">Warning_thread</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+                <span class="c1"># 如果ui界面触发了关闭事件，退出进程</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">ui_event</span><span class="o">.</span><span class="n">is_set</span><span class="p">():</span>
+                    <span class="k">if</span> <span class="n">flag_save</span><span class="p">:</span>
+                        <span class="n">video_out</span><span class="o">.</span><span class="n">release</span><span class="p">()</span>
+                    <span class="k">if</span> <span class="n">flag_visibility</span><span class="p">:</span>
+                        <span class="n">cv</span><span class="o">.</span><span class="n">destroyWindow</span><span class="p">(</span><span class="n">Window_name</span><span class="p">)</span>
+                    <span class="n">video_stream</span><span class="o">.</span><span class="n">release</span><span class="p">()</span>
+                    <span class="c1"># 由于没有终止视频帧None，手动传输结束识别进程</span>
+                    <span class="k">if</span> <span class="n">flag_detect</span><span class="p">:</span>
+                        <span class="n">frame_queue</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+                    <span class="k">break</span>
+
+                <span class="n">success</span> <span class="o">=</span> <span class="n">video_stream</span><span class="o">.</span><span class="n">grab</span><span class="p">()</span>
+                <span class="c1"># 如果摄像头读取失败，日志记录，结束运行，释放视频捕捉对象，销毁窗口</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">success</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">log_write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Fail to read the video of the local video device &quot;</span> <span class="o">+</span>
+                                          <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">local_video_device_list</span><span class="p">[</span><span class="n">video_sourse</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2">. &quot;</span> <span class="o">+</span>
+                                          <span class="sa">f</span><span class="s2">&quot;Please check the device.&quot;</span><span class="p">,</span>
+                                          <span class="n">Log_Processor</span><span class="o">.</span><span class="n">ERROR</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="n">flag_save</span><span class="p">:</span>
+                        <span class="n">video_out</span><span class="o">.</span><span class="n">release</span><span class="p">()</span>
+                    <span class="k">if</span> <span class="n">flag_visibility</span><span class="p">:</span>
+                        <span class="n">cv</span><span class="o">.</span><span class="n">destroyWindow</span><span class="p">(</span><span class="n">Window_name</span><span class="p">)</span>
+                    <span class="n">video_stream</span><span class="o">.</span><span class="n">release</span><span class="p">()</span>
+                    <span class="c1"># 由于没有终止视频帧None，手动传输结束识别进程</span>
+                    <span class="k">if</span> <span class="n">flag_detect</span><span class="p">:</span>
+                        <span class="n">frame_queue</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">ui_value</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="o">-</span><span class="mi">2</span>
+                    <span class="k">return</span> <span class="o">-</span><span class="mi">2</span>
+
+                <span class="c1"># 跳帧或者视频解码</span>
+                <span class="n">skip</span> <span class="o">+=</span> <span class="mi">1</span>
+                <span class="n">skip</span> <span class="o">%=</span> <span class="mi">4</span>
+                <span class="k">if</span> <span class="mi">15</span> <span class="o">&lt;=</span> <span class="n">fps</span> <span class="o">&lt;</span> <span class="mi">60</span> <span class="ow">and</span> <span class="n">skip</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                    <span class="k">continue</span>
+                <span class="k">elif</span> <span class="n">fps</span> <span class="o">&gt;=</span> <span class="mi">60</span> <span class="ow">and</span> <span class="n">skip</span> <span class="o">&gt;=</span> <span class="mi">1</span><span class="p">:</span>
+                    <span class="k">continue</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">_</span><span class="p">,</span> <span class="n">frame</span> <span class="o">=</span> <span class="n">video_stream</span><span class="o">.</span><span class="n">retrieve</span><span class="p">()</span>
+
+                <span class="c1"># 如果视频帧分辨率大于阈值，根据横竖屏重整为阈值</span>
+                <span class="k">if</span> <span class="n">flag_resize</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                    <span class="n">frame</span> <span class="o">=</span> <span class="n">cv</span><span class="o">.</span><span class="n">resize</span><span class="p">(</span><span class="n">frame</span><span class="p">,</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_video_resolution</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">_video_resolution</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span>
+                                      <span class="n">interpolation</span><span class="o">=</span><span class="n">cv</span><span class="o">.</span><span class="n">INTER_LINEAR</span><span class="p">)</span>
+                <span class="k">elif</span> <span class="n">flag_resize</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+                    <span class="n">frame</span> <span class="o">=</span> <span class="n">cv</span><span class="o">.</span><span class="n">resize</span><span class="p">(</span><span class="n">frame</span><span class="p">,</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_video_resolution</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">_video_resolution</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span>
+                                      <span class="n">interpolation</span><span class="o">=</span><span class="n">cv</span><span class="o">.</span><span class="n">INTER_LINEAR</span><span class="p">)</span>
+
+                <span class="c1"># 识别视频流的操作，放入帧并检查结果</span>
+                <span class="k">if</span> <span class="n">flag_detect</span><span class="p">:</span>
+                    <span class="n">frame_queue</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="n">frame</span><span class="p">)</span>
+                    <span class="c1"># 如果结果队列非空，说明出现了错误</span>
+                    <span class="k">if</span> <span class="ow">not</span> <span class="n">result_queue</span><span class="o">.</span><span class="n">empty</span><span class="p">():</span>
+                        <span class="c1"># 错误类型是一个列表，第一个元素是错误编码，第二个是各错误的置信度</span>
+                        <span class="n">warning_info</span> <span class="o">=</span> <span class="n">result_queue</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+                        <span class="n">now_time</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="n">Log_Processor</span><span class="o">.</span><span class="n">strftime_all</span><span class="p">)</span>
+                        <span class="c1"># 创建线程，并用报警器进行处理</span>
+                        <span class="n">Warning_thread</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">warning_processor</span><span class="o">.</span><span class="n">warning_process</span><span class="p">,</span>
+                                                          <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">warning_info</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">now_time</span><span class="p">,</span> <span class="n">warning_info</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+                                                                <span class="n">video_detect_sensitivity</span><span class="p">))</span>
+                        <span class="n">Warning_thread</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">log_write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">now_time</span><span class="si">}</span><span class="s2"> have exception&quot;</span><span class="p">,</span> <span class="n">Log_Processor</span><span class="o">.</span><span class="n">WARNING</span><span class="p">)</span>
+
+                <span class="c1"># 可见窗口时的操作</span>
+                <span class="k">if</span> <span class="n">flag_visibility</span><span class="p">:</span>
+                    <span class="c1"># 将当前帧在窗口中展示</span>
+                    <span class="n">cv</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">Window_name</span><span class="p">,</span> <span class="n">frame</span><span class="p">)</span>
+                    <span class="c1"># 按&#39;q&#39;和&#39;ESC&#39;键退出，释放视频捕捉对象，销毁窗口</span>
+                    <span class="n">cv2key</span> <span class="o">=</span> <span class="n">cv</span><span class="o">.</span><span class="n">waitKey</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="n">cv2key</span> <span class="o">&amp;</span> <span class="mh">0xFF</span> <span class="o">==</span> <span class="nb">ord</span><span class="p">(</span><span class="s1">&#39;q&#39;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">cv2key</span> <span class="o">&amp;</span> <span class="mh">0xFF</span> <span class="o">==</span> <span class="mi">27</span><span class="p">:</span>
+                        <span class="n">cv</span><span class="o">.</span><span class="n">destroyWindow</span><span class="p">(</span><span class="n">Window_name</span><span class="p">)</span>
+                        <span class="k">if</span> <span class="n">flag_save</span><span class="p">:</span>
+                            <span class="n">video_out</span><span class="o">.</span><span class="n">release</span><span class="p">()</span>
+                        <span class="n">video_stream</span><span class="o">.</span><span class="n">release</span><span class="p">()</span>
+                        <span class="c1"># 由于没有终止视频帧None，手动传输结束识别进程</span>
+                        <span class="k">if</span> <span class="n">flag_detect</span><span class="p">:</span>
+                            <span class="n">frame_queue</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+                        <span class="k">break</span>
+                    <span class="c1"># # 如果s键按下，则进行图片保存</span>
+                    <span class="c1"># elif cv2key == ord(&#39;s&#39;):</span>
+                    <span class="c1">#     # 记录当前时间</span>
+                    <span class="c1">#     now_time = datetime.datetime.now().strftime(Log_Processor.strftime_all)</span>
+                    <span class="c1">#     # 写入图片 并命名图片为 图片序号.png</span>
+                    <span class="c1">#     cv.imwrite(f&quot;{now_time}.png&quot;, frame)</span>
+                    <span class="c1"># 点击&quot;x&quot;关闭之后退出</span>
+                    <span class="k">if</span> <span class="n">cv</span><span class="o">.</span><span class="n">getWindowProperty</span><span class="p">(</span><span class="n">Window_name</span><span class="p">,</span> <span class="n">cv</span><span class="o">.</span><span class="n">WND_PROP_VISIBLE</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">:</span>
+                        <span class="k">if</span> <span class="n">flag_save</span><span class="p">:</span>
+                            <span class="n">video_out</span><span class="o">.</span><span class="n">release</span><span class="p">()</span>
+                        <span class="n">video_stream</span><span class="o">.</span><span class="n">release</span><span class="p">()</span>
+                        <span class="c1"># 由于没有终止视频帧None，手动传输结束识别进程</span>
+                        <span class="k">if</span> <span class="n">flag_detect</span><span class="p">:</span>
+                            <span class="n">frame_queue</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+                        <span class="k">break</span>
+
+                <span class="c1"># 保存文件时的操作</span>
+                <span class="k">if</span> <span class="n">flag_save</span><span class="p">:</span>
+                    <span class="c1"># 注意要重写图像大小，否则分辨率不一致时会报错</span>
+                    <span class="n">write_frame</span> <span class="o">=</span> <span class="n">cv</span><span class="o">.</span><span class="n">resize</span><span class="p">(</span><span class="n">frame</span><span class="p">,</span> <span class="p">(</span><span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">),</span> <span class="n">interpolation</span><span class="o">=</span><span class="n">cv</span><span class="o">.</span><span class="n">INTER_LINEAR</span><span class="p">)</span>
+                    <span class="n">video_out</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">write_frame</span><span class="p">)</span>
+
+        <span class="c1"># 打开失败则输出错误错误到日志文件中</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">log_write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Fail to load the local video device &quot;</span> <span class="o">+</span>
+                                  <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">local_video_device_list</span><span class="p">[</span><span class="n">video_sourse</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+                                  <span class="n">Log_Processor</span><span class="o">.</span><span class="n">ERROR</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">ui_value</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+            <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
+
+        <span class="c1"># 正常退出</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">log_write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Stop using the local video device &quot;</span> <span class="o">+</span>
+                              <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">local_video_device_list</span><span class="p">[</span><span class="n">video_sourse</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+                              <span class="n">Log_Processor</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ui_value</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">return</span> <span class="mi">0</span></div>
+
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">_network_device_visibility</span><span class="p">(</span><span class="n">vis_frame_queue</span><span class="p">:</span> <span class="n">multiprocessing</span><span class="o">.</span><span class="n">Queue</span><span class="p">,</span>
+                                   <span class="n">vis_result_queue</span><span class="p">:</span> <span class="n">multiprocessing</span><span class="o">.</span><span class="n">Queue</span><span class="p">,</span>
+                                   <span class="n">video_sourse</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">str</span><span class="p">],</span>
+                                   <span class="n">real_width</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">real_height</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        网络ip摄像头使用rtsp格式监控时会有大幅度的速度降低，此处使用新进程创建窗口</span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        vis_frame_queue : multiprocessing.Queue</span>
+<span class="sd">            接收视频帧队列</span>
+<span class="sd">        vis_result_queue: multiprocessing.Queue</span>
+<span class="sd">            返回视频帧处理结果队列</span>
+<span class="sd">        video_sourse : Union[int, str]</span>
+<span class="sd">            传入的ip或者url字符串，或者是已存储url的索引值</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># 窗口名</span>
+        <span class="n">Window_name</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">video_sourse</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="c1"># WINDOW_NORMAL控制窗口可以放缩，WINDOW_KEEPRATIO控制窗口缩放的过程中保持比率</span>
+        <span class="c1"># WINDOW_GUI_EXPANDED控制使用新版本功能增强的GUI窗口</span>
+        <span class="n">cv</span><span class="o">.</span><span class="n">namedWindow</span><span class="p">(</span><span class="n">Window_name</span><span class="p">,</span> <span class="n">flags</span><span class="o">=</span><span class="n">cv</span><span class="o">.</span><span class="n">WINDOW_NORMAL</span> <span class="o">|</span> <span class="n">cv</span><span class="o">.</span><span class="n">WINDOW_KEEPRATIO</span> <span class="o">|</span>
+                                          <span class="n">cv</span><span class="o">.</span><span class="n">WINDOW_GUI_EXPANDED</span><span class="p">)</span>
+        <span class="c1"># 大小设置为720p的大小</span>
+        <span class="k">if</span> <span class="n">real_width</span> <span class="o">&gt;</span> <span class="n">real_height</span><span class="p">:</span>
+            <span class="n">cv</span><span class="o">.</span><span class="n">resizeWindow</span><span class="p">(</span><span class="n">Window_name</span><span class="p">,</span> <span class="mi">1280</span><span class="p">,</span> <span class="mi">720</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">real_width</span> <span class="o">&lt;</span> <span class="n">real_height</span><span class="p">:</span>
+            <span class="n">cv</span><span class="o">.</span><span class="n">resizeWindow</span><span class="p">(</span><span class="n">Window_name</span><span class="p">,</span> <span class="mi">720</span><span class="p">,</span> <span class="mi">1280</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">cv</span><span class="o">.</span><span class="n">resizeWindow</span><span class="p">(</span><span class="n">Window_name</span><span class="p">,</span> <span class="mi">720</span><span class="p">,</span> <span class="mi">720</span><span class="p">)</span>
+
+        <span class="c1"># 获得当前时间，记录是否等待</span>
+        <span class="n">flag_wait</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="n">start_wait_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+        <span class="c1"># 主循环</span>
+        <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="c1"># 判断接收视频帧队列是否为空</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">vis_frame_queue</span><span class="o">.</span><span class="n">empty</span><span class="p">():</span>
+                <span class="c1"># 非空，重置等待标志，并获得每一帧进行处理</span>
+                <span class="k">if</span> <span class="n">flag_wait</span><span class="p">:</span>
+                    <span class="n">flag_wait</span> <span class="o">=</span> <span class="kc">False</span>
+                <span class="n">frame</span> <span class="o">=</span> <span class="n">vis_frame_queue</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+
+                <span class="c1"># 如果不是None</span>
+                <span class="k">if</span> <span class="n">frame</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="c1"># 将当前帧在窗口中展示</span>
+                    <span class="n">cv</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">Window_name</span><span class="p">,</span> <span class="n">frame</span><span class="p">)</span>
+                    <span class="c1"># 按&#39;q&#39;和&#39;ESC&#39;键退出，释放视频捕捉对象，销毁窗口</span>
+                    <span class="n">cv2key</span> <span class="o">=</span> <span class="n">cv</span><span class="o">.</span><span class="n">waitKey</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="n">cv2key</span> <span class="o">&amp;</span> <span class="mh">0xFF</span> <span class="o">==</span> <span class="nb">ord</span><span class="p">(</span><span class="s1">&#39;q&#39;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">cv2key</span> <span class="o">&amp;</span> <span class="mh">0xFF</span> <span class="o">==</span> <span class="mi">27</span><span class="p">:</span>
+                        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">vis_frame_queue</span><span class="o">.</span><span class="n">qsize</span><span class="p">()):</span>
+                            <span class="n">vis_frame_queue</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+                        <span class="n">cv</span><span class="o">.</span><span class="n">destroyWindow</span><span class="p">(</span><span class="n">Window_name</span><span class="p">)</span>
+                        <span class="n">vis_result_queue</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+                        <span class="n">vis_result_queue</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+                        <span class="n">vis_result_queue</span><span class="o">.</span><span class="n">join_thread</span><span class="p">()</span>
+                        <span class="k">return</span>
+                    <span class="c1"># # 如果s键按下，则进行图片保存</span>
+                    <span class="c1"># elif cv2key == ord(&#39;s&#39;):</span>
+                    <span class="c1">#     # 记录当前时间</span>
+                    <span class="c1">#     now_time = datetime.datetime.now().strftime(Log_Processor.strftime_all)</span>
+                    <span class="c1">#     # 写入图片 并命名图片为 图片序号.png</span>
+                    <span class="c1">#     cv.imwrite(f&quot;{now_time}.png&quot;, frame)</span>
+                    <span class="c1"># 点击&quot;x&quot;关闭之后退出</span>
+                    <span class="k">if</span> <span class="n">cv</span><span class="o">.</span><span class="n">getWindowProperty</span><span class="p">(</span><span class="n">Window_name</span><span class="p">,</span> <span class="n">cv</span><span class="o">.</span><span class="n">WND_PROP_VISIBLE</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">:</span>
+                        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">vis_frame_queue</span><span class="o">.</span><span class="n">qsize</span><span class="p">()):</span>
+                            <span class="n">vis_frame_queue</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+                        <span class="n">vis_result_queue</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+                        <span class="n">vis_result_queue</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+                        <span class="n">vis_result_queue</span><span class="o">.</span><span class="n">join_thread</span><span class="p">()</span>
+                        <span class="k">return</span>
+
+                <span class="c1"># 如果为None，说明读取结束</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">vis_frame_queue</span><span class="o">.</span><span class="n">qsize</span><span class="p">()):</span>
+                        <span class="n">vis_frame_queue</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+                    <span class="n">cv</span><span class="o">.</span><span class="n">destroyWindow</span><span class="p">(</span><span class="n">Window_name</span><span class="p">)</span>
+                    <span class="k">return</span>
+
+            <span class="c1"># 接收视频帧队列为空</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="c1"># 如果此前未进入等待状态，开始等待，并计时</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">flag_wait</span><span class="p">:</span>
+                    <span class="n">flag_wait</span> <span class="o">=</span> <span class="kc">True</span>
+                    <span class="n">start_wait_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+                    <span class="k">continue</span>
+                <span class="c1"># 如果此前进入了等待状态，判断等待时间是否超过了15s</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="c1"># 如果超过了，说明可视化超时等待，结束运行</span>
+                    <span class="k">if</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start_wait_time</span> <span class="o">&gt;=</span> <span class="mi">15</span><span class="p">:</span>
+                        <span class="c1"># 清空过程中传入队列的视频帧并关闭队列</span>
+                        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">vis_frame_queue</span><span class="o">.</span><span class="n">qsize</span><span class="p">()):</span>
+                            <span class="n">vis_frame_queue</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+                        <span class="n">vis_result_queue</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+                        <span class="c1"># 为返回视频帧处理结果队列传入结束运行帧，关闭队列，等待发送结束</span>
+                        <span class="n">vis_result_queue</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+                        <span class="n">vis_result_queue</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+                        <span class="n">vis_result_queue</span><span class="o">.</span><span class="n">join_thread</span><span class="p">()</span>
+                        <span class="k">return</span>
+
+<div class="viewcode-block" id="Video_Processor.load_network_video_device">
+<a class="viewcode-back" href="../../../home_security_surveillance.Video_process.html#home_security_surveillance.Video_process.video_processor.Video_Processor.load_network_video_device">[文档]</a>
+    <span class="k">def</span> <span class="nf">load_network_video_device</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">video_sourse</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+                                  <span class="n">flag_visibility</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+                                  <span class="n">flag_save</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+                                  <span class="n">flag_detect</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+                                  <span class="n">video_detect_type</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+                                  <span class="n">video_detect_sensitivity</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+                                  <span class="n">video_protocol_type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;RTSP&quot;</span><span class="p">,</span>
+                                  <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        从网络视频设备利用opencv库加载视频流，根据传入的url、ip或者已存储url的索引值来捕捉视频信息</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        video_sourse : Union[int, str]</span>
+<span class="sd">            传入的ip或者url字符串，或者是已存储url的索引值</span>
+<span class="sd">        flag_visibility : bool</span>
+<span class="sd">            控制opencv在读取视频流时是否展示，True时展示视频，False时不展示，可用于后台处理视频</span>
+<span class="sd">        flag_save : bool</span>
+<span class="sd">            控制opencv在读取视频流时是否保存，True时保存视频，False时不保存</span>
+<span class="sd">        flag_detect : bool</span>
+<span class="sd">            控制视频流是否需要进行监测，目标追踪，默认为True</span>
+<span class="sd">        video_detect_type : int</span>
+<span class="sd">            控制视频流监测的类型，0为全部监测，1为只监测火焰，2为只监测人，3为检测异常情况</span>
+<span class="sd">        video_detect_sensitivity : int</span>
+<span class="sd">            控制视频流在监测时的敏感度，0为低敏感度，1为高敏感度</span>
+<span class="sd">        video_protocol_type : str</span>
+<span class="sd">            读取视频流时网络视频设备使用的传输协议，默认为RSTP</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        --------</span>
+<span class="sd">        res : int</span>
+<span class="sd">            返回一个整型，每个值对应一个错误类型或者正确类型</span>
+<span class="sd">            0则说明读取、展示和保存成功</span>
+<span class="sd">            -1则说明打开摄像头失败</span>
+<span class="sd">            -2则说明读取摄像头下一帧失败或者摄像头意外关闭</span>
+<span class="sd">            -3则说明指定保存视频文件时，创建目录或打开视频文件失败</span>
+<span class="sd">            1则说明网络视频设备为空</span>
+<span class="sd">            2则说明网络设备视频传输协议不支持</span>
+<span class="sd">            3则说明无法从url处获得视频流，即VideoCapture超时，与打开摄像头失败不同</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c1"># 如果加载的网络视频设备为空，则必须是url或者ip，不能对空字典做索引</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_load_flag</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">video_sourse</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">log_write</span><span class="p">(</span><span class="s2">&quot;Can&#39;t load the saved network video device, &quot;</span>
+                                      <span class="s2">&quot;the saved network video device is no exist.&quot;</span><span class="p">,</span>
+                                      <span class="n">Log_Processor</span><span class="o">.</span><span class="n">ERROR</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">ui_value</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="mi">1</span>
+                <span class="k">return</span> <span class="mi">1</span>
+
+        <span class="c1"># 验证协议可用性</span>
+        <span class="n">protocol_index</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">nvd_processor</span><span class="o">.</span><span class="n">vaild_protocol</span><span class="p">(</span><span class="n">video_protocol_type</span><span class="p">)</span>
+        <span class="c1"># 不可用则写入错误信息返回错误</span>
+        <span class="k">if</span> <span class="n">protocol_index</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">log_write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The video transmission transprotocol &quot;</span> <span class="o">+</span>
+                                  <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">video_protocol_type</span><span class="si">}</span><span class="s2"> is not supported.&quot;</span><span class="p">,</span>
+                                  <span class="n">Log_Processor</span><span class="o">.</span><span class="n">ERROR</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">ui_value</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="mi">2</span>
+            <span class="k">return</span> <span class="mi">2</span>
+
+        <span class="c1"># 根据传入信息获得网络视频设备的url地址，用于opencv的读取</span>
+        <span class="c1"># 记录传入信息类型字典，主要用于说明type_flag的值的每类对应情况</span>
+        <span class="n">type_flag_dict</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">:</span> <span class="s2">&quot;int&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span> <span class="s2">&quot;no_exist_ip&quot;</span><span class="p">,</span> <span class="mi">3</span><span class="p">:</span> <span class="s2">&quot;exist_ip&quot;</span><span class="p">,</span>
+                          <span class="mi">4</span><span class="p">:</span> <span class="s2">&quot;no_exist_url&quot;</span><span class="p">,</span> <span class="mi">5</span><span class="p">:</span> <span class="s2">&quot;exist_url&quot;</span><span class="p">}</span>
+        <span class="n">type_flag</span> <span class="o">=</span> <span class="mi">1</span>
+
+        <span class="c1"># 如果是索引，直接使用存储的url地址即可</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">video_sourse</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">nvd_processor</span><span class="o">.</span><span class="n">nvd_config_data</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">i</span><span class="p">[</span><span class="s2">&quot;index&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n">video_sourse</span><span class="p">:</span>
+                    <span class="n">video_sourse</span> <span class="o">=</span> <span class="n">i</span><span class="p">[</span><span class="s2">&quot;url&quot;</span><span class="p">]</span>
+
+        <span class="c1"># 如果不是，则检验是否为ip</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">nvd_processor</span><span class="o">.</span><span class="n">vaild_ip</span><span class="p">(</span><span class="n">video_sourse</span><span class="p">):</span>
+            <span class="c1"># 如果是，根据ip查找已保存的url中是否有此ip</span>
+            <span class="n">ip_url</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">nvd_processor</span><span class="o">.</span><span class="n">from_ip_find_url</span><span class="p">(</span><span class="n">video_sourse</span><span class="p">)</span>
+            <span class="c1"># 如果不存在，默认无账号密码、无端口，直接使用{protocol}://{ip}的格式</span>
+            <span class="k">if</span> <span class="n">ip_url</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span><span class="p">:</span>
+                <span class="n">video_sourse</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">nvd_processor</span><span class="o">.</span><span class="n">video_trans_protocol_dict</span><span class="p">[</span><span class="n">protocol_index</span><span class="p">]</span> \
+                               <span class="o">+</span> <span class="n">video_sourse</span>
+                <span class="c1"># 类型记录</span>
+                <span class="n">type_flag</span> <span class="o">=</span> <span class="mi">2</span>
+            <span class="c1"># 如果存在，修改其为对应的url地址</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">video_sourse</span> <span class="o">=</span> <span class="n">ip_url</span>
+                <span class="c1"># 类型记录</span>
+                <span class="n">type_flag</span> <span class="o">=</span> <span class="mi">3</span>
+
+        <span class="c1"># 如果不是ip，则认为是一个url</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># 检验是否存在</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">nvd_processor</span><span class="o">.</span><span class="n">nvd_config_data</span><span class="p">:</span>
+                <span class="c1"># 存在，类型记录</span>
+                <span class="k">if</span> <span class="n">i</span><span class="p">[</span><span class="s2">&quot;url&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n">video_sourse</span><span class="p">:</span>
+                    <span class="n">type_flag</span> <span class="o">=</span> <span class="mi">5</span>
+                    <span class="k">break</span>
+            <span class="c1"># 不存在，类型记录</span>
+            <span class="k">if</span> <span class="n">type_flag</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="n">type_flag</span> <span class="o">=</span> <span class="mi">4</span>
+
+        <span class="c1"># 根据视频源创建一个VideoCapture对象，用于从视频源中读取帧</span>
+        <span class="c1"># 由于ffmpeg对http和rtsp的url等待时间较长，使用另外一个线程进行处理，以便于缩减等待时间</span>
+
+        <span class="c1"># 创建队列读取另一个进程的信息</span>
+        <span class="n">video_stream_queue</span> <span class="o">=</span> <span class="n">multiprocessing</span><span class="o">.</span><span class="n">Queue</span><span class="p">()</span>
+        <span class="c1"># 创建进程，url使用video_sourse即可，队列使用创建的队列</span>
+        <span class="n">capture_process</span> <span class="o">=</span> <span class="n">Video_Capture_Process</span><span class="p">(</span><span class="n">video_sourse</span><span class="p">,</span> <span class="n">video_stream_queue</span><span class="p">)</span>
+        <span class="c1"># 运行进程</span>
+        <span class="n">capture_process</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+        <span class="c1"># 等待进程运行指定的超时时间</span>
+        <span class="n">capture_process</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">url_capture_time_out</span><span class="p">)</span>
+        <span class="c1"># 超时时间后，查看进程情况，如果依旧运行，说明url错误，无法获得视频流，进行日志记录并返回错误</span>
+        <span class="k">if</span> <span class="n">capture_process</span><span class="o">.</span><span class="n">is_alive</span><span class="p">():</span>
+            <span class="n">capture_process</span><span class="o">.</span><span class="n">terminate</span><span class="p">()</span>
+            <span class="n">capture_process</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">log_write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Fail to load the network video device, the url &quot;</span>
+                                  <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">video_sourse</span><span class="si">}</span><span class="s2"> caputure is timing out.&quot;</span><span class="p">,</span>
+                                  <span class="n">Log_Processor</span><span class="o">.</span><span class="n">ERROR</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">ui_value</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="mi">3</span>
+            <span class="k">return</span> <span class="mi">3</span>
+        <span class="c1"># 否则进程运行完成，获得队列结果</span>
+        <span class="c1"># 非空时获得结果</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">video_stream_queue</span><span class="o">.</span><span class="n">empty</span><span class="p">():</span>
+            <span class="n">video_stream_flag</span> <span class="o">=</span> <span class="n">video_stream_queue</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">log_write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Fail to load the network video device, the url &quot;</span>
+                                  <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">video_sourse</span><span class="si">}</span><span class="s2"> caputure is timing out.&quot;</span><span class="p">,</span>
+                                  <span class="n">Log_Processor</span><span class="o">.</span><span class="n">ERROR</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">ui_value</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="mi">3</span>
+            <span class="k">return</span> <span class="mi">3</span>
+
+        <span class="c1"># 如果结果是True，说明打开成功</span>
+        <span class="k">if</span> <span class="n">video_stream_flag</span><span class="p">:</span>
+
+            <span class="n">video_stream</span> <span class="o">=</span> <span class="n">cv</span><span class="o">.</span><span class="n">VideoCapture</span><span class="p">(</span><span class="n">video_sourse</span><span class="p">,</span> <span class="n">apiPreference</span><span class="o">=</span><span class="n">cv</span><span class="o">.</span><span class="n">CAP_FFMPEG</span><span class="p">)</span>
+            <span class="c1"># 更新共享变量以说明进程启动成功</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">ui_value</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="o">-</span><span class="mi">9</span>
+            <span class="c1"># 获得视频流参数，包括宽度、高度和帧率，转为整型</span>
+            <span class="n">real_width</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">video_stream</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">cv</span><span class="o">.</span><span class="n">CAP_PROP_FRAME_WIDTH</span><span class="p">))</span>
+            <span class="n">real_height</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">video_stream</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">cv</span><span class="o">.</span><span class="n">CAP_PROP_FRAME_HEIGHT</span><span class="p">))</span>
+            <span class="n">real_fps</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">video_stream</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">cv</span><span class="o">.</span><span class="n">CAP_PROP_FPS</span><span class="p">))</span>
+
+            <span class="c1"># 如果超过了要求大小，限制其大小为720p</span>
+            <span class="c1"># 需要注意的是，此处的限制只能对能够修改对应效果的摄像头进行处理，否则是无效的</span>
+            <span class="n">flag_resize</span> <span class="o">=</span> <span class="kc">False</span>
+            <span class="c1"># 横屏限制</span>
+            <span class="k">if</span> <span class="n">real_width</span> <span class="o">&gt;</span> <span class="n">real_height</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">real_width</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">_video_resolution</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">or</span> <span class="n">real_height</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">_video_resolution</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span>
+                    <span class="n">video_stream</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">cv</span><span class="o">.</span><span class="n">CAP_PROP_FRAME_WIDTH</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_video_resolution</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+                    <span class="n">video_stream</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">cv</span><span class="o">.</span><span class="n">CAP_PROP_FRAME_HEIGHT</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_video_resolution</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+                    <span class="n">width</span> <span class="o">=</span> <span class="n">video_stream</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">cv</span><span class="o">.</span><span class="n">CAP_PROP_FRAME_WIDTH</span><span class="p">)</span>
+                    <span class="n">height</span> <span class="o">=</span> <span class="n">video_stream</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">cv</span><span class="o">.</span><span class="n">CAP_PROP_FRAME_HEIGHT</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">width</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="n">real_width</span><span class="p">,</span> <span class="n">real_height</span>
+                <span class="k">if</span> <span class="n">width</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">_video_resolution</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">or</span> <span class="n">height</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">_video_resolution</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span>
+                    <span class="n">flag_resize</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="c1"># 竖屏限制</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">real_width</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">_video_resolution</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="ow">or</span> <span class="n">real_height</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">_video_resolution</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
+                    <span class="n">video_stream</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">cv</span><span class="o">.</span><span class="n">CAP_PROP_FRAME_WIDTH</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_video_resolution</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+                    <span class="n">video_stream</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">cv</span><span class="o">.</span><span class="n">CAP_PROP_FRAME_HEIGHT</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_video_resolution</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+                    <span class="n">width</span> <span class="o">=</span> <span class="n">video_stream</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">cv</span><span class="o">.</span><span class="n">CAP_PROP_FRAME_WIDTH</span><span class="p">)</span>
+                    <span class="n">height</span> <span class="o">=</span> <span class="n">video_stream</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">cv</span><span class="o">.</span><span class="n">CAP_PROP_FRAME_HEIGHT</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">width</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="n">real_width</span><span class="p">,</span> <span class="n">real_height</span>
+                <span class="k">if</span> <span class="n">width</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">_video_resolution</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="ow">or</span> <span class="n">height</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">_video_resolution</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
+                    <span class="n">flag_resize</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="c1"># 帧率限制</span>
+            <span class="c1"># fps为90000表示时钟频率，不做处理</span>
+            <span class="k">if</span> <span class="n">real_fps</span> <span class="o">!=</span> <span class="mi">90000</span> <span class="ow">and</span> <span class="n">real_fps</span> <span class="o">&gt;</span> <span class="mi">30</span><span class="p">:</span>
+                <span class="n">video_stream</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">cv</span><span class="o">.</span><span class="n">CAP_PROP_FPS</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span>
+                <span class="n">fps</span> <span class="o">=</span> <span class="n">video_stream</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">cv</span><span class="o">.</span><span class="n">CAP_PROP_FPS</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">real_fps</span> <span class="o">==</span> <span class="mi">90000</span><span class="p">:</span>
+                <span class="n">fps</span> <span class="o">=</span> <span class="mi">30</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">fps</span> <span class="o">=</span> <span class="n">real_fps</span>
+
+            <span class="c1"># 日志输出</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">log_write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Load the network video device &quot;</span> <span class="o">+</span>
+                                  <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">video_sourse</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span>
+                                  <span class="sa">f</span><span class="s2">&quot;The video raal width is </span><span class="si">{</span><span class="n">real_width</span><span class="si">}</span><span class="s2">, &quot;</span> <span class="o">+</span>
+                                  <span class="sa">f</span><span class="s2">&quot;the video raal height is </span><span class="si">{</span><span class="n">real_height</span><span class="si">}</span><span class="s2">, &quot;</span> <span class="o">+</span>
+                                  <span class="sa">f</span><span class="s2">&quot;and the raal fps is </span><span class="si">{</span><span class="n">real_fps</span><span class="si">}</span><span class="s2">.</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span>
+                                  <span class="sa">f</span><span class="s2">&quot;The setting video width is </span><span class="si">{</span><span class="n">width</span><span class="si">}</span><span class="s2"> &quot;</span> <span class="o">+</span>
+                                  <span class="sa">f</span><span class="s2">&quot;athe setting video width is </span><span class="si">{</span><span class="n">height</span><span class="si">}</span><span class="s2"> &quot;</span> <span class="o">+</span>
+                                  <span class="sa">f</span><span class="s2">&quot;The setting video width is </span><span class="si">{</span><span class="n">fps</span><span class="si">}</span><span class="s2"> &quot;</span><span class="p">,</span>
+                                  <span class="n">Log_Processor</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span>
+
+            <span class="c1"># 打开成功时，如果url不存在于配置文件中，记录该url到其中</span>
+            <span class="k">if</span> <span class="n">type_flag</span> <span class="o">==</span> <span class="mi">2</span> <span class="ow">or</span> <span class="n">type_flag</span> <span class="o">==</span> <span class="mi">4</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">nvd_processor</span><span class="o">.</span><span class="n">add_nvd_config</span><span class="p">(</span><span class="n">video_sourse</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">log_write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Append url </span><span class="si">{</span><span class="n">video_sourse</span><span class="si">}</span><span class="s2"> to &quot;</span>
+                                      <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">config_data</span><span class="p">[</span><span class="s1">&#39;IP-video-device-file&#39;</span><span class="p">])</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+                                      <span class="n">Log_Processor</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span>
+
+            <span class="c1"># 如果需要识别视频，创建保存帧的读取队列和结果队列</span>
+            <span class="n">frame_queue</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="n">result_queue</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="k">if</span> <span class="n">flag_detect</span><span class="p">:</span>
+                <span class="n">frame_queue</span> <span class="o">=</span> <span class="n">multiprocessing</span><span class="o">.</span><span class="n">Queue</span><span class="p">()</span>
+                <span class="n">result_queue</span> <span class="o">=</span> <span class="n">multiprocessing</span><span class="o">.</span><span class="n">Queue</span><span class="p">()</span>
+                <span class="c1"># 创建进程，传入参数并运行</span>
+                <span class="n">video_detect_process</span> <span class="o">=</span> <span class="n">multiprocessing</span><span class="o">.</span><span class="n">Process</span><span class="p">(</span>
+                    <span class="n">target</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">video_detector</span><span class="o">.</span><span class="n">detect</span><span class="p">,</span>
+                    <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">frame_queue</span><span class="p">,</span> <span class="n">result_queue</span><span class="p">,</span> <span class="n">video_detect_type</span><span class="p">),</span>
+                    <span class="n">kwargs</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;sensitivity&quot;</span><span class="p">:</span> <span class="n">video_detect_sensitivity</span><span class="p">})</span>
+                <span class="n">video_detect_process</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">log_write</span><span class="p">(</span><span class="s2">&quot;Start running video detect process&quot;</span><span class="p">,</span>
+                                      <span class="n">Log_Processor</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span>
+
+            <span class="c1"># 如果需要可视化，创建视频窗口，设置相应参数</span>
+            <span class="n">vis_frame_queue</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="n">vis_result_queue</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="k">if</span> <span class="n">flag_visibility</span><span class="p">:</span>
+                <span class="n">vis_frame_queue</span> <span class="o">=</span> <span class="n">multiprocessing</span><span class="o">.</span><span class="n">Queue</span><span class="p">()</span>
+                <span class="n">vis_result_queue</span> <span class="o">=</span> <span class="n">multiprocessing</span><span class="o">.</span><span class="n">Queue</span><span class="p">()</span>
+                <span class="n">video_visibility_process</span> <span class="o">=</span> <span class="n">multiprocessing</span><span class="o">.</span><span class="n">Process</span><span class="p">(</span>
+                    <span class="n">target</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_network_device_visibility</span><span class="p">,</span>
+                    <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">vis_frame_queue</span><span class="p">,</span> <span class="n">vis_result_queue</span><span class="p">,</span> <span class="n">video_sourse</span><span class="p">,</span> <span class="n">real_width</span><span class="p">,</span> <span class="n">real_height</span><span class="p">))</span>
+                <span class="n">video_visibility_process</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">log_write</span><span class="p">(</span><span class="s2">&quot;Start running video visibility process&quot;</span><span class="p">,</span>
+                                      <span class="n">Log_Processor</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span>
+
+            <span class="c1"># 如果需要保存视频，在指定目录处创建视频文件，用于写入视频帧</span>
+            <span class="n">video_out</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="k">if</span> <span class="n">flag_save</span><span class="p">:</span>
+                <span class="c1"># 根据当前时间生成文件路径并更新历史视频处理器中的hv_dict(在函数中完成)</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="n">save_path</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">hs_processor</span><span class="o">.</span><span class="n">generate_video_file</span><span class="p">(</span>
+                        <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="n">Log_Processor</span><span class="o">.</span><span class="n">strftime_all</span><span class="p">))</span>
+                <span class="c1"># 如果目录已存在且再次创建</span>
+                <span class="k">except</span> <span class="ne">FileExistsError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">log_write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Fail to create save video dir: &quot;</span> <span class="o">+</span> <span class="n">e</span><span class="o">.</span><span class="n">strerror</span><span class="p">,</span>
+                                          <span class="n">Log_Processor</span><span class="o">.</span><span class="n">ERROR</span><span class="p">)</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">ui_value</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="o">-</span><span class="mi">3</span>
+                    <span class="k">return</span> <span class="o">-</span><span class="mi">3</span>
+                <span class="c1"># 如果路径有错误</span>
+                <span class="k">except</span> <span class="ne">OSError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">log_write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Fail to create save video dir: &quot;</span> <span class="o">+</span> <span class="n">e</span><span class="o">.</span><span class="n">strerror</span><span class="p">,</span>
+                                          <span class="n">Log_Processor</span><span class="o">.</span><span class="n">ERROR</span><span class="p">)</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">ui_value</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="o">-</span><span class="mi">3</span>
+                    <span class="k">return</span> <span class="o">-</span><span class="mi">3</span>
+
+                <span class="c1"># 无错误则输入视频流至文件中</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="c1"># 声明编码保存方式</span>
+                    <span class="n">fourcc</span> <span class="o">=</span> <span class="n">cv</span><span class="o">.</span><span class="n">VideoWriter</span><span class="o">.</span><span class="n">fourcc</span><span class="p">(</span><span class="o">*</span><span class="s2">&quot;DIVX&quot;</span><span class="p">)</span>
+                    <span class="c1"># 利用VideoWriter保存视频，文件路径为生成路径，帧率和分辨率统一为限制后的视频大小和帧率，彩色模式</span>
+                    <span class="n">video_out</span> <span class="o">=</span> <span class="n">cv</span><span class="o">.</span><span class="n">VideoWriter</span><span class="p">(</span><span class="n">save_path</span><span class="p">,</span> <span class="n">fourcc</span><span class="p">,</span> <span class="n">fps</span><span class="p">,</span> <span class="p">(</span><span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">),</span> <span class="kc">True</span><span class="p">)</span>
+                    <span class="c1"># 如果打开成功，日志记录</span>
+                    <span class="k">if</span> <span class="n">video_out</span><span class="o">.</span><span class="n">isOpened</span><span class="p">():</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">log_write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Create save video file: </span><span class="si">{</span><span class="n">save_path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+                                              <span class="n">Log_Processor</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span>
+                    <span class="c1"># 如果打开失败，删除历史视频处理器中的hv_dict信息</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">hs_processor</span><span class="o">.</span><span class="n">delete_new_video_file</span><span class="p">(</span><span class="n">save_path</span><span class="p">)</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">log_write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Fail to create save video file: </span><span class="si">{</span><span class="n">save_path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+                                              <span class="n">Log_Processor</span><span class="o">.</span><span class="n">ERROR</span><span class="p">)</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">ui_value</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="o">-</span><span class="mi">3</span>
+                        <span class="k">return</span> <span class="o">-</span><span class="mi">3</span>
+
+            <span class="c1"># 循环部分，用于读取视频</span>
+            <span class="c1"># skip用于跳帧</span>
+            <span class="n">skip</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+                <span class="c1"># 如果ui界面触发了关闭事件，退出进程</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">ui_event</span><span class="o">.</span><span class="n">is_set</span><span class="p">():</span>
+                    <span class="k">if</span> <span class="n">flag_save</span><span class="p">:</span>
+                        <span class="n">video_out</span><span class="o">.</span><span class="n">release</span><span class="p">()</span>
+                    <span class="k">if</span> <span class="n">flag_visibility</span><span class="p">:</span>
+                        <span class="n">vis_frame_queue</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+                    <span class="n">video_stream</span><span class="o">.</span><span class="n">release</span><span class="p">()</span>
+                    <span class="c1"># 由于没有终止视频帧None，手动传输结束识别进程</span>
+                    <span class="k">if</span> <span class="n">flag_detect</span><span class="p">:</span>
+                        <span class="n">frame_queue</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+                    <span class="k">break</span>
+
+                <span class="n">success</span> <span class="o">=</span> <span class="n">video_stream</span><span class="o">.</span><span class="n">grab</span><span class="p">()</span>
+                <span class="c1"># 如果摄像头读取失败，日志记录，结束运行，释放视频捕捉对象，销毁窗口</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">success</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">log_write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Fail to read the video of the network video device &quot;</span> <span class="o">+</span>
+                                          <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">video_sourse</span><span class="si">}</span><span class="s2">. &quot;</span> <span class="o">+</span>
+                                          <span class="sa">f</span><span class="s2">&quot;Please check the device.&quot;</span><span class="p">,</span>
+                                          <span class="n">Log_Processor</span><span class="o">.</span><span class="n">ERROR</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="n">flag_save</span><span class="p">:</span>
+                        <span class="n">video_out</span><span class="o">.</span><span class="n">release</span><span class="p">()</span>
+
+                    <span class="k">if</span> <span class="n">flag_visibility</span><span class="p">:</span>
+                        <span class="n">vis_frame_queue</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+                    <span class="n">video_stream</span><span class="o">.</span><span class="n">release</span><span class="p">()</span>
+
+                    <span class="c1"># 由于没有终止视频帧None，手动传输结束识别进程</span>
+                    <span class="k">if</span> <span class="n">flag_detect</span><span class="p">:</span>
+                        <span class="n">frame_queue</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">ui_value</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="o">-</span><span class="mi">2</span>
+                    <span class="k">return</span> <span class="o">-</span><span class="mi">2</span>
+
+                <span class="c1"># 跳帧或者视频解码</span>
+                <span class="c1"># 跳帧或者视频解码</span>
+                <span class="n">skip</span> <span class="o">+=</span> <span class="mi">1</span>
+                <span class="n">skip</span> <span class="o">%=</span> <span class="mi">4</span>
+                <span class="k">if</span> <span class="mi">15</span> <span class="o">&lt;=</span> <span class="n">fps</span> <span class="o">&lt;</span> <span class="mi">60</span> <span class="ow">and</span> <span class="n">skip</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                    <span class="k">continue</span>
+                <span class="k">elif</span> <span class="n">fps</span> <span class="o">&gt;=</span> <span class="mi">60</span> <span class="ow">and</span> <span class="n">skip</span> <span class="o">&gt;=</span> <span class="mi">1</span><span class="p">:</span>
+                    <span class="k">continue</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">_</span><span class="p">,</span> <span class="n">frame</span> <span class="o">=</span> <span class="n">video_stream</span><span class="o">.</span><span class="n">retrieve</span><span class="p">()</span>
+                <span class="c1"># 如果视频帧分辨率大于阈值，重整为阈值</span>
+                <span class="k">if</span> <span class="n">flag_resize</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                    <span class="n">frame</span> <span class="o">=</span> <span class="n">cv</span><span class="o">.</span><span class="n">resize</span><span class="p">(</span><span class="n">frame</span><span class="p">,</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_video_resolution</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">_video_resolution</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span>
+                                      <span class="n">interpolation</span><span class="o">=</span><span class="n">cv</span><span class="o">.</span><span class="n">INTER_LINEAR</span><span class="p">)</span>
+                <span class="k">elif</span> <span class="n">flag_resize</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+                    <span class="n">frame</span> <span class="o">=</span> <span class="n">cv</span><span class="o">.</span><span class="n">resize</span><span class="p">(</span><span class="n">frame</span><span class="p">,</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_video_resolution</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">_video_resolution</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span>
+                                      <span class="n">interpolation</span><span class="o">=</span><span class="n">cv</span><span class="o">.</span><span class="n">INTER_LINEAR</span><span class="p">)</span>
+
+                <span class="c1"># 识别视频流的操作，放入帧并检查结果</span>
+                <span class="k">if</span> <span class="n">flag_detect</span><span class="p">:</span>
+                    <span class="n">frame_queue</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="n">frame</span><span class="p">)</span>
+                    <span class="c1"># 如果结果队列非空，说明出现了错误</span>
+                    <span class="k">if</span> <span class="ow">not</span> <span class="n">result_queue</span><span class="o">.</span><span class="n">empty</span><span class="p">():</span>
+                        <span class="c1"># 错误类型是一个列表，第一个元素是错误编码，第二个是各错误的置信度</span>
+                        <span class="n">warning_info</span> <span class="o">=</span> <span class="n">result_queue</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+                        <span class="n">now_time</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="n">Log_Processor</span><span class="o">.</span><span class="n">strftime_all</span><span class="p">)</span>
+                        <span class="c1"># 创建线程，并用报警器进行处理</span>
+                        <span class="n">Warning_thread</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">warning_processor</span><span class="o">.</span><span class="n">warning_process</span><span class="p">,</span>
+                                                          <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">warning_info</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">now_time</span><span class="p">,</span> <span class="n">warning_info</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+                                                                <span class="n">video_detect_sensitivity</span><span class="p">))</span>
+                        <span class="n">Warning_thread</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">log_write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">now_time</span><span class="si">}</span><span class="s2"> have exception&quot;</span><span class="p">,</span> <span class="n">Log_Processor</span><span class="o">.</span><span class="n">WARNING</span><span class="p">)</span>
+
+                <span class="c1"># 可见窗口时的操作</span>
+                <span class="k">if</span> <span class="n">flag_visibility</span><span class="p">:</span>
+                    <span class="c1"># 放入视频帧</span>
+                    <span class="n">vis_frame_queue</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="n">frame</span><span class="p">)</span>
+                    <span class="c1"># 如果非空，说明有结果返回，说明对方终止了运行，此处也需要终止</span>
+                    <span class="k">if</span> <span class="ow">not</span> <span class="n">vis_result_queue</span><span class="o">.</span><span class="n">empty</span><span class="p">():</span>
+                        <span class="c1"># 如果返回False，说明是超时</span>
+                        <span class="k">if</span> <span class="ow">not</span> <span class="n">vis_result_queue</span><span class="o">.</span><span class="n">get</span><span class="p">():</span>
+                            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">log_write</span><span class="p">(</span><span class="s2">&quot;video visibility process timing out.&quot;</span><span class="p">,</span> <span class="n">Log_Processor</span><span class="o">.</span><span class="n">ERROR</span><span class="p">)</span>
+                        <span class="k">if</span> <span class="n">flag_save</span><span class="p">:</span>
+                            <span class="n">video_out</span><span class="o">.</span><span class="n">release</span><span class="p">()</span>
+                        <span class="n">video_stream</span><span class="o">.</span><span class="n">release</span><span class="p">()</span>
+                        <span class="c1"># 由于没有终止视频帧None，手动传输结束识别进程</span>
+                        <span class="k">if</span> <span class="n">flag_detect</span><span class="p">:</span>
+                            <span class="n">frame_queue</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+                        <span class="k">break</span>
+
+                <span class="c1"># 保存文件时的操作</span>
+                <span class="k">if</span> <span class="n">flag_save</span><span class="p">:</span>
+                    <span class="c1"># 注意要重写图像大小，否则分辨率不一致时会报错</span>
+                    <span class="n">video_out</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">frame</span><span class="p">)</span>
+
+        <span class="c1"># 打开失败则输出错误错误到日志文件中</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">log_write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Fail to load the network video device, use url is: &quot;</span> <span class="o">+</span>
+                                  <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">video_sourse</span><span class="si">}</span><span class="s2">. The url parameter is </span><span class="si">{</span><span class="n">type_flag_dict</span><span class="p">[</span><span class="n">type_flag</span><span class="p">]</span><span class="si">}</span><span class="s2">.&quot;</span> <span class="o">+</span>
+                                  <span class="sa">f</span><span class="s2">&quot; Please check the url or the config file of config &quot;</span>
+                                  <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">config_data</span><span class="p">[</span><span class="s1">&#39;IP-video-device-file&#39;</span><span class="p">])</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+                                  <span class="n">Log_Processor</span><span class="o">.</span><span class="n">ERROR</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">ui_value</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+            <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
+
+        <span class="c1"># 正常退出</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">log_write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Stop using the network video device &quot;</span> <span class="o">+</span>
+                              <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">video_sourse</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+                              <span class="n">Log_Processor</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ui_value</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">return</span> <span class="mi">0</span></div>
+
+
+<div class="viewcode-block" id="Video_Processor.load_history_video">
+<a class="viewcode-back" href="../../../home_security_surveillance.Video_process.html#home_security_surveillance.Video_process.video_processor.Video_Processor.load_history_video">[文档]</a>
+    <span class="k">def</span> <span class="nf">load_history_video</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">video_strat_save_date</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+                           <span class="n">video_index</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+                           <span class="n">flag_visibility</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+                           <span class="n">flag_re_detect</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+                           <span class="n">video_detect_sensitivity</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+                           <span class="n">video_detect_type</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        从历史视频保存文件夹中利用opencv库加载视频流，根据传入的视频录制日期和索引号来捕捉视频信息</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        video_strat_save_date : str</span>
+<span class="sd">            要加载的历史视频的保存日期，跨日的视频以开始保存的日期为准，用于opencv库从视频源处获得视频流</span>
+<span class="sd">            注意日期的格式为{年}分隔符{月}分隔符{日}，年一定是长为4的字符串</span>
+<span class="sd">        video_index : int</span>
+<span class="sd">            要加载的历史视频在保存日期的索引，用于区别单个日期保存的多个视频，默认为第一个，即索引为1</span>
+<span class="sd">        flag_visibility : bool</span>
+<span class="sd">            控制opencv在读取视频流时是否展示，True时展示视频，False时不展示，可用于后台处理视频</span>
+<span class="sd">        flag_re_detect : bool</span>
+<span class="sd">            控制历史视频是否需要进行监测，目标追踪，默认为True</span>
+<span class="sd">        video_detect_sensitivity : int</span>
+<span class="sd">            控制视频流在监测时的敏感度，0为低敏感度，1为高敏感度</span>
+<span class="sd">        video_detect_type : int</span>
+<span class="sd">            控制历史视频监测的类型，0为全部监测，1为只监测火焰，2为只监测人，3为检测异常情况</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        --------</span>
+<span class="sd">        res : int</span>
+<span class="sd">            返回一个整型，每个值对应一个错误类型或者正确类型</span>
+<span class="sd">            0则说明读取、展示、识别成功</span>
+<span class="sd">            -1则说明视频流打开失败(如视频实际是一个txt文件)</span>
+<span class="sd">            -2则说明视频流意外关闭(如加载视频到一半被手动删除)</span>
+<span class="sd">            1说明历史保存视频为空</span>
+<span class="sd">            2说明要加载视频的日期无视频</span>
+<span class="sd">            3说明索引不存在</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c1"># 检查历史保存视频是否为空</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_load_flag</span><span class="p">[</span><span class="mi">2</span><span class="p">]:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">log_write</span><span class="p">(</span><span class="s2">&quot;Can&#39;t load history video, the history video directory is empty.&quot;</span><span class="p">,</span>
+                                  <span class="n">Log_Processor</span><span class="o">.</span><span class="n">ERROR</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">ui_value</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="mi">1</span>
+            <span class="k">return</span> <span class="mi">1</span>
+
+        <span class="c1"># 获得历史视频文件及基本信息</span>
+        <span class="n">video_file</span><span class="p">,</span> <span class="n">video_info</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">hs_processor</span><span class="o">.</span><span class="n">get_video_file</span><span class="p">(</span><span class="n">video_strat_save_date</span><span class="p">,</span> <span class="n">video_index</span><span class="p">)</span>
+        <span class="c1"># 如果日期不存在，返回2，进行日志记录</span>
+        <span class="k">if</span> <span class="n">video_info</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">log_write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The </span><span class="si">{</span><span class="n">video_strat_save_date</span><span class="si">}</span><span class="s2"> date does not have &quot;</span> <span class="o">+</span>
+                                  <span class="sa">f</span><span class="s2">&quot;any saved historical video files.&quot;</span><span class="p">,</span> <span class="n">Log_Processor</span><span class="o">.</span><span class="n">ERROR</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">ui_value</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="mi">2</span>
+            <span class="k">return</span> <span class="mi">2</span>
+        <span class="c1"># 如果索引不存在，返回3，进行日志记录</span>
+        <span class="k">elif</span> <span class="n">video_info</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">log_write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The </span><span class="si">{</span><span class="n">video_strat_save_date</span><span class="si">}</span><span class="s2"> date does not have &quot;</span> <span class="o">+</span>
+                                  <span class="sa">f</span><span class="s2">&quot;the video file index </span><span class="si">{</span><span class="n">video_index</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">,</span> <span class="n">Log_Processor</span><span class="o">.</span><span class="n">ERROR</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">ui_value</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="mi">3</span>
+            <span class="k">return</span> <span class="mi">3</span>
+
+        <span class="c1"># 否则说明视频文件存在</span>
+        <span class="c1"># 根据视频源创建一个VideoCapture对象，用于从视频源中读取帧</span>
+        <span class="n">video_stream</span> <span class="o">=</span> <span class="n">cv</span><span class="o">.</span><span class="n">VideoCapture</span><span class="p">(</span><span class="n">video_file</span><span class="p">,</span> <span class="n">apiPreference</span><span class="o">=</span><span class="n">cv</span><span class="o">.</span><span class="n">CAP_ANY</span><span class="p">)</span>
+
+        <span class="c1"># 判断是否打开，成功则进行下一步的处理</span>
+        <span class="k">if</span> <span class="n">video_stream</span><span class="o">.</span><span class="n">isOpened</span><span class="p">():</span>
+            <span class="c1"># 更新共享变量以说明进程启动成功</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">ui_value</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="o">-</span><span class="mi">9</span>
+
+            <span class="c1"># 获得视频流参数，包括宽度、高度和帧率，转为整型</span>
+            <span class="n">real_width</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">video_stream</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">cv</span><span class="o">.</span><span class="n">CAP_PROP_FRAME_WIDTH</span><span class="p">))</span>
+            <span class="n">real_height</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">video_stream</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">cv</span><span class="o">.</span><span class="n">CAP_PROP_FRAME_HEIGHT</span><span class="p">))</span>
+            <span class="n">real_fps</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">video_stream</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">cv</span><span class="o">.</span><span class="n">CAP_PROP_FPS</span><span class="p">))</span>
+
+            <span class="c1"># 如果超过了要求大小，限制其大小为720p</span>
+            <span class="c1"># 横屏限制</span>
+            <span class="k">if</span> <span class="n">real_width</span> <span class="o">&gt;</span> <span class="n">real_height</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">real_width</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">_video_resolution</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">or</span> <span class="n">real_height</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">_video_resolution</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span>
+                    <span class="n">width</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_video_resolution</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">_video_resolution</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+                    <span class="n">video_stream</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">cv</span><span class="o">.</span><span class="n">CAP_PROP_FRAME_WIDTH</span><span class="p">,</span> <span class="n">width</span><span class="p">)</span>
+                    <span class="n">video_stream</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">cv</span><span class="o">.</span><span class="n">CAP_PROP_FRAME_HEIGHT</span><span class="p">,</span> <span class="n">height</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">width</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="n">real_width</span><span class="p">,</span> <span class="n">real_height</span>
+            <span class="c1"># 竖屏限制</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">real_width</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">_video_resolution</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="ow">or</span> <span class="n">real_height</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">_video_resolution</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
+                    <span class="n">width</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_video_resolution</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">_video_resolution</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+                    <span class="n">video_stream</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">cv</span><span class="o">.</span><span class="n">CAP_PROP_FRAME_WIDTH</span><span class="p">,</span> <span class="n">width</span><span class="p">)</span>
+                    <span class="n">video_stream</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">cv</span><span class="o">.</span><span class="n">CAP_PROP_FRAME_HEIGHT</span><span class="p">,</span> <span class="n">height</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">width</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="n">real_width</span><span class="p">,</span> <span class="n">real_height</span>
+            <span class="c1"># 帧率限制</span>
+            <span class="k">if</span> <span class="n">real_fps</span> <span class="o">&gt;</span> <span class="mi">30</span><span class="p">:</span>
+                <span class="n">fps</span> <span class="o">=</span> <span class="mi">30</span>
+                <span class="n">video_stream</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">cv</span><span class="o">.</span><span class="n">CAP_PROP_FPS</span><span class="p">,</span> <span class="n">fps</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">fps</span> <span class="o">=</span> <span class="n">real_fps</span>
+
+            <span class="c1"># 获得视频流总帧数和编解码格式</span>
+            <span class="n">video_frame_count</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">video_stream</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">cv</span><span class="o">.</span><span class="n">CAP_PROP_FRAME_COUNT</span><span class="p">))</span>
+            <span class="n">int_fourcc</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">video_stream</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">cv</span><span class="o">.</span><span class="n">CAP_PROP_FOURCC</span><span class="p">))</span>
+            <span class="c1"># 编解码格式转化</span>
+            <span class="n">video_fourcc</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
+                <span class="n">ascii_code</span> <span class="o">=</span> <span class="nb">int</span><span class="p">((</span><span class="n">int_fourcc</span> <span class="o">&gt;&gt;</span> <span class="mi">8</span> <span class="o">*</span> <span class="n">i</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mh">0xFF</span><span class="p">)</span>
+                <span class="n">video_fourcc</span> <span class="o">+=</span> <span class="nb">chr</span><span class="p">(</span><span class="n">ascii_code</span><span class="p">)</span>
+            <span class="c1"># 计算视频时长</span>
+            <span class="k">if</span> <span class="n">real_fps</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">video_duration</span> <span class="o">=</span> <span class="n">video_frame_count</span> <span class="o">/</span> <span class="n">real_fps</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">video_duration</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="c1"># 获得视频大小，单位为MB</span>
+            <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">video_file</span><span class="p">):</span>
+                <span class="n">video_size</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">getsize</span><span class="p">(</span><span class="n">video_file</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1024</span> <span class="o">*</span> <span class="mi">1024</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">video_size</span> <span class="o">=</span> <span class="mi">0</span>
+
+            <span class="c1">## 亮度、对比度、饱和度、色调和曝光调整</span>
+            <span class="c1"># video_stream.set(cv.CAP_PROP_BRIGHTNESS, 1)</span>
+            <span class="c1"># video_stream.set(cv.CAP_PROP_CONTRAST, 40)</span>
+            <span class="c1"># video_stream.set(cv.CAP_PROP_SATURATION, 50)</span>
+            <span class="c1"># video_stream.set(cv.CAP_PROP_HUE, 50)</span>
+            <span class="c1"># video_stream.set(cv.CAP_PROP_EXPOSURE, 50)</span>
+
+            <span class="c1"># 日志输出</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">log_write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Load the history video file &quot;</span> <span class="o">+</span>
+                                  <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">video_file</span><span class="si">}</span><span class="s2">.</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span>
+                                  <span class="sa">f</span><span class="s2">&quot;The video raal width is </span><span class="si">{</span><span class="n">real_width</span><span class="si">}</span><span class="s2">, &quot;</span> <span class="o">+</span>
+                                  <span class="sa">f</span><span class="s2">&quot;the video raal height is </span><span class="si">{</span><span class="n">real_height</span><span class="si">}</span><span class="s2">, &quot;</span> <span class="o">+</span>
+                                  <span class="sa">f</span><span class="s2">&quot;the raal fps is </span><span class="si">{</span><span class="n">real_fps</span><span class="si">}</span><span class="s2">, &quot;</span> <span class="o">+</span>
+                                  <span class="sa">f</span><span class="s2">&quot;the video frame count is </span><span class="si">{</span><span class="n">video_frame_count</span><span class="si">}</span><span class="s2">, &quot;</span> <span class="o">+</span>
+                                  <span class="sa">f</span><span class="s2">&quot;the video duration is </span><span class="si">{</span><span class="n">video_duration</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">, &quot;</span> <span class="o">+</span>
+                                  <span class="sa">f</span><span class="s2">&quot;the video size is </span><span class="si">{</span><span class="n">video_size</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> MB, &quot;</span> <span class="o">+</span>
+                                  <span class="sa">f</span><span class="s2">&quot;and the video Four-Character Codes is </span><span class="si">{</span><span class="n">video_fourcc</span><span class="si">}</span><span class="s2">.</span><span class="se">\n</span><span class="s2">&quot;</span>
+                                  <span class="sa">f</span><span class="s2">&quot;The setting video width is </span><span class="si">{</span><span class="n">width</span><span class="si">}</span><span class="s2"> &quot;</span> <span class="o">+</span>
+                                  <span class="sa">f</span><span class="s2">&quot;the setting video height is </span><span class="si">{</span><span class="n">height</span><span class="si">}</span><span class="s2"> &quot;</span> <span class="o">+</span>
+                                  <span class="sa">f</span><span class="s2">&quot;and the setting video fps is </span><span class="si">{</span><span class="n">fps</span><span class="si">}</span><span class="s2"> &quot;</span><span class="p">,</span>
+                                  <span class="n">Log_Processor</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span>
+
+            <span class="n">video_detect_process</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="k">if</span> <span class="n">flag_re_detect</span><span class="p">:</span>
+                <span class="n">video_detect_process</span> <span class="o">=</span> <span class="n">multiprocessing</span><span class="o">.</span><span class="n">Process</span><span class="p">(</span>
+                    <span class="n">target</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">video_detector</span><span class="o">.</span><span class="n">re_detect</span><span class="p">,</span>
+                    <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">video_file</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">ui_event</span><span class="p">,</span> <span class="n">video_detect_type</span><span class="p">),</span>
+                    <span class="n">kwargs</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;sensitivity&quot;</span><span class="p">:</span> <span class="n">video_detect_sensitivity</span><span class="p">})</span>
+                <span class="c1"># 确保进程不是守护进程</span>
+                <span class="n">video_detect_process</span><span class="o">.</span><span class="n">daemon</span> <span class="o">=</span> <span class="kc">False</span>
+                <span class="n">video_detect_process</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">log_write</span><span class="p">(</span><span class="s2">&quot;Start running video detect process&quot;</span><span class="p">,</span>
+                                      <span class="n">Log_Processor</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span>
+
+            <span class="c1"># 如果需要可视化，创建视频窗口，设置相应参数</span>
+            <span class="n">Window_name</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+            <span class="k">if</span> <span class="n">flag_visibility</span><span class="p">:</span>
+                <span class="c1"># 窗口名，使用获得的video_info</span>
+                <span class="n">Window_name</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">video_info</span><span class="si">}</span><span class="s2">&quot;</span>
+                <span class="c1"># WINDOW_NORMAL控制窗口可以放缩，WINDOW_KEEPRATIO控制窗口缩放的过程中保持比率</span>
+                <span class="c1"># WINDOW_GUI_EXPANDED控制使用新版本功能增强的GUI窗口</span>
+                <span class="n">cv</span><span class="o">.</span><span class="n">namedWindow</span><span class="p">(</span><span class="n">Window_name</span><span class="p">,</span> <span class="n">flags</span><span class="o">=</span><span class="n">cv</span><span class="o">.</span><span class="n">WINDOW_NORMAL</span> <span class="o">|</span> <span class="n">cv</span><span class="o">.</span><span class="n">WINDOW_KEEPRATIO</span> <span class="o">|</span>
+                                                  <span class="n">cv</span><span class="o">.</span><span class="n">WINDOW_GUI_EXPANDED</span><span class="p">)</span>
+                <span class="c1"># 大小设置为720p的大小</span>
+                <span class="k">if</span> <span class="n">real_width</span> <span class="o">&gt;</span> <span class="n">real_height</span><span class="p">:</span>
+                    <span class="n">cv</span><span class="o">.</span><span class="n">resizeWindow</span><span class="p">(</span><span class="n">Window_name</span><span class="p">,</span> <span class="mi">1280</span><span class="p">,</span> <span class="mi">720</span><span class="p">)</span>
+                <span class="k">elif</span> <span class="n">real_width</span> <span class="o">&lt;</span> <span class="n">real_height</span><span class="p">:</span>
+                    <span class="n">cv</span><span class="o">.</span><span class="n">resizeWindow</span><span class="p">(</span><span class="n">Window_name</span><span class="p">,</span> <span class="mi">720</span><span class="p">,</span> <span class="mi">1280</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">cv</span><span class="o">.</span><span class="n">resizeWindow</span><span class="p">(</span><span class="n">Window_name</span><span class="p">,</span> <span class="mi">720</span><span class="p">,</span> <span class="mi">720</span><span class="p">)</span>
+
+            <span class="c1"># 循环部分，用于读取视频</span>
+            <span class="c1"># 视频已读帧数记录，用于判断视频是否读取完毕</span>
+            <span class="n">frame_count</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+                <span class="c1"># 如果ui界面触发了关闭事件，退出进程</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">ui_event</span><span class="o">.</span><span class="n">is_set</span><span class="p">():</span>
+                    <span class="k">if</span> <span class="n">flag_visibility</span><span class="p">:</span>
+                        <span class="n">cv</span><span class="o">.</span><span class="n">destroyWindow</span><span class="p">(</span><span class="n">Window_name</span><span class="p">)</span>
+                    <span class="n">video_stream</span><span class="o">.</span><span class="n">release</span><span class="p">()</span>
+                    <span class="c1"># 由于没有终止视频帧，直接关闭进程</span>
+                    <span class="k">if</span> <span class="n">flag_re_detect</span><span class="p">:</span>
+                        <span class="n">video_detect_process</span><span class="o">.</span><span class="n">terminate</span><span class="p">()</span>
+                    <span class="k">break</span>
+
+                <span class="n">success</span><span class="p">,</span> <span class="n">frame</span> <span class="o">=</span> <span class="n">video_stream</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+                <span class="c1"># 如果视频读取失败，判断是是否读取完毕</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">success</span><span class="p">:</span>
+                    <span class="c1"># 如果读取完毕，日志记录，正常退出</span>
+                    <span class="k">if</span> <span class="n">frame_count</span> <span class="o">&gt;=</span> <span class="n">video_frame_count</span><span class="p">:</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">log_write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;All frames of the video file </span><span class="si">{</span><span class="n">video_file</span><span class="si">}</span><span class="s2"> &quot;</span> <span class="o">+</span>
+                                              <span class="sa">f</span><span class="s2">&quot;has already been read.&quot;</span><span class="p">,</span>
+                                              <span class="n">Log_Processor</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span>
+                        <span class="k">if</span> <span class="n">flag_visibility</span><span class="p">:</span>
+                            <span class="n">cv</span><span class="o">.</span><span class="n">destroyWindow</span><span class="p">(</span><span class="n">Window_name</span><span class="p">)</span>
+                        <span class="n">video_stream</span><span class="o">.</span><span class="n">release</span><span class="p">()</span>
+                        <span class="k">break</span>
+                    <span class="c1"># 如果未完成，结束运行，日志记录，释放视频捕捉对象，销毁窗口</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">log_write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Fail to continue to read &quot;</span> <span class="o">+</span>
+                                              <span class="sa">f</span><span class="s2">&quot;the video from the history video file </span><span class="si">{</span><span class="n">video_file</span><span class="si">}</span><span class="s2">. &quot;</span> <span class="o">+</span>
+                                              <span class="sa">f</span><span class="s2">&quot;Please check the saved file.&quot;</span><span class="p">,</span>
+                                              <span class="n">Log_Processor</span><span class="o">.</span><span class="n">ERROR</span><span class="p">)</span>
+                        <span class="k">if</span> <span class="n">flag_visibility</span><span class="p">:</span>
+                            <span class="n">cv</span><span class="o">.</span><span class="n">destroyWindow</span><span class="p">(</span><span class="n">Window_name</span><span class="p">)</span>
+                        <span class="n">video_stream</span><span class="o">.</span><span class="n">release</span><span class="p">()</span>
+                        <span class="k">if</span> <span class="n">flag_re_detect</span><span class="p">:</span>
+                            <span class="n">video_detect_process</span><span class="o">.</span><span class="n">terminate</span><span class="p">()</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">ui_value</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="o">-</span><span class="mi">2</span>
+                        <span class="k">return</span> <span class="o">-</span><span class="mi">2</span>
+
+                <span class="c1"># 成功时读取帧数+1</span>
+                <span class="n">frame_count</span> <span class="o">+=</span> <span class="mi">1</span>
+
+                <span class="c1"># 可见窗口时的操作</span>
+                <span class="k">if</span> <span class="n">flag_visibility</span><span class="p">:</span>
+
+                    <span class="c1"># 将当前帧在窗口中展示</span>
+                    <span class="n">cv</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">Window_name</span><span class="p">,</span> <span class="n">frame</span><span class="p">)</span>
+
+                    <span class="c1"># 按&#39;q&#39;和&#39;ESC&#39;键退出，释放视频捕捉对象，销毁窗口</span>
+                    <span class="c1"># 利用waitKey控制视频播放速度</span>
+                    <span class="n">cv2key</span> <span class="o">=</span> <span class="n">cv</span><span class="o">.</span><span class="n">waitKey</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="mi">500</span> <span class="o">/</span> <span class="n">fps</span><span class="p">))</span>
+                    <span class="k">if</span> <span class="n">cv2key</span> <span class="o">&amp;</span> <span class="mh">0xFF</span> <span class="o">==</span> <span class="nb">ord</span><span class="p">(</span><span class="s1">&#39;q&#39;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">cv2key</span> <span class="o">&amp;</span> <span class="mh">0xFF</span> <span class="o">==</span> <span class="mi">27</span><span class="p">:</span>
+                        <span class="n">cv</span><span class="o">.</span><span class="n">destroyWindow</span><span class="p">(</span><span class="n">Window_name</span><span class="p">)</span>
+                        <span class="n">video_stream</span><span class="o">.</span><span class="n">release</span><span class="p">()</span>
+                        <span class="k">break</span>
+
+                    <span class="c1"># # 如果s键按下，则进行图片保存</span>
+                    <span class="c1"># elif cv2key == ord(&#39;s&#39;):</span>
+                    <span class="c1">#     # 记录当前时间</span>
+                    <span class="c1">#     now_time = datetime.datetime.now().strftime(Log_Processor.strftime_all)</span>
+                    <span class="c1">#     # 写入图片 并命名图片为 图片序号.png</span>
+                    <span class="c1">#     cv.imwrite(f&quot;{now_time}.png&quot;, frame)</span>
+
+                    <span class="c1"># 点击&quot;x&quot;关闭之后退出</span>
+                    <span class="k">if</span> <span class="n">cv</span><span class="o">.</span><span class="n">getWindowProperty</span><span class="p">(</span><span class="n">Window_name</span><span class="p">,</span> <span class="n">cv</span><span class="o">.</span><span class="n">WND_PROP_VISIBLE</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">:</span>
+                        <span class="n">video_stream</span><span class="o">.</span><span class="n">release</span><span class="p">()</span>
+                        <span class="k">break</span>
+
+        <span class="c1"># 打开失败则输出错误错误到日志文件中</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">log_write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Fail to load the history video file &quot;</span> <span class="o">+</span>
+                                  <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">video_file</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">,</span>
+                                  <span class="n">Log_Processor</span><span class="o">.</span><span class="n">ERROR</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">ui_value</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+            <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
+
+        <span class="c1"># 正常退出</span>
+        <span class="k">if</span> <span class="n">flag_re_detect</span><span class="p">:</span>
+            <span class="n">video_detect_process</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">log_write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Stop reading the history video file &quot;</span> <span class="o">+</span>
+                              <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">video_file</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+                              <span class="n">Log_Processor</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ui_value</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">return</span> <span class="mi">0</span></div>
+</div>
+
+
+<span class="c1"># 模块测试部分</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="c1"># cv支持信息查看</span>
+    <span class="c1"># print(cv.getBuildInformation())</span>
+    <span class="c1"># 启动opencv日志记录</span>
+    <span class="c1"># cv.setLogLevel(cv.CAP_PROP_XI_DEBUG_LEVEL)</span>
+
+    <span class="c1"># 测试加载是否成功，输出配置文件信息、视频源/设备信息</span>
+    <span class="n">video_process</span> <span class="o">=</span> <span class="n">Video_Processor</span><span class="p">()</span>
+    <span class="c1"># print(Video_process.config_data)</span>
+    <span class="c1"># print(Video_process.local_video_device_list)</span>
+    <span class="c1"># print(Video_process.network_video_device_list)</span>
+    <span class="c1"># print(Video_process.hs_processor.hv_dict)</span>
+
+    <span class="c1"># 测试加载本地摄像头</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">video_process</span><span class="o">.</span><span class="n">load_local_video_device</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+    <span class="c1"># print(video_process.load_local_video_device(0, True, False))</span>
+    <span class="c1"># print(video_process.load_local_video_device(0, True, True))</span>
+
+    <span class="c1"># 测试加载网络摄像头</span>
+    <span class="c1"># Video_process.load_network_video_device(&quot;http://10.195.154.1:8081/&quot;, True, False)</span>
+    <span class="c1"># Video_process.load_network_video_device(3, True, False)</span>
+    <span class="c1"># Video_process.load_network_video_device(&quot;rtsp://10.195.154.1:8554/live&quot;, True, False)</span>
+    <span class="c1"># Video_process.load_network_video_device(4, True, True)</span>
+    <span class="c1"># Video_process.load_network_video_device(&quot;rtsp://192.168.98.239:8554/live&quot;, True, True)</span>
+
+    <span class="c1"># 测试加载历史视频文件</span>
+    <span class="c1"># print(Video_process.load_history_video(&quot;2024-06-11&quot;, 15, True))</span>
+
+    <span class="c1"># 测试识别内容</span>
+    <span class="c1"># print(Video_process.load_local_video_device(0, True, False, True, 0))</span>
+    <span class="c1"># print(Video_process.load_network_video_device(&quot;rtsp://10.195.146.141:8554/live&quot;,</span>
+    <span class="c1">#                                               True, False, False, 1))</span>
+    <span class="c1"># print(video_process.load_network_video_device(&quot;http://10.195.146.141:8081&quot;,</span>
+    <span class="c1">#                                               True, False, True, 1))</span>
+    <span class="c1"># print(Video_process.load_network_video_device(&quot;rtsp://10.195.146.141:8554/live&quot;,</span>
+    <span class="c1">#                                               True, True, True, 1))</span>
+</pre></div>
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2024, 07xiaohei、youyou、Chai.h、Captain.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    由 <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.3.7创建。
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.15.4.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

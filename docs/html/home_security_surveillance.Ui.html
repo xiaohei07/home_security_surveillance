@@ -1,0 +1,625 @@
+
+<!DOCTYPE html>
+
+
+<html lang="zh-CN" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>home_security_surveillance.Ui package &#8212; home_security_surveillance 1.5 文档</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=362ab14a" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=a8cb9c0f"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/translations.js?v=beaddf03"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'home_security_surveillance.Ui';</script>
+    <link rel="index" title="索引" href="genindex.html" />
+    <link rel="search" title="搜索" href="search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="zh-CN"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">home_security_surveillance 1.5 文档</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="搜索" aria-label="搜索" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">搜索</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="搜索" aria-label="搜索" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">搜索</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="home_security_surveillance.Common.html">home_security_surveillance.Common package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="home_security_surveillance.Exception_process.html">home_security_surveillance.Exception_process package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="home_security_surveillance.File_process.html">home_security_surveillance.File_process package</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">home_security_surveillance.Ui package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="home_security_surveillance.Video_process.html">home_security_surveillance.Video_process package</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page">home_securit...</li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="home-security-surveillance-ui-package">
+<h1>home_security_surveillance.Ui package<a class="headerlink" href="#home-security-surveillance-ui-package" title="Link to this heading">#</a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading">#</a></h2>
+</section>
+<section id="module-home_security_surveillance.Ui.ui">
+<span id="home-security-surveillance-ui-ui-module"></span><h2>home_security_surveillance.Ui.ui module<a class="headerlink" href="#module-home_security_surveillance.Ui.ui" title="Link to this heading">#</a></h2>
+<p>File Name: ui.py
+Author: Captain
+Date: 2024-06-06
+Version: 1.5
+Description: 提供简洁的图形化界面</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="home_security_surveillance.Ui.ui.VideoMonitorApp">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">home_security_surveillance.Ui.ui.</span></span><span class="sig-name descname"><span class="pre">VideoMonitorApp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">root</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/home_security_surveillance/Ui/ui.html#VideoMonitorApp"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#home_security_surveillance.Ui.ui.VideoMonitorApp" title="Link to this definition">#</a></dt>
+<dd><p>基类：<code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>根据用户的操作完成相应的家庭监控设置和分析，是家庭监控系统的用户交互和任务分发部分</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>root</strong> (<em>tk.TK</em>) – 用于创建和用户进行交互的主窗口</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="home_security_surveillance.Ui.ui.VideoMonitorApp.root">
+<span class="sig-name descname"><span class="pre">root</span></span><a class="headerlink" href="#home_security_surveillance.Ui.ui.VideoMonitorApp.root" title="Link to this definition">#</a></dt>
+<dd><p>和用户进行交互的主窗口，在上面可以定义各种控件</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tk.TK</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="home_security_surveillance.Ui.ui.VideoMonitorApp.video_processor">
+<span class="sig-name descname"><span class="pre">video_processor</span></span><a class="headerlink" href="#home_security_surveillance.Ui.ui.VideoMonitorApp.video_processor" title="Link to this definition">#</a></dt>
+<dd><p>视频流处理器的一个实例，此处是一个静态实例，不执行任务，主要用于获得各种视频设备和视频文件信息</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="home_security_surveillance.Video_process.html#home_security_surveillance.Video_process.video_processor.Video_Processor" title="home_security_surveillance.Video_process.video_processor.Video_Processor">Video_Processor</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="home_security_surveillance.Ui.ui.VideoMonitorApp.process_type">
+<span class="sig-name descname"><span class="pre">process_type</span></span><a class="headerlink" href="#home_security_surveillance.Ui.ui.VideoMonitorApp.process_type" title="Link to this definition">#</a></dt>
+<dd><p>执行任务的进程对应的进程类型，0表示没有执行任务的进程，1表示执行加载和处理本地历史视频任务的进程，
+2表示执行加载和处理本地视频设备任务的进程，3表示执行加载和处理网络视频设备任务的进程</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="home_security_surveillance.Ui.ui.VideoMonitorApp.processes">
+<span class="sig-name descname"><span class="pre">processes</span></span><a class="headerlink" href="#home_security_surveillance.Ui.ui.VideoMonitorApp.processes" title="Link to this definition">#</a></dt>
+<dd><p>存储multiprocessing进程对象的成员变量，是执行任务进程的句柄</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>multiprocessing.Process</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="home_security_surveillance.Ui.ui.VideoMonitorApp.shared_value">
+<span class="sig-name descname"><span class="pre">shared_value</span></span><a class="headerlink" href="#home_security_surveillance.Ui.ui.VideoMonitorApp.shared_value" title="Link to this definition">#</a></dt>
+<dd><p>为其他进程所共享的共享内存对象，创建为一个整型，默认为-10，用于保存其他进程的返回值
+根据不为-10的返回值可以确定错误情况</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>multiprocessing.Value</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="home_security_surveillance.Ui.ui.VideoMonitorApp.shared_event">
+<span class="sig-name descname"><span class="pre">shared_event</span></span><a class="headerlink" href="#home_security_surveillance.Ui.ui.VideoMonitorApp.shared_event" title="Link to this definition">#</a></dt>
+<dd><p>进程事件通信对象，用于通知执行任务进程是否停止，每次创建执行任务进程时刷新</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>multiprocessing.Event</p>
+</dd>
+</dl>
+</dd></dl>
+
+<p class="rubric">备注</p>
+<p>在该类中加载了静态视频处理对象，每次创建进程执行任务时需要加载一个动态的视频处理对象，此时不会产生IO冲突
+类内创建了各种控件，此处不再一一说明</p>
+<p class="rubric">示例</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="home_security_surveillance.Ui.ui.VideoMonitorApp.center_window">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">center_window</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">window</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Toplevel</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Tk</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/home_security_surveillance/Ui/ui.html#VideoMonitorApp.center_window"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#home_security_surveillance.Ui.ui.VideoMonitorApp.center_window" title="Link to this definition">#</a></dt>
+<dd><p>窗口居中设置函数，静态方法
+:param window: 要设置居中的窗口对象，可以是主窗口或者其他顶层窗口
+:type window: Union[tk.Toplevel, tk.TK]
+:param width: 窗口的宽度
+:type width: int
+:param height: 窗口的高度
+:type height: int</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="home_security_surveillance.Ui.ui.VideoMonitorApp.check_start">
+<span class="sig-name descname"><span class="pre">check_start</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/home_security_surveillance/Ui/ui.html#VideoMonitorApp.check_start"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#home_security_surveillance.Ui.ui.VideoMonitorApp.check_start" title="Link to this definition">#</a></dt>
+<dd><p>根据三个Checkbutton对应的Var的状态，检查开始按钮是否可以点击</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="home_security_surveillance.Ui.ui.VideoMonitorApp.check_video_processor">
+<span class="sig-name descname"><span class="pre">check_video_processor</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/home_security_surveillance/Ui/ui.html#VideoMonitorApp.check_video_processor"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#home_security_surveillance.Ui.ui.VideoMonitorApp.check_video_processor" title="Link to this definition">#</a></dt>
+<dd><p>定义检查函数，每隔1s调用一次自身，
+用于检查正在处理视频流的Video_Processor进程实例是否结束，并刷新当前可用的本地视频设备
+如果未结束相当于只刷新本地视频设备，如果已结束会弹出进程返回错误信息所相应的提示窗口</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="home_security_surveillance.Ui.ui.VideoMonitorApp.confirm_source">
+<span class="sig-name descname"><span class="pre">confirm_source</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/home_security_surveillance/Ui/ui.html#VideoMonitorApp.confirm_source"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#home_security_surveillance.Ui.ui.VideoMonitorApp.confirm_source" title="Link to this definition">#</a></dt>
+<dd><p>确定资源信息函数，用于选择视频设备类型时的处理，与主窗口选择视频类型的操作列表绑定
+此处在有需要时会在主窗口上创建子窗口完成相应处理
+:param value: 读取到的用户选择的视频设备类型字符串名陈
+:type value: str</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="home_security_surveillance.Ui.ui.VideoMonitorApp.create_widgets">
+<span class="sig-name descname"><span class="pre">create_widgets</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/home_security_surveillance/Ui/ui.html#VideoMonitorApp.create_widgets"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#home_security_surveillance.Ui.ui.VideoMonitorApp.create_widgets" title="Link to this definition">#</a></dt>
+<dd><p>添加窗口组件函数，用于创建大部分主窗口上的组件</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="home_security_surveillance.Ui.ui.VideoMonitorApp.device_process_workder">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">device_process_workder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shared_value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shared_event</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">video_sourse</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flag_visibility</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flag_save</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flag_detect</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">video_detect_sensitivity</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">video_detect_type</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/home_security_surveillance/Ui/ui.html#VideoMonitorApp.device_process_workder"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#home_security_surveillance.Ui.ui.VideoMonitorApp.device_process_workder" title="Link to this definition">#</a></dt>
+<dd><p>处理网络视频设备进程的工作函数，除共享内存对象和进程事件通信对象外
+其他传入参数类型和意义与视频流处理器的对应处理函数相同
+是一个静态方法，只通过传递的共享内存对象和进程事件通信对象进行进程间的交互</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="home_security_surveillance.Ui.ui.VideoMonitorApp.email_manage">
+<span class="sig-name descname"><span class="pre">email_manage</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/home_security_surveillance/Ui/ui.html#VideoMonitorApp.email_manage"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#home_security_surveillance.Ui.ui.VideoMonitorApp.email_manage" title="Link to this definition">#</a></dt>
+<dd><p>与主窗口的“邮件处理”按钮绑定，用于帮助用户管理邮件信息</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="home_security_surveillance.Ui.ui.VideoMonitorApp.history_video_process_workder">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">history_video_process_workder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shared_value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shared_event</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">video_strat_save_date</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">video_index</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flag_visibility</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flag_re_detect</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">video_detect_sensitivity</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">video_detect_type</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/home_security_surveillance/Ui/ui.html#VideoMonitorApp.history_video_process_workder"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#home_security_surveillance.Ui.ui.VideoMonitorApp.history_video_process_workder" title="Link to this definition">#</a></dt>
+<dd><p>处理本地历史视频进程的工作函数，除共享内存对象和进程事件通信对象外
+其他传入参数类型和意义与视频流处理器的对应处理函数相同
+是一个静态方法，只通过传递的共享内存对象和进程事件通信对象进行进程间的交互</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="home_security_surveillance.Ui.ui.VideoMonitorApp.local_process_workder">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">local_process_workder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shared_value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shared_event</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">video_sourse</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flag_visibility</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flag_save</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flag_detect</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">video_detect_sensitivity</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">video_detect_type</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/home_security_surveillance/Ui/ui.html#VideoMonitorApp.local_process_workder"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#home_security_surveillance.Ui.ui.VideoMonitorApp.local_process_workder" title="Link to this definition">#</a></dt>
+<dd><p>处理本地视频设备进程的工作函数，除共享内存对象和进程事件通信对象外
+其他传入参数类型和意义与视频流处理器的对应处理函数相同
+是一个静态方法，只通过传递的共享内存对象和进程事件通信对象进行进程间的交互</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="home_security_surveillance.Ui.ui.VideoMonitorApp.on_closing">
+<span class="sig-name descname"><span class="pre">on_closing</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/home_security_surveillance/Ui/ui.html#VideoMonitorApp.on_closing"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#home_security_surveillance.Ui.ui.VideoMonitorApp.on_closing" title="Link to this definition">#</a></dt>
+<dd><p>与主窗口右上角退出的按钮绑定，用于退出整个进程，关闭全部子进程
+通过进程树的方式杀死子进程</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="home_security_surveillance.Ui.ui.VideoMonitorApp.start_monitoring">
+<span class="sig-name descname"><span class="pre">start_monitoring</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/home_security_surveillance/Ui/ui.html#VideoMonitorApp.start_monitoring"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#home_security_surveillance.Ui.ui.VideoMonitorApp.start_monitoring" title="Link to this definition">#</a></dt>
+<dd><p>与主窗口的“开始”按钮绑定，用于创建执行任务的子进程
+与其他模块进行交互，是连接前后端的关键函数</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="home_security_surveillance.Ui.ui.VideoMonitorApp.stop_monitoring">
+<span class="sig-name descname"><span class="pre">stop_monitoring</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/home_security_surveillance/Ui/ui.html#VideoMonitorApp.stop_monitoring"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#home_security_surveillance.Ui.ui.VideoMonitorApp.stop_monitoring" title="Link to this definition">#</a></dt>
+<dd><p>与主窗口的“停止”按钮绑定，用于停止当前执行任务，恢复ui界面的子进程
+与其他模块进行交互，同样是连接前后端的关键函数</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-home_security_surveillance.Ui">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-home_security_surveillance.Ui" title="Link to this heading">#</a></h2>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#submodules">Submodules</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-home_security_surveillance.Ui.ui">home_security_surveillance.Ui.ui module</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#home_security_surveillance.Ui.ui.VideoMonitorApp"><code class="docutils literal notranslate"><span class="pre">VideoMonitorApp</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#home_security_surveillance.Ui.ui.VideoMonitorApp.root"><code class="docutils literal notranslate"><span class="pre">VideoMonitorApp.root</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#home_security_surveillance.Ui.ui.VideoMonitorApp.video_processor"><code class="docutils literal notranslate"><span class="pre">VideoMonitorApp.video_processor</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#home_security_surveillance.Ui.ui.VideoMonitorApp.process_type"><code class="docutils literal notranslate"><span class="pre">VideoMonitorApp.process_type</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#home_security_surveillance.Ui.ui.VideoMonitorApp.processes"><code class="docutils literal notranslate"><span class="pre">VideoMonitorApp.processes</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#home_security_surveillance.Ui.ui.VideoMonitorApp.shared_value"><code class="docutils literal notranslate"><span class="pre">VideoMonitorApp.shared_value</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#home_security_surveillance.Ui.ui.VideoMonitorApp.shared_event"><code class="docutils literal notranslate"><span class="pre">VideoMonitorApp.shared_event</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#home_security_surveillance.Ui.ui.VideoMonitorApp.center_window"><code class="docutils literal notranslate"><span class="pre">VideoMonitorApp.center_window()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#home_security_surveillance.Ui.ui.VideoMonitorApp.check_start"><code class="docutils literal notranslate"><span class="pre">VideoMonitorApp.check_start()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#home_security_surveillance.Ui.ui.VideoMonitorApp.check_video_processor"><code class="docutils literal notranslate"><span class="pre">VideoMonitorApp.check_video_processor()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#home_security_surveillance.Ui.ui.VideoMonitorApp.confirm_source"><code class="docutils literal notranslate"><span class="pre">VideoMonitorApp.confirm_source()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#home_security_surveillance.Ui.ui.VideoMonitorApp.create_widgets"><code class="docutils literal notranslate"><span class="pre">VideoMonitorApp.create_widgets()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#home_security_surveillance.Ui.ui.VideoMonitorApp.device_process_workder"><code class="docutils literal notranslate"><span class="pre">VideoMonitorApp.device_process_workder()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#home_security_surveillance.Ui.ui.VideoMonitorApp.email_manage"><code class="docutils literal notranslate"><span class="pre">VideoMonitorApp.email_manage()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#home_security_surveillance.Ui.ui.VideoMonitorApp.history_video_process_workder"><code class="docutils literal notranslate"><span class="pre">VideoMonitorApp.history_video_process_workder()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#home_security_surveillance.Ui.ui.VideoMonitorApp.local_process_workder"><code class="docutils literal notranslate"><span class="pre">VideoMonitorApp.local_process_workder()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#home_security_surveillance.Ui.ui.VideoMonitorApp.on_closing"><code class="docutils literal notranslate"><span class="pre">VideoMonitorApp.on_closing()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#home_security_surveillance.Ui.ui.VideoMonitorApp.start_monitoring"><code class="docutils literal notranslate"><span class="pre">VideoMonitorApp.start_monitoring()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#home_security_surveillance.Ui.ui.VideoMonitorApp.stop_monitoring"><code class="docutils literal notranslate"><span class="pre">VideoMonitorApp.stop_monitoring()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-home_security_surveillance.Ui">Module contents</a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  <div class="tocsection sourcelink">
+    <a href="_sources/home_security_surveillance.Ui.rst.txt">
+      <i class="fa-solid fa-file-lines"></i> 显示源代码
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2024, 07xiaohei、youyou、Chai.h、Captain.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    由 <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.3.7创建。
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.15.4.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

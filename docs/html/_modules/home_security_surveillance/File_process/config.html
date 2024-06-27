@@ -1,0 +1,584 @@
+
+<!DOCTYPE html>
+
+
+<html lang="zh-CN" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>home_security_surveillance.File_process.config &#8212; home_security_surveillance 1.5 文档</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=362ab14a" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../../_static/documentation_options.js?v=a8cb9c0f"></script>
+    <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/translations.js?v=beaddf03"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/home_security_surveillance/File_process/config';</script>
+    <link rel="index" title="索引" href="../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="zh-CN"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">home_security_surveillance 1.5 文档</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="搜索" aria-label="搜索" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">搜索</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="搜索" aria-label="搜索" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">搜索</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../../index.html" class="nav-link">模块代码</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page">home_securit...</li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>home_security_surveillance.File_process.config 源代码</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">File Name: config.py</span>
+<span class="sd">Author: 07xiaohei</span>
+<span class="sd">Date: 2024-05-10</span>
+<span class="sd">Version: 1.5</span>
+<span class="sd">Description: config配置文件的处理部分</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">home_security_surveillance.frozen_dir</span>
+<span class="c1"># 引用常用库</span>
+<span class="kn">from</span> <span class="nn">home_security_surveillance.Common</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">home_security_surveillance.frozen_dir</span> <span class="kn">import</span> <span class="n">project_dir</span>
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;config_file&quot;</span><span class="p">,</span> <span class="s2">&quot;config_keys&quot;</span><span class="p">,</span> <span class="s2">&quot;config_defaluts&quot;</span><span class="p">,</span> <span class="s2">&quot;trans_config_abspath&quot;</span><span class="p">,</span>
+           <span class="s2">&quot;write_config&quot;</span><span class="p">,</span> <span class="s2">&quot;load_config&quot;</span><span class="p">]</span>
+
+<span class="c1">## 变量部分 ##</span>
+
+<span class="c1"># 配置文件的默认路径</span>
+<span class="n">config_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">normpath</span><span class="p">(</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">project_dir</span><span class="p">,</span> <span class="s2">&quot;./Config/config.json&quot;</span><span class="p">))</span>
+
+<span class="c1"># config文件可用的键值</span>
+<span class="n">config_keys</span> <span class="o">=</span> \
+    <span class="p">[</span>
+        <span class="s2">&quot;exception-monitoring-directory&quot;</span><span class="p">,</span> <span class="s2">&quot;history-video-directory&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;IP-video-device-file&quot;</span><span class="p">,</span> <span class="s2">&quot;log-directory&quot;</span><span class="p">,</span> <span class="s2">&quot;model-directory&quot;</span>
+    <span class="p">]</span>
+
+<span class="c1"># config文件的默认键值对</span>
+<span class="n">config_defaluts</span> <span class="o">=</span> \
+    <span class="p">{</span>
+        <span class="s2">&quot;history-video-directory&quot;</span><span class="p">:</span> <span class="s2">&quot;History_video&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;IP-video-device-file&quot;</span><span class="p">:</span> <span class="s2">&quot;Config/IP_video_device.json&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;model-directory&quot;</span><span class="p">:</span> <span class="s2">&quot;Model&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;log-directory&quot;</span><span class="p">:</span> <span class="s2">&quot;Logs&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;exception-monitoring-directory&quot;</span><span class="p">:</span> <span class="s2">&quot;Exception_monitoring&quot;</span>
+    <span class="p">}</span>
+
+
+<span class="c1">## 方法部分 ##</span>
+
+<div class="viewcode-block" id="trans_config_abspath">
+<a class="viewcode-back" href="../../../home_security_surveillance.File_process.html#home_security_surveillance.File_process.config.trans_config_abspath">[文档]</a>
+<span class="k">def</span> <span class="nf">trans_config_abspath</span><span class="p">(</span><span class="n">relative_path</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">],</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="nb">str</span><span class="p">]</span>
+                         <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">],</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="nb">str</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    由于配置文件中的路径默认只有名称，需要转化为绝对路径</span>
+<span class="sd">    如果是绝对路径不做修改</span>
+<span class="sd">    将默认配置文件的相对路径转化为绝对路径</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    relative_path : Union[Dict[str,str], List[str], str]</span>
+<span class="sd">        传入的相对路径，可以是单个的，也可以是一个字典或者列表</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    abs_path : Union[Dict[str, str], List[str], str]</span>
+<span class="sd">        将相应的相对路径转化为绝对路径的结果</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># 深拷贝</span>
+    <span class="n">rel_path</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">relative_path</span><span class="p">)</span>
+    <span class="c1"># 类型检验</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">rel_path</span><span class="p">,</span> <span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="nb">dict</span><span class="p">,</span> <span class="nb">list</span><span class="p">)):</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;relative path should be of type str, list, or dict.&quot;</span><span class="p">)</span>
+
+    <span class="c1"># 相对路径转换</span>
+    <span class="c1"># 从该代码文件的路径变为项目根路径</span>
+    <span class="n">root_path</span> <span class="o">=</span> <span class="n">project_dir</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">rel_path</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isabs</span><span class="p">(</span><span class="n">rel_path</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">normpath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_path</span><span class="p">,</span> <span class="n">rel_path</span><span class="p">))</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">rel_path</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">rel_path</span><span class="p">)):</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isabs</span><span class="p">(</span><span class="n">rel_path</span><span class="p">[</span><span class="n">i</span><span class="p">]):</span>
+                <span class="n">rel_path</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">normpath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_path</span><span class="p">,</span> <span class="n">rel_path</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+        <span class="k">return</span> <span class="n">rel_path</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">rel_path</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">rel_path</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isabs</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
+                <span class="n">rel_path</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">normpath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_path</span><span class="p">,</span> <span class="n">value</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">rel_path</span></div>
+
+
+
+<span class="k">def</span> <span class="nf">_generate_defalut_config</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    在默认位置写入默认配置文件</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">config_file</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+        <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">config_defaluts</span><span class="p">,</span> <span class="n">file</span><span class="p">,</span>
+                  <span class="n">skipkeys</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">check_circular</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">allow_nan</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">sort_keys</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                  <span class="n">ensure_ascii</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">separators</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="s1">&#39; : &#39;</span><span class="p">),</span> <span class="n">indent</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    <span class="k">return</span>
+
+
+<span class="k">def</span> <span class="nf">_write_config</span><span class="p">(</span><span class="n">config_data</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    将字典形式的配置信息写入配置文件函数</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    config_data : Dict[str, str]</span>
+<span class="sd">        要写入配置文件的配置键值对全部内容，均为字符串，视为内部函数，不提供外部接口</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># 检查每个键值对是否为字符串</span>
+    <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">config_data</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="ow">or</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;Config data dictionary items type muse be string!&quot;</span><span class="p">)</span>
+
+    <span class="c1"># 检查每个键是否符合要求</span>
+    <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">config_data</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+        <span class="k">if</span> <span class="n">key</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">config_keys</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The </span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s2"> key is not in config keys!&quot;</span><span class="p">)</span>
+
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">config_file</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+        <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">config_data</span><span class="p">,</span> <span class="n">file</span><span class="p">,</span>
+                  <span class="n">skipkeys</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">check_circular</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">allow_nan</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">sort_keys</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                  <span class="n">ensure_ascii</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">separators</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="s1">&#39; : &#39;</span><span class="p">),</span> <span class="n">indent</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="write_config">
+<a class="viewcode-back" href="../../../home_security_surveillance.File_process.html#home_security_surveillance.File_process.config.write_config">[文档]</a>
+<span class="k">def</span> <span class="nf">write_config</span><span class="p">(</span><span class="n">json_key</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">json_value</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    将单个键值对的配置信息写入配置文件函数</span>
+<span class="sd">    可用于添加或修改，但仅限于已有的部分</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    json_key : str</span>
+<span class="sd">        要写入配置文件的单个键</span>
+<span class="sd">    json_value :str</span>
+<span class="sd">        要写入配置文件的单个值</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># 检查键值对是否为字符串</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">json_key</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="ow">or</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">json_value</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;Config data dictionary items type muse be string!&quot;</span><span class="p">)</span>
+    <span class="c1"># 检查键是否符合要求</span>
+    <span class="k">if</span> <span class="n">json_key</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">config_keys</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The </span><span class="si">{</span><span class="n">json_key</span><span class="si">}</span><span class="s2"> key is not in config keys!&quot;</span><span class="p">)</span>
+
+    <span class="c1"># 加载已有配置文件，不转化为绝对路径，完成修改</span>
+    <span class="n">config_data</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">load_config</span><span class="p">(</span><span class="n">relative</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">config_data</span><span class="p">[</span><span class="n">json_key</span><span class="p">]</span> <span class="o">=</span> <span class="n">json_value</span>
+    <span class="n">_write_config</span><span class="p">(</span><span class="n">config_data</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="load_config">
+<a class="viewcode-back" href="../../../home_security_surveillance.File_process.html#home_security_surveillance.File_process.config.load_config">[文档]</a>
+<span class="k">def</span> <span class="nf">load_config</span><span class="p">(</span><span class="n">relative</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">dict</span><span class="p">,</span> <span class="nb">dict</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    加载配置文件函数</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    relative : bool</span>
+<span class="sd">        控制返回时字典型配置文件的文件路径是相对的还是绝对的，默认为绝对</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    config_data : dict</span>
+<span class="sd">        返回从json格式文件中加载的字典型配置文件,如无可用的键值自动用默认键值对补充</span>
+<span class="sd">    invalid_config_data : dict</span>
+<span class="sd">        返回json格式文件中的无效键值对,无内容时为{}</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">config_data</span> <span class="o">=</span> <span class="n">config_defaluts</span>
+    <span class="n">invalid_config_data</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="c1"># 打开配置文件</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">config_file</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="c1"># 加载配置文件内容</span>
+            <span class="n">config_data</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">file</span><span class="p">))</span>
+            <span class="c1"># 获得无效键值对并删除</span>
+            <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">config_data</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                <span class="k">if</span> <span class="n">key</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">config_keys</span><span class="p">:</span>
+                    <span class="n">invalid_config_data</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
+            <span class="k">for</span> <span class="n">del_key</span> <span class="ow">in</span> <span class="n">invalid_config_data</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+                <span class="k">del</span> <span class="n">config_data</span><span class="p">[</span><span class="n">del_key</span><span class="p">]</span>
+        <span class="c1"># 加载出错时抛出错误，需要修改错误信息，将文件名信息加入其中</span>
+        <span class="k">except</span> <span class="n">json</span><span class="o">.</span><span class="n">decoder</span><span class="o">.</span><span class="n">JSONDecodeError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="n">new_e_msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Error decoding JSON in file &#39;</span><span class="si">{</span><span class="n">file</span><span class="si">}</span><span class="s2">&#39;: </span><span class="si">{</span><span class="n">e</span><span class="o">.</span><span class="n">msg</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="k">raise</span> <span class="n">json</span><span class="o">.</span><span class="n">decoder</span><span class="o">.</span><span class="n">JSONDecodeError</span><span class="p">(</span><span class="n">new_e_msg</span><span class="p">,</span> <span class="n">e</span><span class="o">.</span><span class="n">doc</span><span class="p">,</span> <span class="n">e</span><span class="o">.</span><span class="n">pos</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">e</span>
+
+    <span class="c1"># 如果有无效内容，重新写入正确的配置文件</span>
+    <span class="k">if</span> <span class="n">invalid_config_data</span><span class="p">:</span>
+        <span class="n">_write_config</span><span class="p">(</span><span class="n">config_data</span><span class="p">)</span>
+
+    <span class="c1"># 重写后检验每个配置路径是否存在</span>
+    <span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">trans_config_abspath</span><span class="p">(</span><span class="n">config_data</span><span class="p">)</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The </span><span class="si">{</span><span class="n">value</span><span class="si">}</span><span class="s2"> path is not exist!&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">relative</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">config_data</span><span class="p">,</span> <span class="n">invalid_config_data</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">trans_config_abspath</span><span class="p">(</span><span class="n">config_data</span><span class="p">),</span> <span class="n">invalid_config_data</span></div>
+
+
+
+<span class="c1"># 模块测试部分</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="c1"># 查看绝对路径正确性</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">config_file</span><span class="p">)</span>
+    <span class="c1"># 查看相对路径转化后的结果</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">trans_config_abspath</span><span class="p">(</span><span class="n">config_defaluts</span><span class="p">))</span>
+
+    <span class="c1"># 写入默认内容</span>
+    <span class="n">_generate_defalut_config</span><span class="p">()</span>
+    <span class="c1"># 查看加载结果</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">load_config</span><span class="p">()[</span><span class="mi">0</span><span class="p">])</span>
+
+    <span class="c1"># 写入不存在的键</span>
+    <span class="c1"># write_config(&quot;xxx&quot;,&quot;yyy&quot;)</span>
+
+    <span class="c1"># 不存在文件修改测试</span>
+    <span class="c1"># write_config(config_keys[0],&quot;zzz&quot;)</span>
+    <span class="c1"># print(load_config(relative = True)[0])</span>
+</pre></div>
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2024, 07xiaohei、youyou、Chai.h、Captain.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    由 <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.3.7创建。
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.15.4.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

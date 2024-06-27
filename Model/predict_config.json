@@ -1,0 +1,8 @@
+{
+  "model_mode": 1,
+  "iou": 0.5,
+  "conf": 0.4,
+  "show": "True",
+  "save_dir": "detect_result",
+  "max_frame": 1800
+}

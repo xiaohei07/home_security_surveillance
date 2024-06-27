@@ -1,0 +1,1331 @@
+
+<!DOCTYPE html>
+
+
+<html lang="zh-CN" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>home_security_surveillance.Video_process package &#8212; home_security_surveillance 1.5 文档</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=362ab14a" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=a8cb9c0f"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/translations.js?v=beaddf03"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'home_security_surveillance.Video_process';</script>
+    <link rel="index" title="索引" href="genindex.html" />
+    <link rel="search" title="搜索" href="search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="zh-CN"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">home_security_surveillance 1.5 文档</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="搜索" aria-label="搜索" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">搜索</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="搜索" aria-label="搜索" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">搜索</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="home_security_surveillance.Common.html">home_security_surveillance.Common package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="home_security_surveillance.Exception_process.html">home_security_surveillance.Exception_process package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="home_security_surveillance.File_process.html">home_security_surveillance.File_process package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="home_security_surveillance.Ui.html">home_security_surveillance.Ui package</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">home_security_surveillance.Video_process package</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page">home_securit...</li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="home-security-surveillance-video-process-package">
+<h1>home_security_surveillance.Video_process package<a class="headerlink" href="#home-security-surveillance-video-process-package" title="Link to this heading">#</a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading">#</a></h2>
+</section>
+<section id="module-home_security_surveillance.Video_process.video_capture_process">
+<span id="home-security-surveillance-video-process-video-capture-process-module"></span><h2>home_security_surveillance.Video_process.video_capture_process module<a class="headerlink" href="#module-home_security_surveillance.Video_process.video_capture_process" title="Link to this heading">#</a></h2>
+<p>File Name: video_capture_process.py
+Author: 07xiaohei
+Date: 2024-05-15
+Version: 1.1
+Description: 用于opencv在捕捉url信息减少超时时间的进程类</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="home_security_surveillance.Video_process.video_capture_process.Video_Capture_Process">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">home_security_surveillance.Video_process.video_capture_process.</span></span><span class="sig-name descname"><span class="pre">Video_Capture_Process</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">url</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">result_queue</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/home_security_surveillance/Video_process/video_capture_process.html#Video_Capture_Process"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#home_security_surveillance.Video_process.video_capture_process.Video_Capture_Process" title="Link to this definition">#</a></dt>
+<dd><p>基类：<code class="xref py py-class docutils literal notranslate"><span class="pre">Process</span></code></p>
+<p>多进程类，利用opencv的VideoCapture函数测试url是否可以获得视频流</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>url</strong> (<em>str</em>) – 用于捕捉视频流的url地址</p></li>
+<li><p><strong>result_queue</strong> (<em>multiprocessing.Queue</em>) – 用于接收创建的VideoCapture对象是否成功标志的队列</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="home_security_surveillance.Video_process.video_capture_process.Video_Capture_Process.url">
+<span class="sig-name descname"><span class="pre">url</span></span><a class="headerlink" href="#home_security_surveillance.Video_process.video_capture_process.Video_Capture_Process.url" title="Link to this definition">#</a></dt>
+<dd><p>用于捕捉视频流的url地址</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="home_security_surveillance.Video_process.video_capture_process.Video_Capture_Process.result_queue">
+<span class="sig-name descname"><span class="pre">result_queue</span></span><a class="headerlink" href="#home_security_surveillance.Video_process.video_capture_process.Video_Capture_Process.result_queue" title="Link to this definition">#</a></dt>
+<dd><p>用于接收创建的VideoCapture对象是否成功标志的队列</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>multiprocessing.Queue</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="home_security_surveillance.Video_process.video_capture_process.Video_Capture_Process.run">
+<span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/home_security_surveillance/Video_process/video_capture_process.html#Video_Capture_Process.run"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#home_security_surveillance.Video_process.video_capture_process.Video_Capture_Process.run" title="Link to this definition">#</a></dt>
+<dd><p>进程处理的部分,向队列输入一个布尔值</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-home_security_surveillance.Video_process.video_detect">
+<span id="home-security-surveillance-video-process-video-detect-module"></span><h2>home_security_surveillance.Video_process.video_detect module<a class="headerlink" href="#module-home_security_surveillance.Video_process.video_detect" title="Link to this heading">#</a></h2>
+<p>File Name: video_detect.py
+Author: youyou
+Date: 2024-05-02
+Version: 1.5
+Description: 使用yolov8，对视频帧进行识别，判断监控是否出现了火灾/人/异常行为</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="home_security_surveillance.Video_process.video_detect.Video_Detector">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">home_security_surveillance.Video_process.video_detect.</span></span><span class="sig-name descname"><span class="pre">Video_Detector</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">root_dir</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_defalut_parameter</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/home_security_surveillance/Video_process/video_detect.html#Video_Detector"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#home_security_surveillance.Video_process.video_detect.Video_Detector" title="Link to this definition">#</a></dt>
+<dd><p>基类：<code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>视频检测处理器，用于读取部分实时帧完成对应任务的识别功能，是自动检测和识别的核心模块
+使用的底层架构为yolov8，火焰模型为自行利用数据集训练，人像识别和异常行为识别直接使用开源模型</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>root_dir</strong> (<em>str</em>) – 视频检测处理器的根目录，默认值和_config_defaluts中的model-directory对应绝对路径相同</p></li>
+<li><p><strong>use_defalut_parameter</strong> (<em>bool</em>) – 是否使用默认的内置训练参数，否则需要加载配置文件的对应参数，True为使用内置参数，False为不使用</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="home_security_surveillance.Video_process.video_detect.Video_Detector.root_dir">
+<span class="sig-name descname"><span class="pre">root_dir</span></span><a class="headerlink" href="#home_security_surveillance.Video_process.video_detect.Video_Detector.root_dir" title="Link to this definition">#</a></dt>
+<dd><p>视频检测处理器的根目录，默认值和_config_defaluts中的model-directory对应绝对路径相同</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">info_logger</span> <span class="pre">&amp;</span> <span class="pre">error_logger</span></span></dt>
+<dd><p>日志处理器对象的实例，分别用于记录该类活动过程中的运行和错误、报警信息，统一输入到根目录下的info.log和error.log中</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="home_security_surveillance.File_process.html#home_security_surveillance.File_process.log.Log_Processor" title="home_security_surveillance.File_process.log.Log_Processor">Log_Processor</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">_train_config</span> <span class="pre">&amp;</span> <span class="pre">_predict_config</span></span></dt>
+<dd><p>train_config和predict_config配置文件中的各变量记录，在后续加载时使用，是内部成员，不对外开放接口</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="home_security_surveillance.Video_process.video_detect.Video_Detector.device">
+<span class="sig-name descname"><span class="pre">device</span></span><a class="headerlink" href="#home_security_surveillance.Video_process.video_detect.Video_Detector.device" title="Link to this definition">#</a></dt>
+<dd><p>标识用户可用于的识别的设备，如果有独显GPU使用独显GPU，否则使用CPU</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="home_security_surveillance.Video_process.video_detect.Video_Detector.train_model">
+<span class="sig-name descname"><span class="pre">train_model</span></span><a class="headerlink" href="#home_security_surveillance.Video_process.video_detect.Video_Detector.train_model" title="Link to this definition">#</a></dt>
+<dd><p>被用于训练的预加载模型，仅在训练新模型时使用</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>YOLO</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="home_security_surveillance.Video_process.video_detect.Video_Detector.predict_model">
+<span class="sig-name descname"><span class="pre">predict_model</span></span><a class="headerlink" href="#home_security_surveillance.Video_process.video_detect.Video_Detector.predict_model" title="Link to this definition">#</a></dt>
+<dd><p>模式-模型的数字-模型对象字典映射，通过映射可以将模式转变为yolov8要使用的模型对象，直接进行预测
+此成员用于加速处理，保证多次调用预测函数或者修改模型内容时，均需要在初始化时加载一次模型即可</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict[int, YOLO]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="home_security_surveillance.Video_process.video_detect.Video_Detector.model_mode_dict">
+<span class="sig-name descname"><span class="pre">model_mode_dict</span></span><a class="headerlink" href="#home_security_surveillance.Video_process.video_detect.Video_Detector.model_mode_dict" title="Link to this definition">#</a></dt>
+<dd><p>模式-模型的数字-绝对路径字典映射，通过映射可以将模式转变为yolov8要使用的模型绝对路径
+其将相对路径和根路径改为绝对路径，路径根目录用root_dir
+1为火焰模型，2为人物模型 3：火焰和人物模型</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict[int, str]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="home_security_surveillance.Video_process.video_detect.Video_Detector.warning_mode_list">
+<span class="sig-name descname"><span class="pre">warning_mode_list</span></span><a class="headerlink" href="#home_security_surveillance.Video_process.video_detect.Video_Detector.warning_mode_list" title="Link to this definition">#</a></dt>
+<dd><p>类变量，预测类型和错误码的匹配关系，在检测时需要进行进程的通信，遇到错误需要向视频流处理器通知错误的出现
+因此需要将各类型的错误统一映射为一个错误码，视频流处理器通过解码即可获知错误类型</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list[int]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="home_security_surveillance.Video_process.video_detect.Video_Detector.mode_precdict_class">
+<span class="sig-name descname"><span class="pre">mode_precdict_class</span></span><a class="headerlink" href="#home_security_surveillance.Video_process.video_detect.Video_Detector.mode_precdict_class" title="Link to this definition">#</a></dt>
+<dd><p>类变量，将使用的mode和预测类别映射为对应的类型，即将映射的错误码1248分别修改为0123</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict[int, dict[int, int]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="home_security_surveillance.Video_process.video_detect.Video_Detector.mode_precdict_warning_mode">
+<span class="sig-name descname"><span class="pre">mode_precdict_warning_mode</span></span><a class="headerlink" href="#home_security_surveillance.Video_process.video_detect.Video_Detector.mode_precdict_warning_mode" title="Link to this definition">#</a></dt>
+<dd><p>类变量，将使用的模型mode和预测类别映射为错误码
+mode=1对应第一个火焰/烟雾模型，0的预测类别是烟雾，对应错误码是1
+1的预测类别是火焰，对应错误码是2，mode=2对应第二个人像识别模型，0的预测类别是人，对应错误码是4
+mode=3对应第三个异常行为识别，0的预测类别是跌倒，对应错误码是8</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict[int, dict[int, int]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="home_security_surveillance.Video_process.video_detect.Video_Detector.predict_class_type_color_dict">
+<span class="sig-name descname"><span class="pre">predict_class_type_color_dict</span></span><a class="headerlink" href="#home_security_surveillance.Video_process.video_detect.Video_Detector.predict_class_type_color_dict" title="Link to this definition">#</a></dt>
+<dd><p>类变量，每个错误类型在绘制错误碰撞箱时使用的颜色，只在使用全部模型模式下有效
+第一个键值model对应的mode，第二个键值是预测所得的类型，值为它们的对应颜色</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict[int, dict[int, int]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">##</span> <span class="pre">训练参数属性集合</span> <span class="pre">##</span></span></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="home_security_surveillance.Video_process.video_detect.Video_Detector.batch">
+<span class="sig-name descname"><span class="pre">batch</span></span><a class="headerlink" href="#home_security_surveillance.Video_process.video_detect.Video_Detector.batch" title="Link to this definition">#</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int          每次训练时输入的图片数量，默认为16</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="home_security_surveillance.Video_process.video_detect.Video_Detector.epochs">
+<span class="sig-name descname"><span class="pre">epochs</span></span><a class="headerlink" href="#home_security_surveillance.Video_process.video_detect.Video_Detector.epochs" title="Link to this definition">#</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int         训练迭代的次数，默认为5</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="home_security_surveillance.Video_process.video_detect.Video_Detector.project">
+<span class="sig-name descname"><span class="pre">project</span></span><a class="headerlink" href="#home_security_surveillance.Video_process.video_detect.Video_Detector.project" title="Link to this definition">#</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str        训练文件存放的目录，默认在根目录下的train_file文件夹下</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="home_security_surveillance.Video_process.video_detect.Video_Detector.name">
+<span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#home_security_surveillance.Video_process.video_detect.Video_Detector.name" title="Link to this definition">#</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str           训练过程存放的文件，在project对应目录下创建子目录，存储训练的日志和输出结果</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="home_security_surveillance.Video_process.video_detect.Video_Detector.imgsz">
+<span class="sig-name descname"><span class="pre">imgsz</span></span><a class="headerlink" href="#home_security_surveillance.Video_process.video_detect.Video_Detector.imgsz" title="Link to this definition">#</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int          输入图片的尺寸，默认要求640*640</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="home_security_surveillance.Video_process.video_detect.Video_Detector.data">
+<span class="sig-name descname"><span class="pre">data</span></span><a class="headerlink" href="#home_security_surveillance.Video_process.video_detect.Video_Detector.data" title="Link to this definition">#</a></dt>
+<dd><p>其默认路径为：ultralytics/cfg/datasets
+在该配置文件内按yolov8格式设置好训练集、验证集、测试集的图片路径，类别名等参数</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str           有关数据集配置文件的路径，由于本项目目标主要是对火焰的识别，在yolov8下默认存放的是fire.yaml</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="home_security_surveillance.Video_process.video_detect.Video_Detector.weight_pt">
+<span class="sig-name descname"><span class="pre">weight_pt</span></span><a class="headerlink" href="#home_security_surveillance.Video_process.video_detect.Video_Detector.weight_pt" title="Link to this definition">#</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str      预训练模型的文件名，可用于用户自行完成训练任务，当其不存在时yolov8会自动下载</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">##</span> <span class="pre">预测参数属性集合</span> <span class="pre">##</span></span></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="home_security_surveillance.Video_process.video_detect.Video_Detector.model_mode">
+<span class="sig-name descname"><span class="pre">model_mode</span></span><a class="headerlink" href="#home_security_surveillance.Video_process.video_detect.Video_Detector.model_mode" title="Link to this definition">#</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int     当用户未指定使用模型时，进行预测默认使用的模式，默认为1，即火焰识别</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="home_security_surveillance.Video_process.video_detect.Video_Detector.iou">
+<span class="sig-name descname"><span class="pre">iou</span></span><a class="headerlink" href="#home_security_surveillance.Video_process.video_detect.Video_Detector.iou" title="Link to this definition">#</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float          衡量预测边界框与真实边界框之间重叠程度，用于移除重叠较大的多余边界框，保留最优的检测结果，默认为0.6</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="home_security_surveillance.Video_process.video_detect.Video_Detector.conf">
+<span class="sig-name descname"><span class="pre">conf</span></span><a class="headerlink" href="#home_security_surveillance.Video_process.video_detect.Video_Detector.conf" title="Link to this definition">#</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float         模型对识别设置的置信度阈值，低于该阈值的识别结果会被过滤，默认为0.4</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="home_security_surveillance.Video_process.video_detect.Video_Detector.show">
+<span class="sig-name descname"><span class="pre">show</span></span><a class="headerlink" href="#home_security_surveillance.Video_process.video_detect.Video_Detector.show" title="Link to this definition">#</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool          模型的预测结果是否可视化，在单独调用模型内部预测函数时可以用来展示结果，默认为True</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="home_security_surveillance.Video_process.video_detect.Video_Detector.save_dir">
+<span class="sig-name descname"><span class="pre">save_dir</span></span><a class="headerlink" href="#home_security_surveillance.Video_process.video_detect.Video_Detector.save_dir" title="Link to this definition">#</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str       模型预测结果的保存目录，可在其中查看预测获得的识别信息视频和图片</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="home_security_surveillance.Video_process.video_detect.Video_Detector.max_frame">
+<span class="sig-name descname"><span class="pre">max_frame</span></span><a class="headerlink" href="#home_security_surveillance.Video_process.video_detect.Video_Detector.max_frame" title="Link to this definition">#</a></dt>
+<dd><p>考虑到大多数摄像头是30帧左右，默认存储1800帧，即保存一分钟左右的视频，可用于保存视频，获知异常出现的前因后果</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int      从视频流处理器处获得视频帧时，存储的双端队列最大缓冲视频帧数量</p>
+</dd>
+</dl>
+</dd></dl>
+
+<p class="rubric">备注</p>
+<p>获取相关参数(可以让用户选择模式)，前端通过修改predict_config.json中的model_mode来改变模式
+配置文件的参数都可以和用户进行交互</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="home_security_surveillance.Video_process.video_detect.Video_Detector.delete_dir">
+<span class="sig-name descname"><span class="pre">delete_dir</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">directory</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/home_security_surveillance/Video_process/video_detect.html#Video_Detector.delete_dir"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#home_security_surveillance.Video_process.video_detect.Video_Detector.delete_dir" title="Link to this definition">#</a></dt>
+<dd><p>删除目录函数，需要写入日志处理器，不再是静态方法
+被删除的目录下不允许有子目录
+:param directory: 指定的要删除的目录的绝对路径
+:type directory: str</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="home_security_surveillance.Video_process.video_detect.Video_Detector.detect">
+<span class="sig-name descname"><span class="pre">detect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">frame_queue</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Queue</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">result_queue</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Queue</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_dir</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_frame</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">iou</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sensitivity</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/home_security_surveillance/Video_process/video_detect.html#Video_Detector.detect"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#home_security_surveillance.Video_process.video_detect.Video_Detector.detect" title="Link to this definition">#</a></dt>
+<dd><p>对摄像头捕捉视频帧的实时检测和处理函数，是视频检测器的核心处理函数
+通过多进程的视频帧队列从视频流处理器对象处获得视频帧
+并通过另一个队列将检测后的错误码和每个预测类型的对应置信度返回给视频流处理器对象，完成进程通信
+:param frame_queue: 视频流对象传入的视频帧队列，用于获得要处理的视频帧队列
+:type frame_queue: multiprocessing.Queue
+:param result_queue: 返回给视频流对象的处理队列，用于返回错误码和置信度
+:type result_queue: multiprocessing.Queue
+:param mode: 指定的模式，用户指定后由视频流处理器传给当前的检测器实例，以完成用户要求的检测功能
+:type mode: int
+:param save_dir: 指定的视频保存路径，目前不提供设置方式，需要在进一步优化后完成设置
+:type save_dir: str
+:param max_frame: 指定的最大缓冲区帧数，因为无法直接解析视频设备的帧率，故暂未用于实践
+:type max_frame: int
+:param iou: 指定衡量预测边界框与真实边界框之间重叠程度，未指定(为None)时使用默认值
+:type iou: float
+:param sensitivity: 指定对异常的敏感程度，0对应低敏感程度，设置置信度阈值为0.6，1对应高敏感程度，设置置信度阈值为0.4，默认为低敏感
+:type sensitivity: int</p>
+<p class="rubric">备注</p>
+<p>传入的视频帧使用具有限定大小的双端队列进行处理
+每次从传入视频帧队列中获得全部视频帧按先入先出的顺序进行存储，随后从队列末尾取最实时的视频帧进行检测
+这相对于对双端队列中未取出检测的视频帧进行了识别丢帧处理，但能够被保存
+最终处理的视频帧比例由设备性能和进程被分配的资源决定
+既能保存异常出现的前因后果，又可以保证处理的实时性</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="home_security_surveillance.Video_process.video_detect.Video_Detector.get_device">
+<span class="sig-name descname"><span class="pre">get_device</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">device</span></span></span><a class="reference internal" href="_modules/home_security_surveillance/Video_process/video_detect.html#Video_Detector.get_device"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#home_security_surveillance.Video_process.video_detect.Video_Detector.get_device" title="Link to this definition">#</a></dt>
+<dd><p>确定进行识别的设备，需要判断GPU是否可用，不可用则使用CPU
+如果gpu可用则返回GPU的设备名并日志记录GPU信息，否则日志中记录CPU信息返回CPU字符串
+:returns: <strong>device</strong> – GPU的设备编号或者CPU字符串
+:rtype: Union[int, torch.device]</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="home_security_surveillance.Video_process.video_detect.Video_Detector.load_config">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">load_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="reference internal" href="_modules/home_security_surveillance/Video_process/video_detect.html#Video_Detector.load_config"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#home_security_surveillance.Video_process.video_detect.Video_Detector.load_config" title="Link to this definition">#</a></dt>
+<dd><p>读取配置文件
+:param path: 传入json文件的相对路径
+:type path: str</p>
+<dl class="field-list simple">
+<dt class="field-odd">返回<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>config_data</strong> – 有关参数的字典</p>
+</dd>
+<dt class="field-even">返回类型<span class="colon">:</span></dt>
+<dd class="field-even"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="home_security_surveillance.Video_process.video_detect.Video_Detector.make_dir">
+<span class="sig-name descname"><span class="pre">make_dir</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dir_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/home_security_surveillance/Video_process/video_detect.html#Video_Detector.make_dir"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#home_security_surveillance.Video_process.video_detect.Video_Detector.make_dir" title="Link to this definition">#</a></dt>
+<dd><p>创建空目录函数，需要写入日志处理器，不是静态方法
+此处不会检测上一级是否有目录，而是按照目录直接逐级创建
+:param dir_path: 指定的要创建的目录的绝对路径
+:type dir_path: str</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id0">
+<span class="sig-name descname"><span class="pre">mode_precdict_class</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{1:</span> <span class="pre">{0:</span> <span class="pre">0,</span> <span class="pre">1:</span> <span class="pre">1},</span> <span class="pre">2:</span> <span class="pre">{0:</span> <span class="pre">2},</span> <span class="pre">3:</span> <span class="pre">{0:</span> <span class="pre">3}}</span></em><a class="headerlink" href="#id0" title="Link to this definition">#</a></dt>
+<dd><p>noindex:</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id1">
+<span class="sig-name descname"><span class="pre">mode_precdict_warning_mode</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{1:</span> <span class="pre">{0:</span> <span class="pre">1,</span> <span class="pre">1:</span> <span class="pre">2},</span> <span class="pre">2:</span> <span class="pre">{0:</span> <span class="pre">4},</span> <span class="pre">3:</span> <span class="pre">{0:</span> <span class="pre">8}}</span></em><a class="headerlink" href="#id1" title="Link to this definition">#</a></dt>
+<dd><p>noindex:</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id2">
+<span class="sig-name descname"><span class="pre">model_mode_dict</span></span><a class="headerlink" href="#id2" title="Link to this definition">#</a></dt>
+<dd><p>noindex:</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="home_security_surveillance.Video_process.video_detect.Video_Detector.model_plot">
+<span class="sig-name descname"><span class="pre">model_plot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">frame</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">results1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Results</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">results2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Results</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">results3</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Results</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="reference internal" href="_modules/home_security_surveillance/Video_process/video_detect.html#Video_Detector.model_plot"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#home_security_surveillance.Video_process.video_detect.Video_Detector.model_plot" title="Link to this definition">#</a></dt>
+<dd><p>识别碰撞箱绘制函数，使用全部模型检测时，需要根据各模型结果对原始图像进行各自的碰撞箱绘制
+:param frame: 传入的原始图像
+:type frame: np.ndarray
+:param results1: 火焰识别模型的识别结果，如果为None，则不绘制
+:type results1: Results
+:param results2: 人像识别模型的识别结果，如果为None，则不绘制
+:type results2: Results
+:param results3: 异常行为识别模型的识别结果，如果为None，则不绘制</p>
+<dl class="field-list simple">
+<dt class="field-odd">返回<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>frame</strong> – 绘制各碰撞箱后的结果图像</p>
+</dd>
+<dt class="field-even">返回类型<span class="colon">:</span></dt>
+<dd class="field-even"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="home_security_surveillance.Video_process.video_detect.Video_Detector.predict">
+<span class="sig-name descname"><span class="pre">predict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pre_source</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">iou</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">conf</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">Results</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="reference internal" href="_modules/home_security_surveillance/Video_process/video_detect.html#Video_Detector.predict"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#home_security_surveillance.Video_process.video_detect.Video_Detector.predict" title="Link to this definition">#</a></dt>
+<dd><p>模型预测函数，可以根据mode选择模型加载图片/视频进行预测，获得对应的返回结果
+允许mode为0，此时会调用所有模型进行识别，保存得到三个结果对象序列，使用字典将其与对应的模式进行映射</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pre_source</strong> (<em>Union</em><em>[</em><em>str</em><em>, </em><em>np.ndarray</em><em>]</em>) – 用于推理的的特定数据源，可以是矩阵，图片路径，URL，视频路径或者设备id
+支持广泛的格式和来源，实现了跨不同类型输入的灵活应用。</p></li>
+<li><p><strong>mode</strong> (<em>int</em>) – 指定使用的识别模型，未指定(为None)时使用内部的默认模式对应的模型进行识别</p></li>
+<li><p><strong>show</strong> (<em>bool</em>) – 指定模型的预测结果是否可视化，未指定(为None)时使用默认值</p></li>
+<li><p><strong>iou</strong> (<em>float</em>) – 指定衡量预测边界框与真实边界框之间重叠程度，未指定(为None)时使用默认值</p></li>
+<li><p><strong>conf</strong> (<em>float</em>) – 指定模型对识别设置的置信度阈值，未指定(为None)时使用默认值</p></li>
+</ul>
+</dd>
+<dt class="field-even">返回<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>result_dict</strong> – 由模式-yolov8内置的结果对象序列组成你的字典，每个元素为一个模型-Result对象序列的键值对
+通过访问对应模式对应的值，可以获得识别结果的各项信息</p>
+</dd>
+<dt class="field-odd">返回类型<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Optional[dict[int, list[Results]]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id3">
+<span class="sig-name descname"><span class="pre">predict_class_type_color_dict</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{1:</span> <span class="pre">{0:</span> <span class="pre">(0,</span> <span class="pre">0,</span> <span class="pre">255),</span> <span class="pre">1:</span> <span class="pre">(128,</span> <span class="pre">128,</span> <span class="pre">128)},</span> <span class="pre">2:</span> <span class="pre">(0,</span> <span class="pre">255,</span> <span class="pre">0),</span> <span class="pre">3:</span> <span class="pre">(255,</span> <span class="pre">0,</span> <span class="pre">0)}</span></em><a class="headerlink" href="#id3" title="Link to this definition">#</a></dt>
+<dd><p>noindex:</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="home_security_surveillance.Video_process.video_detect.Video_Detector.re_detect">
+<span class="sig-name descname"><span class="pre">re_detect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">video_file</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ui_event</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_dir</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_frame</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">iou</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sensitivity</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/home_security_surveillance/Video_process/video_detect.html#Video_Detector.re_detect"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#home_security_surveillance.Video_process.video_detect.Video_Detector.re_detect" title="Link to this definition">#</a></dt>
+<dd><p>对传入视频路径的视频的检测和处理函数，是视频检测器的另一个核心处理函数
+被创建后作为独立的进程运行，不受视频处理器的创建进程影响，只受ui界面的停止命令影响
+:param video_file: 要处理视频的指定绝对路径
+:type video_file: str
+:param ui_event: 用于监听ui界面的停止信息的事件
+:type ui_event: multiprocessing.Event
+:param mode: 指定的模式，用户指定后由视频流处理器传给当前的检测器实例，以完成用户要求的检测功能
+:type mode: int
+:param save_dir: 指定的视频保存路径，目前不提供设置方式，需要在进一步优化后完成设置
+:type save_dir: str
+:param max_frame: 指定的最大缓冲区帧数，因为无法直接解析视频设备的帧率，故暂未用于实践
+:type max_frame: int
+:param iou: 指定衡量预测边界框与真实边界框之间重叠程度，未指定(为None)时使用默认值
+:type iou: float
+:param sensitivity: 指定对异常的敏感程度，0对应低敏感程度，设置置信度阈值为0.6，1对应高敏感程度，设置置信度阈值为0.4，默认为低敏感
+:type sensitivity: int</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="home_security_surveillance.Video_process.video_detect.Video_Detector.reset_training_parameters">
+<span class="sig-name descname"><span class="pre">reset_training_parameters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">batch</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">epochs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">project</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">imgsz</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weight_pt</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/home_security_surveillance/Video_process/video_detect.html#Video_Detector.reset_training_parameters"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#home_security_surveillance.Video_process.video_detect.Video_Detector.reset_training_parameters" title="Link to this definition">#</a></dt>
+<dd><p>重新设置模型训练时使用的参数，仅修改传入的参数，其他参数不变</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>batch</strong> (<em>int</em>) – 每次训练时输入的图片数量，默认为16</p></li>
+<li><p><strong>epochs</strong> (<em>int</em>) – 训练迭代的次数，默认为5</p></li>
+<li><p><strong>project</strong> (<em>str</em>) – 训练文件存放的目录，默认在根目录下的train_file文件夹下</p></li>
+<li><p><strong>name</strong> (<em>str</em>) – 训练过程存放的文件，在project对应目录下创建子目录，存储训练的日志和输出结果</p></li>
+<li><p><strong>imgsz</strong> (<em>int</em>) – 输入图片的尺寸，默认要求640*640</p></li>
+<li><p><strong>data</strong> (<em>str</em>) – 有关数据集配置文件的路径，由于本项目目标主要是对火焰的识别，在yolov8下默认存放的是fire.yaml
+其默认路径为：ultralytics/cfg/datasets
+在该配置文件内按yolov8格式设置好训练集、验证集、测试集的图片路径，类别名等参数</p></li>
+<li><p><strong>weight_pt</strong> (<em>str</em>) – 预训练模型的文件名，可用于用户自行完成训练任务，当其不存在时yolov8会自动下载</p></li>
+<li><p><strong>device</strong> (<em>int</em>) – 可用设备的编号，此处主要用于设置CPU</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="home_security_surveillance.Video_process.video_detect.Video_Detector.set_default_model">
+<span class="sig-name descname"><span class="pre">set_default_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/home_security_surveillance/Video_process/video_detect.html#Video_Detector.set_default_model"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#home_security_surveillance.Video_process.video_detect.Video_Detector.set_default_model" title="Link to this definition">#</a></dt>
+<dd><p>设置默认使用模型
+:param mode: 0设置使用全部模型，1设置使用火焰模型，2设置使用人像识别模型，3设置异常行为识别模型
+:type mode: int</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="home_security_surveillance.Video_process.video_detect.Video_Detector.show_csv">
+<span class="sig-name descname"><span class="pre">show_csv</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/home_security_surveillance/Video_process/video_detect.html#Video_Detector.show_csv"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#home_security_surveillance.Video_process.video_detect.Video_Detector.show_csv" title="Link to this definition">#</a></dt>
+<dd><p>对训练完成后的各种评估参数绘制图像</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="home_security_surveillance.Video_process.video_detect.Video_Detector.train">
+<span class="sig-name descname"><span class="pre">train</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/home_security_surveillance/Video_process/video_detect.html#Video_Detector.train"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#home_security_surveillance.Video_process.video_detect.Video_Detector.train" title="Link to this definition">#</a></dt>
+<dd><p>火焰识别模型的训练
+需要在类外设置好训练参数和配置文件，以及数据集</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id4">
+<span class="sig-name descname"><span class="pre">warning_mode_list</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[1,</span> <span class="pre">2,</span> <span class="pre">4,</span> <span class="pre">8]</span></em><a class="headerlink" href="#id4" title="Link to this definition">#</a></dt>
+<dd><p>noindex:</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-home_security_surveillance.Video_process.video_processor">
+<span id="home-security-surveillance-video-process-video-processor-module"></span><h2>home_security_surveillance.Video_process.video_processor module<a class="headerlink" href="#module-home_security_surveillance.Video_process.video_processor" title="Link to this heading">#</a></h2>
+<p>File Name: video_processor.py
+Author: 07xiaohei
+Date: 2024-05-13
+Version: 1.5
+Description: 处理视频流的核心类</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="home_security_surveillance.Video_process.video_processor.Video_Processor">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">home_security_surveillance.Video_process.video_processor.</span></span><span class="sig-name descname"><span class="pre">Video_Processor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">url_capture_time_out</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">root</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/home_security_surveillance/Video_process/video_processor.html#Video_Processor"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#home_security_surveillance.Video_process.video_processor.Video_Processor" title="Link to this definition">#</a></dt>
+<dd><p>基类：<code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>从视频源处获得视频流并进行处理的相关类，是家庭监控系统的核心处理部分</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>url_capture_time_out</strong> (<em>int</em>) – opencv在捕捉网络摄像头url视频流时的超时时间设置，各协议统一，且应小于opencv已设置的时间
+此处最大为15s，默认值为10s，最大请尽量小于15s</p></li>
+<li><p><strong>event</strong> (<em>synchronize.Event</em>) – ui界面创建对象时传递的事件，在该类传递事件内标记设置为False时结束任务退出进程，默认为None</p></li>
+<li><p><strong>return_value</strong> (<em>multiprocessing.Value</em>) – ui界面创建对象时传递的共享内存变量，默认为None</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="home_security_surveillance.Video_process.video_processor.Video_Processor.ui_event">
+<span class="sig-name descname"><span class="pre">ui_event</span></span><a class="headerlink" href="#home_security_surveillance.Video_process.video_processor.Video_Processor.ui_event" title="Link to this definition">#</a></dt>
+<dd><p>ui界面创建对象时传递的事件，在该类传递事件内标记设置为False时结束任务退出进程，默认为None</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>synchronize.Event</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="home_security_surveillance.Video_process.video_processor.Video_Processor.ui_value">
+<span class="sig-name descname"><span class="pre">ui_value</span></span><a class="headerlink" href="#home_security_surveillance.Video_process.video_processor.Video_Processor.ui_value" title="Link to this definition">#</a></dt>
+<dd><p>ui界面创建对象时传递的共享内存变量，默认为None</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>multiprocessing.Value</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="home_security_surveillance.Video_process.video_processor.Video_Processor.create_time">
+<span class="sig-name descname"><span class="pre">create_time</span></span><a class="headerlink" href="#home_security_surveillance.Video_process.video_processor.Video_Processor.create_time" title="Link to this definition">#</a></dt>
+<dd><p>创建该对象的时间，字符串类型，格式与log.py中Log_Processor的strftime_all相同</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="home_security_surveillance.Video_process.video_processor.Video_Processor.url_capture_time_out">
+<span class="sig-name descname"><span class="pre">url_capture_time_out</span></span><a class="headerlink" href="#home_security_surveillance.Video_process.video_processor.Video_Processor.url_capture_time_out" title="Link to this definition">#</a></dt>
+<dd><p>opencv在捕捉网络摄像头url视频流时的超时时间设置，各协议统一，且应小于opencv已设置的时间
+此处最大为15s，默认值为10s，最大请尽量小于15s</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="home_security_surveillance.Video_process.video_processor.Video_Processor.config_data">
+<span class="sig-name descname"><span class="pre">config_data</span></span><a class="headerlink" href="#home_security_surveillance.Video_process.video_processor.Video_Processor.config_data" title="Link to this definition">#</a></dt>
+<dd><p>配置文件的字典格式，每个元素为一个键值对，键为配置文件的属性名，值为配置文件的属性值</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="home_security_surveillance.Video_process.video_processor.Video_Processor.local_video_device_list">
+<span class="sig-name descname"><span class="pre">local_video_device_list</span></span><a class="headerlink" href="#home_security_surveillance.Video_process.video_processor.Video_Processor.local_video_device_list" title="Link to this definition">#</a></dt>
+<dd><p>关于本地视频设备的一个列表，每个元素为一个元组，每个元组内有两个子元素
+每个元组的第一个元素是视频源的相关信息作为show_video_in_cv函数的输入，用于opencv库从视频源中获得视频流
+每个元组的第二个元素是视频源的相关说明</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>List[ Tuple[ Union[int,str],str ] ]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="home_security_surveillance.Video_process.video_processor.Video_Processor.logger">
+<span class="sig-name descname"><span class="pre">logger</span></span><a class="headerlink" href="#home_security_surveillance.Video_process.video_processor.Video_Processor.logger" title="Link to this definition">#</a></dt>
+<dd><p>日志处理器对象的一个实例，用于记录该类活动过程中的运行信息和错误信息</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="home_security_surveillance.File_process.html#home_security_surveillance.File_process.log.Log_Processor" title="home_security_surveillance.File_process.log.Log_Processor">Log_Processor</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="home_security_surveillance.Video_process.video_processor.Video_Processor.nvd_processor">
+<span class="sig-name descname"><span class="pre">nvd_processor</span></span><a class="headerlink" href="#home_security_surveillance.Video_process.video_processor.Video_Processor.nvd_processor" title="Link to this definition">#</a></dt>
+<dd><p>网络视频设备处理器对象的一个实例，用于处理网络应用设备的加载、访问和修改</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Nvd_processor</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="home_security_surveillance.Video_process.video_processor.Video_Processor.hs_processor">
+<span class="sig-name descname"><span class="pre">hs_processor</span></span><a class="headerlink" href="#home_security_surveillance.Video_process.video_processor.Video_Processor.hs_processor" title="Link to this definition">#</a></dt>
+<dd><p>历史视频处理器对象的一个实例，用于处理对历史视频的加载、访问和识别</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>History_video_processor</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="home_security_surveillance.Video_process.video_processor.Video_Processor.video_detector">
+<span class="sig-name descname"><span class="pre">video_detector</span></span><a class="headerlink" href="#home_security_surveillance.Video_process.video_processor.Video_Processor.video_detector" title="Link to this definition">#</a></dt>
+<dd><p>视频检测处理器对象的一个实例，使用基于yolov8的识别模型对视频流进行监测</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#home_security_surveillance.Video_process.video_detect.Video_Detector" title="home_security_surveillance.Video_process.video_detect.Video_Detector">Video_Detector</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="home_security_surveillance.Video_process.video_processor.Video_Processor.warning_processor">
+<span class="sig-name descname"><span class="pre">warning_processor</span></span><a class="headerlink" href="#home_security_surveillance.Video_process.video_processor.Video_Processor.warning_processor" title="Link to this definition">#</a></dt>
+<dd><p>异常警报处理器对象的一个实例，使用smtplib库发送邮件，pygame库播放音频，tkinter库弹出警告窗口</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Warning_processor</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="home_security_surveillance.Video_process.video_processor.Video_Processor._load_flag">
+<span class="sig-name descname"><span class="pre">_load_flag</span></span><a class="headerlink" href="#home_security_surveillance.Video_process.video_processor.Video_Processor._load_flag" title="Link to this definition">#</a></dt>
+<dd><p>标记上述的本地视频设备、网络视频设备和历史视频处理器的加载是否成功且不为空，便于后续处理时确定是否可用</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>List[bool, bool, bool]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<p class="rubric">备注</p>
+<p>视频流的来源包括本地视频设备(如USB摄像头)，网络视频设备（如ip摄像头）和历史监控视频三种
+传入video_type=1对应本地监视器设备，video_type=2对应网络视频设备，video_type=3对应历史监控视频</p>
+<p class="rubric">示例</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="home_security_surveillance.Video_process.video_processor.Video_Processor.load_history_video">
+<span class="sig-name descname"><span class="pre">load_history_video</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">video_strat_save_date</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">video_index</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flag_visibility</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flag_re_detect</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">video_detect_sensitivity</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">video_detect_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="reference internal" href="_modules/home_security_surveillance/Video_process/video_processor.html#Video_Processor.load_history_video"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#home_security_surveillance.Video_process.video_processor.Video_Processor.load_history_video" title="Link to this definition">#</a></dt>
+<dd><p>从历史视频保存文件夹中利用opencv库加载视频流，根据传入的视频录制日期和索引号来捕捉视频信息</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>video_strat_save_date</strong> (<em>str</em>) – 要加载的历史视频的保存日期，跨日的视频以开始保存的日期为准，用于opencv库从视频源处获得视频流
+注意日期的格式为{年}分隔符{月}分隔符{日}，年一定是长为4的字符串</p></li>
+<li><p><strong>video_index</strong> (<em>int</em>) – 要加载的历史视频在保存日期的索引，用于区别单个日期保存的多个视频，默认为第一个，即索引为1</p></li>
+<li><p><strong>flag_visibility</strong> (<em>bool</em>) – 控制opencv在读取视频流时是否展示，True时展示视频，False时不展示，可用于后台处理视频</p></li>
+<li><p><strong>flag_re_detect</strong> (<em>bool</em>) – 控制历史视频是否需要进行监测，目标追踪，默认为True</p></li>
+<li><p><strong>video_detect_sensitivity</strong> (<em>int</em>) – 控制视频流在监测时的敏感度，0为低敏感度，1为高敏感度</p></li>
+<li><p><strong>video_detect_type</strong> (<em>int</em>) – 控制历史视频监测的类型，0为全部监测，1为只监测火焰，2为只监测人，3为检测异常情况</p></li>
+</ul>
+</dd>
+<dt class="field-even">返回<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>res</strong> – 返回一个整型，每个值对应一个错误类型或者正确类型
+0则说明读取、展示、识别成功
+-1则说明视频流打开失败(如视频实际是一个txt文件)
+-2则说明视频流意外关闭(如加载视频到一半被手动删除)
+1说明历史保存视频为空
+2说明要加载视频的日期无视频
+3说明索引不存在</p>
+</dd>
+<dt class="field-odd">返回类型<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="home_security_surveillance.Video_process.video_processor.Video_Processor.load_local_video_device">
+<span class="sig-name descname"><span class="pre">load_local_video_device</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">video_sourse</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flag_visibility</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flag_save</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flag_detect</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">video_detect_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">video_detect_sensitivity</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="reference internal" href="_modules/home_security_surveillance/Video_process/video_processor.html#Video_Processor.load_local_video_device"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#home_security_surveillance.Video_process.video_processor.Video_Processor.load_local_video_device" title="Link to this definition">#</a></dt>
+<dd><p>从本地视频设备利用opencv库加载视频流，根据传入的本地视频设备号来捕捉视频信息</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>video_sourse</strong> (<em>int</em>) – 要捕获的本地视频设备的索引号，用于opencv库从视频源处获得视频流</p></li>
+<li><p><strong>flag_visibility</strong> (<em>bool</em>) – 控制opencv在读取视频流时是否展示，True时展示视频，False时不展示，可用于后台处理视频</p></li>
+<li><p><strong>flag_save</strong> (<em>bool</em>) – 控制opencv在读取视频六时是否保存，True时保存视频，False时不保存</p></li>
+<li><p><strong>flag_detect</strong> (<em>bool</em>) – 控制视频流是否需要进行监测，目标追踪，默认为True</p></li>
+<li><p><strong>video_detect_type</strong> (<em>int</em>) – 控制视频流监测的类型，0为全部监测，1为只监测火焰，2为只监测人，3为检测异常情况</p></li>
+<li><p><strong>video_detect_sensitivity</strong> (<em>int</em>) – 控制视频流在监测时的敏感度，0为低敏感度，1为高敏感度</p></li>
+</ul>
+</dd>
+<dt class="field-even">返回<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>res</strong> – 返回一个整型，每个值对应一个错误类型或者正确类型
+0则说明读取、展示和保存成功
+-1则说明打开摄像头失败
+-2则说明读取摄像头下一帧失败或者摄像头意外关闭
+-3则说明指定保存视频文件时，创建目录或打开视频文件失败
+1说明本地视频设备为空
+2说明传入索引号超过了本地视频设备列表大小</p>
+</dd>
+<dt class="field-odd">返回类型<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+<p class="rubric">备注</p>
+<p>为了加速模型识别处理速度，创建一个进程单独执行识别功能，与该进程的通信使用两个多进程队列multiprocessing.Queue
+一个是frame_queue，用于将捕捉的视频帧在处理后传给识别进程
+一个是result_queue，用于将识别进程识别到错误的获得的错误类型和置信度返回给该进程</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="home_security_surveillance.Video_process.video_processor.Video_Processor.load_network_video_device">
+<span class="sig-name descname"><span class="pre">load_network_video_device</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">video_sourse</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flag_visibility</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flag_save</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flag_detect</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">video_detect_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">video_detect_sensitivity</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">video_protocol_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'RTSP'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="reference internal" href="_modules/home_security_surveillance/Video_process/video_processor.html#Video_Processor.load_network_video_device"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#home_security_surveillance.Video_process.video_processor.Video_Processor.load_network_video_device" title="Link to this definition">#</a></dt>
+<dd><p>从网络视频设备利用opencv库加载视频流，根据传入的url、ip或者已存储url的索引值来捕捉视频信息</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>video_sourse</strong> (<em>Union</em><em>[</em><em>int</em><em>, </em><em>str</em><em>]</em>) – 传入的ip或者url字符串，或者是已存储url的索引值</p></li>
+<li><p><strong>flag_visibility</strong> (<em>bool</em>) – 控制opencv在读取视频流时是否展示，True时展示视频，False时不展示，可用于后台处理视频</p></li>
+<li><p><strong>flag_save</strong> (<em>bool</em>) – 控制opencv在读取视频流时是否保存，True时保存视频，False时不保存</p></li>
+<li><p><strong>flag_detect</strong> (<em>bool</em>) – 控制视频流是否需要进行监测，目标追踪，默认为True</p></li>
+<li><p><strong>video_detect_type</strong> (<em>int</em>) – 控制视频流监测的类型，0为全部监测，1为只监测火焰，2为只监测人，3为检测异常情况</p></li>
+<li><p><strong>video_detect_sensitivity</strong> (<em>int</em>) – 控制视频流在监测时的敏感度，0为低敏感度，1为高敏感度</p></li>
+<li><p><strong>video_protocol_type</strong> (<em>str</em>) – 读取视频流时网络视频设备使用的传输协议，默认为RSTP</p></li>
+</ul>
+</dd>
+<dt class="field-even">返回<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>res</strong> – 返回一个整型，每个值对应一个错误类型或者正确类型
+0则说明读取、展示和保存成功
+-1则说明打开摄像头失败
+-2则说明读取摄像头下一帧失败或者摄像头意外关闭
+-3则说明指定保存视频文件时，创建目录或打开视频文件失败
+1则说明网络视频设备为空
+2则说明网络设备视频传输协议不支持
+3则说明无法从url处获得视频流，即VideoCapture超时，与打开摄像头失败不同</p>
+</dd>
+<dt class="field-odd">返回类型<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="home_security_surveillance.Video_process.video_processor.Video_Processor.load_video_sourse">
+<span class="sig-name descname"><span class="pre">load_video_sourse</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/home_security_surveillance/Video_process/video_processor.html#Video_Processor.load_video_sourse"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#home_security_surveillance.Video_process.video_processor.Video_Processor.load_video_sourse" title="Link to this definition">#</a></dt>
+<dd><p>加载视频资源函数</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="home_security_surveillance.Video_process.video_processor.Video_Processor.update_local_video_sourse">
+<span class="sig-name descname"><span class="pre">update_local_video_sourse</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/home_security_surveillance/Video_process/video_processor.html#Video_Processor.update_local_video_sourse"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#home_security_surveillance.Video_process.video_processor.Video_Processor.update_local_video_sourse" title="Link to this definition">#</a></dt>
+<dd><p>更新本地视频设备
+:returns: <strong>flag</strong> – 是否完成了更新，如更新返回True，否则为False
+:rtype: bool</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-home_security_surveillance.Video_process">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-home_security_surveillance.Video_process" title="Link to this heading">#</a></h2>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#submodules">Submodules</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-home_security_surveillance.Video_process.video_capture_process">home_security_surveillance.Video_process.video_capture_process module</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#home_security_surveillance.Video_process.video_capture_process.Video_Capture_Process"><code class="docutils literal notranslate"><span class="pre">Video_Capture_Process</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#home_security_surveillance.Video_process.video_capture_process.Video_Capture_Process.url"><code class="docutils literal notranslate"><span class="pre">Video_Capture_Process.url</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#home_security_surveillance.Video_process.video_capture_process.Video_Capture_Process.result_queue"><code class="docutils literal notranslate"><span class="pre">Video_Capture_Process.result_queue</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#home_security_surveillance.Video_process.video_capture_process.Video_Capture_Process.run"><code class="docutils literal notranslate"><span class="pre">Video_Capture_Process.run()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-home_security_surveillance.Video_process.video_detect">home_security_surveillance.Video_process.video_detect module</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#home_security_surveillance.Video_process.video_detect.Video_Detector"><code class="docutils literal notranslate"><span class="pre">Video_Detector</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#home_security_surveillance.Video_process.video_detect.Video_Detector.root_dir"><code class="docutils literal notranslate"><span class="pre">Video_Detector.root_dir</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#home_security_surveillance.Video_process.video_detect.Video_Detector.device"><code class="docutils literal notranslate"><span class="pre">Video_Detector.device</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#home_security_surveillance.Video_process.video_detect.Video_Detector.train_model"><code class="docutils literal notranslate"><span class="pre">Video_Detector.train_model</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#home_security_surveillance.Video_process.video_detect.Video_Detector.predict_model"><code class="docutils literal notranslate"><span class="pre">Video_Detector.predict_model</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#home_security_surveillance.Video_process.video_detect.Video_Detector.model_mode_dict"><code class="docutils literal notranslate"><span class="pre">Video_Detector.model_mode_dict</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#home_security_surveillance.Video_process.video_detect.Video_Detector.warning_mode_list"><code class="docutils literal notranslate"><span class="pre">Video_Detector.warning_mode_list</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#home_security_surveillance.Video_process.video_detect.Video_Detector.mode_precdict_class"><code class="docutils literal notranslate"><span class="pre">Video_Detector.mode_precdict_class</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#home_security_surveillance.Video_process.video_detect.Video_Detector.mode_precdict_warning_mode"><code class="docutils literal notranslate"><span class="pre">Video_Detector.mode_precdict_warning_mode</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#home_security_surveillance.Video_process.video_detect.Video_Detector.predict_class_type_color_dict"><code class="docutils literal notranslate"><span class="pre">Video_Detector.predict_class_type_color_dict</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#home_security_surveillance.Video_process.video_detect.Video_Detector.batch"><code class="docutils literal notranslate"><span class="pre">Video_Detector.batch</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#home_security_surveillance.Video_process.video_detect.Video_Detector.epochs"><code class="docutils literal notranslate"><span class="pre">Video_Detector.epochs</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#home_security_surveillance.Video_process.video_detect.Video_Detector.project"><code class="docutils literal notranslate"><span class="pre">Video_Detector.project</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#home_security_surveillance.Video_process.video_detect.Video_Detector.name"><code class="docutils literal notranslate"><span class="pre">Video_Detector.name</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#home_security_surveillance.Video_process.video_detect.Video_Detector.imgsz"><code class="docutils literal notranslate"><span class="pre">Video_Detector.imgsz</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#home_security_surveillance.Video_process.video_detect.Video_Detector.data"><code class="docutils literal notranslate"><span class="pre">Video_Detector.data</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#home_security_surveillance.Video_process.video_detect.Video_Detector.weight_pt"><code class="docutils literal notranslate"><span class="pre">Video_Detector.weight_pt</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#home_security_surveillance.Video_process.video_detect.Video_Detector.model_mode"><code class="docutils literal notranslate"><span class="pre">Video_Detector.model_mode</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#home_security_surveillance.Video_process.video_detect.Video_Detector.iou"><code class="docutils literal notranslate"><span class="pre">Video_Detector.iou</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#home_security_surveillance.Video_process.video_detect.Video_Detector.conf"><code class="docutils literal notranslate"><span class="pre">Video_Detector.conf</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#home_security_surveillance.Video_process.video_detect.Video_Detector.show"><code class="docutils literal notranslate"><span class="pre">Video_Detector.show</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#home_security_surveillance.Video_process.video_detect.Video_Detector.save_dir"><code class="docutils literal notranslate"><span class="pre">Video_Detector.save_dir</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#home_security_surveillance.Video_process.video_detect.Video_Detector.max_frame"><code class="docutils literal notranslate"><span class="pre">Video_Detector.max_frame</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#home_security_surveillance.Video_process.video_detect.Video_Detector.delete_dir"><code class="docutils literal notranslate"><span class="pre">Video_Detector.delete_dir()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#home_security_surveillance.Video_process.video_detect.Video_Detector.detect"><code class="docutils literal notranslate"><span class="pre">Video_Detector.detect()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#home_security_surveillance.Video_process.video_detect.Video_Detector.get_device"><code class="docutils literal notranslate"><span class="pre">Video_Detector.get_device()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#home_security_surveillance.Video_process.video_detect.Video_Detector.load_config"><code class="docutils literal notranslate"><span class="pre">Video_Detector.load_config()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#home_security_surveillance.Video_process.video_detect.Video_Detector.make_dir"><code class="docutils literal notranslate"><span class="pre">Video_Detector.make_dir()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id0"><code class="docutils literal notranslate"><span class="pre">Video_Detector.mode_precdict_class</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"><code class="docutils literal notranslate"><span class="pre">Video_Detector.mode_precdict_warning_mode</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2"><code class="docutils literal notranslate"><span class="pre">Video_Detector.model_mode_dict</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#home_security_surveillance.Video_process.video_detect.Video_Detector.model_plot"><code class="docutils literal notranslate"><span class="pre">Video_Detector.model_plot()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#home_security_surveillance.Video_process.video_detect.Video_Detector.predict"><code class="docutils literal notranslate"><span class="pre">Video_Detector.predict()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id3"><code class="docutils literal notranslate"><span class="pre">Video_Detector.predict_class_type_color_dict</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#home_security_surveillance.Video_process.video_detect.Video_Detector.re_detect"><code class="docutils literal notranslate"><span class="pre">Video_Detector.re_detect()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#home_security_surveillance.Video_process.video_detect.Video_Detector.reset_training_parameters"><code class="docutils literal notranslate"><span class="pre">Video_Detector.reset_training_parameters()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#home_security_surveillance.Video_process.video_detect.Video_Detector.set_default_model"><code class="docutils literal notranslate"><span class="pre">Video_Detector.set_default_model()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#home_security_surveillance.Video_process.video_detect.Video_Detector.show_csv"><code class="docutils literal notranslate"><span class="pre">Video_Detector.show_csv()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#home_security_surveillance.Video_process.video_detect.Video_Detector.train"><code class="docutils literal notranslate"><span class="pre">Video_Detector.train()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id4"><code class="docutils literal notranslate"><span class="pre">Video_Detector.warning_mode_list</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-home_security_surveillance.Video_process.video_processor">home_security_surveillance.Video_process.video_processor module</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#home_security_surveillance.Video_process.video_processor.Video_Processor"><code class="docutils literal notranslate"><span class="pre">Video_Processor</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#home_security_surveillance.Video_process.video_processor.Video_Processor.ui_event"><code class="docutils literal notranslate"><span class="pre">Video_Processor.ui_event</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#home_security_surveillance.Video_process.video_processor.Video_Processor.ui_value"><code class="docutils literal notranslate"><span class="pre">Video_Processor.ui_value</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#home_security_surveillance.Video_process.video_processor.Video_Processor.create_time"><code class="docutils literal notranslate"><span class="pre">Video_Processor.create_time</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#home_security_surveillance.Video_process.video_processor.Video_Processor.url_capture_time_out"><code class="docutils literal notranslate"><span class="pre">Video_Processor.url_capture_time_out</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#home_security_surveillance.Video_process.video_processor.Video_Processor.config_data"><code class="docutils literal notranslate"><span class="pre">Video_Processor.config_data</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#home_security_surveillance.Video_process.video_processor.Video_Processor.local_video_device_list"><code class="docutils literal notranslate"><span class="pre">Video_Processor.local_video_device_list</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#home_security_surveillance.Video_process.video_processor.Video_Processor.logger"><code class="docutils literal notranslate"><span class="pre">Video_Processor.logger</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#home_security_surveillance.Video_process.video_processor.Video_Processor.nvd_processor"><code class="docutils literal notranslate"><span class="pre">Video_Processor.nvd_processor</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#home_security_surveillance.Video_process.video_processor.Video_Processor.hs_processor"><code class="docutils literal notranslate"><span class="pre">Video_Processor.hs_processor</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#home_security_surveillance.Video_process.video_processor.Video_Processor.video_detector"><code class="docutils literal notranslate"><span class="pre">Video_Processor.video_detector</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#home_security_surveillance.Video_process.video_processor.Video_Processor.warning_processor"><code class="docutils literal notranslate"><span class="pre">Video_Processor.warning_processor</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#home_security_surveillance.Video_process.video_processor.Video_Processor._load_flag"><code class="docutils literal notranslate"><span class="pre">Video_Processor._load_flag</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#home_security_surveillance.Video_process.video_processor.Video_Processor.load_history_video"><code class="docutils literal notranslate"><span class="pre">Video_Processor.load_history_video()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#home_security_surveillance.Video_process.video_processor.Video_Processor.load_local_video_device"><code class="docutils literal notranslate"><span class="pre">Video_Processor.load_local_video_device()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#home_security_surveillance.Video_process.video_processor.Video_Processor.load_network_video_device"><code class="docutils literal notranslate"><span class="pre">Video_Processor.load_network_video_device()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#home_security_surveillance.Video_process.video_processor.Video_Processor.load_video_sourse"><code class="docutils literal notranslate"><span class="pre">Video_Processor.load_video_sourse()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#home_security_surveillance.Video_process.video_processor.Video_Processor.update_local_video_sourse"><code class="docutils literal notranslate"><span class="pre">Video_Processor.update_local_video_sourse()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-home_security_surveillance.Video_process">Module contents</a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  <div class="tocsection sourcelink">
+    <a href="_sources/home_security_surveillance.Video_process.rst.txt">
+      <i class="fa-solid fa-file-lines"></i> 显示源代码
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2024, 07xiaohei、youyou、Chai.h、Captain.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    由 <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.3.7创建。
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.15.4.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

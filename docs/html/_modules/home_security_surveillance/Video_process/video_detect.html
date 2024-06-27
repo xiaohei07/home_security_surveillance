@@ -1,0 +1,1431 @@
+
+<!DOCTYPE html>
+
+
+<html lang="zh-CN" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>home_security_surveillance.Video_process.video_detect &#8212; home_security_surveillance 1.5 文档</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=362ab14a" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../../_static/documentation_options.js?v=a8cb9c0f"></script>
+    <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/translations.js?v=beaddf03"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/home_security_surveillance/Video_process/video_detect';</script>
+    <link rel="index" title="索引" href="../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="zh-CN"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">home_security_surveillance 1.5 文档</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="搜索" aria-label="搜索" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">搜索</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="搜索" aria-label="搜索" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">搜索</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../../index.html" class="nav-link">模块代码</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page">home_securit...</li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>home_security_surveillance.Video_process.video_detect 源代码</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">File Name: video_detect.py</span>
+<span class="sd">Author: youyou</span>
+<span class="sd">Date: 2024-05-02</span>
+<span class="sd">Version: 1.5</span>
+<span class="sd">Description: 使用yolov8，对视频帧进行识别，判断监控是否出现了火灾/人/异常行为</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="c1"># 引入常用库</span>
+<span class="kn">from</span> <span class="nn">home_security_surveillance.Common</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="c1"># 用日志处理器</span>
+<span class="kn">from</span> <span class="nn">home_security_surveillance.File_process.log</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="c1"># 用config模块获得默认目录位置</span>
+<span class="kn">from</span> <span class="nn">home_security_surveillance.File_process.config</span> <span class="kn">import</span> <span class="n">config_defaluts</span><span class="p">,</span> <span class="n">trans_config_abspath</span>
+<span class="c1"># 用Warning_Processor模块</span>
+<span class="kn">from</span> <span class="nn">home_security_surveillance.Exception_process</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">home_security_surveillance.frozen_dir</span> <span class="kn">import</span> <span class="n">project_dir</span>
+<span class="c1"># 用torch</span>
+<span class="kn">import</span> <span class="nn">torch</span>
+<span class="c1"># 用yolo类</span>
+<span class="kn">from</span> <span class="nn">ultralytics</span> <span class="kn">import</span> <span class="n">YOLO</span>
+<span class="c1"># 用Results类</span>
+<span class="kn">from</span> <span class="nn">ultralytics.engine.results</span> <span class="kn">import</span> <span class="n">Results</span>
+<span class="c1"># 用csv类</span>
+<span class="kn">import</span> <span class="nn">csv</span>
+<span class="c1"># 用plt绘出csv结果图</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="c1"># 双端队列做缓冲</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">deque</span>
+<span class="kn">import</span> <span class="nn">IPython</span>
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Video_Detector&quot;</span><span class="p">]</span>
+
+<span class="c1"># 训练和预测配置文件的默认路径</span>
+<span class="n">defalut_train_config_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">normpath</span><span class="p">(</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">project_dir</span><span class="p">,</span> <span class="s2">&quot;./Model/train_config.json&quot;</span><span class="p">))</span>
+
+<span class="n">defalut_predict_config_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">normpath</span><span class="p">(</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">project_dir</span><span class="p">,</span> <span class="s2">&quot;./Model/predict_config.json&quot;</span><span class="p">))</span>
+
+<div class="viewcode-block" id="Video_Detector">
+<a class="viewcode-back" href="../../../home_security_surveillance.Video_process.html#home_security_surveillance.Video_process.video_detect.Video_Detector">[文档]</a>
+<span class="k">class</span> <span class="nc">Video_Detector</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Video_Detector(root_dir, use_defalut_parameter)</span>
+<span class="sd">    视频检测处理器，用于读取部分实时帧完成对应任务的识别功能，是自动检测和识别的核心模块</span>
+<span class="sd">    使用的底层架构为yolov8，火焰模型为自行利用数据集训练，人像识别和异常行为识别直接使用开源模型</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    root_dir : str</span>
+<span class="sd">        视频检测处理器的根目录，默认值和_config_defaluts中的model-directory对应绝对路径相同</span>
+<span class="sd">    use_defalut_parameter : bool</span>
+<span class="sd">        是否使用默认的内置训练参数，否则需要加载配置文件的对应参数，True为使用内置参数，False为不使用</span>
+
+<span class="sd">    Attributes</span>
+<span class="sd">    ----------</span>
+<span class="sd">    root_dir : str</span>
+<span class="sd">        视频检测处理器的根目录，默认值和_config_defaluts中的model-directory对应绝对路径相同</span>
+<span class="sd">    info_logger &amp; error_logger: Log_Processor</span>
+<span class="sd">        日志处理器对象的实例，分别用于记录该类活动过程中的运行和错误、报警信息，统一输入到根目录下的info.log和error.log中</span>
+<span class="sd">    _train_config &amp; _predict_config: dict</span>
+<span class="sd">        train_config和predict_config配置文件中的各变量记录，在后续加载时使用，是内部成员，不对外开放接口</span>
+<span class="sd">    device : int</span>
+<span class="sd">        标识用户可用于的识别的设备，如果有独显GPU使用独显GPU，否则使用CPU</span>
+<span class="sd">    train_model : YOLO</span>
+<span class="sd">        被用于训练的预加载模型，仅在训练新模型时使用</span>
+<span class="sd">    predict_model: dict[int, YOLO]</span>
+<span class="sd">        模式-模型的数字-模型对象字典映射，通过映射可以将模式转变为yolov8要使用的模型对象，直接进行预测</span>
+<span class="sd">        此成员用于加速处理，保证多次调用预测函数或者修改模型内容时，均需要在初始化时加载一次模型即可</span>
+
+<span class="sd">    model_mode_dict : dict[int, str]</span>
+<span class="sd">        模式-模型的数字-绝对路径字典映射，通过映射可以将模式转变为yolov8要使用的模型绝对路径</span>
+<span class="sd">        其将相对路径和根路径改为绝对路径，路径根目录用root_dir</span>
+<span class="sd">        1为火焰模型，2为人物模型 3：火焰和人物模型</span>
+<span class="sd">    warning_mode_list : list[int]</span>
+<span class="sd">        类变量，预测类型和错误码的匹配关系，在检测时需要进行进程的通信，遇到错误需要向视频流处理器通知错误的出现</span>
+<span class="sd">        因此需要将各类型的错误统一映射为一个错误码，视频流处理器通过解码即可获知错误类型</span>
+<span class="sd">    mode_precdict_class : dict[int, dict[int, int]]</span>
+<span class="sd">        类变量，将使用的mode和预测类别映射为对应的类型，即将映射的错误码1248分别修改为0123</span>
+<span class="sd">    mode_precdict_warning_mode : dict[int, dict[int, int]]</span>
+<span class="sd">        类变量，将使用的模型mode和预测类别映射为错误码</span>
+<span class="sd">        mode=1对应第一个火焰/烟雾模型，0的预测类别是烟雾，对应错误码是1</span>
+<span class="sd">        1的预测类别是火焰，对应错误码是2，mode=2对应第二个人像识别模型，0的预测类别是人，对应错误码是4</span>
+<span class="sd">        mode=3对应第三个异常行为识别，0的预测类别是跌倒，对应错误码是8</span>
+<span class="sd">    predict_class_type_color_dict : dict[int, dict[int, int]]</span>
+<span class="sd">        类变量，每个错误类型在绘制错误碰撞箱时使用的颜色，只在使用全部模型模式下有效</span>
+<span class="sd">        第一个键值model对应的mode，第二个键值是预测所得的类型，值为它们的对应颜色</span>
+
+<span class="sd">    ## 训练参数属性集合 ##</span>
+<span class="sd">    batch: int          每次训练时输入的图片数量，默认为16</span>
+<span class="sd">    epochs: int         训练迭代的次数，默认为5</span>
+<span class="sd">    project: str        训练文件存放的目录，默认在根目录下的train_file文件夹下</span>
+<span class="sd">    name: str           训练过程存放的文件，在project对应目录下创建子目录，存储训练的日志和输出结果</span>
+<span class="sd">    imgsz: int          输入图片的尺寸，默认要求640*640</span>
+<span class="sd">    data: str           有关数据集配置文件的路径，由于本项目目标主要是对火焰的识别，在yolov8下默认存放的是fire.yaml</span>
+<span class="sd">                        其默认路径为：ultralytics/cfg/datasets</span>
+<span class="sd">                        在该配置文件内按yolov8格式设置好训练集、验证集、测试集的图片路径，类别名等参数</span>
+<span class="sd">    weight_pt: str      预训练模型的文件名，可用于用户自行完成训练任务，当其不存在时yolov8会自动下载</span>
+
+<span class="sd">    ## 预测参数属性集合 ##</span>
+<span class="sd">    model_mode: int     当用户未指定使用模型时，进行预测默认使用的模式，默认为1，即火焰识别</span>
+<span class="sd">    iou: float          衡量预测边界框与真实边界框之间重叠程度，用于移除重叠较大的多余边界框，保留最优的检测结果，默认为0.6</span>
+<span class="sd">    conf: float         模型对识别设置的置信度阈值，低于该阈值的识别结果会被过滤，默认为0.4</span>
+<span class="sd">    show: bool          模型的预测结果是否可视化，在单独调用模型内部预测函数时可以用来展示结果，默认为True</span>
+<span class="sd">    save_dir: str       模型预测结果的保存目录，可在其中查看预测获得的识别信息视频和图片</span>
+<span class="sd">    max_frame: int      从视频流处理器处获得视频帧时，存储的双端队列最大缓冲视频帧数量</span>
+<span class="sd">                        考虑到大多数摄像头是30帧左右，默认存储1800帧，即保存一分钟左右的视频，可用于保存视频，获知异常出现的前因后果</span>
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    获取相关参数(可以让用户选择模式)，前端通过修改predict_config.json中的model_mode来改变模式</span>
+<span class="sd">    配置文件的参数都可以和用户进行交互</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1">#: :noindex:</span>
+    <span class="n">mode_precdict_warning_mode</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">:</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span> <span class="mi">2</span><span class="p">},</span> <span class="mi">2</span><span class="p">:</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="mi">4</span><span class="p">},</span> <span class="mi">3</span><span class="p">:</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="mi">8</span><span class="p">}}</span>
+    <span class="c1">#: :noindex:</span>
+    <span class="n">mode_precdict_class</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">:</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span> <span class="mi">1</span><span class="p">},</span> <span class="mi">2</span><span class="p">:</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="mi">2</span><span class="p">},</span> <span class="mi">3</span><span class="p">:</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="mi">3</span><span class="p">}}</span>
+    <span class="c1">#: :noindex:</span>
+    <span class="n">warning_mode_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="p">]</span>
+    <span class="c1">#: :noindex:</span>
+    <span class="n">predict_class_type_color_dict</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">:</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">),</span> <span class="mi">1</span><span class="p">:</span> <span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="mi">128</span><span class="p">,</span> <span class="mi">128</span><span class="p">)},</span>
+                                     <span class="mi">2</span><span class="p">:</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="mi">3</span><span class="p">:</span> <span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)}</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">root_dir</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">trans_config_abspath</span><span class="p">(</span><span class="n">config_defaluts</span><span class="p">[</span><span class="s2">&quot;model-directory&quot;</span><span class="p">]),</span>
+                 <span class="n">use_defalut_parameter</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;初始化模型&quot;&quot;&quot;</span>
+
+        <span class="c1"># 未初始化但需要使用的属性</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">result</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="c1"># 根目录</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isabs</span><span class="p">(</span><span class="n">root_dir</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">root_dir</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span> <span class="o">=</span> <span class="n">root_dir</span>
+        <span class="c1">#: :noindex:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model_mode_dict</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_dir</span><span class="p">,</span> <span class="s2">&quot;fire.pt&quot;</span><span class="p">),</span>
+                                <span class="mi">2</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_dir</span><span class="p">,</span> <span class="s2">&quot;people.pt&quot;</span><span class="p">),</span>
+                                <span class="mi">3</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_dir</span><span class="p">,</span> <span class="s2">&quot;down.pt&quot;</span><span class="p">)}</span>
+        <span class="c1"># 配置日志管理器</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_create_logger</span><span class="p">()</span>
+
+        <span class="c1"># 配置训练和预测的json文件路径</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_train_config</span> <span class="o">=</span> <span class="n">Video_Detector</span><span class="o">.</span><span class="n">load_config</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_dir</span><span class="p">,</span> <span class="s2">&quot;train_config.json&quot;</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_predict_config</span> <span class="o">=</span> <span class="n">Video_Detector</span><span class="o">.</span><span class="n">load_config</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_dir</span><span class="p">,</span> <span class="s2">&quot;predict_config.json&quot;</span><span class="p">))</span>
+        <span class="c1"># 默认路径优先级低于原优先级</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_train_config</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_train_config</span> <span class="o">=</span> <span class="n">Video_Detector</span><span class="o">.</span><span class="n">load_config</span><span class="p">(</span><span class="n">defalut_train_config_path</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_predict_config</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_predict_config</span> <span class="o">=</span> <span class="n">Video_Detector</span><span class="o">.</span><span class="n">load_config</span><span class="p">(</span><span class="n">defalut_predict_config_path</span><span class="p">)</span>
+
+        <span class="c1"># 是否加载默认参数</span>
+        <span class="c1"># 否，则加载配置文件的内容</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">use_defalut_parameter</span><span class="p">:</span>
+            <span class="n">batch</span><span class="p">,</span> <span class="n">epochs</span><span class="p">,</span> <span class="n">project</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">imgsz</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">weight_pt</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_train_config</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
+            <span class="n">model_mode</span><span class="p">,</span> <span class="n">iou</span><span class="p">,</span> <span class="n">conf</span><span class="p">,</span> <span class="n">show</span><span class="p">,</span> <span class="n">save_dir</span><span class="p">,</span> <span class="n">max_frame</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_predict_config</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
+            <span class="n">device</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_device</span><span class="p">()</span>
+        <span class="c1"># 是，则加载默认参数</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">batch</span> <span class="o">=</span> <span class="mi">16</span>
+            <span class="n">epochs</span> <span class="o">=</span> <span class="mi">5</span>
+            <span class="n">project</span> <span class="o">=</span> <span class="s1">&#39;train_file&#39;</span>
+            <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;detect&#39;</span>
+            <span class="n">imgsz</span> <span class="o">=</span> <span class="mi">640</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="s1">&#39;fire.yaml&#39;</span>
+            <span class="n">weight_pt</span> <span class="o">=</span> <span class="s1">&#39;yolov8n.pt&#39;</span>
+            <span class="n">model_mode</span> <span class="o">=</span> <span class="mi">1</span>
+            <span class="n">iou</span> <span class="o">=</span> <span class="mf">0.6</span>
+            <span class="n">conf</span> <span class="o">=</span> <span class="mf">0.4</span>
+            <span class="n">show</span> <span class="o">=</span> <span class="s2">&quot;True&quot;</span>
+            <span class="n">save_dir</span> <span class="o">=</span> <span class="s2">&quot;detect_result&quot;</span>
+            <span class="n">max_frame</span> <span class="o">=</span> <span class="mi">1800</span>
+            <span class="n">device</span> <span class="o">=</span> <span class="mi">0</span>
+
+        <span class="c1"># 赋值给类成员变量</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">batch</span> <span class="o">=</span> <span class="n">batch</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">epochs</span> <span class="o">=</span> <span class="n">epochs</span>
+        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isabs</span><span class="p">(</span><span class="n">project</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">project</span> <span class="o">=</span> <span class="n">project</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">project</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_dir</span><span class="p">,</span> <span class="n">project</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isabs</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_dir</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">imgsz</span> <span class="o">=</span> <span class="n">imgsz</span>
+        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isabs</span><span class="p">(</span><span class="n">project</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">data</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">project</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isabs</span><span class="p">(</span><span class="n">weight_pt</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">weight_pt</span> <span class="o">=</span> <span class="n">weight_pt</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">weight_pt</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_dir</span><span class="p">,</span> <span class="n">weight_pt</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">train_model</span> <span class="o">=</span> <span class="n">YOLO</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">weight_pt</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">device</span> <span class="o">=</span> <span class="n">device</span>
+
+        <span class="c1"># 可以在函数调用时被外界参数覆盖的变量</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model_mode</span> <span class="o">=</span> <span class="n">model_mode</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">predict_model</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">:</span> <span class="n">YOLO</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model_mode_dict</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="mi">2</span><span class="p">:</span> <span class="n">YOLO</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model_mode_dict</span><span class="p">[</span><span class="mi">2</span><span class="p">]),</span>
+                              <span class="mi">3</span><span class="p">:</span> <span class="n">YOLO</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model_mode_dict</span><span class="p">[</span><span class="mi">3</span><span class="p">])}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">iou</span> <span class="o">=</span> <span class="n">iou</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">conf</span> <span class="o">=</span> <span class="n">conf</span>
+        <span class="k">if</span> <span class="n">show</span> <span class="o">==</span> <span class="s2">&quot;True&quot;</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">show</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">show</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isabs</span><span class="p">(</span><span class="n">save_dir</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">save_dir</span> <span class="o">=</span> <span class="n">save_dir</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">save_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_dir</span><span class="p">,</span> <span class="n">save_dir</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">max_frame</span> <span class="o">=</span> <span class="n">max_frame</span>
+
+    <span class="k">def</span> <span class="nf">_create_logger</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;创建日志处理器对象的实例，分别记录ERROR和INFO信息&quot;&quot;&quot;</span>
+        <span class="c1"># 配置 error_logger 仅记录 ERROR 及以上级别的日志</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">error_logger</span> <span class="o">=</span> <span class="n">Log_Processor</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span><span class="p">,</span> <span class="s1">&#39;error.log&#39;</span><span class="p">,</span> <span class="n">Log_Processor</span><span class="o">.</span><span class="n">ERROR</span><span class="p">)</span>
+        <span class="c1"># 配置 info_logger 记录所有级别的日志</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">info_logger</span> <span class="o">=</span> <span class="n">Log_Processor</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span><span class="p">,</span> <span class="s1">&#39;info.log&#39;</span><span class="p">,</span> <span class="n">Log_Processor</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span>
+
+<div class="viewcode-block" id="Video_Detector.reset_training_parameters">
+<a class="viewcode-back" href="../../../home_security_surveillance.Video_process.html#home_security_surveillance.Video_process.video_detect.Video_Detector.reset_training_parameters">[文档]</a>
+    <span class="k">def</span> <span class="nf">reset_training_parameters</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">batch</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">epochs</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">project</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                                  <span class="n">name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">imgsz</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                                  <span class="n">weight_pt</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">device</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        重新设置模型训练时使用的参数，仅修改传入的参数，其他参数不变</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        batch: int</span>
+<span class="sd">            每次训练时输入的图片数量，默认为16</span>
+<span class="sd">        epochs: int</span>
+<span class="sd">            训练迭代的次数，默认为5</span>
+<span class="sd">        project: str</span>
+<span class="sd">            训练文件存放的目录，默认在根目录下的train_file文件夹下</span>
+<span class="sd">        name: str</span>
+<span class="sd">            训练过程存放的文件，在project对应目录下创建子目录，存储训练的日志和输出结果</span>
+<span class="sd">        imgsz: int</span>
+<span class="sd">            输入图片的尺寸，默认要求640*640</span>
+<span class="sd">        data: str</span>
+<span class="sd">            有关数据集配置文件的路径，由于本项目目标主要是对火焰的识别，在yolov8下默认存放的是fire.yaml</span>
+<span class="sd">            其默认路径为：ultralytics/cfg/datasets</span>
+<span class="sd">            在该配置文件内按yolov8格式设置好训练集、验证集、测试集的图片路径，类别名等参数</span>
+<span class="sd">        weight_pt: str</span>
+<span class="sd">            预训练模型的文件名，可用于用户自行完成训练任务，当其不存在时yolov8会自动下载</span>
+<span class="sd">        device: int</span>
+<span class="sd">            可用设备的编号，此处主要用于设置CPU</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c1"># 赋值给实例变量</span>
+        <span class="k">if</span> <span class="n">batch</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">batch</span> <span class="o">=</span> <span class="n">batch</span>
+        <span class="k">if</span> <span class="n">epochs</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">epochs</span> <span class="o">=</span> <span class="n">epochs</span>
+        <span class="k">if</span> <span class="n">project</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isabs</span><span class="p">(</span><span class="n">project</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">project</span> <span class="o">=</span> <span class="n">project</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">project</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span><span class="p">,</span> <span class="n">project</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">name</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isabs</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">imgsz</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">imgsz</span> <span class="o">=</span> <span class="n">imgsz</span>
+        <span class="k">if</span> <span class="n">data</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isabs</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">data</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">project</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">weight_pt</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isabs</span><span class="p">(</span><span class="n">weight_pt</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">weight_pt</span> <span class="o">=</span> <span class="n">weight_pt</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">weight_pt</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span><span class="p">,</span> <span class="n">weight_pt</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">train_model</span> <span class="o">=</span> <span class="n">YOLO</span><span class="p">(</span><span class="n">weight_pt</span><span class="p">)</span>
+        <span class="c1"># device可能是0</span>
+        <span class="k">if</span> <span class="n">device</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">device</span> <span class="o">=</span> <span class="n">device</span></div>
+
+
+<div class="viewcode-block" id="Video_Detector.load_config">
+<a class="viewcode-back" href="../../../home_security_surveillance.Video_process.html#home_security_surveillance.Video_process.video_detect.Video_Detector.load_config">[文档]</a>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">load_config</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        读取配置文件</span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        path: str</span>
+<span class="sd">            传入json文件的相对路径</span>
+<span class="sd">        Returns</span>
+<span class="sd">        --------</span>
+<span class="sd">        config_data: dict</span>
+<span class="sd">            有关参数的字典</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="n">config_data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">config_data</span></div>
+
+
+<div class="viewcode-block" id="Video_Detector.get_device">
+<a class="viewcode-back" href="../../../home_security_surveillance.Video_process.html#home_security_surveillance.Video_process.video_detect.Video_Detector.get_device">[文档]</a>
+    <span class="k">def</span> <span class="nf">get_device</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        确定进行识别的设备，需要判断GPU是否可用，不可用则使用CPU</span>
+<span class="sd">        如果gpu可用则返回GPU的设备名并日志记录GPU信息，否则日志中记录CPU信息返回CPU字符串</span>
+<span class="sd">        Returns</span>
+<span class="sd">        --------</span>
+<span class="sd">        device: Union[int, torch.device]</span>
+<span class="sd">            GPU的设备编号或者CPU字符串</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">is_available</span><span class="p">():</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">info_logger</span><span class="o">.</span><span class="n">log_write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Device is GPU: </span><span class="si">{</span><span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">current_device</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+                                       <span class="n">Log_Processor</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span>
+            <span class="c1"># 获取当前默认 GPU 的索引</span>
+            <span class="k">return</span> <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">current_device</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">info_logger</span><span class="o">.</span><span class="n">log_write</span><span class="p">(</span><span class="s2">&quot;Device is CPU&quot;</span><span class="p">,</span> <span class="n">Log_Processor</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s1">&#39;cpu&#39;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Video_Detector.set_default_model">
+<a class="viewcode-back" href="../../../home_security_surveillance.Video_process.html#home_security_surveillance.Video_process.video_detect.Video_Detector.set_default_model">[文档]</a>
+    <span class="k">def</span> <span class="nf">set_default_model</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mode</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        设置默认使用模型</span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        mode : int</span>
+<span class="sd">            0设置使用全部模型，1设置使用火焰模型，2设置使用人像识别模型，3设置异常行为识别模型</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model_mode</span> <span class="o">=</span> <span class="n">mode</span></div>
+
+
+<div class="viewcode-block" id="Video_Detector.train">
+<a class="viewcode-back" href="../../../home_security_surveillance.Video_process.html#home_security_surveillance.Video_process.video_detect.Video_Detector.train">[文档]</a>
+    <span class="k">def</span> <span class="nf">train</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        火焰识别模型的训练</span>
+<span class="sd">        需要在类外设置好训练参数和配置文件，以及数据集</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="c1"># begin train</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">train_model</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">batch</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">batch</span><span class="p">,</span>
+                                                 <span class="n">epochs</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">epochs</span><span class="p">,</span> <span class="n">imgsz</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">imgsz</span><span class="p">,</span>
+                                                 <span class="n">name</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">project</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">project</span><span class="p">,</span>
+                                                 <span class="n">device</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">device</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="c1"># catch all errors and export to the log</span>
+            <span class="n">error_type</span> <span class="o">=</span> <span class="nb">type</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span>
+
+            <span class="c1"># self.error_logger.logger.error(你之前设置的部分)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">error_logger</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;An error of type </span><span class="si">{</span><span class="n">error_type</span><span class="si">}</span><span class="s2"> occurred: </span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+                                            <span class="n">exc_info</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></div>
+
+
+    <span class="k">def</span> <span class="nf">_one_model_predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pre_source</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">],</span>
+                           <span class="n">mode</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                           <span class="n">show</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                           <span class="n">iou</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                           <span class="n">conf</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="n">Results</span><span class="p">]]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        单个模型的预测函数，可以根据mode选择模型加载图片/视频进行预测，获得对应的返回结果</span>
+<span class="sd">        是内置的方法，不提供对外接口，是predict函数的子部分</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        pre_source : Union[str, np.ndarray]</span>
+<span class="sd">            用于推理的的特定数据源，可以是矩阵，图片路径，URL，视频路径或者设备id</span>
+<span class="sd">            支持广泛的格式和来源，实现了跨不同类型输入的灵活应用。</span>
+<span class="sd">        mode : int</span>
+<span class="sd">            指定使用的识别模型，未指定(为None)时使用内部的默认模式对应的模型进行识别</span>
+<span class="sd">        show: bool</span>
+<span class="sd">            指定模型的预测结果是否可视化，未指定(为None)时使用默认值</span>
+<span class="sd">        iou: float</span>
+<span class="sd">            指定衡量预测边界框与真实边界框之间重叠程度，未指定(为None)时使用默认值</span>
+<span class="sd">        conf: float</span>
+<span class="sd">            指定模型对识别设置的置信度阈值，未指定(为None)时使用默认值</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        result_list : Optional[list[Results]]</span>
+<span class="sd">            yolov8内置的结果对象序列，每个元素为一个Result对象，其中包括了识别结果的各项信息</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># 根据传入参数进行调整</span>
+        <span class="k">if</span> <span class="n">mode</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">None</span>
+        <span class="k">elif</span> <span class="n">mode</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">model_mode</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">None</span>
+        <span class="k">elif</span> <span class="n">mode</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">model_mode</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">mode</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model_mode</span>
+
+        <span class="k">if</span> <span class="n">show</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">show</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">show</span>
+        <span class="k">if</span> <span class="n">iou</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">iou</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">iou</span>
+        <span class="k">if</span> <span class="n">conf</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">conf</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">conf</span>
+        <span class="c1"># 根据不同模式，进行不同模型的预测</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">pre_source</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">mode</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+                    <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">predict_model</span><span class="p">[</span><span class="n">mode</span><span class="p">]</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span>
+                        <span class="n">stream</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                        <span class="n">show</span><span class="o">=</span><span class="n">show</span><span class="p">,</span>
+                        <span class="n">source</span><span class="o">=</span><span class="n">pre_source</span><span class="p">,</span>
+                        <span class="n">iou</span><span class="o">=</span><span class="n">iou</span><span class="p">,</span>
+                        <span class="n">conf</span><span class="o">=</span><span class="n">conf</span><span class="p">,</span>
+                        <span class="n">device</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">device</span><span class="p">,</span>
+                        <span class="n">classes</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">predict_model</span><span class="p">[</span><span class="n">mode</span><span class="p">]</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span>
+                        <span class="n">stream</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                        <span class="n">show</span><span class="o">=</span><span class="n">show</span><span class="p">,</span>
+                        <span class="n">source</span><span class="o">=</span><span class="n">pre_source</span><span class="p">,</span>
+                        <span class="n">iou</span><span class="o">=</span><span class="n">iou</span><span class="p">,</span>
+                        <span class="n">conf</span><span class="o">=</span><span class="n">conf</span><span class="p">,</span>
+                        <span class="n">device</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">device</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">mode</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+                    <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">predict_model</span><span class="p">[</span><span class="n">mode</span><span class="p">]</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span>
+                        <span class="n">stream</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                        <span class="n">show</span><span class="o">=</span><span class="n">show</span><span class="p">,</span>
+                        <span class="n">source</span><span class="o">=</span><span class="n">pre_source</span><span class="p">,</span>
+                        <span class="n">iou</span><span class="o">=</span><span class="n">iou</span><span class="p">,</span>
+                        <span class="n">conf</span><span class="o">=</span><span class="n">conf</span><span class="p">,</span>
+                        <span class="n">device</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">device</span><span class="p">,</span>
+                        <span class="n">classes</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">predict_model</span><span class="p">[</span><span class="n">mode</span><span class="p">]</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span>
+                        <span class="n">stream</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                        <span class="n">show</span><span class="o">=</span><span class="n">show</span><span class="p">,</span>
+                        <span class="n">source</span><span class="o">=</span><span class="n">pre_source</span><span class="p">,</span>
+                        <span class="n">iou</span><span class="o">=</span><span class="n">iou</span><span class="p">,</span>
+                        <span class="n">conf</span><span class="o">=</span><span class="n">conf</span><span class="p">,</span>
+                        <span class="n">device</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">device</span><span class="p">)</span>
+            <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="c1"># 将捕获的错误存储到日志中</span>
+            <span class="n">error_type</span> <span class="o">=</span> <span class="nb">type</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">error_logger</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;An error of type </span><span class="si">%s</span><span class="s2"> occurred: </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">error_type</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">),</span>
+                                           <span class="n">exc_info</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<div class="viewcode-block" id="Video_Detector.predict">
+<a class="viewcode-back" href="../../../home_security_surveillance.Video_process.html#home_security_surveillance.Video_process.video_detect.Video_Detector.predict">[文档]</a>
+    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pre_source</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">],</span>
+                <span class="n">mode</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                <span class="n">show</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                <span class="n">iou</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                <span class="n">conf</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">dict</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">list</span><span class="p">[</span><span class="n">Results</span><span class="p">]]]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        模型预测函数，可以根据mode选择模型加载图片/视频进行预测，获得对应的返回结果</span>
+<span class="sd">        允许mode为0，此时会调用所有模型进行识别，保存得到三个结果对象序列，使用字典将其与对应的模式进行映射</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        pre_source : Union[str, np.ndarray]</span>
+<span class="sd">            用于推理的的特定数据源，可以是矩阵，图片路径，URL，视频路径或者设备id</span>
+<span class="sd">            支持广泛的格式和来源，实现了跨不同类型输入的灵活应用。</span>
+<span class="sd">        mode : int</span>
+<span class="sd">            指定使用的识别模型，未指定(为None)时使用内部的默认模式对应的模型进行识别</span>
+<span class="sd">        show: bool</span>
+<span class="sd">            指定模型的预测结果是否可视化，未指定(为None)时使用默认值</span>
+<span class="sd">        iou: float</span>
+<span class="sd">            指定衡量预测边界框与真实边界框之间重叠程度，未指定(为None)时使用默认值</span>
+<span class="sd">        conf: float</span>
+<span class="sd">            指定模型对识别设置的置信度阈值，未指定(为None)时使用默认值</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        result_dict : Optional[dict[int, list[Results]]]</span>
+<span class="sd">            由模式-yolov8内置的结果对象序列组成你的字典，每个元素为一个模型-Result对象序列的键值对</span>
+<span class="sd">            通过访问对应模式对应的值，可以获得识别结果的各项信息</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">if</span> <span class="n">mode</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">result</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_one_model_predict</span><span class="p">(</span><span class="n">pre_source</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">show</span><span class="p">,</span> <span class="n">iou</span><span class="p">,</span> <span class="n">conf</span><span class="p">)</span>
+            <span class="n">result</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_one_model_predict</span><span class="p">(</span><span class="n">pre_source</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">show</span><span class="p">,</span> <span class="n">iou</span><span class="p">,</span> <span class="n">conf</span><span class="p">)</span>
+            <span class="n">result</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_one_model_predict</span><span class="p">(</span><span class="n">pre_source</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">show</span><span class="p">,</span> <span class="n">iou</span><span class="p">,</span> <span class="n">conf</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">mode</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">result</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_one_model_predict</span><span class="p">(</span><span class="n">pre_source</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">show</span><span class="p">,</span> <span class="n">iou</span><span class="p">,</span> <span class="n">conf</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">mode</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="n">result</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_one_model_predict</span><span class="p">(</span><span class="n">pre_source</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">show</span><span class="p">,</span> <span class="n">iou</span><span class="p">,</span> <span class="n">conf</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">mode</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+            <span class="n">result</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_one_model_predict</span><span class="p">(</span><span class="n">pre_source</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">show</span><span class="p">,</span> <span class="n">iou</span><span class="p">,</span> <span class="n">conf</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">None</span>
+        <span class="k">return</span> <span class="n">result</span></div>
+
+
+<div class="viewcode-block" id="Video_Detector.model_plot">
+<a class="viewcode-back" href="../../../home_security_surveillance.Video_process.html#home_security_surveillance.Video_process.video_detect.Video_Detector.model_plot">[文档]</a>
+    <span class="k">def</span> <span class="nf">model_plot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">frame</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">results1</span><span class="p">:</span> <span class="n">Results</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                   <span class="n">results2</span><span class="p">:</span> <span class="n">Results</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">results3</span><span class="p">:</span> <span class="n">Results</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        识别碰撞箱绘制函数，使用全部模型检测时，需要根据各模型结果对原始图像进行各自的碰撞箱绘制</span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        frame : np.ndarray</span>
+<span class="sd">            传入的原始图像</span>
+<span class="sd">        results1 : Results</span>
+<span class="sd">            火焰识别模型的识别结果，如果为None，则不绘制</span>
+<span class="sd">        results2 : Results</span>
+<span class="sd">            人像识别模型的识别结果，如果为None，则不绘制</span>
+<span class="sd">        results3</span>
+<span class="sd">            异常行为识别模型的识别结果，如果为None，则不绘制</span>
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        frame : np.ndarray</span>
+<span class="sd">            绘制各碰撞箱后的结果图像</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c1"># 在图像上绘制边界框</span>
+        <span class="k">if</span> <span class="n">results1</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">box</span> <span class="ow">in</span> <span class="n">results1</span><span class="o">.</span><span class="n">boxes</span><span class="p">:</span>
+                <span class="c1"># 获取边界框坐标</span>
+                <span class="n">x1</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">x2</span><span class="p">,</span> <span class="n">y2</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="n">box</span><span class="o">.</span><span class="n">xyxy</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+                <span class="c1"># 获取置信度和标签</span>
+                <span class="n">confidence</span> <span class="o">=</span> <span class="n">box</span><span class="o">.</span><span class="n">conf</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+                <span class="n">label</span> <span class="o">=</span> <span class="n">box</span><span class="o">.</span><span class="n">cls</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+                <span class="c1"># 绘制矩形边界框</span>
+                <span class="n">cv</span><span class="o">.</span><span class="n">rectangle</span><span class="p">(</span><span class="n">frame</span><span class="p">,</span> <span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">y1</span><span class="p">),</span> <span class="p">(</span><span class="n">x2</span><span class="p">,</span> <span class="n">y2</span><span class="p">),</span>
+                             <span class="bp">self</span><span class="o">.</span><span class="n">predict_class_type_color_dict</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="nb">int</span><span class="p">(</span><span class="n">label</span><span class="p">)],</span> <span class="mi">2</span><span class="p">)</span>
+                <span class="c1"># 在边界框上绘制标签和置信度</span>
+                <span class="n">label_text</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">predict_model</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">names</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">label</span><span class="p">)]</span><span class="si">}</span><span class="s1">: </span><span class="si">{</span><span class="n">confidence</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">&#39;</span>
+                <span class="n">cv</span><span class="o">.</span><span class="n">putText</span><span class="p">(</span><span class="n">frame</span><span class="p">,</span> <span class="n">label_text</span><span class="p">,</span> <span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">y1</span> <span class="o">-</span> <span class="mi">10</span><span class="p">),</span> <span class="n">cv</span><span class="o">.</span><span class="n">FONT_HERSHEY_SIMPLEX</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">,</span>
+                           <span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">),</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="c1"># 其他同理</span>
+        <span class="k">if</span> <span class="n">results2</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">box</span> <span class="ow">in</span> <span class="n">results2</span><span class="o">.</span><span class="n">boxes</span><span class="p">:</span>
+                <span class="n">x1</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">x2</span><span class="p">,</span> <span class="n">y2</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="n">box</span><span class="o">.</span><span class="n">xyxy</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+                <span class="n">confidence</span> <span class="o">=</span> <span class="n">box</span><span class="o">.</span><span class="n">conf</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+                <span class="n">label</span> <span class="o">=</span> <span class="n">box</span><span class="o">.</span><span class="n">cls</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+                <span class="n">cv</span><span class="o">.</span><span class="n">rectangle</span><span class="p">(</span><span class="n">frame</span><span class="p">,</span> <span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">y1</span><span class="p">),</span> <span class="p">(</span><span class="n">x2</span><span class="p">,</span> <span class="n">y2</span><span class="p">),</span>
+                             <span class="bp">self</span><span class="o">.</span><span class="n">predict_class_type_color_dict</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="mi">2</span><span class="p">)</span>
+                <span class="n">label_text</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">predict_model</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">names</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">label</span><span class="p">)]</span><span class="si">}</span><span class="s1">: </span><span class="si">{</span><span class="n">confidence</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">&#39;</span>
+                <span class="n">cv</span><span class="o">.</span><span class="n">putText</span><span class="p">(</span><span class="n">frame</span><span class="p">,</span> <span class="n">label_text</span><span class="p">,</span> <span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">y1</span> <span class="o">-</span> <span class="mi">10</span><span class="p">),</span> <span class="n">cv</span><span class="o">.</span><span class="n">FONT_HERSHEY_SIMPLEX</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">,</span>
+                           <span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">),</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">results3</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">box</span> <span class="ow">in</span> <span class="n">results3</span><span class="o">.</span><span class="n">boxes</span><span class="p">:</span>
+                <span class="n">x1</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">x2</span><span class="p">,</span> <span class="n">y2</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="n">box</span><span class="o">.</span><span class="n">xyxy</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+                <span class="n">confidence</span> <span class="o">=</span> <span class="n">box</span><span class="o">.</span><span class="n">conf</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+                <span class="n">label</span> <span class="o">=</span> <span class="n">box</span><span class="o">.</span><span class="n">cls</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+                <span class="n">cv</span><span class="o">.</span><span class="n">rectangle</span><span class="p">(</span><span class="n">frame</span><span class="p">,</span> <span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">y1</span><span class="p">),</span> <span class="p">(</span><span class="n">x2</span><span class="p">,</span> <span class="n">y2</span><span class="p">),</span>
+                             <span class="bp">self</span><span class="o">.</span><span class="n">predict_class_type_color_dict</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="mi">2</span><span class="p">)</span>
+                <span class="n">label_text</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">predict_model</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">names</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">label</span><span class="p">)]</span><span class="si">}</span><span class="s1">: </span><span class="si">{</span><span class="n">confidence</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">&#39;</span>
+                <span class="n">cv</span><span class="o">.</span><span class="n">putText</span><span class="p">(</span><span class="n">frame</span><span class="p">,</span> <span class="n">label_text</span><span class="p">,</span> <span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">y1</span> <span class="o">-</span> <span class="mi">10</span><span class="p">),</span> <span class="n">cv</span><span class="o">.</span><span class="n">FONT_HERSHEY_SIMPLEX</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">,</span>
+                           <span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">),</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">frame</span></div>
+
+
+<div class="viewcode-block" id="Video_Detector.detect">
+<a class="viewcode-back" href="../../../home_security_surveillance.Video_process.html#home_security_surveillance.Video_process.video_detect.Video_Detector.detect">[文档]</a>
+    <span class="k">def</span> <span class="nf">detect</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">frame_queue</span><span class="p">:</span> <span class="n">multiprocessing</span><span class="o">.</span><span class="n">Queue</span><span class="p">,</span>
+               <span class="n">result_queue</span><span class="p">:</span> <span class="n">multiprocessing</span><span class="o">.</span><span class="n">Queue</span><span class="p">,</span>
+               <span class="n">mode</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+               <span class="n">save_dir</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">max_frame</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+               <span class="n">iou</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">sensitivity</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        对摄像头捕捉视频帧的实时检测和处理函数，是视频检测器的核心处理函数</span>
+<span class="sd">        通过多进程的视频帧队列从视频流处理器对象处获得视频帧</span>
+<span class="sd">        并通过另一个队列将检测后的错误码和每个预测类型的对应置信度返回给视频流处理器对象，完成进程通信</span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        frame_queue : multiprocessing.Queue</span>
+<span class="sd">            视频流对象传入的视频帧队列，用于获得要处理的视频帧队列</span>
+<span class="sd">        result_queue : multiprocessing.Queue</span>
+<span class="sd">            返回给视频流对象的处理队列，用于返回错误码和置信度</span>
+<span class="sd">        mode : int</span>
+<span class="sd">            指定的模式，用户指定后由视频流处理器传给当前的检测器实例，以完成用户要求的检测功能</span>
+<span class="sd">        save_dir : str</span>
+<span class="sd">            指定的视频保存路径，目前不提供设置方式，需要在进一步优化后完成设置</span>
+<span class="sd">        max_frame : int</span>
+<span class="sd">            指定的最大缓冲区帧数，因为无法直接解析视频设备的帧率，故暂未用于实践</span>
+<span class="sd">        iou : float</span>
+<span class="sd">            指定衡量预测边界框与真实边界框之间重叠程度，未指定(为None)时使用默认值</span>
+<span class="sd">        sensitivity : int</span>
+<span class="sd">            指定对异常的敏感程度，0对应低敏感程度，设置置信度阈值为0.6，1对应高敏感程度，设置置信度阈值为0.4，默认为低敏感</span>
+
+<span class="sd">        Notes</span>
+<span class="sd">        -----</span>
+<span class="sd">        传入的视频帧使用具有限定大小的双端队列进行处理</span>
+<span class="sd">        每次从传入视频帧队列中获得全部视频帧按先入先出的顺序进行存储，随后从队列末尾取最实时的视频帧进行检测</span>
+<span class="sd">        这相对于对双端队列中未取出检测的视频帧进行了识别丢帧处理，但能够被保存</span>
+<span class="sd">        最终处理的视频帧比例由设备性能和进程被分配的资源决定</span>
+<span class="sd">        既能保存异常出现的前因后果，又可以保证处理的实时性</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c1"># 设置mode和save_dir，max_frame</span>
+        <span class="c1"># iou和conf在self.predict里设置</span>
+        <span class="k">if</span> <span class="n">mode</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">mode</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model_mode</span>
+        <span class="k">if</span> <span class="n">save_dir</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">save_now</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="n">Log_Processor</span><span class="o">.</span><span class="n">strftime_all</span><span class="p">)</span>
+            <span class="n">save_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">save_dir</span><span class="p">,</span> <span class="n">save_now</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">make_dir</span><span class="p">(</span><span class="n">save_dir</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isabs</span><span class="p">(</span><span class="n">save_dir</span><span class="p">):</span>
+            <span class="n">save_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span><span class="p">,</span> <span class="n">save_dir</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">make_dir</span><span class="p">(</span><span class="n">save_dir</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">max_frame</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">max_frame</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_frame</span>
+        <span class="k">if</span> <span class="n">sensitivity</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">conf</span> <span class="o">=</span> <span class="mf">0.6</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">conf</span> <span class="o">=</span> <span class="mf">0.4</span>
+        <span class="c1"># 进程调用需要重新创建一些对象</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_create_logger</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">info_logger</span><span class="o">.</span><span class="n">log_write</span><span class="p">(</span><span class="s2">&quot;Video Detector start detect&quot;</span><span class="p">,</span> <span class="n">Log_Processor</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span>
+        <span class="c1"># 缓冲区，保存限定数量的视频帧</span>
+        <span class="n">save_frame_deque</span> <span class="o">=</span> <span class="n">deque</span><span class="p">(</span><span class="n">maxlen</span><span class="o">=</span><span class="n">max_frame</span><span class="p">)</span>
+        <span class="c1"># 写入有问题部分及前后的视频流到文件的对象</span>
+        <span class="n">warning_video_out</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="c1"># 读取视频帧队列是否为空</span>
+        <span class="n">flag_wait</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="c1"># 错误视频帧标记和等待传入视频帧时间记录</span>
+        <span class="n">warning_flag</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="c1"># 已传输过的错误类型的记录</span>
+        <span class="n">warning_type_record</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="c1"># 已传输过的错误类型的最大置信度的记录</span>
+        <span class="n">warning_conf_record</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+        <span class="c1"># 最后一次识别到错误的视频帧之后的无无措视频帧数量</span>
+        <span class="n">no_warning_frame</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="c1"># 运行的开始时间</span>
+        <span class="n">start_wait_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+        <span class="c1"># 主循环</span>
+        <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="c1"># 判断另一进程是否结束</span>
+                <span class="k">if</span> <span class="n">frame_queue</span><span class="o">.</span><span class="n">empty</span><span class="p">():</span>
+                    <span class="c1"># 未处于等待状态，说明之前处理了视频帧，从此处开始等待</span>
+                    <span class="k">if</span> <span class="ow">not</span> <span class="n">flag_wait</span><span class="p">:</span>
+                        <span class="n">flag_wait</span> <span class="o">=</span> <span class="kc">True</span>
+                        <span class="c1"># 记录开始等待时间</span>
+                        <span class="n">start_wait_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+                        <span class="k">continue</span>
+                    <span class="c1"># 处理等待状态</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="c1"># 如果等待的时间超过了15s，结束运行</span>
+                        <span class="k">if</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start_wait_time</span> <span class="o">&gt;=</span> <span class="mi">15</span><span class="p">:</span>
+                            <span class="bp">self</span><span class="o">.</span><span class="n">error_logger</span><span class="o">.</span><span class="n">log_write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Timed out waiting for video frame.&quot;</span> <span class="o">+</span>
+                                                        <span class="sa">f</span><span class="s2">&quot; Video Detector stop waiting &quot;</span> <span class="o">+</span>
+                                                        <span class="sa">f</span><span class="s2">&quot;and exit the detect process&quot;</span><span class="p">,</span>
+                                                        <span class="n">Log_Processor</span><span class="o">.</span><span class="n">ERROR</span><span class="p">)</span>
+                            <span class="k">break</span>
+                        <span class="c1"># 否则继续循环</span>
+                        <span class="k">else</span><span class="p">:</span>
+                            <span class="k">continue</span>
+
+                <span class="c1"># 如果不为空，重置等待状态，重计时</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">flag_wait</span> <span class="o">=</span> <span class="kc">False</span>
+                    <span class="n">start_wait_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+
+                <span class="c1"># 保存当前传入的全部帧</span>
+                <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">frame_queue</span><span class="o">.</span><span class="n">qsize</span><span class="p">()):</span>
+                    <span class="n">save_frame_deque</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">frame_queue</span><span class="o">.</span><span class="n">get</span><span class="p">())</span>
+                <span class="c1"># 弹出最新帧，使其能够处理最新帧</span>
+                <span class="n">frame</span> <span class="o">=</span> <span class="n">save_frame_deque</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+
+                <span class="c1"># 传入结束标志，需要清空result_queue再关闭，并释放warning_video_out</span>
+                <span class="k">if</span> <span class="n">frame</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">result_queue</span><span class="o">.</span><span class="n">qsize</span><span class="p">()):</span>
+                        <span class="n">result_queue</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">info_logger</span><span class="o">.</span><span class="n">log_write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Detect finish. Please cheack the </span><span class="si">{</span><span class="n">save_dir</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+                                               <span class="n">Log_Processor</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="n">warning_video_out</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                        <span class="n">warning_video_out</span><span class="o">.</span><span class="n">release</span><span class="p">()</span>
+                    <span class="k">return</span>
+
+                <span class="c1"># 否则处理最新帧</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="c1"># 预测视频帧获得结果</span>
+                    <span class="n">predict_result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">pre_source</span><span class="o">=</span><span class="n">frame</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="n">mode</span><span class="p">,</span>
+                                                  <span class="n">show</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">iou</span><span class="o">=</span><span class="n">iou</span><span class="p">,</span> <span class="n">conf</span><span class="o">=</span><span class="n">conf</span><span class="p">)</span>
+                    <span class="c1"># 记录错误码</span>
+                    <span class="n">warning_mode</span> <span class="o">=</span> <span class="mi">0</span>
+                    <span class="c1"># 记录每类错误的最大置信度</span>
+                    <span class="n">warning_conf</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+                    <span class="c1"># 全部识别模式和单个模型模式的出现错误的范围不同</span>
+                    <span class="k">if</span> <span class="n">mode</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                        <span class="c1"># 遍历三个模型的预测结果</span>
+                        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">):</span>
+                            <span class="c1"># 遍历预测图片的碰撞箱</span>
+                            <span class="k">for</span> <span class="n">box</span> <span class="ow">in</span> <span class="n">predict_result</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">boxes</span><span class="p">:</span>
+                                <span class="k">for</span> <span class="n">box_error</span> <span class="ow">in</span> <span class="nb">set</span><span class="p">(</span><span class="n">box</span><span class="o">.</span><span class="n">cls</span><span class="o">.</span><span class="n">tolist</span><span class="p">()):</span>
+                                <span class="c1"># 获得错误码和每个错误类型的最大置信度</span>
+                                    <span class="n">warning_mode</span> <span class="o">|=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mode_precdict_warning_mode</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">box_error</span><span class="p">]</span>
+                                    <span class="n">warning_conf</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">mode_precdict_class</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">box_error</span><span class="p">]]</span> <span class="o">=</span> \
+                                        <span class="nb">max</span><span class="p">(</span><span class="n">warning_conf</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">mode_precdict_class</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">box_error</span><span class="p">]],</span>
+                                            <span class="nb">max</span><span class="p">(</span><span class="n">box</span><span class="o">.</span><span class="n">conf</span><span class="o">.</span><span class="n">tolist</span><span class="p">()))</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="c1"># 遍历使用模型的预测结果，获得错误码和错误类型的最大置信度</span>
+                        <span class="k">for</span> <span class="n">box</span> <span class="ow">in</span> <span class="n">predict_result</span><span class="p">[</span><span class="n">mode</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">boxes</span><span class="p">:</span>
+                            <span class="k">for</span> <span class="n">box_error</span> <span class="ow">in</span> <span class="nb">set</span><span class="p">(</span><span class="n">box</span><span class="o">.</span><span class="n">cls</span><span class="o">.</span><span class="n">tolist</span><span class="p">()):</span>
+                                <span class="c1"># 获得错误码和每个错误类型的最大置信度</span>
+                                <span class="n">warning_mode</span> <span class="o">|=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mode_precdict_warning_mode</span><span class="p">[</span><span class="n">mode</span><span class="p">][</span><span class="n">box_error</span><span class="p">]</span>
+                                <span class="n">warning_conf</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">mode_precdict_class</span><span class="p">[</span><span class="n">mode</span><span class="p">][</span><span class="n">box_error</span><span class="p">]]</span> <span class="o">=</span> \
+                                    <span class="nb">max</span><span class="p">(</span><span class="n">warning_conf</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">mode_precdict_class</span><span class="p">[</span><span class="n">mode</span><span class="p">][</span><span class="n">box_error</span><span class="p">]],</span>
+                                        <span class="nb">max</span><span class="p">(</span><span class="n">box</span><span class="o">.</span><span class="n">conf</span><span class="o">.</span><span class="n">tolist</span><span class="p">()))</span>
+
+                    <span class="c1"># 出现错误时</span>
+                    <span class="k">if</span> <span class="n">warning_mode</span><span class="p">:</span>
+                        <span class="c1"># 全部识别模式保存检测框内图像并需要重新绘制图像</span>
+                        <span class="k">if</span> <span class="n">mode</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                            <span class="n">predict_frame</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model_plot</span><span class="p">(</span><span class="n">predict_result</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">orig_img</span><span class="p">,</span>
+                                                            <span class="n">predict_result</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="n">predict_result</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span>
+                                                            <span class="n">predict_result</span><span class="p">[</span><span class="mi">3</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
+                        <span class="c1"># 单个模型识别模式保存检测框内图像并绘制图像</span>
+                        <span class="k">else</span><span class="p">:</span>
+                            <span class="n">predict_frame</span> <span class="o">=</span> <span class="n">predict_result</span><span class="p">[</span><span class="n">mode</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+                        <span class="c1"># 将预测帧结果放回缓冲队列</span>
+                        <span class="n">save_frame_deque</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">predict_frame</span><span class="p">)</span>
+                        <span class="c1"># 如果不在警告标志范围内</span>
+                        <span class="k">if</span> <span class="ow">not</span> <span class="n">warning_flag</span><span class="p">:</span>
+                            <span class="c1"># 发送警告信息，包括错误码和置信度的二元素列表</span>
+                            <span class="n">result_queue</span><span class="o">.</span><span class="n">put</span><span class="p">([</span><span class="n">warning_mode</span><span class="p">,</span> <span class="n">warning_conf</span><span class="p">])</span>
+                            <span class="c1"># 记录已发送的错误类型和最大置信度</span>
+                            <span class="n">warning_type_record</span> <span class="o">|=</span> <span class="n">warning_mode</span>
+                            <span class="n">warning_conf_record</span> <span class="o">=</span> <span class="n">warning_conf</span>
+                            <span class="n">warning_flag</span> <span class="o">=</span> <span class="kc">True</span>
+                            <span class="c1"># 利用VideoWriter保存有问题部分及前后的视频流，</span>
+                            <span class="c1"># 文件路径为生成路径，帧率和分辨率统一为限制后的视频大小和帧率，彩色模式</span>
+                            <span class="n">fourcc</span> <span class="o">=</span> <span class="n">cv</span><span class="o">.</span><span class="n">VideoWriter</span><span class="o">.</span><span class="n">fourcc</span><span class="p">(</span><span class="o">*</span><span class="s2">&quot;DIVX&quot;</span><span class="p">)</span>
+                            <span class="n">save_name</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="n">Log_Processor</span><span class="o">.</span><span class="n">strftime_all</span><span class="p">)</span>
+                            <span class="n">warning_video_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">save_dir</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">save_name</span><span class="si">}</span><span class="s2">.avi&quot;</span><span class="p">)</span>
+                            <span class="n">warning_video_out</span> <span class="o">=</span> <span class="n">cv</span><span class="o">.</span><span class="n">VideoWriter</span><span class="p">(</span><span class="n">warning_video_path</span><span class="p">,</span> <span class="n">fourcc</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span>
+                                                               <span class="p">(</span><span class="n">predict_frame</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+                                                                <span class="n">predict_frame</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="kc">True</span><span class="p">)</span>
+                            <span class="c1"># 将缓冲区的全部视频帧写入</span>
+                            <span class="k">while</span> <span class="n">save_frame_deque</span><span class="p">:</span>
+                                <span class="n">warning_video_out</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">save_frame_deque</span><span class="o">.</span><span class="n">popleft</span><span class="p">())</span>
+                            <span class="c1"># 日志记录</span>
+                            <span class="bp">self</span><span class="o">.</span><span class="n">error_logger</span><span class="o">.</span><span class="n">log_write</span><span class="p">(</span><span class="s2">&quot;Video Detector Warning!!!</span><span class="se">\n</span><span class="s2">&quot;</span>
+                                                        <span class="sa">f</span><span class="s2">&quot;The warning code is </span><span class="si">{</span><span class="n">warning_mode</span><span class="si">}</span><span class="s2">, &quot;</span>
+                                                        <span class="sa">f</span><span class="s2">&quot;the warning conf is </span><span class="si">{</span><span class="n">warning_conf</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+                                                        <span class="n">Log_Processor</span><span class="o">.</span><span class="n">ERROR</span><span class="p">)</span>
+
+                        <span class="c1"># 如果在警告标志范围内</span>
+                        <span class="k">else</span><span class="p">:</span>
+                            <span class="n">new_warning_code</span> <span class="o">=</span> <span class="mi">0</span>
+                            <span class="c1"># 比较新的错误的最大置信度等级是否比原最大置信度等级高</span>
+                            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">warning_conf_record</span><span class="p">)):</span>
+                                <span class="c1"># 如果是，此位置需要发送新的错误信息，并记录该最大置信度</span>
+                                <span class="c1"># 未发送过的错误类型在判断中也被保存了</span>
+                                <span class="k">if</span> <span class="n">Warning_Processor</span><span class="o">.</span><span class="n">get_level_description</span><span class="p">(</span><span class="n">warning_conf_record</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">sensitivity</span><span class="p">)</span> <span class="o">&lt;</span> \
+                                   <span class="n">Warning_Processor</span><span class="o">.</span><span class="n">get_level_description</span><span class="p">(</span><span class="n">warning_conf</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">sensitivity</span><span class="p">):</span>
+                                    <span class="n">new_warning_code</span> <span class="o">|=</span> <span class="bp">self</span><span class="o">.</span><span class="n">warning_mode_list</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+                                    <span class="n">warning_conf_record</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">warning_conf</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+                            <span class="c1"># 如果有需要发送新的错误信息，则发送对应的警告信息</span>
+                            <span class="k">if</span> <span class="n">new_warning_code</span><span class="p">:</span>
+                                <span class="n">result_queue</span><span class="o">.</span><span class="n">put</span><span class="p">([</span><span class="n">new_warning_code</span><span class="p">,</span> <span class="n">warning_conf</span><span class="p">])</span>
+                                <span class="n">warning_type_record</span> <span class="o">|=</span> <span class="n">new_warning_code</span>
+
+                            <span class="c1"># 将缓冲区的全部视频帧写入</span>
+                            <span class="k">while</span> <span class="n">save_frame_deque</span><span class="p">:</span>
+                                <span class="n">warning_video_out</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">save_frame_deque</span><span class="o">.</span><span class="n">popleft</span><span class="p">())</span>
+                        <span class="c1"># 重新记录无问题视频帧数量</span>
+                        <span class="n">no_warning_frame</span> <span class="o">=</span> <span class="mi">0</span>
+
+                    <span class="c1"># 无错误时</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="c1"># 正常返回原视频帧</span>
+                        <span class="n">save_frame_deque</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">frame</span><span class="p">)</span>
+                        <span class="c1"># 检测前面出现问题时，当前是否经过了max_frame帧</span>
+                        <span class="k">if</span> <span class="n">warning_flag</span><span class="p">:</span>
+                            <span class="c1"># 先将缓冲区的全部视频帧写入</span>
+                            <span class="k">if</span> <span class="n">warning_video_out</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                                <span class="k">while</span> <span class="n">save_frame_deque</span><span class="p">:</span>
+                                    <span class="n">warning_video_out</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">save_frame_deque</span><span class="o">.</span><span class="n">popleft</span><span class="p">())</span>
+                            <span class="c1"># 如果经过了max_frame帧</span>
+                            <span class="n">no_warning_frame</span> <span class="o">+=</span> <span class="mi">1</span>
+                            <span class="k">if</span> <span class="n">no_warning_frame</span> <span class="o">==</span> <span class="n">max_frame</span><span class="p">:</span>
+                                <span class="c1"># 重置警告标志</span>
+                                <span class="n">warning_flag</span> <span class="o">=</span> <span class="kc">False</span>
+                                <span class="c1"># 释放写视频文件对象</span>
+                                <span class="n">warning_video_out</span><span class="o">.</span><span class="n">release</span><span class="p">()</span>
+                                <span class="c1"># 重置无发送错误类型</span>
+                                <span class="n">warning_type_record</span> <span class="o">=</span> <span class="mi">0</span>
+
+            <span class="c1"># 错误处理</span>
+            <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                <span class="c1"># catch all errors and export to the log</span>
+                <span class="n">error_type</span> <span class="o">=</span> <span class="nb">type</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">error_logger</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;An error of type </span><span class="si">%s</span><span class="s2"> occurred: </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">error_type</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">),</span>
+                                               <span class="n">exc_info</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+                <span class="k">break</span></div>
+
+
+<div class="viewcode-block" id="Video_Detector.re_detect">
+<a class="viewcode-back" href="../../../home_security_surveillance.Video_process.html#home_security_surveillance.Video_process.video_detect.Video_Detector.re_detect">[文档]</a>
+    <span class="k">def</span> <span class="nf">re_detect</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">video_file</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">ui_event</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                  <span class="n">mode</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                  <span class="n">save_dir</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">max_frame</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                  <span class="n">iou</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">sensitivity</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        对传入视频路径的视频的检测和处理函数，是视频检测器的另一个核心处理函数</span>
+<span class="sd">        被创建后作为独立的进程运行，不受视频处理器的创建进程影响，只受ui界面的停止命令影响</span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        video_file : str</span>
+<span class="sd">            要处理视频的指定绝对路径</span>
+<span class="sd">        ui_event : multiprocessing.Event</span>
+<span class="sd">            用于监听ui界面的停止信息的事件</span>
+<span class="sd">        mode : int</span>
+<span class="sd">            指定的模式，用户指定后由视频流处理器传给当前的检测器实例，以完成用户要求的检测功能</span>
+<span class="sd">        save_dir : str</span>
+<span class="sd">            指定的视频保存路径，目前不提供设置方式，需要在进一步优化后完成设置</span>
+<span class="sd">        max_frame : int</span>
+<span class="sd">            指定的最大缓冲区帧数，因为无法直接解析视频设备的帧率，故暂未用于实践</span>
+<span class="sd">        iou : float</span>
+<span class="sd">            指定衡量预测边界框与真实边界框之间重叠程度，未指定(为None)时使用默认值</span>
+<span class="sd">        sensitivity : int</span>
+<span class="sd">            指定对异常的敏感程度，0对应低敏感程度，设置置信度阈值为0.6，1对应高敏感程度，设置置信度阈值为0.4，默认为低敏感</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c1"># 设置mode和save_dir，max_frame</span>
+        <span class="c1"># iou和conf在self.predict里设置</span>
+        <span class="k">if</span> <span class="n">mode</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">mode</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model_mode</span>
+        <span class="k">if</span> <span class="n">save_dir</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">save_dir</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">save_dir</span>
+        <span class="k">elif</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isabs</span><span class="p">(</span><span class="n">save_dir</span><span class="p">):</span>
+            <span class="n">save_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span><span class="p">,</span> <span class="n">save_dir</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">max_frame</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">max_frame</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_frame</span>
+        <span class="c1"># 如果是低敏感度，置信度conf默认为0.6</span>
+        <span class="k">if</span> <span class="n">sensitivity</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">conf</span> <span class="o">=</span> <span class="mf">0.6</span>
+        <span class="c1"># 如果是高敏感度，置信度conf默认为0.4（更容易被监测到）</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">conf</span> <span class="o">=</span> <span class="mf">0.4</span>
+
+        <span class="c1"># 进程调用需要重新创建一些对象</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_create_logger</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">info_logger</span><span class="o">.</span><span class="n">log_write</span><span class="p">(</span><span class="s2">&quot;Video Detector start re-detect&quot;</span><span class="p">,</span> <span class="n">Log_Processor</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span>
+
+        <span class="c1"># 对整个视频流进行完整的预测处理</span>
+        <span class="n">predict_result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">pre_source</span><span class="o">=</span><span class="n">video_file</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="n">mode</span><span class="p">,</span>
+                                      <span class="n">show</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">iou</span><span class="o">=</span><span class="n">iou</span><span class="p">,</span> <span class="n">conf</span><span class="o">=</span><span class="n">conf</span><span class="p">)</span>
+
+        <span class="c1"># 预测完成后才能退出，如果要求退出则退出</span>
+        <span class="k">if</span> <span class="n">ui_event</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">ui_event</span><span class="o">.</span><span class="n">is_set</span><span class="p">():</span>
+                <span class="k">return</span>
+
+        <span class="c1"># 获得当前时间</span>
+        <span class="n">now</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="n">Log_Processor</span><span class="o">.</span><span class="n">strftime_all</span><span class="p">)</span>
+        <span class="c1"># 根据save_dir和当前时间记录要使用的绝对路径</span>
+        <span class="n">use_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">save_dir</span><span class="p">,</span> <span class="s2">&quot;re-detect_&quot;</span><span class="o">+</span><span class="n">now</span><span class="p">)</span>
+        <span class="c1"># 创建目录来保存识别结果(包括了子路径video的创建)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">make_dir</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">use_dir</span><span class="p">,</span> <span class="s2">&quot;video&quot;</span><span class="p">))</span>
+
+        <span class="c1"># 日志记录</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">info_logger</span><span class="o">.</span><span class="n">log_write</span><span class="p">(</span><span class="s2">&quot;Finish re-detect. Start saving...</span><span class="se">\n</span><span class="s2">&quot;</span>
+                                   <span class="sa">f</span><span class="s2">&quot;The save dir is </span><span class="si">{</span><span class="n">use_dir</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">,</span> <span class="n">Log_Processor</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span>
+
+        <span class="c1"># 用队列存储处理结果帧，缓冲区限制大小</span>
+        <span class="n">frame_queue</span> <span class="o">=</span> <span class="n">deque</span><span class="p">(</span><span class="n">maxlen</span><span class="o">=</span><span class="n">max_frame</span><span class="p">)</span>
+        <span class="c1"># 视频帧索引</span>
+        <span class="n">frame_index</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="c1"># 错误标记</span>
+        <span class="n">flag_error</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="n">warning_video_out</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1"># 全部类型识别</span>
+        <span class="k">if</span> <span class="n">mode</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="c1"># 遍历三个模型对每个视频帧的处理结果</span>
+            <span class="k">for</span> <span class="n">result</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">predict_result</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">predict_result</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">predict_result</span><span class="p">[</span><span class="mi">3</span><span class="p">]):</span>
+                <span class="c1"># 如果要求退出则退出</span>
+                <span class="k">if</span> <span class="n">ui_event</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">ui_event</span><span class="o">.</span><span class="n">is_set</span><span class="p">():</span>
+                        <span class="k">return</span>
+                <span class="c1"># 如果这三个result中出现了任意一个检测类型</span>
+                <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">boxes</span><span class="o">.</span><span class="n">cls</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span> <span class="ow">or</span> \
+                   <span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">boxes</span><span class="o">.</span><span class="n">cls</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span> <span class="ow">or</span> \
+                   <span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">boxes</span><span class="o">.</span><span class="n">cls</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+                    <span class="c1"># 用model_plot绘制加入碰撞箱之后的原始视频帧</span>
+                    <span class="n">frame</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model_plot</span><span class="p">(</span><span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">orig_img</span><span class="p">,</span> <span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">result</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">result</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+                    <span class="c1"># 将问题帧用图片保存起来</span>
+                    <span class="n">save_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">use_dir</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;frame_</span><span class="si">{</span><span class="n">frame_index</span><span class="si">}</span><span class="s2">.jpg&quot;</span><span class="p">)</span>
+                    <span class="n">cv</span><span class="o">.</span><span class="n">imwrite</span><span class="p">(</span><span class="n">save_path</span><span class="p">,</span> <span class="n">frame</span><span class="p">)</span>
+                    <span class="c1"># 将问题帧加入队列</span>
+                    <span class="n">frame_queue</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">frame</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="ow">not</span> <span class="n">flag_error</span><span class="p">:</span>
+                        <span class="n">flag_error</span> <span class="o">=</span> <span class="kc">True</span>
+                        <span class="c1"># 创建视频写入流，利用VideoWriter保存有问题部分及前后的视频流，</span>
+                        <span class="c1"># 文件路径为生成路径，帧率和分辨率统一为限制后的视频大小和帧率，彩色模式</span>
+                        <span class="n">fourcc</span> <span class="o">=</span> <span class="n">cv</span><span class="o">.</span><span class="n">VideoWriter</span><span class="o">.</span><span class="n">fourcc</span><span class="p">(</span><span class="o">*</span><span class="s2">&quot;DIVX&quot;</span><span class="p">)</span>
+                        <span class="n">warning_video_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">use_dir</span><span class="p">,</span> <span class="s2">&quot;video&quot;</span><span class="p">,</span> <span class="s2">&quot;1_re-detect.avi&quot;</span><span class="p">)</span>
+                        <span class="n">warning_video_out</span> <span class="o">=</span> <span class="n">cv</span><span class="o">.</span><span class="n">VideoWriter</span><span class="p">(</span><span class="n">warning_video_path</span><span class="p">,</span> <span class="n">fourcc</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span>
+                                                           <span class="p">(</span><span class="n">frame</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+                                                            <span class="n">frame</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="kc">True</span><span class="p">)</span>
+                        <span class="k">if</span> <span class="n">warning_video_out</span><span class="o">.</span><span class="n">isOpened</span><span class="p">():</span>
+                            <span class="bp">self</span><span class="o">.</span><span class="n">info_logger</span><span class="o">.</span><span class="n">log_write</span><span class="p">(</span><span class="s2">&quot;Start video save&quot;</span><span class="p">,</span> <span class="n">Log_Processor</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span>
+
+                    <span class="k">if</span> <span class="n">warning_video_out</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                        <span class="c1"># 将缓冲区的全部视频帧写入</span>
+                        <span class="k">while</span> <span class="n">frame_queue</span><span class="p">:</span>
+                            <span class="n">warning_video_out</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">frame_queue</span><span class="o">.</span><span class="n">popleft</span><span class="p">())</span>
+                <span class="c1"># 否则只保存视频帧即可</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">frame_queue</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">orig_img</span><span class="p">)</span>
+                <span class="n">frame_index</span> <span class="o">+=</span> <span class="mi">1</span>
+
+        <span class="c1"># 如果只选择单个的模型</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">result</span> <span class="ow">in</span> <span class="n">predict_result</span><span class="p">[</span><span class="n">mode</span><span class="p">]:</span>
+                <span class="c1"># 如果要求退出则退出</span>
+                <span class="k">if</span> <span class="n">ui_event</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">ui_event</span><span class="o">.</span><span class="n">is_set</span><span class="p">():</span>
+                        <span class="k">return</span>
+                <span class="c1"># results是一个Results对象</span>
+                <span class="n">boxes</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">boxes</span>
+                <span class="n">frame</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+                <span class="n">frame_queue</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">frame</span><span class="p">)</span>
+                <span class="c1"># 如果监测到了类型，进行图片保存</span>
+                <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">boxes</span><span class="o">.</span><span class="n">cls</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+                    <span class="n">result</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">use_dir</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;frame_</span><span class="si">{</span><span class="n">frame_index</span><span class="si">}</span><span class="s2">.jpg&quot;</span><span class="p">))</span>
+                    <span class="k">if</span> <span class="ow">not</span> <span class="n">flag_error</span><span class="p">:</span>
+                        <span class="n">flag_error</span> <span class="o">=</span> <span class="kc">True</span>
+                        <span class="c1"># 创建视频写入流，利用VideoWriter保存有问题部分及前后的视频流，</span>
+                        <span class="c1"># 文件路径为生成路径，帧率和分辨率统一为限制后的视频大小和帧率，彩色模式</span>
+                        <span class="n">fourcc</span> <span class="o">=</span> <span class="n">cv</span><span class="o">.</span><span class="n">VideoWriter</span><span class="o">.</span><span class="n">fourcc</span><span class="p">(</span><span class="o">*</span><span class="s2">&quot;DIVX&quot;</span><span class="p">)</span>
+                        <span class="n">warning_video_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">use_dir</span><span class="p">,</span> <span class="s2">&quot;video&quot;</span><span class="p">,</span> <span class="s2">&quot;1_re-detect.avi&quot;</span><span class="p">)</span>
+                        <span class="n">warning_video_out</span> <span class="o">=</span> <span class="n">cv</span><span class="o">.</span><span class="n">VideoWriter</span><span class="p">(</span><span class="n">warning_video_path</span><span class="p">,</span> <span class="n">fourcc</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span>
+                                                           <span class="p">(</span><span class="n">frame</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+                                                            <span class="n">frame</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="kc">True</span><span class="p">)</span>
+
+                        <span class="k">if</span> <span class="n">warning_video_out</span><span class="o">.</span><span class="n">isOpened</span><span class="p">():</span>
+                            <span class="bp">self</span><span class="o">.</span><span class="n">info_logger</span><span class="o">.</span><span class="n">log_write</span><span class="p">(</span><span class="s2">&quot;Start video save&quot;</span><span class="p">,</span> <span class="n">Log_Processor</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="n">warning_video_out</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                        <span class="c1"># 将缓冲区的全部视频帧写入</span>
+                        <span class="k">while</span> <span class="n">frame_queue</span><span class="p">:</span>
+                            <span class="n">warning_video_out</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">frame_queue</span><span class="o">.</span><span class="n">popleft</span><span class="p">())</span>
+                <span class="n">frame_index</span> <span class="o">+=</span> <span class="mi">1</span>
+
+        <span class="c1"># 日志记录</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">info_logger</span><span class="o">.</span><span class="n">log_write</span><span class="p">(</span><span class="s2">&quot;Save finish&quot;</span><span class="p">,</span> <span class="n">Log_Processor</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">warning_video_out</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">warning_video_out</span><span class="o">.</span><span class="n">release</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="Video_Detector.make_dir">
+<a class="viewcode-back" href="../../../home_security_surveillance.Video_process.html#home_security_surveillance.Video_process.video_detect.Video_Detector.make_dir">[文档]</a>
+    <span class="k">def</span> <span class="nf">make_dir</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dir_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        创建空目录函数，需要写入日志处理器，不是静态方法</span>
+<span class="sd">        此处不会检测上一级是否有目录，而是按照目录直接逐级创建</span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        dir_path : str</span>
+<span class="sd">            指定的要创建的目录的绝对路径</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">caller_info</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;make_dir&#39;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="c1"># 如果目录不存在，则创建目录</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">dir_path</span><span class="p">):</span>
+                <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">dir_path</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">info_logger</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[</span><span class="si">{</span><span class="n">caller_info</span><span class="si">}</span><span class="s2">] Directory &#39;</span><span class="si">{</span><span class="n">dir_path</span><span class="si">}</span><span class="s2">&#39; created successfully.&quot;</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">info_logger</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Directory &#39;</span><span class="si">{</span><span class="n">dir_path</span><span class="si">}</span><span class="s2">&#39; already exists.&quot;</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="c1"># catch all errors and export to the log</span>
+            <span class="n">error_type</span> <span class="o">=</span> <span class="nb">type</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">error_logger</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;An error of type </span><span class="si">%s</span><span class="s2"> occurred: </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">error_type</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">),</span>
+                                           <span class="n">exc_info</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Video_Detector.delete_dir">
+<a class="viewcode-back" href="../../../home_security_surveillance.Video_process.html#home_security_surveillance.Video_process.video_detect.Video_Detector.delete_dir">[文档]</a>
+    <span class="k">def</span> <span class="nf">delete_dir</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">directory</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        删除目录函数，需要写入日志处理器，不再是静态方法</span>
+<span class="sd">        被删除的目录下不允许有子目录</span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        directory : str</span>
+<span class="sd">            指定的要删除的目录的绝对路径</span>
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="c1"># 遍历目录中的所有文件</span>
+            <span class="k">for</span> <span class="n">filename</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">directory</span><span class="p">):</span>
+                <span class="n">file_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">directory</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
+                <span class="c1"># 如果是文件则删除</span>
+                <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">file_path</span><span class="p">):</span>
+                    <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">info_logger</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;File &#39;</span><span class="si">{</span><span class="n">file_path</span><span class="si">}</span><span class="s2">&#39; removed successfully.&quot;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">info_logger</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;All files in directory &#39;</span><span class="si">{</span><span class="n">directory</span><span class="si">}</span><span class="s2">&#39; cleared successfully.&quot;</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">error_logger</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Failed to clear files in directory &#39;</span><span class="si">{</span><span class="n">directory</span><span class="si">}</span><span class="s2">&#39;. Error: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Video_Detector.show_csv">
+<a class="viewcode-back" href="../../../home_security_surveillance.Video_process.html#home_security_surveillance.Video_process.video_detect.Video_Detector.show_csv">[文档]</a>
+    <span class="k">def</span> <span class="nf">show_csv</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        对训练完成后的各种评估参数绘制图像</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">IPython</span><span class="o">.</span><span class="n">get_ipython</span><span class="p">()</span><span class="o">.</span><span class="n">run_line_magic</span><span class="p">(</span><span class="s1">&#39;matplotlib&#39;</span><span class="p">,</span> <span class="s1">&#39;inline&#39;</span><span class="p">)</span>
+            <span class="n">header</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">project</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">+</span> <span class="s1">&#39;results.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+                <span class="n">result_csv</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">reader</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>  <span class="c1"># 读取csv文件</span>
+                <span class="n">data</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">result_csv</span><span class="p">)</span>  <span class="c1"># csv数据转换为列表</span>
+                <span class="n">result</span> <span class="o">=</span> <span class="p">{}</span>
+                <span class="c1"># 获取x轴的标签</span>
+                <span class="n">header</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+                <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">header</span><span class="p">:</span>
+                    <span class="n">result</span><span class="p">[</span><span class="n">row</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+                <span class="c1"># 对csv每列作为字典 字典的键是x轴标签 值对应的是各个评估参数的列表</span>
+                <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+                    <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                        <span class="k">continue</span>
+                    <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">row</span><span class="p">):</span>
+                        <span class="n">result</span><span class="p">[</span><span class="n">header</span><span class="p">[</span><span class="n">index</span><span class="p">]]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">j</span><span class="p">)</span>
+                <span class="n">x</span> <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="n">header</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
+                <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+                    <span class="n">x</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+                <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">values</span><span class="p">()):</span>
+                    <span class="k">if</span> <span class="n">index</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                        <span class="k">continue</span>
+                    <span class="k">for</span> <span class="n">ind</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">val</span><span class="p">):</span>
+                        <span class="n">val</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+                    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+                    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="n">header</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="p">)</span>
+                    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="n">header</span><span class="p">[</span><span class="n">index</span><span class="p">],</span> <span class="n">rotation</span><span class="o">=</span><span class="s1">&#39;horizontal&#39;</span><span class="p">)</span>
+                    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">val</span><span class="p">)</span>
+                    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="c1"># catch all errors and export to the log</span>
+            <span class="n">error_type</span> <span class="o">=</span> <span class="nb">type</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;An error of type </span><span class="si">%s</span><span class="s2"> occurred: </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">error_type</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">))</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;Detailed traceback information:&quot;</span><span class="p">,</span> <span class="n">exc_info</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></div>
+</div>
+
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="c1"># 初始化类实例</span>
+    <span class="n">video_detector</span> <span class="o">=</span> <span class="n">Video_Detector</span><span class="p">()</span>
+
+    <span class="c1"># 查看存储的变量是否和配置文件一致</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">video_detector</span><span class="o">.</span><span class="vm">__dict__</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+
+    <span class="c1"># 调用类方法选择模型</span>
+    <span class="n">video_detector</span><span class="o">.</span><span class="n">set_default_model</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="c1"># 使用各个模型进行视频识别预测</span>
+    <span class="n">source</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="s2">&quot;../../Model/test/fire.mp4&quot;</span><span class="p">)</span>
+    <span class="c1"># Results_list = video_detector.predict(pre_source=source, mode=1)</span>
+    <span class="c1"># # 输出错误结果</span>
+    <span class="c1"># for i in Results_list[1]:</span>
+    <span class="c1">#     print(i.boxes.cls.tolist())</span>
+    <span class="c1">#     print(i.boxes.conf.tolist())</span>
+
+    <span class="n">video_detector</span><span class="o">.</span><span class="n">re_detect</span><span class="p">(</span><span class="n">video_file</span><span class="o">=</span><span class="n">source</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">sensitivity</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2024, 07xiaohei、youyou、Chai.h、Captain.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    由 <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.3.7创建。
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.15.4.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

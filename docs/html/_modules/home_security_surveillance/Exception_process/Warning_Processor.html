@@ -1,0 +1,1118 @@
+
+<!DOCTYPE html>
+
+
+<html lang="zh-CN" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>home_security_surveillance.Exception_process.Warning_Processor &#8212; home_security_surveillance 1.5 文档</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=362ab14a" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../../_static/documentation_options.js?v=a8cb9c0f"></script>
+    <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/translations.js?v=beaddf03"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/home_security_surveillance/Exception_process/Warning_Processor';</script>
+    <link rel="index" title="索引" href="../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="zh-CN"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">home_security_surveillance 1.5 文档</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="搜索" aria-label="搜索" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">搜索</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="搜索" aria-label="搜索" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">搜索</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../../index.html" class="nav-link">模块代码</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page">home_securit...</li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>home_security_surveillance.Exception_process.Warning_Processor 源代码</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">File Name: Warning_Processor.py</span>
+<span class="sd">Author: Chai.h</span>
+<span class="sd">Date: 2024-05-22</span>
+<span class="sd">Version: 1.5</span>
+<span class="sd">Description: 发出异常警报的相关处理</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="c1"># 引入常用库</span>
+<span class="kn">from</span> <span class="nn">home_security_surveillance.Common</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="c1"># 引入日志处理器对象</span>
+<span class="kn">from</span> <span class="nn">home_security_surveillance.File_process.log</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="c1"># 引入config模块获得默认文件位置</span>
+<span class="kn">from</span> <span class="nn">home_security_surveillance.File_process.config</span> <span class="kn">import</span> <span class="n">config_defaluts</span><span class="p">,</span> <span class="n">trans_config_abspath</span>
+<span class="c1"># 引入pygame库用于播放音频</span>
+<span class="kn">import</span> <span class="nn">pygame</span>
+<span class="c1"># 引入smtplib库用于发送邮件</span>
+<span class="kn">import</span> <span class="nn">smtplib</span>
+<span class="c1"># PIL库用于显示和加载警告信息的图像</span>
+<span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span><span class="p">,</span> <span class="n">ImageTk</span>
+<span class="c1"># MIMEText对象用于创建 MIME（Multipurpose Internet Mail Extensions）类型的纯文本对象</span>
+<span class="kn">from</span> <span class="nn">email.mime.text</span> <span class="kn">import</span> <span class="n">MIMEText</span>
+<span class="c1"># MIMEMultipart用于生成包含多个部分的邮件体的 MIME 对象</span>
+<span class="kn">from</span> <span class="nn">email.mime.multipart</span> <span class="kn">import</span> <span class="n">MIMEMultipart</span>
+<span class="c1"># Header用于处理电子邮件的头信息</span>
+<span class="kn">from</span> <span class="nn">email.header</span> <span class="kn">import</span> <span class="n">Header</span>
+<span class="c1"># parseaddr和formataddr用于处理电子邮件的地址</span>
+<span class="kn">from</span> <span class="nn">email.utils</span> <span class="kn">import</span> <span class="n">parseaddr</span><span class="p">,</span> <span class="n">formataddr</span>
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Warning_Processor&quot;</span><span class="p">]</span>
+
+<div class="viewcode-block" id="Warning_Processor">
+<a class="viewcode-back" href="../../../home_security_surveillance.Exception_process.html#home_security_surveillance.Exception_process.Warning_Processor.Warning_Processor">[文档]</a>
+<span class="k">class</span> <span class="nc">Warning_Processor</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Warning_Processor(warning_dir, user_email)</span>
+<span class="sd">    异常警报处理器，与发出异常警报相关</span>
+<span class="sd">    负责根据模型预测模块的结果生成警报、通知用户或相关部门，并执行相关的应急响应措施。</span>
+<span class="sd">    该模块通过实时传递警报信息，帮助用户和管理者及时响应各类异常情况</span>
+<span class="sd">    主要实现四个场景的警报：</span>
+<span class="sd">    1. 火灾警报</span>
+<span class="sd">    2. 烟雾警报</span>
+<span class="sd">    3. 人体识别（陌生人警报）</span>
+<span class="sd">    4. 跌倒警报</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    warning_dir : str</span>
+<span class="sd">        警告日志文件存放的文件夹，默认值和_config_defaluts中exception-monitoring-directory的对应绝对路径相同</span>
+
+<span class="sd">    Attributes</span>
+<span class="sd">    ----------</span>
+<span class="sd">     _email_senter_config_keys : List[str]</span>
+<span class="sd">        邮件发送者配置文件可用的键值，包括email、password、name、domain和tld，是类变量</span>
+<span class="sd">    email_smtp_address_dict : Dict[str, str]</span>
+<span class="sd">        常用邮件服务运营商的Smtp邮箱地址和端口</span>
+<span class="sd">    warning_code_dict : Dict[int, str]</span>
+<span class="sd">        错误编码字典，0001对应烟雾，0010对应火焰，0100对应陌生人，1000对应跌倒异常行为</span>
+<span class="sd">        不同的组合对应多种错误的出现，如0110代表同时出现了火焰、陌生人的错误</span>
+<span class="sd">    warning_dir : str</span>
+<span class="sd">        警告日志文件存放的文件夹</span>
+<span class="sd">    warning_logger : Log_Processor</span>
+<span class="sd">        日志处理器对象的一个实例，用于记录该类活动过程中的运行信息和警告信息</span>
+<span class="sd">    email_senter_file : str</span>
+<span class="sd">        邮件发送者的配置文件路径</span>
+<span class="sd">    email_senter_data : Dict[str, str]</span>
+<span class="sd">        邮箱发送者的email相关信息，每个元素包括email、password、username、domain、tld的键值对</span>
+<span class="sd">    email_receiver_file : str</span>
+<span class="sd">        邮件接收者的配置文件路径</span>
+<span class="sd">    email_receiver_data : Dict[str, str]</span>
+<span class="sd">        邮箱接收者的email相关信息，每个元素为邮件接收者的地址字符串</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># 邮件发送者配置文件可用的键值</span>
+    <span class="n">_email_senter_config_keys</span> <span class="o">=</span> \
+        <span class="p">[</span>
+            <span class="s2">&quot;email&quot;</span><span class="p">,</span> <span class="s2">&quot;password&quot;</span><span class="p">,</span> <span class="s2">&quot;username&quot;</span><span class="p">,</span> <span class="s2">&quot;domain&quot;</span><span class="p">,</span> <span class="s2">&quot;tld&quot;</span>
+        <span class="p">]</span>
+
+    <span class="c1"># 常用邮件服务运营商的Smtp邮箱地址和端口</span>
+    <span class="n">email_smtp_address_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;163&quot;</span><span class="p">:</span> <span class="p">(</span><span class="s2">&quot;smtp.163.com&quot;</span><span class="p">,</span> <span class="s2">&quot;994&quot;</span><span class="p">),</span>
+                               <span class="s2">&quot;qq&quot;</span><span class="p">:</span> <span class="p">(</span><span class="s2">&quot;smtp.qq.com&quot;</span><span class="p">,</span> <span class="s2">&quot;587&quot;</span><span class="p">),</span>
+                               <span class="s2">&quot;gmail&quot;</span><span class="p">:</span> <span class="p">(</span><span class="s2">&quot;smtp.gmail.com&quot;</span><span class="p">,</span> <span class="s2">&quot;587&quot;</span><span class="p">),</span>
+                               <span class="s2">&quot;foxmail&quot;</span><span class="p">:</span> <span class="p">(</span><span class="s2">&quot;SMTP.foxmail.com&quot;</span><span class="p">,</span> <span class="s2">&quot;25&quot;</span><span class="p">),</span>
+                               <span class="s2">&quot;126&quot;</span><span class="p">:</span> <span class="p">(</span><span class="s2">&quot;smtp.126.com&quot;</span><span class="p">,</span> <span class="s2">&quot;25&quot;</span><span class="p">),</span>
+                               <span class="s2">&quot;139&quot;</span><span class="p">:</span> <span class="p">(</span><span class="s2">&quot;smtp.139.com&quot;</span><span class="p">,</span> <span class="s2">&quot;25&quot;</span><span class="p">)}</span>
+
+    <span class="c1"># 错误编码字典</span>
+    <span class="n">warning_code_dict</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">:</span> <span class="s2">&quot;Smoke&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span> <span class="s2">&quot;Fire&quot;</span><span class="p">,</span> <span class="mi">4</span><span class="p">:</span> <span class="s2">&quot;Stranger&quot;</span><span class="p">,</span> <span class="mi">8</span><span class="p">:</span> <span class="s2">&quot;Person-Falling&quot;</span><span class="p">}</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>  <span class="n">warning_dir</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">trans_config_abspath</span><span class="p">(</span>
+                                            <span class="n">config_defaluts</span><span class="p">[</span><span class="s2">&quot;exception-monitoring-directory&quot;</span><span class="p">])):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;初始化函数&quot;&quot;&quot;</span>
+        <span class="c1"># 存储相关信息</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">warning_dir</span> <span class="o">=</span> <span class="n">warning_dir</span>
+
+        <span class="c1"># 加载日志处理器</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">warning_logger</span> <span class="o">=</span> <span class="n">Log_Processor</span><span class="p">(</span><span class="n">warning_dir</span><span class="p">,</span> <span class="s2">&quot;warning_processor.log&quot;</span><span class="p">,</span> <span class="n">Log_Processor</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span>
+
+        <span class="c1"># 保存邮件发送者的配置文件路径</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">email_senter_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">warning_dir</span><span class="p">,</span> <span class="s2">&quot;email_senter.json&quot;</span><span class="p">)</span>
+        <span class="c1"># 加载邮件发送者的配置文件</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">email_senter_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">load_email_senter_config</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">email_senter_file</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">warning_logger</span><span class="o">.</span><span class="n">log_write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Successfully loaded email senter file &quot;</span>
+                                      <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">email_senter_file</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">Log_Processor</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span>
+
+        <span class="c1"># 保存邮件接收者的配置文件路径</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">email_receiver_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">warning_dir</span><span class="p">,</span> <span class="s2">&quot;email_receiver.json&quot;</span><span class="p">)</span>
+        <span class="c1"># 加载邮件接收者的配置文件</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">email_receiver_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">load_email_receiver_config</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">email_receiver_file</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">warning_logger</span><span class="o">.</span><span class="n">log_write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Successfully loaded email receiver file &quot;</span>
+                                      <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">email_senter_file</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">Log_Processor</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span>
+
+        <span class="c1"># 初始化混音器模块</span>
+        <span class="n">pygame</span><span class="o">.</span><span class="n">mixer</span><span class="o">.</span><span class="n">init</span><span class="p">()</span>
+
+    <span class="c1"># 根据错误码解析出现的错误并调用对应函数</span>
+<div class="viewcode-block" id="Warning_Processor.warning_process">
+<a class="viewcode-back" href="../../../home_security_surveillance.Exception_process.html#home_security_surveillance.Exception_process.Warning_Processor.Warning_Processor.warning_process">[文档]</a>
+    <span class="k">def</span> <span class="nf">warning_process</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">warning_code</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">warning_time</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">level_list</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">],</span> <span class="n">sensitivity</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        错误处理的核心函数</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        warning_code : int</span>
+<span class="sd">            映射所得的错误编码</span>
+<span class="sd">        warning_time: str</span>
+<span class="sd">            警告时间文本，说明事故发生的时间</span>
+<span class="sd">        level_list: List[float]</span>
+<span class="sd">            置信度列表，每个元素为对应错误的置信度</span>
+<span class="sd">        sensitivity : int</span>
+<span class="sd">            置信度转换为危险等级时使用的不同敏感度，0为低敏感度，1为高敏感度</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c1"># 利用与操作解析错误码，如有对应错误，进行相应报警</span>
+        <span class="c1"># 顺序为：烟雾报警、火灾报警、陌生人报警、摔倒报警</span>
+        <span class="n">index</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">warning_code_dict</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">key</span> <span class="o">&amp;</span> <span class="n">warning_code</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">trigger_warning</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">warning_time</span><span class="p">,</span> <span class="n">level_list</span><span class="p">[</span><span class="n">index</span><span class="p">],</span> <span class="n">sensitivity</span><span class="p">)</span>
+            <span class="n">index</span> <span class="o">+=</span> <span class="mi">1</span></div>
+
+
+<div class="viewcode-block" id="Warning_Processor.get_level_description">
+<a class="viewcode-back" href="../../../home_security_surveillance.Exception_process.html#home_security_surveillance.Exception_process.Warning_Processor.Warning_Processor.get_level_description">[文档]</a>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">get_level_description</span><span class="p">(</span><span class="n">level</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">sensitivity</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        根据置信度判断危险等级，返回置信度级别描述函数</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        level : float</span>
+<span class="sd">            置信度，数值在 0 ~ 1 之间</span>
+<span class="sd">        sensitivity : int</span>
+<span class="sd">            置信度转换为危险等级时使用的不同敏感度，0为低敏感度，1为高敏感度</span>
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        level_description : int</span>
+<span class="sd">            对置信度危险等级的描述，返回一个整型数，是根据置信度的大判断的危险等级：</span>
+<span class="sd">            0~0.8表示危险性不大，危险等级为1</span>
+<span class="sd">            0.8~0.9中等危险，又可能会发生事故，危险等级为2</span>
+<span class="sd">            0.9~0.95大概率识别出事故，并且判断较为准确，危险等级为3</span>
+<span class="sd">            0.95~1 极度危险状态，危险等级为4</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">if</span> <span class="n">sensitivity</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">if</span> <span class="mf">0.4</span> <span class="o">&lt;=</span> <span class="n">level</span> <span class="o">&lt;</span> <span class="mf">0.8</span><span class="p">:</span>
+                <span class="k">return</span> <span class="mi">1</span>
+            <span class="k">elif</span> <span class="mf">0.8</span> <span class="o">&lt;=</span> <span class="n">level</span> <span class="o">&lt;</span> <span class="mf">0.9</span><span class="p">:</span>
+                <span class="k">return</span> <span class="mi">2</span>
+            <span class="k">elif</span> <span class="mf">0.9</span> <span class="o">&lt;=</span> <span class="n">level</span> <span class="o">&lt;</span> <span class="mf">0.95</span><span class="p">:</span>
+                <span class="k">return</span> <span class="mi">3</span>
+            <span class="k">elif</span> <span class="mf">0.95</span> <span class="o">&lt;=</span> <span class="n">level</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="k">return</span> <span class="mi">4</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">return</span> <span class="mi">0</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="mf">0.6</span> <span class="o">&lt;=</span> <span class="n">level</span> <span class="o">&lt;</span> <span class="mf">0.8</span><span class="p">:</span>
+                <span class="k">return</span> <span class="mi">1</span>
+            <span class="k">elif</span> <span class="mf">0.8</span> <span class="o">&lt;=</span> <span class="n">level</span> <span class="o">&lt;</span> <span class="mf">0.9</span><span class="p">:</span>
+                <span class="k">return</span> <span class="mi">2</span>
+            <span class="k">elif</span> <span class="mf">0.9</span> <span class="o">&lt;=</span> <span class="n">level</span> <span class="o">&lt;</span> <span class="mf">0.95</span><span class="p">:</span>
+                <span class="k">return</span> <span class="mi">3</span>
+            <span class="k">elif</span> <span class="mf">0.95</span> <span class="o">&lt;=</span> <span class="n">level</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="k">return</span> <span class="mi">4</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">return</span> <span class="mi">0</span></div>
+
+
+<div class="viewcode-block" id="Warning_Processor.trigger_warning">
+<a class="viewcode-back" href="../../../home_security_surveillance.Exception_process.html#home_security_surveillance.Exception_process.Warning_Processor.Warning_Processor.trigger_warning">[文档]</a>
+    <span class="k">def</span> <span class="nf">trigger_warning</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">warning_type</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">warning_time</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">level</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">sensitivity</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        触发警报的核心处理函数</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        warning_type: str</span>
+<span class="sd">            警告类型文本，根据传递的参数判断事故发生的类型，做出不同的处理</span>
+<span class="sd">        warning_time: str</span>
+<span class="sd">            警告时间文本，说明事故发生的时间</span>
+<span class="sd">        level: float</span>
+<span class="sd">            置信度，根据数值的大小判断危险等级，给出不同提示（图标显示和提示音）</span>
+<span class="sd">            当危险等级高于等于3级时，会向户主发送邮件，通知相关情况</span>
+<span class="sd">        sensitivity : int</span>
+<span class="sd">            置信度转换为危险等级时使用的不同敏感度，0为低敏感度，1为高敏感度</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># 置信度转危险等级</span>
+        <span class="n">level_description</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_level_description</span><span class="p">(</span><span class="n">level</span><span class="p">,</span> <span class="n">sensitivity</span><span class="p">)</span>
+        <span class="c1"># 日志记录有警告</span>
+        <span class="n">log_message</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">warning_type</span><span class="si">}</span><span class="s2"> at </span><span class="si">{</span><span class="n">warning_time</span><span class="si">}</span><span class="s2"> with risk level:(</span><span class="si">{</span><span class="n">level_description</span><span class="si">}</span><span class="s2">)&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">warning_logger</span><span class="o">.</span><span class="n">log_write</span><span class="p">(</span><span class="n">log_message</span><span class="p">,</span> <span class="n">Log_Processor</span><span class="o">.</span><span class="n">CRITICAL</span><span class="p">)</span>
+
+        <span class="c1"># 危险等级超过3就发送邮件</span>
+        <span class="k">if</span> <span class="n">level_description</span> <span class="o">&gt;=</span> <span class="mi">3</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">send_email_notification</span><span class="p">(</span><span class="n">warning_type</span><span class="p">,</span> <span class="n">warning_time</span><span class="p">,</span> <span class="n">level_description</span><span class="p">)</span>
+            <span class="n">log_message</span> <span class="o">+=</span> <span class="s2">&quot; Start to sent Message!&quot;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">warning_logger</span><span class="o">.</span><span class="n">log_write</span><span class="p">(</span><span class="n">log_message</span><span class="p">,</span> <span class="n">Log_Processor</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span>
+
+        <span class="c1"># 警告播放</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_play_audio</span><span class="p">(</span><span class="n">level_description</span><span class="p">)</span>
+        <span class="c1"># 桌面跳出警报窗口</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">show_custom_warning_dialog</span><span class="p">(</span><span class="n">warning_type</span><span class="p">,</span> <span class="n">warning_time</span><span class="p">,</span> <span class="n">level_description</span><span class="p">)</span></div>
+
+
+    <span class="k">def</span> <span class="nf">_play_audio</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">level_description</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        音乐播放函数</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        level_description : int</span>
+<span class="sd">            对置信度危险等级的描述，对应1-4级别</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c1"># 播放存储路径的音乐</span>
+        <span class="n">music_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">warning_dir</span><span class="p">,</span>
+                                  <span class="sa">f</span><span class="s2">&quot;warning_audio/</span><span class="si">{</span><span class="n">level_description</span><span class="si">}</span><span class="s2">.mp3&quot;</span><span class="p">)</span>
+        <span class="n">pygame</span><span class="o">.</span><span class="n">mixer</span><span class="o">.</span><span class="n">music</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">music_file</span><span class="p">)</span>
+        <span class="n">pygame</span><span class="o">.</span><span class="n">mixer</span><span class="o">.</span><span class="n">music</span><span class="o">.</span><span class="n">play</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">warning_logger</span><span class="o">.</span><span class="n">log_write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Successfully played mixer music file &quot;</span>
+                                      <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">music_file</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">Log_Processor</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span>
+
+<div class="viewcode-block" id="Warning_Processor.show_custom_warning_dialog">
+<a class="viewcode-back" href="../../../home_security_surveillance.Exception_process.html#home_security_surveillance.Exception_process.Warning_Processor.Warning_Processor.show_custom_warning_dialog">[文档]</a>
+    <span class="k">def</span> <span class="nf">show_custom_warning_dialog</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">warning_type</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">warning_time</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">level_description</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        桌面跳出警报窗口函数</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        warning_type : str</span>
+<span class="sd">            警告类型文本</span>
+<span class="sd">        warning_time : str</span>
+<span class="sd">            警告时间文本</span>
+<span class="sd">        level_description : int</span>
+<span class="sd">            置信度危险等级</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">root</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Tk</span><span class="p">()</span>
+        <span class="n">root</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Warning&quot;</span><span class="p">)</span>
+
+        <span class="c1"># 设置窗口大小和位置</span>
+        <span class="n">window_width</span> <span class="o">=</span> <span class="mi">500</span>
+        <span class="n">window_height</span> <span class="o">=</span> <span class="mi">200</span>
+        <span class="c1"># 自动调整宽度高度以适应窗口</span>
+        <span class="n">screen_width</span> <span class="o">=</span> <span class="n">root</span><span class="o">.</span><span class="n">winfo_screenwidth</span><span class="p">()</span>
+        <span class="n">screen_height</span> <span class="o">=</span> <span class="n">root</span><span class="o">.</span><span class="n">winfo_screenheight</span><span class="p">()</span>
+        <span class="c1"># 居中位置计算</span>
+        <span class="n">position_top</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">screen_height</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">-</span> <span class="n">window_height</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="n">position_right</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">screen_width</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">-</span> <span class="n">window_width</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="c1"># 使窗口居中</span>
+        <span class="n">root</span><span class="o">.</span><span class="n">geometry</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">window_width</span><span class="si">}</span><span class="s2">x</span><span class="si">{</span><span class="n">window_height</span><span class="si">}</span><span class="s2">+</span><span class="si">{</span><span class="n">position_right</span><span class="si">}</span><span class="s2">+</span><span class="si">{</span><span class="n">position_top</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="c1"># 显示警报信息</span>
+        <span class="c1"># 设置字体和大小</span>
+        <span class="n">font_style</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;Helvetica&quot;</span><span class="p">,</span> <span class="mi">15</span><span class="p">)</span>
+        <span class="c1"># 警告文本</span>
+        <span class="n">label_text</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">warning_type</span><span class="si">}</span><span class="s2"> detected at </span><span class="si">{</span><span class="n">warning_time</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span> \
+                     <span class="sa">f</span><span class="s2">&quot;Risk level: </span><span class="si">{</span><span class="n">level_description</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="n">label</span> <span class="o">=</span> <span class="n">ttk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="n">label_text</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">font</span><span class="o">=</span><span class="n">font_style</span><span class="p">)</span>
+        <span class="c1"># 在父容器中自动排列和管理文本的位置和大小</span>
+        <span class="n">label</span><span class="o">.</span><span class="n">pack</span><span class="p">()</span>
+
+        <span class="c1"># 创建图标框架</span>
+        <span class="n">icon_frame</span> <span class="o">=</span> <span class="n">ttk</span><span class="o">.</span><span class="n">Frame</span><span class="p">(</span><span class="n">root</span><span class="p">)</span>
+        <span class="c1"># 设置图标框架与上方组件的间距</span>
+        <span class="n">icon_frame</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">pady</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+
+        <span class="c1"># 加载和显示警告类型图片</span>
+        <span class="n">warning_image_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">warning_dir</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;warning_png/</span><span class="si">{</span><span class="n">warning_type</span><span class="si">}</span><span class="s2">.png&quot;</span><span class="p">)</span>
+        <span class="c1"># 打开图像</span>
+        <span class="n">warning_image</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">warning_image_path</span><span class="p">)</span>
+        <span class="c1"># 图像缩放到指定的大小</span>
+        <span class="n">warning_image</span> <span class="o">=</span> <span class="n">warning_image</span><span class="o">.</span><span class="n">resize</span><span class="p">((</span><span class="mi">50</span><span class="p">,</span> <span class="mi">50</span><span class="p">),</span> <span class="n">resample</span><span class="o">=</span><span class="n">Image</span><span class="o">.</span><span class="n">Resampling</span><span class="o">.</span><span class="n">LANCZOS</span><span class="p">)</span>
+        <span class="c1"># 将缩放后图像转为PhotoImage对象</span>
+        <span class="n">warning_photo</span> <span class="o">=</span> <span class="n">ImageTk</span><span class="o">.</span><span class="n">PhotoImage</span><span class="p">(</span><span class="n">warning_image</span><span class="p">)</span>
+        <span class="c1"># 图像加载到窗口</span>
+        <span class="n">warning_label</span> <span class="o">=</span> <span class="n">ttk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">icon_frame</span><span class="p">,</span> <span class="n">image</span><span class="o">=</span><span class="n">warning_photo</span><span class="p">)</span>
+        <span class="c1"># 保持对图片的引用</span>
+        <span class="n">warning_label</span><span class="o">.</span><span class="n">image</span> <span class="o">=</span> <span class="n">warning_photo</span>
+        <span class="c1"># 设置图标之间的水平间距</span>
+        <span class="n">warning_label</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">side</span><span class="o">=</span><span class="n">tk</span><span class="o">.</span><span class="n">LEFT</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+
+        <span class="c1"># 加载和显示危险等级图标</span>
+        <span class="n">risk_image_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">warning_dir</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;warning_png/</span><span class="si">{</span><span class="n">level_description</span><span class="si">}</span><span class="s2">.png&quot;</span><span class="p">)</span>
+        <span class="n">risk_image</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">risk_image_path</span><span class="p">)</span>
+        <span class="n">risk_image</span> <span class="o">=</span> <span class="n">risk_image</span><span class="o">.</span><span class="n">resize</span><span class="p">((</span><span class="mi">50</span><span class="p">,</span> <span class="mi">50</span><span class="p">),</span> <span class="n">Image</span><span class="o">.</span><span class="n">Resampling</span><span class="o">.</span><span class="n">LANCZOS</span><span class="p">)</span>
+        <span class="n">risk_photo</span> <span class="o">=</span> <span class="n">ImageTk</span><span class="o">.</span><span class="n">PhotoImage</span><span class="p">(</span><span class="n">risk_image</span><span class="p">)</span>
+        <span class="n">risk_label</span> <span class="o">=</span> <span class="n">ttk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">icon_frame</span><span class="p">,</span> <span class="n">image</span><span class="o">=</span><span class="n">risk_photo</span><span class="p">)</span>
+        <span class="c1"># 保持对图片的引用</span>
+        <span class="n">risk_label</span><span class="o">.</span><span class="n">image</span> <span class="o">=</span> <span class="n">risk_photo</span>
+        <span class="n">risk_label</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">side</span><span class="o">=</span><span class="n">tk</span><span class="o">.</span><span class="n">LEFT</span><span class="p">)</span>
+
+        <span class="c1"># OK 按钮</span>
+        <span class="n">ok_button</span> <span class="o">=</span> <span class="n">ttk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;OK&quot;</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="n">root</span><span class="o">.</span><span class="n">destroy</span><span class="p">)</span>
+        <span class="n">ok_button</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">pady</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+        <span class="n">root</span><span class="o">.</span><span class="n">mainloop</span><span class="p">()</span></div>
+
+
+    <span class="k">def</span> <span class="nf">_write_email_senter_config</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config_data</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        将传入的邮件发送者的数据写入配置文件，视为内部函数，不提供外部接口</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        config_data : Dict[str, str]</span>
+<span class="sd">            传入要修改的数据，默认为空</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c1"># 写入config_data</span>
+        <span class="k">if</span> <span class="n">config_data</span><span class="p">:</span>
+            <span class="c1"># 打开文件，获得数据</span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">email_senter_file</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+                <span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
+                <span class="c1"># 如果只有一个字典，转为列表</span>
+                <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+                    <span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="n">data</span><span class="p">]</span>
+                <span class="c1"># 去除没有email的字典和email为空的字典</span>
+                <span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">data</span>
+                        <span class="k">if</span> <span class="s2">&quot;email&quot;</span> <span class="ow">in</span> <span class="n">i</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span> <span class="ow">and</span> <span class="n">i</span><span class="p">[</span><span class="s2">&quot;email&quot;</span><span class="p">]</span> <span class="o">!=</span> <span class="s2">&quot;&quot;</span><span class="p">]</span>
+                <span class="c1"># 如果文件有邮箱地址且传入的修改邮件地址与文件第一个地址相同，则为修改</span>
+                <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;email&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n">config_data</span><span class="p">[</span><span class="s2">&quot;email&quot;</span><span class="p">]:</span>
+                    <span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">config_data</span>
+                <span class="c1"># 否则为添加，且更新到第一个位置</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="c1"># 先删除和该email相同的data内容</span>
+                    <span class="c1"># 反向遍历避免引发索引错误或跳过元素</span>
+                    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+                        <span class="k">if</span> <span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s2">&quot;email&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n">config_data</span><span class="p">[</span><span class="s2">&quot;email&quot;</span><span class="p">]:</span>
+                            <span class="k">del</span> <span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+                    <span class="n">data</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">config_data</span><span class="p">)</span>
+            <span class="c1"># 写入修改后的data</span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">email_senter_file</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+                <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">file</span><span class="p">,</span>
+                          <span class="n">skipkeys</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">check_circular</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">allow_nan</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">sort_keys</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                          <span class="n">ensure_ascii</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">separators</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="s1">&#39; : &#39;</span><span class="p">),</span> <span class="n">indent</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_write_email_receiver_config</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config_data</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        将传入的邮件接收者的数据写入配置文件，视为内部函数，不提供外部接口</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        config_data : List[str]</span>
+<span class="sd">            传入要修改的数据，默认为空</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c1"># 写入config_data</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">email_receiver_file</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+            <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">config_data</span><span class="p">,</span> <span class="n">file</span><span class="p">,</span>
+                <span class="n">skipkeys</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">check_circular</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">allow_nan</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">sort_keys</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                <span class="n">ensure_ascii</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">separators</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="s1">&#39; : &#39;</span><span class="p">),</span> <span class="n">indent</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+<div class="viewcode-block" id="Warning_Processor.load_email_senter_config">
+<a class="viewcode-back" href="../../../home_security_surveillance.Exception_process.html#home_security_surveillance.Exception_process.Warning_Processor.Warning_Processor.load_email_senter_config">[文档]</a>
+    <span class="k">def</span> <span class="nf">load_email_senter_config</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">email_senter</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">re_parse</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> \
+            <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        加载邮件发送者配置文件为对应的数据结构</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        email_senter : str</span>
+<span class="sd">            要加载的邮件发送者配置文件的路径</span>
+<span class="sd">        re_parse : bool</span>
+<span class="sd">            是否重新解析email的内容，默认为True</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        email_senter_data : Dict[str, str]</span>
+<span class="sd">            邮件发送者文件中json列表的第一个字典的解析所得数据，每个元素对应一个存储邮件发送者相关信息的字符串</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c1"># 打开文件进行加载，加载的错误在调用处进行处理</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">email_senter</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+            <span class="c1"># 加载邮件发送者配置文件内容</span>
+            <span class="n">email_senter_all_data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
+            <span class="c1"># 如果只有一个字典，转为列表</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">email_senter_all_data</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+                <span class="n">email_senter_all_data</span> <span class="o">=</span> <span class="p">[</span><span class="n">email_senter_all_data</span><span class="p">]</span>
+            <span class="c1"># 去除没有email的字典或者email为空的字典</span>
+            <span class="n">email_senter_all_data</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">email_senter_all_data</span>
+                                     <span class="k">if</span> <span class="s2">&quot;email&quot;</span> <span class="ow">in</span> <span class="n">i</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span> <span class="ow">and</span> <span class="n">i</span><span class="p">[</span><span class="s2">&quot;email&quot;</span><span class="p">]</span> <span class="o">!=</span> <span class="s2">&quot;&quot;</span><span class="p">]</span>
+            <span class="c1"># 无内容返回空字典</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">email_senter_all_data</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="k">return</span> <span class="p">{}</span>
+            <span class="c1"># 只保留第一个列表的内容</span>
+            <span class="n">email_senter_data</span> <span class="o">=</span> <span class="n">email_senter_all_data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="c1"># 格式化email</span>
+            <span class="n">email_senter_data</span><span class="p">[</span><span class="s2">&quot;email&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_format_addr</span><span class="p">(</span><span class="n">email_senter_data</span><span class="p">[</span><span class="s2">&quot;email&quot;</span><span class="p">])</span>
+            <span class="c1"># 对email的内容进行直接解析</span>
+            <span class="n">email_parts</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">slice_email</span><span class="p">(</span><span class="n">email</span><span class="o">=</span><span class="n">email_senter_data</span><span class="p">[</span><span class="s2">&quot;email&quot;</span><span class="p">])</span>
+
+            <span class="c1"># 如果设置了重新解析，赋值</span>
+            <span class="k">if</span> <span class="n">re_parse</span><span class="p">:</span>
+                <span class="n">email_senter_data</span><span class="p">[</span><span class="s2">&quot;username&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">email_parts</span><span class="p">[</span><span class="s2">&quot;username&quot;</span><span class="p">]</span>
+                <span class="n">email_senter_data</span><span class="p">[</span><span class="s2">&quot;domain&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">email_parts</span><span class="p">[</span><span class="s2">&quot;domain&quot;</span><span class="p">]</span>
+                <span class="n">email_senter_data</span><span class="p">[</span><span class="s2">&quot;tld&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">email_parts</span><span class="p">[</span><span class="s2">&quot;tld&quot;</span><span class="p">]</span>
+            <span class="c1"># 如果未设置重新解析，对不存在的值赋值</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">if</span> <span class="s2">&quot;username&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">email_senter_data</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+                    <span class="n">email_senter_data</span><span class="p">[</span><span class="s2">&quot;username&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">email_parts</span><span class="p">[</span><span class="s2">&quot;username&quot;</span><span class="p">]</span>
+                <span class="k">if</span> <span class="s2">&quot;domain&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">email_senter_data</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+                    <span class="n">email_senter_data</span><span class="p">[</span><span class="s2">&quot;domain&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">email_parts</span><span class="p">[</span><span class="s2">&quot;domain&quot;</span><span class="p">]</span>
+                <span class="k">if</span> <span class="s2">&quot;tld&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">email_senter_data</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+                    <span class="n">email_senter_data</span><span class="p">[</span><span class="s2">&quot;tld&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">email_parts</span><span class="p">[</span><span class="s2">&quot;tld&quot;</span><span class="p">]</span>
+
+        <span class="c1"># 如果有读取结果，重新写入</span>
+        <span class="k">if</span> <span class="n">email_senter_data</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_write_email_senter_config</span><span class="p">(</span><span class="n">email_senter_data</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">email_senter_data</span></div>
+
+
+<div class="viewcode-block" id="Warning_Processor.load_email_receiver_config">
+<a class="viewcode-back" href="../../../home_security_surveillance.Exception_process.html#home_security_surveillance.Exception_process.Warning_Processor.Warning_Processor.load_email_receiver_config">[文档]</a>
+    <span class="k">def</span> <span class="nf">load_email_receiver_config</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">email_receiver</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        加载邮件发送者配置文件为对应的数据结构</span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        email_receiver : str</span>
+<span class="sd">            要加载的邮件接收者配置文件的路径</span>
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        email_receiver_data : List[str]</span>
+<span class="sd">            邮件接收者文件解析所得数据，是一个字符串列表，每个元素对应一个邮件接收者地址字符串</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># 打开文件进行加载，加载的错误在调用处进行处理</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">email_receiver</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+            <span class="c1"># 加载邮件发送者配置文件内容</span>
+            <span class="n">email_receiver_data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
+            <span class="c1"># 格式化并删除错误邮件地址</span>
+            <span class="n">email_receiver_data</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">email_receiver_data</span>
+                                   <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">slice_email</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_format_addr</span><span class="p">(</span><span class="n">i</span><span class="p">))]</span>
+        <span class="c1"># 返回结果</span>
+        <span class="k">return</span> <span class="n">email_receiver_data</span></div>
+
+
+<div class="viewcode-block" id="Warning_Processor.append_email_senter">
+<a class="viewcode-back" href="../../../home_security_surveillance.Exception_process.html#home_security_surveillance.Exception_process.Warning_Processor.Warning_Processor.append_email_senter">[文档]</a>
+    <span class="k">def</span> <span class="nf">append_email_senter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">email_senter_address</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">email_senter_password</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        添加邮件发送者函数，作为最新值使用</span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        email_senter_address:  str</span>
+<span class="sd">            邮件发送者邮件地址</span>
+<span class="sd">        email_senter_password : str</span>
+<span class="sd">            邮件发送者邮件密码</span>
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        flag : bool</span>
+<span class="sd">            是否添加成功</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">new_email_senter_data</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="c1"># 格式化邮件地址</span>
+        <span class="n">email_senter_address</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_format_addr</span><span class="p">(</span><span class="n">email_senter_address</span><span class="p">)</span>
+        <span class="c1"># 解析邮件</span>
+        <span class="n">email_senter_parts</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">slice_email</span><span class="p">(</span><span class="n">email_senter_address</span><span class="p">)</span>
+        <span class="c1"># 如果符合邮件格式，添加邮件地址并写入文件，更新</span>
+        <span class="k">if</span> <span class="n">email_senter_parts</span><span class="p">:</span>
+            <span class="n">new_email_senter_data</span><span class="p">[</span><span class="s2">&quot;email&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">email_senter_address</span>
+            <span class="n">new_email_senter_data</span><span class="p">[</span><span class="s2">&quot;password&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">email_senter_password</span>
+            <span class="n">new_email_senter_data</span><span class="p">[</span><span class="s2">&quot;username&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">email_senter_parts</span><span class="p">[</span><span class="s2">&quot;username&quot;</span><span class="p">]</span>
+            <span class="n">new_email_senter_data</span><span class="p">[</span><span class="s2">&quot;domain&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">email_senter_parts</span><span class="p">[</span><span class="s2">&quot;domain&quot;</span><span class="p">]</span>
+            <span class="n">new_email_senter_data</span><span class="p">[</span><span class="s2">&quot;tld&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">email_senter_parts</span><span class="p">[</span><span class="s2">&quot;tld&quot;</span><span class="p">]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">email_senter_data</span> <span class="o">=</span> <span class="n">new_email_senter_data</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_write_email_senter_config</span><span class="p">(</span><span class="n">new_email_senter_data</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">warning_logger</span><span class="o">.</span><span class="n">log_write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Successfully appended the email senter &quot;</span>
+                                          <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">new_email_senter_data</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">Log_Processor</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span>
+            <span class="k">return</span> <span class="kc">True</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">warning_logger</span><span class="o">.</span><span class="n">log_write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Failed to append the email senter &quot;</span>
+                                          <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">email_senter_address</span><span class="si">}</span><span class="s2">, please check the address&quot;</span><span class="p">,</span>
+                                          <span class="n">Log_Processor</span><span class="o">.</span><span class="n">WARNING</span><span class="p">)</span>
+            <span class="k">return</span> <span class="kc">False</span></div>
+
+
+<div class="viewcode-block" id="Warning_Processor.append_email_receiver">
+<a class="viewcode-back" href="../../../home_security_surveillance.Exception_process.html#home_security_surveillance.Exception_process.Warning_Processor.Warning_Processor.append_email_receiver">[文档]</a>
+    <span class="k">def</span> <span class="nf">append_email_receiver</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">email_receiver_address</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        添加邮件接收者函数</span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        email_receiver_address:  str</span>
+<span class="sd">            邮件接收者函数地址</span>
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        flag : bool</span>
+<span class="sd">            是否添加成功</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># 格式化邮件地址</span>
+        <span class="n">email_receiver_address</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_format_addr</span><span class="p">(</span><span class="n">email_receiver_address</span><span class="p">)</span>
+        <span class="c1"># 如果符合邮件格式</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">slice_email</span><span class="p">(</span><span class="n">email_receiver_address</span><span class="p">):</span>
+            <span class="c1"># 如果未添加过该地址，添加邮件地址并写入文件</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">email_receiver_data</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="n">email_receiver_address</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">warning_logger</span><span class="o">.</span><span class="n">log_write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The the email receiver has existed&quot;</span>
+                                                  <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">email_receiver_address</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">Log_Processor</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span>
+                    <span class="k">return</span> <span class="kc">True</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">email_receiver_data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">email_receiver_address</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_write_email_receiver_config</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">email_receiver_data</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">warning_logger</span><span class="o">.</span><span class="n">log_write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Successfully appended the email receiver &quot;</span>
+                                          <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">email_receiver_address</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">Log_Processor</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span>
+            <span class="k">return</span> <span class="kc">True</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">warning_logger</span><span class="o">.</span><span class="n">log_write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Failed to append the email receiver &quot;</span>
+                                          <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">email_receiver_address</span><span class="si">}</span><span class="s2">, please check the address&quot;</span><span class="p">,</span>
+                                          <span class="n">Log_Processor</span><span class="o">.</span><span class="n">WARNING</span><span class="p">)</span>
+            <span class="k">return</span> <span class="kc">False</span></div>
+
+
+<div class="viewcode-block" id="Warning_Processor.delete_email_receiver">
+<a class="viewcode-back" href="../../../home_security_surveillance.Exception_process.html#home_security_surveillance.Exception_process.Warning_Processor.Warning_Processor.delete_email_receiver">[文档]</a>
+    <span class="k">def</span> <span class="nf">delete_email_receiver</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">email_receiver_address</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        删除邮件接收者函数</span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        email_receiver_address:  str</span>
+<span class="sd">            邮件接收者函数地址</span>
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        flag : bool</span>
+<span class="sd">            是否添加成功</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># 格式化邮件地址</span>
+        <span class="n">email_receiver_address</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_format_addr</span><span class="p">(</span><span class="n">email_receiver_address</span><span class="p">)</span>
+        <span class="c1"># 如果符合邮件格式</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">slice_email</span><span class="p">(</span><span class="n">email_receiver_address</span><span class="p">):</span>
+            <span class="c1"># 如果未添加过该地址，添加邮件地址并写入文件</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">email_receiver_data</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">email_receiver_data</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="n">email_receiver_address</span><span class="p">:</span>
+                    <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">email_receiver_data</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_write_email_receiver_config</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">email_receiver_data</span><span class="p">)</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">warning_logger</span><span class="o">.</span><span class="n">log_write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Successfully deleted the email receiver &quot;</span>
+                                                  <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">email_receiver_address</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">Log_Processor</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span>
+                    <span class="k">return</span> <span class="kc">True</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">warning_logger</span><span class="o">.</span><span class="n">log_write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Failed to deleted the email receiver &quot;</span>
+                                      <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">email_receiver_address</span><span class="si">}</span><span class="s2">, please check the address&quot;</span><span class="p">,</span>
+                                      <span class="n">Log_Processor</span><span class="o">.</span><span class="n">WARNING</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">False</span></div>
+
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">_format_addr</span><span class="p">(</span><span class="n">email</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        处理包含非ASCII字符的电子邮件地址</span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        email: str</span>
+<span class="sd">            传入的电子邮件地址</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        format_email_address : str</span>
+<span class="sd">            格式化后的电子邮件地址</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c1"># 解析电子邮件地址，获得邮件姓名和地址</span>
+        <span class="n">realname</span><span class="p">,</span> <span class="n">email_address</span> <span class="o">=</span> <span class="n">parseaddr</span><span class="p">(</span><span class="n">email</span><span class="p">)</span>
+        <span class="c1"># 格式化电子邮件地址再返回</span>
+        <span class="k">return</span> <span class="n">formataddr</span><span class="p">((</span><span class="n">Header</span><span class="p">(</span><span class="n">realname</span><span class="p">,</span> <span class="s1">&#39;utf-8&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">(),</span> <span class="n">email_address</span><span class="p">))</span>
+
+<div class="viewcode-block" id="Warning_Processor.slice_email">
+<a class="viewcode-back" href="../../../home_security_surveillance.Exception_process.html#home_security_surveillance.Exception_process.Warning_Processor.Warning_Processor.slice_email">[文档]</a>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">slice_email</span><span class="p">(</span><span class="n">email</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        邮件地址切片函数</span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        email : str</span>
+<span class="sd">            传入的电子邮件地址</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        email_parts : Dict[str, str]</span>
+<span class="sd">            邮件的各个部分，username属性对应邮件名，domain属性对应域名，tld属性对应顶级域名</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c1"># 邮件信息解析格式</span>
+        <span class="n">email_pattern</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;([^@]+)@([^\.]+)\.([^.]+)&#39;</span>
+        <span class="c1"># 正则表达式邮件信息解析</span>
+        <span class="n">match</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">email_pattern</span><span class="p">,</span> <span class="n">email</span><span class="p">)</span>
+        <span class="n">parts</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="c1"># 记录解析结果</span>
+        <span class="k">if</span> <span class="n">match</span><span class="p">:</span>
+            <span class="n">parts</span><span class="p">[</span><span class="s1">&#39;username&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+            <span class="n">parts</span><span class="p">[</span><span class="s1">&#39;domain&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+            <span class="n">parts</span><span class="p">[</span><span class="s1">&#39;tld&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">parts</span></div>
+
+
+<div class="viewcode-block" id="Warning_Processor.send_email_notification">
+<a class="viewcode-back" href="../../../home_security_surveillance.Exception_process.html#home_security_surveillance.Exception_process.Warning_Processor.Warning_Processor.send_email_notification">[文档]</a>
+    <span class="k">def</span> <span class="nf">send_email_notification</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">warning_type</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">warning_time</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">level_description</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        发送邮件通知用户发生了相应的紧急事故函数</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        warning_type : str</span>
+<span class="sd">            警告类型文本</span>
+<span class="sd">        warning_time : str</span>
+<span class="sd">            警告时间文本</span>
+<span class="sd">        level_description : int</span>
+<span class="sd">            置信度危险等级</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c1"># 邮件标题</span>
+        <span class="n">email_subject</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;来自家庭安全监控系统的警告！！！&quot;</span>
+        <span class="c1"># 邮件内容</span>
+        <span class="n">body</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">        检测到事故: </span><span class="si">{</span><span class="n">warning_type</span><span class="si">}</span>
+<span class="s2">        发生时间: </span><span class="si">{</span><span class="n">warning_time</span><span class="si">}</span>
+<span class="s2">        危险等级: </span><span class="si">{</span><span class="n">level_description</span><span class="si">}</span><span class="s2">级</span>
+<span class="s2">        &quot;&quot;&quot;</span>
+        <span class="c1"># 本来还想可以加一个 查看视频：url    这里不知道怎么传参了</span>
+
+        <span class="c1"># email结构设置</span>
+        <span class="n">eamil_message</span> <span class="o">=</span> <span class="n">MIMEMultipart</span><span class="p">()</span>
+        <span class="c1"># 寄件人设置</span>
+        <span class="n">eamil_message</span><span class="p">[</span><span class="s1">&#39;From&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">email_senter_data</span><span class="p">[</span><span class="s2">&quot;email&quot;</span><span class="p">]</span>
+        <span class="c1"># 收件人设置，是一个列表</span>
+        <span class="n">eamil_message</span><span class="p">[</span><span class="s1">&#39;To&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">Header</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">email_receiver_data</span><span class="p">))</span>
+        <span class="c1"># 邮件标题设置</span>
+        <span class="n">eamil_message</span><span class="p">[</span><span class="s1">&#39;Subject&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">Header</span><span class="p">(</span><span class="n">email_subject</span><span class="p">,</span> <span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
+        <span class="c1"># 添加正文内容</span>
+        <span class="n">eamil_message</span><span class="o">.</span><span class="n">attach</span><span class="p">(</span><span class="n">MIMEText</span><span class="p">(</span><span class="n">body</span><span class="p">,</span> <span class="s1">&#39;plain&#39;</span><span class="p">))</span>
+
+        <span class="c1"># 发送邮件</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="c1"># 先获得对应的邮件域名的对应发送地址和端口</span>
+            <span class="n">smtp_address</span><span class="p">,</span> <span class="n">smtp_port</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">email_smtp_address_dict</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">email_senter_data</span><span class="p">[</span><span class="s2">&quot;domain&quot;</span><span class="p">]]</span>
+            <span class="c1"># 连接到SMTP服务器，使用SSL方式</span>
+            <span class="k">with</span> <span class="n">smtplib</span><span class="o">.</span><span class="n">SMTP_SSL</span><span class="p">(</span><span class="n">smtp_address</span><span class="p">,</span> <span class="n">smtp_port</span><span class="p">)</span> <span class="k">as</span> <span class="n">server</span><span class="p">:</span>
+                <span class="c1"># 发送SMTP的“HELLO”消息</span>
+                <span class="n">server</span><span class="o">.</span><span class="n">ehlo</span><span class="p">()</span>
+                <span class="c1"># 3. 登陆到SMTP服务器</span>
+                <span class="n">server</span><span class="o">.</span><span class="n">login</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">email_senter_data</span><span class="p">[</span><span class="s2">&quot;email&quot;</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">email_senter_data</span><span class="p">[</span><span class="s2">&quot;password&quot;</span><span class="p">])</span>
+                <span class="c1"># 4. 发送电子邮件</span>
+                <span class="n">server</span><span class="o">.</span><span class="n">sendmail</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">email_senter_data</span><span class="p">[</span><span class="s2">&quot;email&quot;</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">email_receiver_data</span><span class="p">,</span>
+                                <span class="n">eamil_message</span><span class="o">.</span><span class="n">as_string</span><span class="p">())</span>
+                <span class="c1"># 5. 从服务器断开</span>
+                <span class="n">server</span><span class="o">.</span><span class="n">quit</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">warning_logger</span><span class="o">.</span><span class="n">log_write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Email sent to </span><span class="si">{</span><span class="s1">&#39;,&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">email_receiver_data</span><span class="p">)</span><span class="si">}</span><span class="s2"> &quot;</span>
+                                          <span class="sa">f</span><span class="s2">&quot;for </span><span class="si">{</span><span class="n">warning_type</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">Log_Processor</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">warning_logger</span><span class="o">.</span><span class="n">log_write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Failed to send email: </span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">Log_Processor</span><span class="o">.</span><span class="n">ERROR</span><span class="p">)</span></div>
+</div>
+
+
+
+<span class="c1"># 模块测试部分</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="c1"># 初始化对象</span>
+    <span class="n">warning_processor</span> <span class="o">=</span> <span class="n">Warning_Processor</span><span class="p">()</span>
+
+    <span class="c1"># # 添加邮件发送者并检验添加结果</span>
+    <span class="c1"># warning_processor.append_email_senter(&quot;2560663471@qq.com&quot;, &quot;mwgzhmvcvjktebce&quot;)</span>
+    <span class="c1"># print(warning_processor.email_senter_data)</span>
+    <span class="c1"># warning_processor.append_email_senter(&quot;xiaohei07zhzhh@163.com&quot;, &quot;MLTMTIOQITHANNNG&quot;)</span>
+    <span class="c1"># print(warning_processor.email_senter_data)</span>
+    <span class="c1">#</span>
+    <span class="c1"># # 添加邮件接收者并检验添加结果</span>
+    <span class="c1"># warning_processor.append_email_receiver(&quot;2193706008@qq.com&quot;)</span>
+    <span class="c1"># print(warning_processor.email_receiver_data)</span>
+    <span class="c1"># warning_processor.append_email_receiver(&quot;2560663471@qq.com&quot;)</span>
+    <span class="c1"># print(warning_processor.email_receiver_data)</span>
+    <span class="c1"># warning_processor.append_email_receiver(&quot;xiaohei07zhzhh@163.com&quot;)</span>
+    <span class="c1"># print(warning_processor.email_receiver_data)</span>
+    <span class="c1"># warning_processor.append_email_receiver(&quot;lazy07xiaohei@163.com&quot;)</span>
+    <span class="c1"># print(warning_processor.email_receiver_data)</span>
+
+    <span class="c1"># # 删除邮件接收者并检验添加结果</span>
+    <span class="c1"># warning_processor.delete_email_receiver(&quot;2193706008@qq.com&quot;)</span>
+    <span class="c1"># print(warning_processor.email_receiver_data)</span>
+    <span class="c1"># warning_processor.delete_email_receiver(&quot;xiaohei07zhzhh@163.com&quot;)</span>
+    <span class="c1"># print(warning_processor.email_receiver_data)</span>
+    <span class="c1"># warning_processor.delete_email_receiver(&quot;lazy07xiaohei@163.com&quot;)</span>
+    <span class="c1"># print(warning_processor.email_receiver_data)</span>
+
+    <span class="c1"># # 邮件发送测试</span>
+    <span class="c1"># warning_processor.send_email_notification(&quot;Fire&quot;, &quot;2024-06-12 12:00:00&quot;, 3)</span>
+
+    <span class="c1"># 测试警告功能</span>
+    <span class="c1"># warning_processor.warning_process(1, &quot;2024-06-12 12:00:00&quot;, 0.8)</span>
+    <span class="c1"># warning_processor.warning_process(2, &quot;2024-06-12 12:00:00&quot;, 0.85)</span>
+    <span class="c1"># warning_processor.warning_process(4, &quot;2024-06-12 12:00:00&quot;, 0.9)</span>
+    <span class="c1"># warning_processor.warning_process(9, &quot;2024-06-12 12:00:00&quot;, 0.95)</span>
+    <span class="c1"># warning_processor.warning_process(15, &quot;2024-06-12 12:00:00&quot;, 0.8)</span>
+
+    <span class="c1"># # 单独的连接测试</span>
+    <span class="c1"># # 1. 连接到SMTP服务器</span>
+    <span class="c1"># smtpObj = smtplib.SMTP(&#39;smtp.qq.com&#39;, 587)</span>
+    <span class="c1">#</span>
+    <span class="c1"># # 2. 发送SMTP的“HELLO”消息</span>
+    <span class="c1"># smtpObj.ehlo()</span>
+    <span class="c1">#</span>
+    <span class="c1"># # 3. 开始TLS加密</span>
+    <span class="c1"># smtpObj.starttls()</span>
+    <span class="c1">#</span>
+    <span class="c1"># # 4. 登陆到SMTP服务器</span>
+    <span class="c1"># smtpObj.login(&#39;2560663471@qq.com&#39;, &#39;mwgzhmvcvjktebce&#39;)</span>
+    <span class="c1">#</span>
+    <span class="c1"># # 5. 发送电子邮件</span>
+    <span class="c1"># from_addr = &#39;2560663471@qq.com&#39;  # 发件人</span>
+    <span class="c1"># to_addr = &#39;2560663471@qq.com&#39;  # 收件人</span>
+    <span class="c1">#</span>
+    <span class="c1"># message = MIMEText(&#39;Happy new year!&#39;, &#39;plain&#39;, &#39;utf-8&#39;)  # 正文</span>
+    <span class="c1"># message[&#39;From&#39;] = Warning_Processor._format_addr(&#39;Sam &lt;%s&gt;&#39; % from_addr)  # 发件人</span>
+    <span class="c1"># message[&#39;To&#39;] = Warning_Processor._format_addr(&#39;Python lover &lt;%s&gt;&#39; % to_addr)  # 收件人</span>
+    <span class="c1">#</span>
+    <span class="c1"># subject = &#39;Python SMTP 邮件测试&#39;</span>
+    <span class="c1"># # 主题</span>
+    <span class="c1"># message[&#39;Subject&#39;] = Header(subject, &#39;utf-8&#39;)</span>
+    <span class="c1">#</span>
+    <span class="c1"># smtpObj.sendmail(from_addr, [to_addr], message.as_string())</span>
+    <span class="c1">#</span>
+    <span class="c1"># # 6. 从服务器断开</span>
+    <span class="c1"># smtpObj.quit()</span>
+    <span class="c1">#</span>
+    <span class="c1"># print(&quot;Done!&quot;)</span>
+</pre></div>
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2024, 07xiaohei、youyou、Chai.h、Captain.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    由 <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.3.7创建。
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.15.4.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>
