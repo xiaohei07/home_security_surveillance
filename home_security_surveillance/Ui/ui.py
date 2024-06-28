@@ -862,8 +862,12 @@ class VideoMonitorApp:
         self.root.after(ms=1000, func=self.check_video_processor)
         return
 
+## 模块单元测试部分 ##
 if __name__ == "__main__":
+
+    # Ui界面测试需要用按键触发
     app = VideoMonitorApp(tk.Tk())
+    # 测试定时器是否正常工作
     app.root.after(ms=1000, func=app.check_video_processor)
     app.root.mainloop()
 

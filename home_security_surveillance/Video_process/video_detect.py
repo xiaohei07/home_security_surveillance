@@ -1009,23 +1009,60 @@ class Video_Detector(object):
             logging.error("Detailed traceback information:", exc_info=True)
 
 
+## 模块单元测试部分，调用部分函数方法，保证类内所有方法均已被调用 ##
 if __name__ == '__main__':
-    # 初始化类实例
+
+    # 测试类的实例化
     video_detector = Video_Detector()
 
-    # 查看存储的变量是否和配置文件一致
+    # 测试存储变量是否和配置文件一致
     for i in video_detector.__dict__.items():
         print(i)
 
-    # 调用类方法选择模型
-    video_detector.set_default_model(1)
+    # 测试重设类训练成员以及是否发生变化
+    video_detector.reset_training_parameters(batch=32, epochs=100, project="test_dir",
+                                             name="test", imgsz=320, data="test.yaml",
+                                             weight_pt="yolov8_test.pt", device=0)
+    for i in video_detector.__dict__.items():
+        print(i)
 
-    # 使用各个模型进行视频识别预测
+    # 测试设置模型默认模式
+    video_detector.set_default_model(1)
+    print(video_detector.model_mode)
+
+    # 测试识别预测方法，并使用各个模型进行视频
     source = os.path.abspath("../../Model/test/fire.mp4")
     Results_list = video_detector.predict(pre_source=source, mode=1)
-    # 输出错误结果
+    # 展示预测结果
     for i in Results_list[1]:
         print(i.boxes.cls.tolist())
         print(i.boxes.conf.tolist())
+    source = os.path.abspath("../../Model/test/people.mp4")
+    Results_list = video_detector.predict(pre_source=source, mode=2)
+    # 展示预测结果
+    for i in Results_list[1]:
+        print(i.boxes.cls.tolist())
+        print(i.boxes.conf.tolist())
+    source = os.path.abspath("../../Model/test/fall.mp4")
+    Results_list = video_detector.predict(pre_source=source, mode=3)
+    # 展示预测结果
+    for i in Results_list[1]:
+        print(i.boxes.cls.tolist())
+        print(i.boxes.conf.tolist())
+    source = os.path.abspath("../../Model/test/fire_test.mp4")
+    Results_list = video_detector.predict(pre_source=source, mode=0)
+    # 展示预测结果
+    for i in Results_list[1]:
+        print(i.boxes.cls.tolist())
+        print(i.boxes.conf.tolist())
+    for j in Results_list[2]:
+        print(j.boxes.cls.tolist())
+        print(j.boxes.conf.tolist())
+    for k in Results_list[3]:
+        print(k.boxes.cls.tolist())
+        print(k.boxes.conf.tolist())
 
+    # 检测方法的测试需要video_processor中执行并完成
+
+    # 测试重检测方法
     video_detector.re_detect(video_file=source, mode=1, sensitivity=0)

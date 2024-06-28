@@ -189,21 +189,24 @@ def load_config(relative: bool = False) -> Tuple[dict, dict]:
         return trans_config_abspath(config_data), invalid_config_data
 
 
-# 模块测试部分
+## 模块单元测试部分，调用部分方法，保证文件内所有方法均已被调用 ##
 if __name__ == "__main__":
-    # 查看绝对路径正确性
-    print(config_file)
-    # 查看相对路径转化后的结果
+
+    # 测试绝对路径，可用键值和默认键值对变量内容
+    print(config_file,config_keys,config_defaluts,sep='\n')
+
+    # 测试转化相对路径的结果
     print(trans_config_abspath(config_defaluts))
 
-    # 写入默认内容
+    # 测试写入默认内容到配置文件
     _generate_defalut_config()
-    # 查看加载结果
+
+    # 测试加载配置文件
     print(load_config()[0])
 
-    # 写入不存在的键
-    # write_config("xxx","yyy")
+    # 测试写入不存在的键
+    write_config("xxx","yyy")
 
-    # 不存在文件修改测试
-    # write_config(config_keys[0],"zzz")
-    # print(load_config(relative = True)[0])
+    # 测试修改不存在文件
+    write_config(config_keys[0],"zzz")
+    print(load_config(relative = True)[0])

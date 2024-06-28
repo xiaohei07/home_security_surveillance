@@ -469,35 +469,39 @@ class History_Video_Processor(object):
         # 返回结果
         return video_file_dict, video_information_dict
 
-# 模块测试部分
+## 模块单元测试部分，调用部分函数方法，保证类内所有方法均已被调用 ##
 if __name__ == "__main__":
+
+    # 测试类的实例化
     hs_processor = History_Video_Processor()
-    # 解析目录结果
+
+    # 测试解析目录的结果
     print(hs_processor.hv_dict)
 
-    # 时间转化,parse_time用于将字符串转为元组
+    # 测试使用时间字符串进行访问
+    # 同时测试parse_time方法能否用于将字符串转为元组
     # hs_processor.hv_dict["2021-10-01"]获得的是字典
     # 可以根据视频索引访问字典以获得对应的开始时间
     print(hs_processor.parse_time(
         hs_processor.hv_dict["2021-10-01"][1][1]))
 
-    # 格式化日期和时间
+    # 测试格式化日期和时间方法
     print(hs_processor.format_date((2024, 5, 12)))
     print(hs_processor.format_date((20, 15, 30)))
 
-    # 分割日期为年月和日
+    # 测试分割日期为年月和日方法
     print(hs_processor.date_split("2024-5-12"))
 
-    # 根据当前时间生成新的视频文件路径
+    # 测试根据当前时间生成新的视频文件路径方法
     res = hs_processor.generate_video_file(datetime.datetime.now().strftime("%Y-%m-%d_%H-%M-%S"))
     print(res)
     print(hs_processor.hv_dict)
 
-    # 删除生成的视频文件路径
+    # 测试删除生成的视频文件路径
     hs_processor.delete_new_video_file(res)
     print(hs_processor.hv_dict)
 
-    # 根据传入日期和索引获得视频文件路径，并验证
+    # 测试根据传入日期和索引获得视频文件路径，并验证
     video_file, video_info = hs_processor.get_video_file("2024-06-11", 1)
     res = cv.VideoCapture(video_file)
     print(res.isOpened())
@@ -505,7 +509,7 @@ if __name__ == "__main__":
     print(hs_processor.get_video_file("2024-06-12", 1))
     print(hs_processor.get_video_file("2024-06-11", 100))
 
-    # 获得传入日期的全部视频文件
+    # 测试获得传入日期的全部视频文件
     video_file_list, video_information_list = hs_processor.get_date_video_file("2024-06-11")
     print(video_file_list)
     print(video_information_list)

@@ -143,13 +143,16 @@ class Log_Processor(object):
             self.logger.debug(content, extra=extra_frame)
 
 
-# 模块测试部分
+## 模块单元测试部分，调用部分函数方法，保证类内所有方法均已被调用 ##
 if __name__ == "__main__":
-    # 加载日志处理器
+
+    # 测试类的实例化
     logger = Log_Processor("./", "test.log", logging.INFO)
-    # 信息写入
+
+    # 测试写入运行信息到日志
     logger.log_write("test", Log_Processor.INFO)
-    # 错误写入
+
+    # 测试写入运行时错误到日志
     try:
         raise ValueError("test logging")
     except Exception as e:

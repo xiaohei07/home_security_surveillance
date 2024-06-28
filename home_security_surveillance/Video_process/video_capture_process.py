@@ -49,3 +49,5 @@ class Video_Capture_Process(multiprocessing.Process):
         else:
             self.result_queue.put(False)
         capture.release()
+
+## 作为嵌入类，需要直接在video_processor中进行集成测试 ##

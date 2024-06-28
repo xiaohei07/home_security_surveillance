@@ -319,30 +319,33 @@ class Nvd_Processor(object):
         # 否则返回0
         return 0
 
-# 模块测试部分
+## 模块单元测试部分，调用部分函数方法，保证类内所有方法均已被调用 ##
 if __name__ == "__main__":
-    # 测试加载网络视频设备配置文件
+
+    # 测试类的实例化
     nvd_processor = Nvd_Processor(re_parse=False)
+
+    # 测试配置文件加载结果
     print(nvd_processor.nvd_config_data)
     print()
 
-    # 增加网络视频设备配置文件的测试
+    # 测试增加网络视频设备到配置文件
     nvd_processor.add_nvd_config("http://10.197.97.225:4747/")
     print(nvd_processor.nvd_config_data)
     print()
 
-    # 修改网络视频设备配置文件的测试
+    # 测试修改网络视频设备到配置文件
     nvd_processor.nvd_config_data[2]["ip"] = "123:123:9:9"
     nvd_processor.change_nvd_config()
     print(nvd_processor.nvd_config_data)
     print()
 
-    # 删除网络视频设备配置文件的测试
+    # 测试删除网络视频设备到配置文件
     nvd_processor.delete_nvd_config("http://10.197.97.225:4747/")
     print(nvd_processor.nvd_config_data)
     print()
 
-    # 验证ip
+    # 测试ip验证效果
     print(nvd_processor.vaild_ip("aaa:bb:c:dd"))
     print(nvd_processor.vaild_ip("10.197.97.224"))
     print(nvd_processor.vaild_ip("10.197.97.274"))
@@ -350,11 +353,11 @@ if __name__ == "__main__":
     print(nvd_processor.vaild_ip("FC00:0:130F:0000:0000:09C0:876A:130B"))
     print(nvd_processor.vaild_ip("FC00:0:ZZZZ:0000:0000:09C0:876A:130B"))
 
-    # 查找ip对应的url
+    # 测试ip查找url
     print(nvd_processor.from_ip_find_url("10.197.97.274"))
     print(nvd_processor.from_ip_find_url("10.197.97.224"))
 
-    # 协议验证
+    # 测试协议验证
     print(nvd_processor.vaild_protocol("Http"))
     print(nvd_processor.vaild_protocol("RTSP"))
     print(nvd_processor.vaild_protocol("xxxx"))

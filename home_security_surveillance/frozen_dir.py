@@ -7,3 +7,7 @@ if getattr(sys, 'frozen', False):
     project_dir = os.path.dirname(sys.executable)
 else:
     project_dir = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
+
+## 测试路径是否正确
+if __name__ == "main":
+    print(project_dir)

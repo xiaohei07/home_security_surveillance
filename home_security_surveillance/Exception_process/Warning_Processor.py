@@ -214,8 +214,6 @@ class Warning_Processor(object):
 
         # 警告播放
         self._play_audio(level_description)
-        # 桌面跳出警报窗口
-        self.show_custom_warning_dialog(warning_type, warning_time, level_description)
 
         # 危险等级超过3，或是火焰的危险等级2就发送邮件
         if level_description >= 3 or (warning_type == "Fire" and level_description == 2):
@@ -223,6 +221,9 @@ class Warning_Processor(object):
                 self.send_email_notification(warning_type, warning_time, level_description)
                 log_message += " Start to sent Message!"
                 self.warning_logger.log_write(log_message, Log_Processor.INFO)
+
+        # 桌面跳出警报窗口
+        self.show_custom_warning_dialog(warning_type, warning_time, level_description)
 
     def _play_audio(self, level_description: int):
         """
@@ -651,44 +652,39 @@ class Warning_Processor(object):
             self.warning_logger.log_write(f"Failed to send email: {str(e)}", Log_Processor.ERROR)
 
 
-# 模块测试部分
+## 模块单元测试部分，调用部分函数方法，保证类内所有方法均已被调用 ##
 if __name__ == "__main__":
-    # 初始化对象
+
+    # 测试类的实例化
     warning_processor = Warning_Processor()
 
-    # # 添加邮件发送者并检验添加结果
-    # warning_processor.append_email_senter("2560663471@qq.com", "mwgzhmvcvjktebce")
-    # print(warning_processor.email_senter_data)
-    # warning_processor.append_email_senter("xiaohei07zhzhh@163.com", "MLTMTIOQITHANNNG")
-    # print(warning_processor.email_senter_data)
-    #
-    # # 添加邮件接收者并检验添加结果
-    # warning_processor.append_email_receiver("2193706008@qq.com")
-    # print(warning_processor.email_receiver_data)
-    # warning_processor.append_email_receiver("2560663471@qq.com")
-    # print(warning_processor.email_receiver_data)
-    # warning_processor.append_email_receiver("xiaohei07zhzhh@163.com")
-    # print(warning_processor.email_receiver_data)
-    # warning_processor.append_email_receiver("lazy07xiaohei@163.com")
-    # print(warning_processor.email_receiver_data)
+    # 测试添加邮件接收者并检验添加结果
+    warning_processor.append_email_receiver("2193706008@qq.com")
+    print(warning_processor.email_receiver_data)
+    warning_processor.append_email_receiver("2560663471@qq.com")
+    print(warning_processor.email_receiver_data)
+    warning_processor.append_email_receiver("xiaohei07zhzhh@163.com")
+    print(warning_processor.email_receiver_data)
+    warning_processor.append_email_receiver("lazy07xiaohei@163.com")
+    print(warning_processor.email_receiver_data)
 
-    # # 删除邮件接收者并检验添加结果
-    # warning_processor.delete_email_receiver("2193706008@qq.com")
-    # print(warning_processor.email_receiver_data)
-    # warning_processor.delete_email_receiver("xiaohei07zhzhh@163.com")
-    # print(warning_processor.email_receiver_data)
-    # warning_processor.delete_email_receiver("lazy07xiaohei@163.com")
-    # print(warning_processor.email_receiver_data)
+    # 测试删除邮件接收者并检验添加结果
+    warning_processor.delete_email_receiver("2193706008@qq.com")
+    print(warning_processor.email_receiver_data)
+    warning_processor.delete_email_receiver("xiaohei07zhzhh@163.com")
+    print(warning_processor.email_receiver_data)
+    warning_processor.delete_email_receiver("lazy07xiaohei@163.com")
+    print(warning_processor.email_receiver_data)
 
-    # # 邮件发送测试
-    # warning_processor.send_email_notification("Fire", "2024-06-12 12:00:00", 3)
+    # 邮件发送测试
+    warning_processor.send_email_notification("Fire", "2024-06-12 12:00:00", 3)
 
     # 测试警告功能
-    # warning_processor.warning_process(1, "2024-06-12 12:00:00", 0.8)
-    # warning_processor.warning_process(2, "2024-06-12 12:00:00", 0.85)
-    # warning_processor.warning_process(4, "2024-06-12 12:00:00", 0.9)
-    # warning_processor.warning_process(9, "2024-06-12 12:00:00", 0.95)
-    # warning_processor.warning_process(15, "2024-06-12 12:00:00", 0.8)
+    warning_processor.warning_process(1, "2024-06-12 12:00:00", [0.0, 0.0, 0.0, 0.7], 0)
+    warning_processor.warning_process(2, "2024-06-12 12:00:00", [0.0, 0.0, 0.9, 0.0], 1)
+    warning_processor.warning_process(4, "2024-06-12 12:00:00", [0.0, 0.6, 0.0, 0.0], 1)
+    warning_processor.warning_process(9, "2024-06-12 12:00:00", [0.5, 0.0, 0.0, 0.8], 1)
+    warning_processor.warning_process(15, "2024-06-12 12:00:00", [0.7, 0.6, 0.7, 0.8], 1)
 
     # # 单独的连接测试
     # # 1. 连接到SMTP服务器

@@ -1267,38 +1267,37 @@ class Video_Processor(object):
 
 # 模块测试部分
 if __name__ == "__main__":
-    # cv支持信息查看
-    # print(cv.getBuildInformation())
-    # 启动opencv日志记录
-    # cv.setLogLevel(cv.CAP_PROP_XI_DEBUG_LEVEL)
 
-    # 测试加载是否成功，输出配置文件信息、视频源/设备信息
+    # 测试本机cv支持信息查看
+    print(cv.getBuildInformation())
+    # 测试启动opencv日志记录
+    cv.setLogLevel(cv.CAP_PROP_XI_DEBUG_LEVEL)
+
+    # 测试类的实例化，并输出配置文件信息、视频源/设备信息
     video_process = Video_Processor()
-    # print(Video_process.config_data)
-    # print(Video_process.local_video_device_list)
-    # print(Video_process.network_video_device_list)
-    # print(Video_process.hs_processor.hv_dict)
+    print(video_process.config_data)
+    print(video_process.local_video_device_list)
+    print(video_process.nvd_processor.nvd_config_data)
+    print(video_process.hs_processor.hv_dict)
 
-    # 测试加载本地摄像头
-    print(video_process.load_local_video_device(0, True, False, True, 2))
-    # print(video_process.load_local_video_device(0, True, False))
-    # print(video_process.load_local_video_device(0, True, True))
+    # 测试以不同方式加载本地摄像头
+    print(video_process.load_local_video_device(0, True, False, True, 2, 1))
+    print(video_process.load_local_video_device(0, True, False, False, 2, 0))
+    print(video_process.load_local_video_device(0, True, True, True, 3, 1))
+    print(video_process.load_local_video_device(0, True, True, False, 3, 0))
+    # 此处需要手动关闭进程
+    print(video_process.load_local_video_device(0, False, True, False, 1, 1))
+    print(video_process.load_local_video_device(0, False, True, True, 1, 0))
+    print(video_process.load_local_video_device(0, False, False, True, 0, 1))
 
     # 测试加载网络摄像头
-    # Video_process.load_network_video_device("http://10.195.154.1:8081/", True, False)
-    # Video_process.load_network_video_device(3, True, False)
-    # Video_process.load_network_video_device("rtsp://10.195.154.1:8554/live", True, False)
-    # Video_process.load_network_video_device(4, True, True)
-    # Video_process.load_network_video_device("rtsp://192.168.98.239:8554/live", True, True)
+    print(video_process.load_network_video_device("http://10.195.154.1:8081/", True, False, True, 2, 1))
+    print(video_process.load_network_video_device(3, True, False, False, 2, 0))
+    print(video_process.load_network_video_device("rtsp://10.195.154.1:8554/live", True, True, True, 3, 1))
+    print(video_process.load_network_video_device(4, False, True, False, 1, 1))
+    print(video_process.load_network_video_device("rtsp://192.168.98.239:8554/live", False, True, True, 0, 0))
 
     # 测试加载历史视频文件
-    # print(Video_process.load_history_video("2024-06-11", 15, True))
-
-    # 测试识别内容
-    # print(Video_process.load_local_video_device(0, True, False, True, 0))
-    # print(Video_process.load_network_video_device("rtsp://10.195.146.141:8554/live",
-    #                                               True, False, False, 1))
-    # print(video_process.load_network_video_device("http://10.195.146.141:8081",
-    #                                               True, False, True, 1))
-    # print(Video_process.load_network_video_device("rtsp://10.195.146.141:8554/live",
-    #                                               True, True, True, 1))
+    print(video_process.load_history_video("2024-06-11", 1, True, True, 2, 1))
+    print(video_process.load_history_video("2024-06-11", 2, True, False, 2, 0))
+    print(video_process.load_history_video("2024-06-11", 3, False, True, 1, 1))
